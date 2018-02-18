@@ -18,14 +18,17 @@ class ISIS_API UGameBoard : public UObject
 	
 public:
 
-	UFUNCTION(BlueprintCallable, Category = "GameBoard")
-	UGameSpace* GetCoreGameSpace();
+	UFUNCTION(BlueprintPure, Category = "GameBoard")
+	UGameSpace* GetCoreGameSpace() const;
+
+	UFUNCTION(BlueprintPure, Category = "GameBoard")
+	TSet<UGameSpace*> GetAllGameSpaces() const;
 
 protected:
 
 	void SetCoreGameSpace(UGameSpace* GameSpace);
 
-private:
-	
+	TSet<UGameSpace*> AllGameSpaces;
 	UGameSpace* CoreGameSpace;
+
 };

@@ -29,6 +29,8 @@ public:
 	UFUNCTION(BlueprintPure, Category = "GameBoard")
 	UGameSpace* GetCurrentGameSpace() const;
 
+	void SetCurrentGameSpace(UGameSpace* NewGameSpace);
+
 	UFUNCTION(BlueprintCallable, Category = "GameBoard")
 	bool MoveTo(UGameSpace* NewGameSpace);
 

@@ -58,6 +58,16 @@ UGameBoardThreeByThree::UGameBoardThreeByThree()
 
 	SetCoreGameSpace(NewCoreSpace);
 
+	AllGameSpaces.Add(NewCoreSpace);
+	AllGameSpaces.Add(Left);
+	AllGameSpaces.Add(Right);
+	AllGameSpaces.Add(Up);
+	AllGameSpaces.Add(Down);
+	AllGameSpaces.Add(LeftUpCorner);
+	AllGameSpaces.Add(RightUpCorner);
+	AllGameSpaces.Add(LeftDownCorner);
+	AllGameSpaces.Add(RightDownCorner);
+
 	UE_LOG(LogTemp, Warning, TEXT("Constructed UGameBoardThreeByThree"));
 }
 

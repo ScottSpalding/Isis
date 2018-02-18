@@ -31,6 +31,11 @@ UGameSpace* AIsisPawn::GetCurrentGameSpace() const
 	return CurrentGameSpace;
 }
 
+void AIsisPawn::SetCurrentGameSpace(UGameSpace * NewGameSpace)
+{
+	CurrentGameSpace = NewGameSpace;
+}
+
 bool AIsisPawn::MoveTo(UGameSpace* NewGameSpace)
 {
 	if (!NewGameSpace) 

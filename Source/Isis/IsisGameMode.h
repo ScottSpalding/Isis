@@ -6,6 +6,8 @@
 #include "GameFramework/GameMode.h"
 #include "IsisGameMode.generated.h"
 
+class AIsisPawn;
+
 /**
  * 
  */
@@ -14,7 +16,12 @@ class ISIS_API AIsisGameMode : public AGameMode
 {
 	GENERATED_BODY()
 	
+public:
+
+	UFUNCTION(BlueprintCallable, Category = "GameBoard")
+	void SpawnNewIsisPawnInRandomLocation(AIsisPawn* NewPawn);
 	
-	
-	
+	UFUNCTION(BlueprintCallable, Category = "GameBoard")
+	void SpawnNewEnemyInRandomLocation();
+
 };

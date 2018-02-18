@@ -15,7 +15,9 @@ UCLASS()
 class ISIS_API AIsisGameState : public AGameState
 {
 	GENERATED_BODY()
-	
+
+public:
+
 	UFUNCTION(BlueprintCallable, Category = "GameBoard")
 	UGameBoard* GetCurrentGameBoard();
 
