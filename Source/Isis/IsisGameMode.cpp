@@ -25,9 +25,20 @@ void AIsisGameMode::SpawnNewIsisPawnInRandomLocation(AIsisPawn* NewPawn)
 
 void AIsisGameMode::SpawnNewEnemyInRandomLocation()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Spawning new enemy..."));
+	UE_LOG(LogTemp, Warning, TEXT("Spawning new enemy pawn..."));
 	AIsisPawn* NewPawn = GetWorld()->SpawnActor<AIsisPawn>();
+
 	NewPawn->AIControllerClass = AIsisAIControllerRandom::StaticClass();
 	NewPawn->SpawnDefaultController();
+
 	SpawnNewIsisPawnInRandomLocation(NewPawn);
+}
+
+void AIsisGameMode::SpawnPlayerPawnInGivenLocation(UGameSpace * DesiredLocation)
+{
+	UE_LOG(LogTemp, Warning, TEXT("Spawning new player pawn..."));
+	AIsisPawn* NewPawn = GetWorld()->SpawnActor<AIsisPawn>();
+
+	NewPawn->SetCurrentGameSpace(DesiredLocation);
+	DesiredLocation->AddPresentPawn(NewPawn);
 }

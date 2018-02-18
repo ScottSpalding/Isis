@@ -22,6 +22,9 @@ public:
 	TSet<UGameSpace*> GetAdjacentGameSpaces() const;
 
 	UFUNCTION(BlueprintCallable, Category = "GameBoard")
+	TSet<UGameSpace*> GetSpacesWithinRange(int32 Range);
+
+	UFUNCTION(BlueprintCallable, Category = "GameBoard")
 	void AddAdjacentGameSpace(UGameSpace* NewGameSpace);
 
 	UFUNCTION(BlueprintPure, Category = "GameBoard")
@@ -38,4 +41,6 @@ private:
 	TSet<UGameSpace*> AdjacentGameSpaces;
 
 	TSet<AIsisPawn*> PresentPawns;
+
+	TSet<UGameSpace*> GetSpacesWithinRangeHelper(UGameSpace* GameSpace, int32 Range);
 };

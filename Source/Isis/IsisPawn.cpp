@@ -68,9 +68,20 @@ int32 AIsisPawn::GetMaximumHealth() const
 	return MaximumHealth;
 }
 
-void AIsisPawn::CauseDamage(int32 Damage)
+bool AIsisPawn::Attack(AIsisPawn* TargetPawn)
 {
-	CurrentHealth -= Damage;
+	if (CurrentGameSpace->GetSpacesWithinRange(CurrentAttackRange).Contains(TargetPawn->GetCurrentGameSpace()))
+	{
+		TargetPawn->TakeDamage(CurrentAttackDamage);
+		return true;
+	}
+	return false;
+}
+
+void AIsisPawn::TakeDamage(int32 Damage)
+{
+	int32 FinalDamage = ApplyArmorMitigation(ApplyReceivingDamageEffects(Damage));
+	CurrentHealth -= FinalDamage;
 	if (CurrentHealth < 0) 
 	{
 		CurrentHealth = 0;
@@ -84,4 +95,16 @@ void AIsisPawn::HealDamage(int32 Damage)
 	{
 		CurrentHealth = MaximumHealth;
 	}
+}
+
+int AIsisPawn::ApplyArmorMitigation(int32 Damage)
+{
+	// Currently armor doesn't exist, so no mitigation
+	return Damage;
+}
+
+int AIsisPawn::ApplyReceivingDamageEffects(int32 Damage)
+{
+	// Currently damage effects don't exist, so no effects
+	return Damage;
 }

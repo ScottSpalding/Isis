@@ -29,6 +29,32 @@ TSet<UGameSpace*> UGameSpace::GetAdjacentGameSpaces() const
 	return AdjacentGameSpaces;
 }
 
+TSet<UGameSpace*> UGameSpace::GetSpacesWithinRange(int32 Range)
+{
+	return GetSpacesWithinRangeHelper(this, Range);
+}
+
+TSet<UGameSpace*> UGameSpace::GetSpacesWithinRangeHelper(UGameSpace* GameSpace, int32 Range)
+{
+	TSet<UGameSpace*> SpacesWithinRange;
+	if (Range == 0) 
+	{
+	}
+	else if (Range == 1)
+	{
+		SpacesWithinRange.Append(GameSpace->GetAdjacentGameSpaces());
+	}
+	else
+	{
+		SpacesWithinRange.Append(GameSpace->GetAdjacentGameSpaces());
+		for (auto& GameSpaceToCheck : GameSpace->GetAdjacentGameSpaces())
+		{
+			SpacesWithinRange.Append(GetSpacesWithinRangeHelper(GameSpaceToCheck, Range));
+		}
+	}
+	return SpacesWithinRange;
+}
+
 void UGameSpace::AddAdjacentGameSpace(UGameSpace* NewGameSpace)
 {
 	AdjacentGameSpaces.Add(NewGameSpace);

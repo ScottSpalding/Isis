@@ -40,8 +40,11 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Health")
 	int32 GetMaximumHealth() const;
 
+	UFUNCTION(BlueprintCallable, Category = "Attack")
+	bool Attack(AIsisPawn * TargetPawn);
+
 	UFUNCTION(BlueprintCallable, Category = "Health")
-	void CauseDamage(int32 Damage);
+	void TakeDamage(int32 Damage);
 
 	UFUNCTION(BlueprintCallable, Category = "Health")
 	void HealDamage(int32 Damage);
@@ -52,5 +55,11 @@ private:
 	
 	int32 MaximumHealth = 10;
 	int32 CurrentHealth = 10;
+
+	int32 CurrentAttackRange = 1;
+	int32 CurrentAttackDamage = 3;
+
+	int ApplyArmorMitigation(int32 Damage);
+	int ApplyReceivingDamageEffects(int32 Damage);
 
 };

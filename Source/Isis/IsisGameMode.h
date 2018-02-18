@@ -7,6 +7,7 @@
 #include "IsisGameMode.generated.h"
 
 class AIsisPawn;
+class UGameSpace;
 
 /**
  * 
@@ -23,5 +24,8 @@ public:
 	
 	UFUNCTION(BlueprintCallable, Category = "GameBoard")
 	void SpawnNewEnemyInRandomLocation();
+
+	UFUNCTION(BlueprintCallable, Category = "GameBoard")
+	void SpawnPlayerPawnInGivenLocation(UGameSpace* DesiredLocation);
 
 };
