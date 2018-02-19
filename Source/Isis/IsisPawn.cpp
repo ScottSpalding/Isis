@@ -26,17 +26,17 @@ void AIsisPawn::Tick(float DeltaTime)
 
 }
 
-UGameSpace* AIsisPawn::GetCurrentGameSpace() const
+AGameSpace* AIsisPawn::GetCurrentGameSpace() const
 {
 	return CurrentGameSpace;
 }
 
-void AIsisPawn::SetCurrentGameSpace(UGameSpace * NewGameSpace)
+void AIsisPawn::SetCurrentGameSpace(AGameSpace * NewGameSpace)
 {
 	CurrentGameSpace = NewGameSpace;
 }
 
-bool AIsisPawn::MoveTo(UGameSpace* NewGameSpace)
+bool AIsisPawn::MoveTo(AGameSpace* NewGameSpace)
 {
 	if (!NewGameSpace) 
 	{

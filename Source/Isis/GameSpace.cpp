@@ -2,7 +2,7 @@
 
 #include "GameSpace.h"
 
-void UGameSpace::AddPresentPawn(AIsisPawn* AddedPawn)
+void AGameSpace::AddPresentPawn(AIsisPawn* AddedPawn)
 {
 	if (AddedPawn) {
 		PresentPawns.Add(AddedPawn);
@@ -13,7 +13,7 @@ void UGameSpace::AddPresentPawn(AIsisPawn* AddedPawn)
 	}
 }
 
-void UGameSpace::RemovePresentPawn(AIsisPawn* RemovedPawn)
+void AGameSpace::RemovePresentPawn(AIsisPawn* RemovedPawn)
 {
 	if (RemovedPawn) {
 		PresentPawns.Add(RemovedPawn);
@@ -24,19 +24,19 @@ void UGameSpace::RemovePresentPawn(AIsisPawn* RemovedPawn)
 	}
 }
 
-TSet<UGameSpace*> UGameSpace::GetAdjacentGameSpaces() const
+TSet<AGameSpace*> AGameSpace::GetAdjacentGameSpaces() const
 {
 	return AdjacentGameSpaces;
 }
 
-TSet<UGameSpace*> UGameSpace::GetSpacesWithinRange(int32 Range)
+TSet<AGameSpace*> AGameSpace::GetSpacesWithinRange(int32 Range)
 {
 	return GetSpacesWithinRangeHelper(this, Range);
 }
 
-TSet<UGameSpace*> UGameSpace::GetSpacesWithinRangeHelper(UGameSpace* GameSpace, int32 Range)
+TSet<AGameSpace*> AGameSpace::GetSpacesWithinRangeHelper(AGameSpace* GameSpace, int32 Range)
 {
-	TSet<UGameSpace*> SpacesWithinRange;
+	TSet<AGameSpace*> SpacesWithinRange;
 	if (Range == 0) 
 	{
 	}
@@ -55,12 +55,12 @@ TSet<UGameSpace*> UGameSpace::GetSpacesWithinRangeHelper(UGameSpace* GameSpace, 
 	return SpacesWithinRange;
 }
 
-void UGameSpace::AddAdjacentGameSpace(UGameSpace* NewGameSpace)
+void AGameSpace::AddAdjacentGameSpace(AGameSpace* NewGameSpace)
 {
 	AdjacentGameSpaces.Add(NewGameSpace);
 }
 
-TSet<AIsisPawn*> UGameSpace::GetPresentPawns() const
+TSet<AIsisPawn*> AGameSpace::GetPresentPawns() const
 {
 	return PresentPawns;
 }

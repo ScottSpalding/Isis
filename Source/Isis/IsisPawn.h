@@ -7,7 +7,7 @@
 
 #include "IsisPawn.generated.h"
 
-class UGameSpace;
+class AGameSpace;
 
 UCLASS()
 class ISIS_API AIsisPawn : public APawn
@@ -27,12 +27,12 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION(BlueprintPure, Category = "GameBoard")
-	UGameSpace* GetCurrentGameSpace() const;
+	AGameSpace* GetCurrentGameSpace() const;
 
-	void SetCurrentGameSpace(UGameSpace* NewGameSpace);
+	void SetCurrentGameSpace(AGameSpace* NewGameSpace);
 
 	UFUNCTION(BlueprintCallable, Category = "GameBoard")
-	bool MoveTo(UGameSpace* NewGameSpace);
+	bool MoveTo(AGameSpace* NewGameSpace);
 
 	UFUNCTION(BlueprintPure, Category = "Health")
 	int32 GetCurrentHealth() const;
@@ -51,7 +51,7 @@ public:
 
 private:
 
-	UGameSpace* CurrentGameSpace;
+	AGameSpace* CurrentGameSpace;
 	
 	int32 MaximumHealth = 10;
 	int32 CurrentHealth = 10;

@@ -6,7 +6,7 @@
 #include "GameFramework/GameState.h"
 #include "IsisGameState.generated.h"
 
-class UGameBoard;
+class AGameBoard;
 
 /**
  * 
@@ -19,13 +19,16 @@ class ISIS_API AIsisGameState : public AGameState
 public:
 
 	UFUNCTION(BlueprintCallable, Category = "GameBoard")
-	UGameBoard* GetCurrentGameBoard();
+	AGameBoard* GetCurrentGameBoard();
+
+	UFUNCTION(BlueprintCallable, Category = "GameBoard")
+	void SetCurrentGameBoard(AGameBoard* NewGameBoard);
 
 	UFUNCTION(BlueprintCallable, Category = "IsisGame")
 	void ResetGameState();
 
 private:
 
-	UGameBoard* CurrentGameBoard;
+	AGameBoard* CurrentGameBoard;
 	
 };

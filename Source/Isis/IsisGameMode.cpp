@@ -15,7 +15,7 @@ void AIsisGameMode::SpawnNewIsisPawnInRandomLocation(AIsisPawn* NewPawn)
 	auto AllGameSpaces = GetGameState<AIsisGameState>()->GetCurrentGameBoard()->GetAllGameSpaces();
 		
 	int RandomInteger = FMath::RandRange(0, AllGameSpaces.Num()-1);
-	UGameSpace* NewGameSpace = AllGameSpaces.Array()[RandomInteger];
+	AGameSpace* NewGameSpace = AllGameSpaces.Array()[RandomInteger];
 
 	NewPawn->SetCurrentGameSpace(NewGameSpace);
 	NewGameSpace->AddPresentPawn(NewPawn);
@@ -34,7 +34,7 @@ void AIsisGameMode::SpawnNewEnemyInRandomLocation()
 	SpawnNewIsisPawnInRandomLocation(NewPawn);
 }
 
-void AIsisGameMode::SpawnPlayerPawnInGivenLocation(UGameSpace * DesiredLocation)
+void AIsisGameMode::SpawnPlayerPawnInGivenLocation(AGameSpace * DesiredLocation)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Spawning new player pawn..."));
 	AIsisPawn* NewPawn = GetWorld()->SpawnActor<AIsisPawn>();

@@ -2,17 +2,27 @@
 
 #include "GameBoard.h"
 
-UGameSpace* UGameBoard::GetCoreGameSpace() const
+AGameSpace* AGameBoard::GetCoreGameSpace() const
 {
 	return CoreGameSpace;
 }
 
-TSet<UGameSpace*> UGameBoard::GetAllGameSpaces() const
+TSet<AGameSpace*> AGameBoard::GetAllGameSpaces() const
 {
 	return AllGameSpaces;
 }
 
-void UGameBoard::SetCoreGameSpace(UGameSpace * GameSpace)
+//TArray<FInnerArray> AGameBoard::GetGameBoardArray() const
+//{
+//	return TArray<FInnerArray>();
+//}
+
+void AGameBoard::SetCoreGameSpace(AGameSpace* NewCoreSpace)
 {
-	CoreGameSpace = GameSpace;
+	CoreGameSpace = NewCoreSpace;
+}
+
+void AGameBoard::AddGameSpace(AGameSpace * NewCoreSpace)
+{
+	AllGameSpaces.Add(NewCoreSpace);
 }

@@ -4,79 +4,106 @@
 
 #include "GameSpace.h"
 
-UGameBoardThreeByThree::UGameBoardThreeByThree()
+AGameBoardThreeByThree::AGameBoardThreeByThree()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Creating UGameBoardThreeByThree"));
+	//UE_LOG(LogTemp, Warning, TEXT("Creating AGameBoardThreeByThree"));
 
-	Height = 3;
-	Width = 3;
+	//Height = 3;
+	//Width = 3;
 
-	UGameSpace* NewCoreSpace = NewObject<UGameSpace>();
+	//////auto LeftColumn = FInnerArray();
+	////LeftColumn.GameSpaces.Init(nullptr, 3);
+	//////auto CenterColumn = FInnerArray();
+	////CenterColumn.GameSpaces.Init(nullptr, 3);
+	//////auto RightColumn = FInnerArray();
+	////RightColumn.GameSpaces.Init(nullptr, 3);
+	////GameBoard.Add(LeftColumn);
+	////GameBoard.Add(CenterColumn);
+	////GameBoard.Add(RightColumn);
 
-	UGameSpace* Left = NewObject<UGameSpace>();
-	UGameSpace* Right = NewObject<UGameSpace>();
-	UGameSpace* Up = NewObject<UGameSpace>();
-	UGameSpace* Down = NewObject<UGameSpace>();
+	//AGameSpace* NewCoreSpace = NewObject<AGameSpace>();
+	//
+	////GameBoard[1].GameSpaces[1] = NewCoreSpace;
 
-	NewCoreSpace->AddAdjacentGameSpace(Left);
-	NewCoreSpace->AddAdjacentGameSpace(Right);
-	NewCoreSpace->AddAdjacentGameSpace(Up);
-	NewCoreSpace->AddAdjacentGameSpace(Down);
+	//AGameSpace* Left = NewObject<AGameSpace>(this, "Left");
+	//AGameSpace* Right = NewObject<AGameSpace>(this, "Right");
+	//AGameSpace* Up = NewObject<AGameSpace>(this, "Up");
+	//AGameSpace* Down = NewObject<AGameSpace>(this, "Down");
 
-	UGameSpace* LeftUpCorner = NewObject<UGameSpace>();
-	UGameSpace* RightUpCorner = NewObject<UGameSpace>();
-	UGameSpace* LeftDownCorner = NewObject<UGameSpace>();
-	UGameSpace* RightDownCorner = NewObject<UGameSpace>();
+	///*GameBoard[0].GameSpaces[1] = Left;
+	//GameBoard[2].GameSpaces[1] = Right;
+	//GameBoard[1].GameSpaces[0] = Up;
+	//GameBoard[1].GameSpaces[2] = Down;*/
 
-	Left->AddAdjacentGameSpace(NewCoreSpace);
-	Left->AddAdjacentGameSpace(LeftUpCorner);
-	Left->AddAdjacentGameSpace(LeftDownCorner);
+	//NewCoreSpace->AddAdjacentGameSpace(Left);
+	//NewCoreSpace->AddAdjacentGameSpace(Right);
+	//NewCoreSpace->AddAdjacentGameSpace(Up);
+	//NewCoreSpace->AddAdjacentGameSpace(Down);
 
-	Right->AddAdjacentGameSpace(NewCoreSpace);
-	Right->AddAdjacentGameSpace(RightUpCorner);
-	Right->AddAdjacentGameSpace(RightDownCorner);
+	//AGameSpace* LeftUpCorner = NewObject<AGameSpace>(this, "LeftUpCorner");
+	//AGameSpace* RightUpCorner = NewObject<AGameSpace>(this, "RightUpCorner");
+	//AGameSpace* LeftDownCorner = NewObject<AGameSpace>(this, "LeftDownCorner");
+	//AGameSpace* RightDownCorner = NewObject<AGameSpace>(this, "RightDownCorner");
 
-	Up->AddAdjacentGameSpace(NewCoreSpace);
-	Up->AddAdjacentGameSpace(RightUpCorner);
-	Up->AddAdjacentGameSpace(LeftUpCorner);
+	///*GameBoard[0].GameSpaces[0] = LeftUpCorner;
+	//GameBoard[2].GameSpaces[0] = RightUpCorner;
+	//GameBoard[0].GameSpaces[2] = LeftDownCorner;
+	//GameBoard[2].GameSpaces[2] = RightDownCorner;*/
 
-	Down->AddAdjacentGameSpace(NewCoreSpace);
-	Down->AddAdjacentGameSpace(LeftDownCorner);
-	Down->AddAdjacentGameSpace(RightDownCorner);
+	//Left->AddAdjacentGameSpace(NewCoreSpace);
+	//Left->AddAdjacentGameSpace(LeftUpCorner);
+	//Left->AddAdjacentGameSpace(LeftDownCorner);
 
-	LeftUpCorner->AddAdjacentGameSpace(Left);
-	LeftUpCorner->AddAdjacentGameSpace(Up);
+	//Right->AddAdjacentGameSpace(NewCoreSpace);
+	//Right->AddAdjacentGameSpace(RightUpCorner);
+	//Right->AddAdjacentGameSpace(RightDownCorner);
 
-	RightUpCorner->AddAdjacentGameSpace(Right);
-	RightUpCorner->AddAdjacentGameSpace(Up);
+	//Up->AddAdjacentGameSpace(NewCoreSpace);
+	//Up->AddAdjacentGameSpace(RightUpCorner);
+	//Up->AddAdjacentGameSpace(LeftUpCorner);
 
-	LeftDownCorner->AddAdjacentGameSpace(Left);
-	LeftDownCorner->AddAdjacentGameSpace(Down);
+	//Down->AddAdjacentGameSpace(NewCoreSpace);
+	//Down->AddAdjacentGameSpace(LeftDownCorner);
+	//Down->AddAdjacentGameSpace(RightDownCorner);
 
-	RightDownCorner->AddAdjacentGameSpace(Right);
-	RightDownCorner->AddAdjacentGameSpace(Down);
+	//LeftUpCorner->AddAdjacentGameSpace(Left);
+	//LeftUpCorner->AddAdjacentGameSpace(Up);
 
-	SetCoreGameSpace(NewCoreSpace);
+	//RightUpCorner->AddAdjacentGameSpace(Right);
+	//RightUpCorner->AddAdjacentGameSpace(Up);
 
-	AllGameSpaces.Add(NewCoreSpace);
-	AllGameSpaces.Add(Left);
-	AllGameSpaces.Add(Right);
-	AllGameSpaces.Add(Up);
-	AllGameSpaces.Add(Down);
-	AllGameSpaces.Add(LeftUpCorner);
-	AllGameSpaces.Add(RightUpCorner);
-	AllGameSpaces.Add(LeftDownCorner);
-	AllGameSpaces.Add(RightDownCorner);
+	//LeftDownCorner->AddAdjacentGameSpace(Left);
+	//LeftDownCorner->AddAdjacentGameSpace(Down);
 
-	UE_LOG(LogTemp, Warning, TEXT("Constructed UGameBoardThreeByThree"));
+	//RightDownCorner->AddAdjacentGameSpace(Right);
+	//RightDownCorner->AddAdjacentGameSpace(Down);
+
+	//SetCoreGameSpace(NewCoreSpace);
+
+	//AllGameSpaces.Add(NewCoreSpace);
+	//AllGameSpaces.Add(Left);
+	//AllGameSpaces.Add(Right);
+	//AllGameSpaces.Add(Up);
+	//AllGameSpaces.Add(Down);
+	//AllGameSpaces.Add(LeftUpCorner);
+	//AllGameSpaces.Add(RightUpCorner);
+	//AllGameSpaces.Add(LeftDownCorner);
+	//AllGameSpaces.Add(RightDownCorner);
+
+	//UE_LOG(LogTemp, Warning, TEXT("Constructed AGameBoardThreeByThree"));
 }
 
-int32 UGameBoardThreeByThree::GetHeight()
+int32 AGameBoardThreeByThree::GetHeight()
 {
 	return Height;
 }
 
-int32 UGameBoardThreeByThree::GetWidth()
+int32 AGameBoardThreeByThree::GetWidth()
 {
 	return Width;
 }
+
+//TArray<FInnerArray> AGameBoardThreeByThree::GetGameBoardArray() const
+//{
+//	return GameBoard;
+//}

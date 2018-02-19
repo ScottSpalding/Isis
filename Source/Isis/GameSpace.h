@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
+#include "GameFramework/Pawn.h"
 #include "GameSpace.generated.h"
 
 class AIsisPawn;
@@ -11,21 +11,21 @@ class AIsisPawn;
 /**
  * 
  */
-UCLASS()
-class ISIS_API UGameSpace : public UObject
+UCLASS(Blueprintable)
+class ISIS_API AGameSpace : public AActor
 {
 	GENERATED_BODY()
 	
 public:
 	
 	UFUNCTION(BlueprintPure, Category = "GameBoard")
-	TSet<UGameSpace*> GetAdjacentGameSpaces() const;
+	TSet<AGameSpace*> GetAdjacentGameSpaces() const;
 
 	UFUNCTION(BlueprintCallable, Category = "GameBoard")
-	TSet<UGameSpace*> GetSpacesWithinRange(int32 Range);
+	TSet<AGameSpace*> GetSpacesWithinRange(int32 Range);
 
 	UFUNCTION(BlueprintCallable, Category = "GameBoard")
-	void AddAdjacentGameSpace(UGameSpace* NewGameSpace);
+	void AddAdjacentGameSpace(AGameSpace* NewGameSpace);
 
 	UFUNCTION(BlueprintPure, Category = "GameBoard")
 	TSet<AIsisPawn*> GetPresentPawns() const;
@@ -38,9 +38,9 @@ public:
 
 private:
 
-	TSet<UGameSpace*> AdjacentGameSpaces;
+	TSet<AGameSpace*> AdjacentGameSpaces;
 
 	TSet<AIsisPawn*> PresentPawns;
 
-	TSet<UGameSpace*> GetSpacesWithinRangeHelper(UGameSpace* GameSpace, int32 Range);
+	TSet<AGameSpace*> GetSpacesWithinRangeHelper(AGameSpace* GameSpace, int32 Range);
 };

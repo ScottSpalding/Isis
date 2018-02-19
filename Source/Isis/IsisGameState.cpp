@@ -5,13 +5,18 @@
 #include "GameBoard.h"
 #include "GameBoardThreeByThree.h"
 
+void AIsisGameState::SetCurrentGameBoard(AGameBoard * NewGameBoard)
+{
+	CurrentGameBoard = NewGameBoard;
+}
+
 void AIsisGameState::ResetGameState()
 {
 	UE_LOG(LogTemp, Warning, TEXT("Creating AIsisGameState"));
-	CurrentGameBoard = NewObject<UGameBoardThreeByThree>();
+	//CurrentGameBoard = NewObject<AGameBoardThreeByThree>();
 }
 
-UGameBoard* AIsisGameState::GetCurrentGameBoard()
+AGameBoard* AIsisGameState::GetCurrentGameBoard()
 {
 	return CurrentGameBoard;
 }
