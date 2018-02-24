@@ -45,6 +45,6 @@ public:
 protected:
 
 	TSet<AGameSpace*> AllGameSpaces;
-	AGameSpace CoreGameSpace;
+	AGameSpace* CoreGameSpace;
 
 };
