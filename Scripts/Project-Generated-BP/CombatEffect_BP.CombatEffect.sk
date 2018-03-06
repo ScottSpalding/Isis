@@ -1,0 +1,25 @@
+// Combat Effect BP
+//
+// UE4 name of this class: CombatEffect_BP_C
+
+// UE4 Asset Name: CombatEffect_BP
+// UE4 Package Name: "/Game/Items/CombatEffect_BP"
+
+annotations: &reflected_data &name("CombatEffect_BP_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")                      PointerToUberGraphFrame !@uber_graph_frame                         // Currently unsupported */
+&raw("DefaultSceneRoot")                    SceneComponent !@default_scene_root                       // Default Scene Root
+&raw("HasAssignedPersistentEffectDelegate") Boolean        !@has_assigned_persistent_effect_delegate? // Has Assigned Persistent Effect Delegate
+
+$$ @persistent_effect_skookum_event
+// Persistent Effect Skookum Event
+//
+// UE4 name of this method: Persistent Effect Skookum Event
+
+&aka("Persistent Effect Skookum Event")
+
+(IsisPawn pawn_to_apply_combat_effect_to : IsisPawn!null) 
+
+$$ .

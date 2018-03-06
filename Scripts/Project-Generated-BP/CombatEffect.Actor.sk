@@ -1,0 +1,7 @@
+// Combat Effect
+//
+// UE4 name of this class: CombatEffect
+
+annotations: &reflected_cpp &name("CombatEffect")
+
+$$ .

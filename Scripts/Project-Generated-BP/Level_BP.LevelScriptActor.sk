@@ -1,0 +1,44 @@
+// Level BP
+//
+// UE4 name of this class: Level_BP_C
+
+// UE4 Asset Name: Level_BP
+// UE4 Package Name: "/Game/Levels/Level_BP"
+
+annotations: &reflected_data &name("Level_BP_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")                   PointerToUberGraphFrame !@uber_graph_frame                    // Currently unsupported */
+/* &raw("Corners")                          None        !@corners                             // Currently unsupported */
+&raw("NewVar_0")                         HUD_BP      !@new_var_0                           // New Var 0
+&raw("GameCamera_EdGraph_0_RefProperty") CameraActor !@game_camera_ed_graph_0_ref_property // Game Camera Ed Graph 0 Ref Property
+
+$$ @current_game_board
+// Get Current Game Board
+//
+// UE4 name of this method: Get Current Game Board
+
+&aka("Get Current Game Board")
+
+() GameBoard
+
+$$ @hud_set
+// Set HUD
+//
+// UE4 name of this method: Set HUD
+
+&aka("Set HUD")
+
+() 
+
+$$ @view_target_set
+// Set View Target
+//
+// UE4 name of this method: Set View Target
+
+&aka("Set View Target")
+
+() 
+
+$$ .

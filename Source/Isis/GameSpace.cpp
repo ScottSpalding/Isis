@@ -24,6 +24,21 @@ void AGameSpace::RemovePresentPawn(AIsisPawn* RemovedPawn)
 	}
 }
 
+TSet<AItem*> AGameSpace::GetPresentItems() const
+{
+	return PresentItems;
+}
+
+void AGameSpace::AddPresentItem(AItem* AddedItem)
+{
+	PresentItems.Add(AddedItem);
+}
+
+void AGameSpace::RemovePresentItem(AItem* RemovedItem)
+{
+	PresentItems.Remove(RemovedItem);
+}
+
 TSet<AGameSpace*> AGameSpace::GetAdjacentGameSpaces() const
 {
 	return AdjacentGameSpaces;

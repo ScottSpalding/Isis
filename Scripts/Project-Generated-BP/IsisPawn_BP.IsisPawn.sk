@@ -1,0 +1,15 @@
+// Isis Pawn BP
+//
+// UE4 name of this class: IsisPawn_BP_C
+
+// UE4 Asset Name: IsisPawn_BP
+// UE4 Package Name: "/Game/IsisPawn_BP"
+
+annotations: &reflected_data &name("IsisPawn_BP_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")   PointerToUberGraphFrame !@uber_graph_frame   // Currently unsupported */
+&raw("DefaultSceneRoot") SceneComponent !@default_scene_root // Default Scene Root
+
+$$ .

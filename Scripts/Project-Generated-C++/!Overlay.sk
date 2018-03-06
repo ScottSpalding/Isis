@@ -1,0 +1,1320 @@
+$$ Enum < Object
+// Enum
+$$ UStruct < Object
+// UStruct
+$$ Entity < Object
+$$ ActorComponent < Entity
+$$ Actor < Entity
+$$ Info < Actor
+$$ Controller < Actor
+$$ AIController < Controller
+$$ Pawn < Actor
+$$ GameStateBase < Info
+$$ GameModeBase < Info
+$$ GameBoard < Actor
+// Game Board
+//
+// UE4 name of this class: GameBoard
+
+annotations: &reflected_cpp &name("GameBoard")
+
+$$ @add_game_space
+// Add Game Space
+//
+// UE4 name of this method: AddGameSpace
+// Blueprint category: GameBoard
+
+&aka("AddGameSpace")
+
+(GameSpace new_core_space : GameSpace!null) 
+
+$$ @core_game_space_set
+// Set Core Game Space
+//
+// UE4 name of this method: SetCoreGameSpace
+// Blueprint category: GameBoard
+
+&aka("SetCoreGameSpace")
+
+(GameSpace new_core_space : GameSpace!null) 
+
+$$ @core_game_space
+// Get Core Game Space
+//
+// UE4 name of this method: GetCoreGameSpace
+// Blueprint category: GameBoard
+
+&aka("GetCoreGameSpace")
+
+() GameSpace
+
+$$ IsisAIController < AIController
+// Isis AIController
+//
+// UE4 name of this class: IsisAIController
+
+annotations: &reflected_cpp &name("IsisAIController")
+
+$$ GameState < GameStateBase
+$$ TableRowBase < UStruct
+// Base class for all table row structs to inherit from.
+//
+// UE4 name of this struct: TableRowBase
+
+annotations: &reflected_cpp &name("TableRowBase")
+
+$$ GameMode < GameModeBase
+$$ CombatEffect < Actor
+// Combat Effect
+//
+// UE4 name of this class: CombatEffect
+
+annotations: &reflected_cpp &name("CombatEffect")
+
+$$ @
+
+&raw("EntryEffectDelegate")      MulticastDelegate
+  (
+  IsisPawn pawn_to_apply_combat_effect_to
+  )                                                !@entry_effect_delegate      // Entry Effect Delegate
+&raw("TickEffectDelegate")       MulticastDelegate
+  (
+  IsisPawn pawn_to_apply_combat_effect_to
+  )                                                !@tick_effect_delegate       // Tick Effect Delegate
+&raw("PersistentEffectDelegate") MulticastDelegate
+  (
+  IsisPawn pawn_to_apply_combat_effect_to
+  )                                                !@persistent_effect_delegate // Persistent Effect Delegate
+&raw("OnLeaveEffectDelegate")    MulticastDelegate
+  (
+  IsisPawn pawn_to_apply_combat_effect_to
+  )                                                !@on_leave_effect_delegate   // On Leave Effect Delegate
+
+$$ @owning_item_set
+// Set Owning Item
+//
+// UE4 name of this method: SetOwningItem
+// Blueprint category: CombatEffect
+
+&aka("SetOwningItem")
+
+(Item new_owning_item : Item!null) 
+
+$$ @owning_item
+// Get Owning Item
+//
+// UE4 name of this method: GetOwningItem
+// Blueprint category: CombatEffect
+
+&aka("GetOwningItem")
+
+() Item
+
+$$ @effected_stat_type_set
+// Set Effected Stat Type
+//
+// UE4 name of this method: SetEffectedStatType
+// Blueprint category: CombatEffect
+
+&aka("SetEffectedStatType")
+
+(EPawnStatType new_effected_stat_type : EPawnStatType.@@none) 
+
+$$ @effected_stat_type
+// Get Effected Stat Type
+//
+// UE4 name of this method: GetEffectedStatType
+// Blueprint category: CombatEffect
+
+&aka("GetEffectedStatType")
+
+() EPawnStatType
+
+$$ @stat_modifier_value_set
+// Set Stat Modifier Value
+//
+// UE4 name of this method: SetStatModifierValue
+// Blueprint category: CombatEffect
+
+&aka("SetStatModifierValue")
+
+(Real new_stat_modifier_value : 0.0) 
+
+$$ @stat_modifier_value
+// Get Stat Modifier Value
+//
+// UE4 name of this method: GetStatModifierValue
+// Blueprint category: CombatEffect
+
+&aka("GetStatModifierValue")
+
+() Real
+
+$$ @can_expire_set
+// Set Can Expire
+//
+// UE4 name of this method: SetCanExpire
+// Blueprint category: CombatEffect
+
+&aka("SetCanExpire")
+
+(Boolean can_expire? : false) 
+
+$$ @can_expire?
+// Can Expire
+//
+// UE4 name of this method: CanExpire
+// Blueprint category: CombatEffect
+
+&aka("CanExpire")
+
+() Boolean
+
+$$ @can_stack_set
+// Set Can Stack
+//
+// UE4 name of this method: SetCanStack
+// Blueprint category: CombatEffect
+
+&aka("SetCanStack")
+
+(Boolean can_stack? : false) 
+
+$$ @can_stack?
+// Can Stack
+//
+// UE4 name of this method: CanStack
+// Blueprint category: CombatEffect
+
+&aka("CanStack")
+
+() Boolean
+
+$$ @is_beneficial_set
+// Set Is Beneficial
+//
+// UE4 name of this method: SetIsBeneficial
+// Blueprint category: CombatEffect
+
+&aka("SetIsBeneficial")
+
+(Boolean is_beneficial? : false) 
+
+$$ @is_beneficial?
+// Is Beneficial
+//
+// UE4 name of this method: IsBeneficial
+// Blueprint category: CombatEffect
+
+&aka("IsBeneficial")
+
+() Boolean
+
+$$ @turns_left_before_expiration_set
+// Set Turns Left Before Expiration
+//
+// UE4 name of this method: SetTurnsLeftBeforeExpiration
+// Blueprint category: CombatEffect
+
+&aka("SetTurnsLeftBeforeExpiration")
+
+(Integer turns_left : 0) 
+
+$$ @turns_left_before_expiration
+// Get Turns Left Before Expiration
+//
+// UE4 name of this method: GetTurnsLeftBeforeExpiration
+// Blueprint category: CombatEffect
+
+&aka("GetTurnsLeftBeforeExpiration")
+
+() Integer
+
+$$ @combat_effect_required_parameters_set
+// Set Combat Effect Required Parameters
+//
+// UE4 name of this method: SetCombatEffectRequiredParameters
+// Blueprint category: CombatEffect
+
+&aka("SetCombatEffectRequiredParameters")
+
+(Integer       new_turns_left_before_expiration : 0
+ Boolean       is_beneficial?                   : false
+ Boolean       can_stack?                       : false
+ Boolean       can_expire?                      : false
+ EPriorityType new_priority_type                : EPriorityType.@@none
+ ERemoveableBy new_removeable_by                : ERemoveableBy.@@none) 
+
+$$ @create_combat_effect_from_type
+// Create Combat Effect from Type
+//
+// UE4 name of this method: CreateCombatEffectFromType
+// Blueprint category: CombatEffect
+
+&aka("CreateCombatEffectFromType")
+
+(CombatEffectType combat_effect_type : CombatEffectType!) 
+
+$$ @_on_entry_effect_delegate_do
+//---------------------------------------------------------------------------------------
+// Whenever a `EntryEffectDelegate` event occurs on this `CombatEffect`, run `code` on it.
+// This coroutine never finishes by itself and can only be terminated externally.
+//---------------------------------------------------------------------------------------
+//
+// Entry Effect Delegate
+//
+// UE4 name of this property: EntryEffectDelegate
+// Blueprint category: CombatEffect
+
+((IsisPawn pawn_to_apply_combat_effect_to) code;
+ IsisPawn pawn_to_apply_combat_effect_to)
+
+$$ @_on_entry_effect_delegate_do_until
+//---------------------------------------------------------------------------------------
+// Whenever a `EntryEffectDelegate` event occurs on this `CombatEffect`, run `code` on it.
+// If `code` returns `false`, continue waiting for next event,
+// otherwise, exit and return the event parameters
+//---------------------------------------------------------------------------------------
+//
+// Entry Effect Delegate
+//
+// UE4 name of this property: EntryEffectDelegate
+// Blueprint category: CombatEffect
+
+((IsisPawn pawn_to_apply_combat_effect_to) Boolean code;
+ IsisPawn pawn_to_apply_combat_effect_to)
+
+$$ @_wait_entry_effect_delegate
+//---------------------------------------------------------------------------------------
+// Wait for a `EntryEffectDelegate` event to occur on this `CombatEffect`.
+//
+// IMPORTANT: Do not use this coroutine if several of the events can potentially
+// occur within the same frame, as only the first one will be seen!
+// In that case use `_on_entry_effect_delegate_do` or `_on_entry_effect_delegate_do_until` instead.
+//---------------------------------------------------------------------------------------
+//
+// Entry Effect Delegate
+//
+// UE4 name of this property: EntryEffectDelegate
+// Blueprint category: CombatEffect
+
+(;
+ IsisPawn pawn_to_apply_combat_effect_to)
+
+$$ @_on_tick_effect_delegate_do
+//---------------------------------------------------------------------------------------
+// Whenever a `TickEffectDelegate` event occurs on this `CombatEffect`, run `code` on it.
+// This coroutine never finishes by itself and can only be terminated externally.
+//---------------------------------------------------------------------------------------
+//
+// Tick Effect Delegate
+//
+// UE4 name of this property: TickEffectDelegate
+// Blueprint category: CombatEffect
+
+((IsisPawn pawn_to_apply_combat_effect_to) code;
+ IsisPawn pawn_to_apply_combat_effect_to)
+
+$$ @_on_tick_effect_delegate_do_until
+//---------------------------------------------------------------------------------------
+// Whenever a `TickEffectDelegate` event occurs on this `CombatEffect`, run `code` on it.
+// If `code` returns `false`, continue waiting for next event,
+// otherwise, exit and return the event parameters
+//---------------------------------------------------------------------------------------
+//
+// Tick Effect Delegate
+//
+// UE4 name of this property: TickEffectDelegate
+// Blueprint category: CombatEffect
+
+((IsisPawn pawn_to_apply_combat_effect_to) Boolean code;
+ IsisPawn pawn_to_apply_combat_effect_to)
+
+$$ @_wait_tick_effect_delegate
+//---------------------------------------------------------------------------------------
+// Wait for a `TickEffectDelegate` event to occur on this `CombatEffect`.
+//
+// IMPORTANT: Do not use this coroutine if several of the events can potentially
+// occur within the same frame, as only the first one will be seen!
+// In that case use `_on_tick_effect_delegate_do` or `_on_tick_effect_delegate_do_until` instead.
+//---------------------------------------------------------------------------------------
+//
+// Tick Effect Delegate
+//
+// UE4 name of this property: TickEffectDelegate
+// Blueprint category: CombatEffect
+
+(;
+ IsisPawn pawn_to_apply_combat_effect_to)
+
+$$ @_on_persistent_effect_delegate_do
+//---------------------------------------------------------------------------------------
+// Whenever a `PersistentEffectDelegate` event occurs on this `CombatEffect`, run `code` on it.
+// This coroutine never finishes by itself and can only be terminated externally.
+//---------------------------------------------------------------------------------------
+//
+// Persistent Effect Delegate
+//
+// UE4 name of this property: PersistentEffectDelegate
+// Blueprint category: CombatEffect
+
+((IsisPawn pawn_to_apply_combat_effect_to) code;
+ IsisPawn pawn_to_apply_combat_effect_to)
+
+$$ @_on_persistent_effect_delegate_do_until
+//---------------------------------------------------------------------------------------
+// Whenever a `PersistentEffectDelegate` event occurs on this `CombatEffect`, run `code` on it.
+// If `code` returns `false`, continue waiting for next event,
+// otherwise, exit and return the event parameters
+//---------------------------------------------------------------------------------------
+//
+// Persistent Effect Delegate
+//
+// UE4 name of this property: PersistentEffectDelegate
+// Blueprint category: CombatEffect
+
+((IsisPawn pawn_to_apply_combat_effect_to) Boolean code;
+ IsisPawn pawn_to_apply_combat_effect_to)
+
+$$ @_wait_persistent_effect_delegate
+//---------------------------------------------------------------------------------------
+// Wait for a `PersistentEffectDelegate` event to occur on this `CombatEffect`.
+//
+// IMPORTANT: Do not use this coroutine if several of the events can potentially
+// occur within the same frame, as only the first one will be seen!
+// In that case use `_on_persistent_effect_delegate_do` or `_on_persistent_effect_delegate_do_until` instead.
+//---------------------------------------------------------------------------------------
+//
+// Persistent Effect Delegate
+//
+// UE4 name of this property: PersistentEffectDelegate
+// Blueprint category: CombatEffect
+
+(;
+ IsisPawn pawn_to_apply_combat_effect_to)
+
+$$ @_on_leave_effect_delegate_do
+//---------------------------------------------------------------------------------------
+// Whenever a `OnLeaveEffectDelegate` event occurs on this `CombatEffect`, run `code` on it.
+// This coroutine never finishes by itself and can only be terminated externally.
+//---------------------------------------------------------------------------------------
+//
+// On Leave Effect Delegate
+//
+// UE4 name of this property: OnLeaveEffectDelegate
+// Blueprint category: CombatEffect
+
+((IsisPawn pawn_to_apply_combat_effect_to) code;
+ IsisPawn pawn_to_apply_combat_effect_to)
+
+$$ @_on_leave_effect_delegate_do_until
+//---------------------------------------------------------------------------------------
+// Whenever a `OnLeaveEffectDelegate` event occurs on this `CombatEffect`, run `code` on it.
+// If `code` returns `false`, continue waiting for next event,
+// otherwise, exit and return the event parameters
+//---------------------------------------------------------------------------------------
+//
+// On Leave Effect Delegate
+//
+// UE4 name of this property: OnLeaveEffectDelegate
+// Blueprint category: CombatEffect
+
+((IsisPawn pawn_to_apply_combat_effect_to) Boolean code;
+ IsisPawn pawn_to_apply_combat_effect_to)
+
+$$ @_wait_leave_effect_delegate
+//---------------------------------------------------------------------------------------
+// Wait for a `OnLeaveEffectDelegate` event to occur on this `CombatEffect`.
+//
+// IMPORTANT: Do not use this coroutine if several of the events can potentially
+// occur within the same frame, as only the first one will be seen!
+// In that case use `_on_leave_effect_delegate_do` or `_on_leave_effect_delegate_do_until` instead.
+//---------------------------------------------------------------------------------------
+//
+// On Leave Effect Delegate
+//
+// UE4 name of this property: OnLeaveEffectDelegate
+// Blueprint category: CombatEffect
+
+(;
+ IsisPawn pawn_to_apply_combat_effect_to)
+
+$$ CombatEffectManager < ActorComponent
+// Combat Effect Manager
+//
+// UE4 name of this class: CombatEffectManager
+
+annotations: &reflected_cpp &name("CombatEffectManager")
+
+$$ @
+
+/* &raw("ActiveCombatEffects")              None    !@active_combat_effects                  // Currently unsupported */
+&raw("mDoCombatEffectsNeedRecalculated") Boolean !@m_do_combat_effects_need_recalculated? // M Do Combat Effects Need Recalculated
+
+$$ @do_combat_effects_need_recalculated
+// Do Combat Effects Need Recalculated
+//
+// UE4 name of this method: DoCombatEffectsNeedRecalculated
+// Blueprint category: Stats
+
+&aka("DoCombatEffectsNeedRecalculated")
+
+() Boolean
+
+$$ @update_stats
+// Update Stats
+//
+// UE4 name of this method: UpdateStats
+// Blueprint category: Stats
+
+&aka("UpdateStats")
+
+(IsisPawn pawn_to_apply_stats_to : IsisPawn!null) 
+
+$$ @remove_combat_effect
+// Remove Combat Effect
+//
+// UE4 name of this method: RemoveCombatEffect
+// Blueprint category: CombatEffect
+
+&aka("RemoveCombatEffect")
+
+(CombatEffect combat_effect : CombatEffect!null) 
+
+$$ @add_combat_effect
+// Add Combat Effect
+//
+// UE4 name of this method: AddCombatEffect
+// Blueprint category: CombatEffect
+
+&aka("AddCombatEffect")
+
+(CombatEffect combat_effect : CombatEffect!null) 
+
+$$ GameSpace < Actor
+// Game Space
+//
+// UE4 name of this class: GameSpace
+
+annotations: &reflected_cpp &name("GameSpace")
+
+$$ @
+
+/* &raw("AdjacentGameSpaces")None !@adjacent_game_spaces // Currently unsupported */
+/* &raw("PresentPawns")None !@present_pawns // Currently unsupported */
+/* &raw("PresentItems")None !@present_items // Currently unsupported */
+
+$$ @remove_present_item
+// Remove Present Item
+//
+// UE4 name of this method: RemovePresentItem
+// Blueprint category: GameBoard
+
+&aka("RemovePresentItem")
+
+(Item removed_item : Item!null) 
+
+$$ @add_present_item
+// Add Present Item
+//
+// UE4 name of this method: AddPresentItem
+// Blueprint category: GameBoard
+
+&aka("AddPresentItem")
+
+(Item added_item : Item!null) 
+
+$$ @remove_present_pawn
+// Remove Present Pawn
+//
+// UE4 name of this method: RemovePresentPawn
+// Blueprint category: GameBoard
+
+&aka("RemovePresentPawn")
+
+(IsisPawn removed_pawn : IsisPawn!null) 
+
+$$ @add_present_pawn
+// Add Present Pawn
+//
+// UE4 name of this method: AddPresentPawn
+// Blueprint category: GameBoard
+
+&aka("AddPresentPawn")
+
+(IsisPawn added_pawn : IsisPawn!null) 
+
+$$ @add_adjacent_game_space
+// Add Adjacent Game Space
+//
+// UE4 name of this method: AddAdjacentGameSpace
+// Blueprint category: GameBoard
+
+&aka("AddAdjacentGameSpace")
+
+(GameSpace new_game_space : GameSpace!null) 
+
+$$ IsisGameMode < GameMode
+// Isis Game Mode
+//
+// UE4 name of this class: IsisGameMode
+
+annotations: &reflected_cpp &name("IsisGameMode")
+
+$$ @
+
+&raw("CombatEffectTypeLookupTable") DataTable   !@combat_effect_type_lookup_table // Combat Effect Type Lookup Table
+&raw("ItemTypeLookupTable")         DataTable   !@item_type_lookup_table          // Item Type Lookup Table
+&raw("ToCreate")                    EntityClass !@to_create                       // To Create
+
+$$ @make_new_combat_effect_from_id
+// Make New Combat Effect from Id
+//
+// UE4 name of this method: MakeNewCombatEffectFromId
+// Blueprint category: CombatEffect
+
+&aka("MakeNewCombatEffectFromId")
+
+(Integer desired_id : 0) CombatEffect
+
+$$ @make_new_item_from_id
+// Make New Item from Id
+//
+// UE4 name of this method: MakeNewItemFromId
+// Blueprint category: Item
+
+&aka("MakeNewItemFromId")
+
+(Integer desired_id : 0) Item
+
+$$ @random_item_from_all_available
+// Get Random Item from All Available
+//
+// UE4 name of this method: GetRandomItemFromAllAvailable
+// Blueprint category: Item
+
+&aka("GetRandomItemFromAllAvailable")
+
+() Item
+
+$$ @spawn_player_pawn_in_given_location
+// Spawn Player Pawn in Given Location
+//
+// UE4 name of this method: SpawnPlayerPawnInGivenLocation
+// Blueprint category: GameBoard
+
+&aka("SpawnPlayerPawnInGivenLocation")
+
+(GameSpace desired_location : GameSpace!null) 
+
+$$ @spawn_new_enemy_in_random_location
+// Spawn New Enemy in Random Location
+//
+// UE4 name of this method: SpawnNewEnemyInRandomLocation
+// Blueprint category: GameBoard
+
+&aka("SpawnNewEnemyInRandomLocation")
+
+() 
+
+$$ @spawn_new_isis_pawn_in_random_location
+// Spawn New Isis Pawn in Random Location
+//
+// UE4 name of this method: SpawnNewIsisPawnInRandomLocation
+// Blueprint category: GameBoard
+
+&aka("SpawnNewIsisPawnInRandomLocation")
+
+(IsisPawn new_pawn : IsisPawn!null) 
+
+$$ IsisGameModeBase < GameModeBase
+// Isis Game Mode Base
+//
+// UE4 name of this class: IsisGameModeBase
+
+annotations: &reflected_cpp &name("IsisGameModeBase")
+
+$$ IsisGameState < GameState
+// Isis Game State
+//
+// UE4 name of this class: IsisGameState
+
+annotations: &reflected_cpp &name("IsisGameState")
+
+$$ @reset_game_state
+// Reset Game State
+//
+// UE4 name of this method: ResetGameState
+// Blueprint category: IsisGame
+
+&aka("ResetGameState")
+
+() 
+
+$$ @current_game_board_set
+// Set Current Game Board
+//
+// UE4 name of this method: SetCurrentGameBoard
+// Blueprint category: GameBoard
+
+&aka("SetCurrentGameBoard")
+
+(GameBoard new_game_board : GameBoard!null) 
+
+$$ @current_game_board
+// Get Current Game Board
+//
+// UE4 name of this method: GetCurrentGameBoard
+// Blueprint category: GameBoard
+
+&aka("GetCurrentGameBoard")
+
+() GameBoard
+
+$$ IsisPawn < Pawn
+// USTRUCT(BlueprintType)
+// struct FIsisPawnStats
+// {
+//        GENERATED_USTRUCT_BODY()
+// 
+// public:
+// 
+//        FIsisPawnStats() {}
+// 
+//        UPROPERTY(VisibleAnywhere, SimpleDisplay, Category = "Stats")
+//        TArray<FIsisPawnStat> CurrentStats;
+// 
+//        int32 GetStatCurrentValue(EPawnStatType PawnStatType) const
+//        {
+//                for (FIsisPawnStat CurrentStat : CurrentStats)
+//                {
+//                        if (CurrentStat.StatType == PawnStatType)
+//                        {
+//                                return CurrentStat.CurrentStatValue;
+//                        }
+//                }
+//                 TODO We need a stat, so getting here is super bad, but return Int32 will  have terrible results.
+//                return INT32_MAX;
+//        }
+// 
+//        void SetCurrentStat(EPawnStatType PawnStatType, int32 NewStatValue)
+//        {
+//                FIsisPawnStat NewStat = FIsisPawnStat(PawnStatType, NewStatValue);
+//                CurrentStats.Add(NewStat);
+//        }
+// 
+//        void SetDefaultStat(EPawnStatType PawnStatType, int32 NewStatValue)
+//        {
+//                auto OldStatPointer = CurrentStats.FindByPredicate([PawnStatType](const FIsisPawnStat& StatToCheck)
+//                {
+//                        return StatToCheck.StatType == PawnStatType;
+//                });
+//                if (OldStatPointer)
+//                {
+//                }
+// 
+//                 TODO make better
+//                int32 FoundIndex = -1;
+//                for (int32 Index = 0; Index < CurrentStats.Num() - 1; Index++)
+//                {
+//                        if (CurrentStats[Index].StatType == PawnStatType)
+//                        {
+//                                FoundIndex = Index;
+//                                break;
+//                        }
+//                }
+//                if (FoundIndex != -1)
+//                {
+//                        CurrentStats.RemoveAt(FoundIndex);
+//                }
+// 
+//                FIsisPawnStat NewStat = FIsisPawnStat(PawnStatType, NewStatValue);
+//                CurrentStats.Add(NewStat);
+//        }
+// 
+//        void ResetStats()
+//        {
+//                for (FIsisPawnStat CurrentStat : CurrentStats)
+//                {
+//                        CurrentStat.ResetStat();
+//                }
+//        }
+// };
+//
+// UE4 name of this class: IsisPawn
+
+annotations: &reflected_cpp &name("IsisPawn")
+
+$$ @
+
+&raw("CurrentGameSpace")    GameSpace           !@current_game_space    // Current Game Space
+&raw("BaseMaximumHealth")   Integer             !@base_maximum_health   // Base Maximum Health
+&raw("BaseAttackRange")     Integer             !@base_attack_range     // Base Attack Range
+&raw("BaseMovement")        Integer             !@base_movement         // Base Movement
+&raw("BaseAttackDamage")    Integer             !@base_attack_damage    // Base Attack Damage
+&raw("CombatEffectManager") CombatEffectManager !@combat_effect_manager // Combat Effect Manager
+/* &raw("EquippedItems")       None                !@equipped_items        // Currently unsupported */
+&raw("CurrentStats")        IsisPawnStats       !@current_stats         // Current Stats
+
+$$ @reset_current_stats
+// Reset Current Stats
+//
+// UE4 name of this method: ResetCurrentStats
+// Blueprint category: Stats
+
+&aka("ResetCurrentStats")
+
+() 
+
+$$ @current_stats
+// Get Current Stats
+//
+// UE4 name of this method: GetCurrentStats
+// Blueprint category: Stats
+
+&aka("GetCurrentStats")
+
+() IsisPawnStats
+
+$$ @unequip_item
+// Unequip Item
+//
+// UE4 name of this method: UnequipItem
+// Blueprint category: Stats
+
+&aka("UnequipItem")
+
+(Item equipped_item : Item!null) 
+
+$$ @equip_item
+// Equip Item
+//
+// UE4 name of this method: EquipItem
+// Blueprint category: Stats
+
+&aka("EquipItem")
+
+(Item unequipped_item : Item!null) 
+
+$$ @combat_effect_manager
+// Get Combat Effect Manager
+//
+// UE4 name of this method: GetCombatEffectManager
+// Blueprint category: Stats
+
+&aka("GetCombatEffectManager")
+
+() CombatEffectManager
+
+$$ @heal_damage
+// Heal Damage
+//
+// UE4 name of this method: HealDamage
+// Blueprint category: Stats
+
+&aka("HealDamage")
+
+(Integer damage : 0) 
+
+$$ @take_damage
+// Take Damage
+//
+// UE4 name of this method: TakeDamage
+// Blueprint category: Stats
+
+&aka("TakeDamage")
+
+(Integer damage : 0) 
+
+$$ @attack
+// UFUNCTION(BlueprintPure, Category = "Stats")
+// int32 GetMaximumHealth() const;
+//
+// UE4 name of this method: Attack
+// Blueprint category: GameBoard
+
+&aka("Attack")
+
+(IsisPawn target_pawn : IsisPawn!null) Boolean
+
+$$ @current_health
+// TODO check int types to make sure they're the right size
+//
+// UE4 name of this method: GetCurrentHealth
+// Blueprint category: Stats
+
+&aka("GetCurrentHealth")
+
+() Integer
+
+$$ @is_legal_move?
+// Is Legal Move
+//
+// UE4 name of this method: IsLegalMove
+// Blueprint category: GameBoard
+
+&aka("IsLegalMove")
+
+(GameSpace new_game_space : GameSpace!null) Boolean
+
+$$ @move_to
+// Move To
+//
+// UE4 name of this method: MoveTo
+// Blueprint category: GameBoard
+
+&aka("MoveTo")
+
+(GameSpace new_game_space : GameSpace!null) Boolean
+
+$$ @current_game_space_set
+// Set Current Game Space
+//
+// UE4 name of this method: SetCurrentGameSpace
+// Blueprint category: GameBoard
+
+&aka("SetCurrentGameSpace")
+
+(GameSpace new_game_space : GameSpace!null) 
+
+$$ @current_game_space
+// Get Current Game Space
+//
+// UE4 name of this method: GetCurrentGameSpace
+// Blueprint category: GameBoard
+
+&aka("GetCurrentGameSpace")
+
+() GameSpace
+
+$$ IsisPawnStat < Entity
+// Isis Pawn Stat
+//
+// UE4 name of this class: IsisPawnStat
+
+annotations: &reflected_cpp &name("IsisPawnStat")
+
+$$ @
+
+&raw("StatType")         EPawnStatType !@stat_type          // Stat Type
+&raw("CurrentStatValue") Integer       !@current_stat_value // Current Stat Value
+&raw("DefaultStatValue") Integer       !@default_stat_value // Default Stat Value
+
+$$ @reset_stat
+// Reset Stat
+//
+// UE4 name of this method: ResetStat
+// Blueprint category: Stats
+
+&aka("ResetStat")
+
+() 
+
+$$ @default_stat_set
+// Set Default Stat
+//
+// UE4 name of this method: SetDefaultStat
+// Blueprint category: Stats
+
+&aka("SetDefaultStat")
+
+(Integer new_default_stat_value : 0) 
+
+$$ @stat_type_set
+// Set Stat Type
+//
+// UE4 name of this method: SetStatType
+// Blueprint category: Stats
+
+&aka("SetStatType")
+
+(EPawnStatType new_stat_type : EPawnStatType.@@none) 
+
+$$ @current_stat_value_set
+// Set Current Stat Value
+//
+// UE4 name of this method: SetCurrentStatValue
+// Blueprint category: Stats
+
+&aka("SetCurrentStatValue")
+
+(Integer new_value : 0) 
+
+$$ @current_stat_value
+// Get Current Stat Value
+//
+// UE4 name of this method: GetCurrentStatValue
+// Blueprint category: Stats
+
+&aka("GetCurrentStatValue")
+
+() Integer
+
+$$ @stat_type
+// Get Stat Type
+//
+// UE4 name of this method: GetStatType
+// Blueprint category: Stats
+
+&aka("GetStatType")
+
+() EPawnStatType
+
+$$ IsisPawnStats < ActorComponent
+// Isis Pawn Stats
+//
+// UE4 name of this class: IsisPawnStats
+
+annotations: &reflected_cpp &name("IsisPawnStats")
+
+$$ @
+
+&raw("CurrentStats") List{IsisPawnStat} !@current_stats // Current Stats
+
+$$ @reset_stats
+// Reset Stats
+//
+// UE4 name of this method: ResetStats
+// Blueprint category: Stats
+
+&aka("ResetStats")
+
+() 
+
+$$ @default_stat_set
+// Set Default Stat
+//
+// UE4 name of this method: SetDefaultStat
+// Blueprint category: Stats
+
+&aka("SetDefaultStat")
+
+(EPawnStatType pawn_stat_type : EPawnStatType.@@none
+ Integer       new_stat_value : 0) 
+
+$$ @current_stat_set
+// Set Current Stat
+//
+// UE4 name of this method: SetCurrentStat
+// Blueprint category: Stats
+
+&aka("SetCurrentStat")
+
+(EPawnStatType pawn_stat_type : EPawnStatType.@@none
+ Integer       new_stat_value : 0) 
+
+$$ @stat_current_value
+// Get Stat Current Value
+//
+// UE4 name of this method: GetStatCurrentValue
+// Blueprint category: Stats
+
+&aka("GetStatCurrentValue")
+
+(EPawnStatType pawn_stat_type : EPawnStatType.@@none) Integer
+
+$$ Item < Actor
+// Item
+//
+// UE4 name of this class: Item
+
+annotations: &reflected_cpp &name("Item")
+
+$$ @combat_effect_set
+// Set Combat Effect
+//
+// UE4 name of this method: SetCombatEffect
+// Blueprint category: Item
+
+&aka("SetCombatEffect")
+
+(CombatEffect new_combat_effect : CombatEffect!null) 
+
+$$ @combat_effect
+// Get Combat Effect
+//
+// UE4 name of this method: GetCombatEffect
+// Blueprint category: Item
+
+&aka("GetCombatEffect")
+
+() CombatEffect
+
+$$ @is_consumable_set
+// Set Is Consumable
+//
+// UE4 name of this method: SetIsConsumable
+// Blueprint category: Item
+
+&aka("SetIsConsumable")
+
+(Boolean new_is_consumable? : false) 
+
+$$ @is_consumable?
+// Is Consumable
+//
+// UE4 name of this method: IsConsumable
+// Blueprint category: Item
+
+&aka("IsConsumable")
+
+() Boolean
+
+$$ @second_item_slot_set
+// Set Second Item Slot
+//
+// UE4 name of this method: SetSecondItemSlot
+// Blueprint category: Item
+
+&aka("SetSecondItemSlot")
+
+(EItemSlot new_second_item_slot : EItemSlot.@@no_slot) 
+
+$$ @second_item_slot
+// Get Second Item Slot
+//
+// UE4 name of this method: GetSecondItemSlot
+// Blueprint category: Item
+
+&aka("GetSecondItemSlot")
+
+() EItemSlot
+
+$$ @first_item_slot_set
+// Set First Item Slot
+//
+// UE4 name of this method: SetFirstItemSlot
+// Blueprint category: Item
+
+&aka("SetFirstItemSlot")
+
+(EItemSlot new_first_item_slot : EItemSlot.@@no_slot) 
+
+$$ @first_item_slot
+// Get First Item Slot
+//
+// UE4 name of this method: GetFirstItemSlot
+// Blueprint category: Item
+
+&aka("GetFirstItemSlot")
+
+() EItemSlot
+
+$$ @create_item_from_type
+// Create Item from Type
+//
+// UE4 name of this method: CreateItemFromType
+// Blueprint category: Item
+
+&aka("CreateItemFromType")
+
+(IsisGameMode isis_game_mode : IsisGameMode!null
+ ItemType     item_type      : ItemType!) 
+
+$$ GameBoardThreeByThree < GameBoard
+// Game Board Three by Three
+//
+// UE4 name of this class: GameBoardThreeByThree
+
+annotations: &reflected_cpp &name("GameBoardThreeByThree")
+
+$$ @width
+// Get Width
+//
+// UE4 name of this method: GetWidth
+// Blueprint category: GameBoard
+
+&aka("GetWidth")
+
+() Integer
+
+$$ @height
+// Get Height
+//
+// UE4 name of this method: GetHeight
+// Blueprint category: GameBoard
+
+&aka("GetHeight")
+
+() Integer
+
+$$ IsisAIControllerRandom < IsisAIController
+// Isis AIController Random
+//
+// UE4 name of this class: IsisAIControllerRandom
+
+annotations: &reflected_cpp &name("IsisAIControllerRandom")
+
+$$ CombatEffectType < TableRowBase
+// Combat Effect Type
+//
+// UE4 name of this struct: CombatEffectType
+
+annotations: &reflected_cpp &name("CombatEffectType")
+
+$$ @
+
+&raw("DebugName")            Name    !@debug_name              // Debug Name
+&raw("IsBeneficial")         Boolean !@is_beneficial?          // Is Beneficial
+&raw("CanStack")             Boolean !@can_stack?              // Can Stack
+&raw("CanExpire")            Boolean !@can_expire?             // Can Expire
+&raw("DefaultNumberOfTurns") Integer !@default_number_of_turns // Default Number Of Turns
+&raw("PriorityType")         Integer !@priority_type           // Priority Type
+&raw("RemoveableBy")         Integer !@removeable_by           // Removeable By
+&raw("StatAppliesTo")        Integer !@stat_applies_to         // Stat Applies To
+&raw("StatModifierValue")    Integer !@stat_modifier_value     // Stat Modifier Value
+&raw("Tags")                 String  !@tags                    // Tags
+
+$$ @!
+() CombatEffectType
+
+$$ @!copy
+(CombatEffectType other) CombatEffectType
+
+$$ @assign
+(CombatEffectType other) CombatEffectType
+
+$$ @!!
+()
+
+$$ ItemType < TableRowBase
+// Item Type
+//
+// UE4 name of this struct: ItemType
+
+annotations: &reflected_cpp &name("ItemType")
+
+$$ @
+
+/* &raw("DisplayName")        None    !@display_name          // Currently unsupported */
+&raw("FirstItemSlotId")    Integer !@first_item_slot_id    // First Item Slot Id
+&raw("SecondItemSlotId")   Integer !@second_item_slot_id   // Second Item Slot Id
+&raw("IsConsumable")       Boolean !@is_consumable?        // Is Consumable
+&raw("CombatEffectTypeId") Integer !@combat_effect_type_id // Combat Effect Type Id
+&raw("ModifierValue")      Real    !@modifier_value        // Modifier Value
+
+$$ @!
+() ItemType
+
+$$ @!copy
+(ItemType other) ItemType
+
+$$ @assign
+(ItemType other) ItemType
+
+$$ @!!
+()
+
+$$ EPawnStatType < Enum
+// EPawn Stat Type
+//
+// UE4 name of this enum: EPawnStatType
+
+annotations: &reflected_cpp &name("EPawnStatType")
+
+$$ @@
+
+EPawnStatType !@@none
+EPawnStatType !@@maximum_health
+EPawnStatType !@@attack_damage
+EPawnStatType !@@movement_in_squares
+
+$$ @@!
+// EPawnStatType
+// EnumPath: /Script/Isis.EPawnStatType
+
+()
+
+  [
+  @@none:                EPawnStatType!int(0)
+  @@maximum_health:      EPawnStatType!int(1)
+  @@attack_damage:       EPawnStatType!int(2)
+  @@movement_in_squares: EPawnStatType!int(3)
+  ]
+
+$$ EPriorityType < Enum
+// EPriority Type
+//
+// UE4 name of this enum: EPriorityType
+
+annotations: &reflected_cpp &name("EPriorityType")
+
+$$ @@
+
+EPriorityType !@@none
+EPriorityType !@@multiplier
+EPriorityType !@@constant
+
+$$ @@!
+// EPriorityType
+// EnumPath: /Script/Isis.EPriorityType
+
+()
+
+  [
+  @@none:       EPriorityType!int(0)
+  @@multiplier: EPriorityType!int(1)
+  @@constant:   EPriorityType!int(2)
+  ]
+
+$$ ERemoveableBy < Enum
+// ERemoveable By
+//
+// UE4 name of this enum: ERemoveableBy
+
+annotations: &reflected_cpp &name("ERemoveableBy")
+
+$$ @@
+
+ERemoveableBy !@@none
+ERemoveableBy !@@cleanse
+
+$$ @@!
+// ERemoveableBy
+// EnumPath: /Script/Isis.ERemoveableBy
+
+()
+
+  [
+  @@none:    ERemoveableBy!int(0)
+  @@cleanse: ERemoveableBy!int(1)
+  ]
+
+$$ EItemSlot < Enum
+// EItem Slot
+//
+// UE4 name of this enum: EItemSlot
+
+annotations: &reflected_cpp &name("EItemSlot")
+
+$$ @@
+
+EItemSlot !@@no_slot
+EItemSlot !@@head
+EItemSlot !@@chest
+EItemSlot !@@left_arm
+EItemSlot !@@right_arm
+EItemSlot !@@left_leg
+EItemSlot !@@right_leg
+EItemSlot !@@left_hand
+EItemSlot !@@right_hand
+
+$$ @@!
+// EItemSlot
+// EnumPath: /Script/Isis.EItemSlot
+
+()
+
+  [
+  @@no_slot:    EItemSlot!int(0)
+  @@head:       EItemSlot!int(1)
+  @@chest:      EItemSlot!int(2)
+  @@left_arm:   EItemSlot!int(3)
+  @@right_arm:  EItemSlot!int(4)
+  @@left_leg:   EItemSlot!int(5)
+  @@right_leg:  EItemSlot!int(6)
+  @@left_hand:  EItemSlot!int(7)
+  @@right_hand: EItemSlot!int(8)
+  ]
+
+$$ .

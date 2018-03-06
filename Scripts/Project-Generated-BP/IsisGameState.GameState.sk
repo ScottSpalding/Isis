@@ -1,0 +1,7 @@
+// Isis Game State
+//
+// UE4 name of this class: IsisGameState
+
+annotations: &reflected_cpp &name("IsisGameState")
+
+$$ .

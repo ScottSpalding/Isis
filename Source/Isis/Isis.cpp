@@ -2,5 +2,6 @@
 
 #include "Isis.h"
 #include "Modules/ModuleManager.h"
+#include <SkUEProjectGeneratedBindings.generated.inl>
 
 IMPLEMENT_PRIMARY_GAME_MODULE( FDefaultGameModuleImpl, Isis, "Isis" );

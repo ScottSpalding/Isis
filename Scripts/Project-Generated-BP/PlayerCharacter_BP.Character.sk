@@ -1,0 +1,20 @@
+// Player Character BP
+//
+// UE4 name of this class: PlayerCharacter_BP_C
+
+// UE4 Asset Name: PlayerCharacter_BP
+// UE4 Package Name: "/Game/Player/PlayerCharacter_BP"
+
+annotations: &reflected_data &name("PlayerCharacter_BP_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
+&raw("MaxHealth")     Real   !@max_health    // Max Health
+&raw("Attack")        Real   !@attack        // Attack
+&raw("Movement")      Real   !@movement      // Movement
+&raw("Range")         Real   !@range         // Range
+&raw("Health")        Real   !@health        // Health
+&raw("HUD_Reference") HUD_BP !@hud_reference // HUD Reference
+
+$$ .

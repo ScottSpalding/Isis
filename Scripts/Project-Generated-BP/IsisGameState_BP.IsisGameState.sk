@@ -1,0 +1,15 @@
+// Isis Game State BP
+//
+// UE4 name of this class: IsisGameState_BP_C
+
+// UE4 Asset Name: IsisGameState_BP
+// UE4 Package Name: "/Game/GameInformation/IsisGameState_BP"
+
+annotations: &reflected_data &name("IsisGameState_BP_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")   PointerToUberGraphFrame !@uber_graph_frame   // Currently unsupported */
+&raw("DefaultSceneRoot") SceneComponent !@default_scene_root // Default Scene Root
+
+$$ .

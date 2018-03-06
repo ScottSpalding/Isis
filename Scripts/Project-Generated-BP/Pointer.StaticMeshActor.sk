@@ -1,0 +1,14 @@
+// Pointer
+//
+// UE4 name of this class: Pointer_C
+
+// UE4 Asset Name: Pointer
+// UE4 Package Name: "/Game/Debug/Pointer"
+
+annotations: &reflected_data &name("Pointer_C")
+
+$$ @
+
+&raw("Cone") StaticMeshComponent !@cone // Cone
+
+$$ .

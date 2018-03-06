@@ -1,0 +1,7 @@
+// Game Space
+//
+// UE4 name of this class: GameSpace
+
+annotations: &reflected_cpp &name("GameSpace")
+
+$$ .

@@ -1,0 +1,7 @@
+// Isis Game Mode
+//
+// UE4 name of this class: IsisGameMode
+
+annotations: &reflected_cpp &name("IsisGameMode")
+
+$$ .

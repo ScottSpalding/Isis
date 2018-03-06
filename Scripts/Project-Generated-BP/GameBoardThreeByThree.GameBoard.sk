@@ -1,0 +1,7 @@
+// Game Board Three by Three
+//
+// UE4 name of this class: GameBoardThreeByThree
+
+annotations: &reflected_cpp &name("GameBoardThreeByThree")
+
+$$ .

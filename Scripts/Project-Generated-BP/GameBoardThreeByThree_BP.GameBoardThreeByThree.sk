@@ -1,0 +1,14 @@
+// Game Board Three by Three BP
+//
+// UE4 name of this class: GameBoardThreeByThree_BP_C
+
+// UE4 Asset Name: GameBoardThreeByThree_BP
+// UE4 Package Name: "/Game/Board/GameBoardThreeByThree_BP"
+
+annotations: &reflected_data &name("GameBoardThreeByThree_BP_C")
+
+$$ @
+
+&raw("DefaultSceneRoot") SceneComponent !@default_scene_root // Default Scene Root
+
+$$ .

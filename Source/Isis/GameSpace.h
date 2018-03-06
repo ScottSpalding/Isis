@@ -7,6 +7,7 @@
 #include "GameSpace.generated.h"
 
 class AIsisPawn;
+class AItem;
 
 /**
  * 
@@ -36,11 +37,25 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "GameBoard")
 	void RemovePresentPawn(AIsisPawn* RemovedPawn);
 
+	UFUNCTION(BlueprintPure, Category = "GameBoard")
+	TSet<AItem*> GetPresentItems() const;
+
+	UFUNCTION(BlueprintCallable, Category = "GameBoard")
+	void AddPresentItem(AItem* AddedItem);
+
+	UFUNCTION(BlueprintCallable, Category = "GameBoard")
+	void RemovePresentItem(AItem* RemovedItem);
+
 private:
 
+	UPROPERTY(VisibleAnywhere, SimpleDisplay, Category = "GameBoard")
 	TSet<AGameSpace*> AdjacentGameSpaces;
 
+	UPROPERTY(VisibleAnywhere, SimpleDisplay, Category = "GameBoard")
 	TSet<AIsisPawn*> PresentPawns;
+
+	UPROPERTY(VisibleAnywhere, SimpleDisplay, Category = "GameBoard")
+	TSet<AItem*> PresentItems;
 
 	TSet<AGameSpace*> GetSpacesWithinRangeHelper(AGameSpace* GameSpace, int32 Range);
 };

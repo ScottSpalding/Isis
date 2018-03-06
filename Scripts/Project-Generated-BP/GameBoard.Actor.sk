@@ -1,0 +1,7 @@
+// Game Board
+//
+// UE4 name of this class: GameBoard
+
+annotations: &reflected_cpp &name("GameBoard")
+
+$$ .

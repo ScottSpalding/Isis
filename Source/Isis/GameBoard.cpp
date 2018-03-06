@@ -12,17 +12,12 @@ TSet<AGameSpace*> AGameBoard::GetAllGameSpaces() const
 	return AllGameSpaces;
 }
 
-//TArray<FInnerArray> AGameBoard::GetGameBoardArray() const
-//{
-//	return TArray<FInnerArray>();
-//}
-
 void AGameBoard::SetCoreGameSpace(AGameSpace* NewCoreSpace)
 {
 	CoreGameSpace = NewCoreSpace;
 }
 
-void AGameBoard::AddGameSpace(AGameSpace * NewCoreSpace)
+void AGameBoard::AddGameSpace(AGameSpace* NewCoreSpace)
 {
 	AllGameSpaces.Add(NewCoreSpace);
 }

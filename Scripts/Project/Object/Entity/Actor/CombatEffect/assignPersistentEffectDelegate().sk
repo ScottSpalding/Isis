@@ -1,0 +1,23 @@
+//---------------------------------------------------------------------------------------
+// Method description...
+// 
+// Params:
+//   arg1: 
+//
+// Return Params:
+//   rarg1: 
+//
+// Returns: 
+//
+// Notes:     
+// Examples:  
+// See:       
+//---------------------------------------------------------------------------------------
+
+&blueprint
+(IsisPawn pawn) 
+  [
+  @stats_mod : List{()}!
+  println("Calling from Skookum!!")
+  @stats_mod.append(^[applyBuffConstant(pawn)])
+  ]

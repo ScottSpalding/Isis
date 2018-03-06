@@ -1,0 +1,22 @@
+//---------------------------------------------------------------------------------------
+// Method description...
+// 
+// Params:
+//   arg1: 
+//
+// Return Params:
+//   rarg1: 
+//
+// Returns: 
+//
+// Notes:     
+// Examples:  
+// See:       
+//---------------------------------------------------------------------------------------
+
+&blueprint
+() 
+  [
+  println("Calling callPersistentEffectDelegate!!")
+  @stats_mod.do[item()]
+  ]

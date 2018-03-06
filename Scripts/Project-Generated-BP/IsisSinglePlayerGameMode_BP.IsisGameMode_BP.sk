@@ -1,0 +1,24 @@
+// Isis Single Player Game Mode BP
+//
+// UE4 name of this class: IsisSinglePlayerGameMode_BP_C
+
+// UE4 Asset Name: IsisSinglePlayerGameMode_BP
+// UE4 Package Name: "/Game/GameInformation/IsisSinglePlayerGameMode_BP"
+
+annotations: &reflected_data &name("IsisSinglePlayerGameMode_BP_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
+
+$$ @add_adjacent_game_space_double_linked
+// Add Adjacent Game Space Double- Linked
+//
+// UE4 name of this method: Add Adjacent Game Space Double-Linked
+
+&aka("Add Adjacent Game Space Double-Linked")
+
+(GameSpace first_space  : GameSpace!null
+ GameSpace second_space : GameSpace!null) 
+
+$$ .

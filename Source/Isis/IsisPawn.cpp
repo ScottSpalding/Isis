@@ -2,7 +2,11 @@
 
 #include "IsisPawn.h"
 
+#include "CombatEffectManager.h"
 #include "GameSpace.h"
+#include "Item.h"
+#include "IsisPawnStats.h"
+#include "IsisPawnStat.h"
 
 // Sets default values
 AIsisPawn::AIsisPawn()
@@ -10,6 +14,16 @@ AIsisPawn::AIsisPawn()
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	UCombatEffectManager* NewCombatEffectManager = CreateDefaultSubobject<UCombatEffectManager>(TEXT("CombatEffectManager"));
+	CombatEffectManager = NewCombatEffectManager;
+
+	UIsisPawnStats* NewCurrentStats = CreateDefaultSubobject<UIsisPawnStats>(TEXT("CurrentStats"));
+	CurrentStats = NewCurrentStats;
+	CurrentStats->SetDefaultStat(EPawnStatType::MaximumHealth, BaseMaximumHealth);
+	CurrentStats->SetDefaultStat(EPawnStatType::MovementInSquares, BaseMovement);
+	CurrentStats->SetDefaultStat(EPawnStatType::AttackDamage, BaseAttackDamage);
+
+	//CombatEffectManager->UpdateStats(this);
 }
 
 // Called when the game starts or when spawned
@@ -38,6 +52,7 @@ void AIsisPawn::SetCurrentGameSpace(AGameSpace * NewGameSpace)
 
 bool AIsisPawn::MoveTo(AGameSpace* NewGameSpace)
 {
+	// TODO refactor to use IsLegalMove
 	if (!NewGameSpace) 
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Tried to move to a null space as %s."), *GetName());
@@ -58,21 +73,39 @@ bool AIsisPawn::MoveTo(AGameSpace* NewGameSpace)
 	return true;
 }
 
-int32 AIsisPawn::GetCurrentHealth() const
+bool AIsisPawn::IsLegalMove(AGameSpace * NewGameSpace)
 {
-	return CurrentHealth;
+	if (!NewGameSpace)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Tried to move to a null space as %s."), *GetName());
+		return false;
+	}
+
+	if (!CurrentGameSpace->GetAdjacentGameSpaces().Contains(NewGameSpace))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("%s tried to move to out of range space: %s"), *GetName(), *NewGameSpace->GetName());
+		return false;
+	}
+
+	return true;
 }
 
-int32 AIsisPawn::GetMaximumHealth() const
+int32 AIsisPawn::GetCurrentHealth() const
 {
-	return MaximumHealth;
+	return CurrentStats->GetStatCurrentValue(EPawnStatType::MaximumHealth);
 }
+//
+//int32 AIsisPawn::GetMaximumHealth() const
+//{
+//	int32 CurrentMaximumHealth = CombatEffectManager->GetMaximumHealth(BaseMaximumHealth);
+//	return CurrentMaximumHealth;
+//}
 
 bool AIsisPawn::Attack(AIsisPawn* TargetPawn)
 {
-	if (CurrentGameSpace->GetSpacesWithinRange(CurrentAttackRange).Contains(TargetPawn->GetCurrentGameSpace()))
+	if (CurrentGameSpace->GetSpacesWithinRange(BaseAttackRange).Contains(TargetPawn->GetCurrentGameSpace()))
 	{
-		TargetPawn->TakeDamage(CurrentAttackDamage);
+		TargetPawn->TakeDamage(BaseAttackDamage);
 		return true;
 	}
 	return false;
@@ -81,20 +114,53 @@ bool AIsisPawn::Attack(AIsisPawn* TargetPawn)
 void AIsisPawn::TakeDamage(int32 Damage)
 {
 	int32 FinalDamage = ApplyArmorMitigation(ApplyReceivingDamageEffects(Damage));
-	CurrentHealth -= FinalDamage;
-	if (CurrentHealth < 0) 
-	{
-		CurrentHealth = 0;
-	}
+	//CurrentStats.CurrentHealth -= FinalDamage;
+	//if (CurrentStats.CurrentHealth < 0)
+	//{
+	//	CurrentStats.CurrentHealth = 0;
+	//}
 }
 
 void AIsisPawn::HealDamage(int32 Damage)
 {
-	CurrentHealth += Damage;
-	if (CurrentHealth > MaximumHealth)
+	//CurrentStats.CurrentHealth += Damage;
+	//int32 CurrentMaximumHealth = CurrentStats.MaximumHealth;
+	//if (CurrentStats.CurrentHealth > CurrentMaximumHealth)
+	//{
+	//	CurrentStats.CurrentHealth = CurrentMaximumHealth;
+	//}
+}
+
+UCombatEffectManager * AIsisPawn::GetCombatEffectManager() const
+{
+	return CombatEffectManager;
+}
+
+void AIsisPawn::UnequipItem(AItem* UnequippedItem)
+{
+	EquippedItems.Remove(UnequippedItem);
+	CombatEffectManager->RemoveCombatEffect(UnequippedItem->GetCombatEffect());
+}
+
+UIsisPawnStats* AIsisPawn::GetCurrentStats()
+{
+	if (CombatEffectManager->DoCombatEffectsNeedRecalculated())
 	{
-		CurrentHealth = MaximumHealth;
+		CombatEffectManager->UpdateStats(this);
 	}
+	return CurrentStats;
+}
+
+void AIsisPawn::ResetCurrentStats()
+{
+	CurrentStats->ResetStats();
+}
+
+void AIsisPawn::EquipItem(AItem* EquippedItem)
+{
+	EquippedItems.Add(EquippedItem);
+	CombatEffectManager->AddCombatEffect(EquippedItem->GetCombatEffect());
+	CombatEffectManager->UpdateStats(this);
 }
 
 int AIsisPawn::ApplyArmorMitigation(int32 Damage)

@@ -1,0 +1,8 @@
+// GameState is a subclass of GameStateBase that behaves like a multiplayer match-based game.
+// It is tied to functionality in GameMode.
+//
+// UE4 name of this class: GameState
+
+annotations: &reflected_cpp &name("GameState")
+
+$$ .

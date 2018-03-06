@@ -1,0 +1,40 @@
+//---------------------------------------------------------------------------------------
+// Method description...
+// 
+// Params:
+//   arg1: 
+//
+// Return Params:
+//   rarg1: 
+//
+// Returns: 
+//
+// Notes:     
+// Examples:  
+// See:       
+//---------------------------------------------------------------------------------------
+
+&blueprint
+(IsisPawn pawn) 
+[
+  //println(pawn.@current_stats.@current_stats.any.@current_stat_value)
+  println(this.effected_stat_type())
+  println(this.stat_modifier_value())
+  //pawn.@current_stats.@current_stats.do[println(item.@stat_type)]
+  println("Searching...")
+  !working_list: pawn.@current_stats.@current_stats
+  !foundStat: working_list.select[item.@stat_type = this.effected_stat_type()].any
+  println("foundStat")
+  println(foundStat)
+  println("foundStat.current_stat_value")  
+  println(foundStat.current_stat_value)
+  !newStatValue: foundStat.current_stat_value + this.stat_modifier_value().Integer
+  println("newStatValue")
+  println(newStatValue)  
+  //  foundStat.current_stat_value_set(newStatValue)
+  pawn.@current_stats.current_stat_set(this.effected_stat_type(), newStatValue)
+  //foundStat.@current_stat_value=newStatValue
+  println("pawn.@current_stats.stat_current_value(this.effected_stat_type())")
+  println(pawn.@current_stats.stat_current_value(this.effected_stat_type()))
+  println("Done.")
+]

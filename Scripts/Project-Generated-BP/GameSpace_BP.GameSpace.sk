@@ -1,0 +1,26 @@
+// Game Space BP
+//
+// UE4 name of this class: GameSpace_BP_C
+
+// UE4 Asset Name: GameSpace_BP
+// UE4 Package Name: "/Game/Board/GameSpace_BP"
+
+annotations: &reflected_data &name("GameSpace_BP_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")  PointerToUberGraphFrame !@uber_graph_frame  // Currently unsupported */
+&raw("GameSpaceSquare") StaticMeshComponent !@game_space_square // Game Space Square
+&raw("GameSpaceVisual") StaticMeshComponent !@game_space_visual // Game Space Visual
+&raw("wtf")             Integer             !@wtf               // Wtf
+
+$$ @point_arrow_at_location
+// Point Arrow at Location
+//
+// UE4 name of this method: Point Arrow At Location
+
+&aka("Point Arrow At Location")
+
+(Transform spawn_transform : Transform!) 
+
+$$ .

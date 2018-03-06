@@ -4,10 +4,15 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameMode.h"
+
+#include "Engine/DataTable.h"
+
 #include "IsisGameMode.generated.h"
 
 class AIsisPawn;
 class AGameSpace;
+class ACombatEffect;
+class AItem;
 
 /**
  * 
@@ -28,4 +33,21 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "GameBoard")
 	void SpawnPlayerPawnInGivenLocation(AGameSpace* DesiredLocation);
 
+	UFUNCTION(BlueprintCallable, Category = "Item")
+	AItem* GetRandomItemFromAllAvailable();
+
+	UFUNCTION(BlueprintCallable, Category = "Item")
+	AItem* MakeNewItemFromId(int32 DesiredId);
+
+	UFUNCTION(BlueprintCallable, Category = "CombatEffect")
+	ACombatEffect* MakeNewCombatEffectFromId(int32 DesiredId);
+
+	UPROPERTY(EditAnywhere)
+	UDataTable* CombatEffectTypeLookupTable;
+
+	UPROPERTY(EditAnywhere)
+	UDataTable* ItemTypeLookupTable;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<ACombatEffect> ToCreate;
 };
