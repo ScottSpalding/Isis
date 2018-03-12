@@ -1,0 +1,18 @@
+// Action Menu BP
+//
+// UE4 name of this class: ActionMenu_BP_C
+
+// UE4 Asset Name: ActionMenu_BP
+// UE4 Package Name: "/Game/Menus/Overlays/ActionMenu_BP"
+
+annotations: &reflected_data &name("ActionMenu_BP_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")        PointerToUberGraphFrame !@uber_graph_frame       // Currently unsupported */
+&raw("AttackAction_Button")   Button   !@attack_action_button   // Attack Action Button
+&raw("MoveAction_Button")     Button   !@move_action_button     // Move Action Button
+&raw("ScavengeAction_Button") Button   !@scavenge_action_button // Scavenge Action Button
+&raw("PlayerPawn")            IsisPawn !@player_pawn            // Player Pawn
+
+$$ .
