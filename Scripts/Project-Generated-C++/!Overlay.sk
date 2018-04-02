@@ -1,7 +1,7 @@
-$$ Enum < Object
-// Enum
 $$ UStruct < Object
 // UStruct
+$$ Enum < Object
+// Enum
 $$ Entity < Object
 $$ ActorComponent < Entity
 $$ Actor < Entity
@@ -9,8 +9,23 @@ $$ Info < Actor
 $$ Controller < Actor
 $$ AIController < Controller
 $$ Pawn < Actor
-$$ GameStateBase < Info
 $$ GameModeBase < Info
+$$ GameStateBase < Info
+$$ GameMode < GameModeBase
+$$ IsisAIController < AIController
+// Isis AIController
+//
+// UE4 name of this class: IsisAIController
+
+annotations: &reflected_cpp &name("IsisAIController")
+
+$$ TableRowBase < UStruct
+// Base class for all table row structs to inherit from.
+//
+// UE4 name of this struct: TableRowBase
+
+annotations: &reflected_cpp &name("TableRowBase")
+
 $$ GameBoard < Actor
 // Game Board
 //
@@ -48,22 +63,14 @@ $$ @core_game_space
 
 () GameSpace
 
-$$ IsisAIController < AIController
-// Isis AIController
-//
-// UE4 name of this class: IsisAIController
-
-annotations: &reflected_cpp &name("IsisAIController")
-
 $$ GameState < GameStateBase
-$$ TableRowBase < UStruct
-// Base class for all table row structs to inherit from.
+$$ IsisAIControllerSimple < IsisAIController
+// Isis AIController Simple
 //
-// UE4 name of this struct: TableRowBase
+// UE4 name of this class: IsisAIControllerSimple
 
-annotations: &reflected_cpp &name("TableRowBase")
+annotations: &reflected_cpp &name("IsisAIControllerSimple")
 
-$$ GameMode < GameModeBase
 $$ CombatEffect < Actor
 // Combat Effect
 //
@@ -554,6 +561,16 @@ $$ @add_adjacent_game_space
 
 (GameSpace new_game_space : GameSpace!null) 
 
+$$ @shortest_path_to_destination_game_space
+// Get Shortest Path to Destination Game Space
+//
+// UE4 name of this method: GetShortestPathToDestinationGameSpace
+// Blueprint category: GameBoard
+
+&aka("GetShortestPathToDestinationGameSpace")
+
+(GameSpace destination_game_space : GameSpace!null) List{GameSpace}
+
 $$ IsisGameMode < GameMode
 // Isis Game Mode
 //
@@ -827,13 +844,23 @@ $$ @take_damage
 (Integer damage : 0) 
 
 $$ @attack
-// UFUNCTION(BlueprintPure, Category = "Stats")
-// int32 GetMaximumHealth() const;
+// Attack
 //
 // UE4 name of this method: Attack
 // Blueprint category: GameBoard
 
 &aka("Attack")
+
+(IsisPawn target_pawn : IsisPawn!null) Boolean
+
+$$ @is_in_attack_range?
+// UFUNCTION(BlueprintPure, Category = "Stats")
+// int32 GetMaximumHealth() const;
+//
+// UE4 name of this method: IsInAttackRange
+// Blueprint category: GameBoard
+
+&aka("IsInAttackRange")
 
 (IsisPawn target_pawn : IsisPawn!null) Boolean
 

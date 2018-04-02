@@ -7,7 +7,7 @@
 #include "CombatEffect.h"
 #include "GameBoard.h"
 #include "GameSpace.h"
-#include "IsisAIControllerRandom.h"
+#include "IsisAIControllerSimple.h"
 #include "IsisGameState.h"
 #include "IsisPawn.h"
 #include "Item.h"
@@ -30,7 +30,7 @@ void AIsisGameMode::SpawnNewEnemyInRandomLocation()
 	UE_LOG(LogTemp, Warning, TEXT("Spawning new enemy pawn..."));
 	AIsisPawn* NewPawn = GetWorld()->SpawnActor<AIsisPawn>();
 
-	NewPawn->AIControllerClass = AIsisAIControllerRandom::StaticClass();
+	NewPawn->AIControllerClass = AIsisAIControllerSimple::StaticClass();
 	NewPawn->SpawnDefaultController();
 
 	NewPawn->EquipItem(GetRandomItemFromAllAvailable());
@@ -78,7 +78,7 @@ ACombatEffect* AIsisGameMode::MakeNewCombatEffectFromId(int32 DesiredId)
 {
 	FActorSpawnParameters spawnParams;
 	spawnParams.Owner = this;
-	FRotator rotator = FRotator();
+	FRotator rotator = FRotator(0.0f, 0.0f, 0.0f);
 	FVector spawnLocation = FVector(0.0f, 0.0f, 0.0f);
 	// check nullptr
 	ACombatEffect* NewCombatEffect = GetWorld()->SpawnActor<ACombatEffect>(ToCreate, spawnLocation, rotator, spawnParams);

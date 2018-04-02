@@ -101,6 +101,15 @@ int32 AIsisPawn::GetCurrentHealth() const
 //	return CurrentMaximumHealth;
 //}
 
+bool AIsisPawn::IsInAttackRange(AIsisPawn* TargetPawn)
+{
+	if (CurrentGameSpace->GetSpacesWithinRange(BaseAttackRange).Contains(TargetPawn->GetCurrentGameSpace()))
+	{
+		return true;
+	}
+	return false;
+}
+
 bool AIsisPawn::Attack(AIsisPawn* TargetPawn)
 {
 	if (CurrentGameSpace->GetSpacesWithinRange(BaseAttackRange).Contains(TargetPawn->GetCurrentGameSpace()))

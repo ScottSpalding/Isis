@@ -49,6 +49,19 @@ TSet<AGameSpace*> AGameSpace::GetSpacesWithinRange(int32 Range)
 	return GetSpacesWithinRangeHelper(this, Range);
 }
 
+TArray<AGameSpace*> AGameSpace::GetShortestPathToDestinationGameSpace(AGameSpace* DestinationGameSpace)
+{
+	TArray<AGameSpace*> PathOfGameSpaces;
+	TArray<AGameSpace*> SearchedGameSpaces;
+
+	if (this != DestinationGameSpace)
+	{
+
+	}
+
+	return PathOfGameSpaces;
+}
+
 TSet<AGameSpace*> AGameSpace::GetSpacesWithinRangeHelper(AGameSpace* GameSpace, int32 Range)
 {
 	TSet<AGameSpace*> SpacesWithinRange;

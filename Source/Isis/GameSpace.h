@@ -26,6 +26,9 @@ public:
 	TSet<AGameSpace*> GetSpacesWithinRange(int32 Range);
 
 	UFUNCTION(BlueprintCallable, Category = "GameBoard")
+	TArray<AGameSpace*> GetShortestPathToDestinationGameSpace(AGameSpace* DestinationGameSpace);
+
+	UFUNCTION(BlueprintCallable, Category = "GameBoard")
 	void AddAdjacentGameSpace(AGameSpace* NewGameSpace);
 
 	UFUNCTION(BlueprintPure, Category = "GameBoard")

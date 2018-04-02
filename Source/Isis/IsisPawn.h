@@ -171,6 +171,9 @@ public:
 	//int32 GetMaximumHealth() const;
 
 	UFUNCTION(BlueprintCallable, Category = "GameBoard")
+	bool IsInAttackRange(AIsisPawn* TargetPawn);
+
+	UFUNCTION(BlueprintCallable, Category = "GameBoard")
 	bool Attack(AIsisPawn* TargetPawn);
 
 	UFUNCTION(BlueprintCallable, Category = "Stats")
