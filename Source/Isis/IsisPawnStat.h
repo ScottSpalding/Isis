@@ -13,6 +13,7 @@ enum class EPawnStatType : uint8
 	MaximumHealth = 1,
 	AttackDamage = 2,
 	MovementInSquares = 3,
+	DemoStat = 4,
 };
 
 /**

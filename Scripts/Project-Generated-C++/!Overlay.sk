@@ -1218,6 +1218,7 @@ EPawnStatType !@@none
 EPawnStatType !@@maximum_health
 EPawnStatType !@@attack_damage
 EPawnStatType !@@movement_in_squares
+EPawnStatType !@@demo_stat
 
 $$ @@!
 // EPawnStatType
@@ -1230,6 +1231,7 @@ $$ @@!
   @@maximum_health:      EPawnStatType!int(1)
   @@attack_damage:       EPawnStatType!int(2)
   @@movement_in_squares: EPawnStatType!int(3)
+  @@demo_stat:           EPawnStatType!int(4)
   ]
 
 $$ EPriorityType < Enum

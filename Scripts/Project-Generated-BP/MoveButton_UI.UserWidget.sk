@@ -1,0 +1,16 @@
+// Move Button UI
+//
+// UE4 name of this class: MoveButton_UI_C
+
+// UE4 Asset Name: MoveButton_UI
+// UE4 Package Name: "/Game/Menus/DropDown_Buttons/MoveButton_UI"
+
+annotations: &reflected_data &name("MoveButton_UI_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")   PointerToUberGraphFrame !@uber_graph_frame   // Currently unsupported */
+&raw("MoveButton")       Button !@move_button        // Move Button
+&raw("ClickedGameSpace") Entity !@clicked_game_space // Clicked Game Space
+
+$$ .

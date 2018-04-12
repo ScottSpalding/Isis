@@ -1,0 +1,14 @@
+// Item BP
+//
+// UE4 name of this class: Item_BP_C
+
+// UE4 Asset Name: Item_BP
+// UE4 Package Name: "/Game/Items/Item_BP"
+
+annotations: &reflected_data &name("Item_BP_C")
+
+$$ @
+
+&raw("DefaultSceneRoot") SceneComponent !@default_scene_root // Default Scene Root
+
+$$ .

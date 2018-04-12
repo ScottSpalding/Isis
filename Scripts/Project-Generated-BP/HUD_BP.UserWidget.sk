@@ -9,11 +9,19 @@ annotations: &reflected_data &name("HUD_BP_C")
 
 $$ @
 
-/* &raw("UberGraphFrame")PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
-&raw("ProgressBar_0") ProgressBar   !@progress_bar_0 // Progress Bar 0
-&raw("TextBlock_3")   TextBlock     !@text_block_3   // Text Block 3
-&raw("TextBlock_6")   TextBlock     !@text_block_6   // Text Block 6
-&raw("TextBlock_7")   TextBlock     !@text_block_7   // Text Block 7
-&raw("MyCharacter")   PlayerPawn_BP !@my_character   // My Character
+&raw("ProgressBar_0") ProgressBar        !@progress_bar_0 // Progress Bar 0
+&raw("TextBlock_3")   TextBlock          !@text_block_3   // Text Block 3
+&raw("TextBlock_6")   TextBlock          !@text_block_6   // Text Block 6
+&raw("TextBlock_7")   TextBlock          !@text_block_7   // Text Block 7
+&raw("MyCharacter")   PlayerCharacter_BP !@my_character   // My Character
+
+$$ @my_character
+// Get My Character
+//
+// UE4 name of this method: GetMyCharacter
+
+&aka("GetMyCharacter")
+
+(IsisPawn_BP as_isis_pawn_bp : IsisPawn_BP!null) 
 
 $$ .

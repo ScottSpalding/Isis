@@ -9,10 +9,10 @@ annotations: &reflected_data &name("Level_BP_C")
 
 $$ @
 
-/* &raw("UberGraphFrame")                   PointerToUberGraphFrame !@uber_graph_frame                    // Currently unsupported */
-/* &raw("Corners")                          None        !@corners                             // Currently unsupported */
-&raw("NewVar_0")                         HUD_BP      !@new_var_0                           // New Var 0
-&raw("GameCamera_EdGraph_0_RefProperty") CameraActor !@game_camera_ed_graph_0_ref_property // Game Camera Ed Graph 0 Ref Property
+/* &raw("UberGraphFrame")                    PointerToUberGraphFrame !@uber_graph_frame                     // Currently unsupported */
+/* &raw("Corners")                           None        !@corners                              // Currently unsupported */
+&raw("NewVar_0")                          HUD_BP      !@new_var_0                            // New Var 0
+&raw("GameCamera_EdGraph_33_RefProperty") CameraActor !@game_camera_ed_graph_33_ref_property // Game Camera Ed Graph 33 Ref Property
 
 $$ @current_game_board
 // Get Current Game Board

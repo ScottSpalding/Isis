@@ -1,0 +1,24 @@
+// Main Menu BP
+//
+// UE4 name of this class: MainMenu_BP_C
+
+// UE4 Asset Name: MainMenu_BP
+// UE4 Package Name: "/Game/Menus/Overlays/MainMenu_BP"
+
+annotations: &reflected_data &name("MainMenu_BP_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
+&raw("Image_0")       Image       !@image_0        // Image 0
+&raw("MainMenu")      VerticalBox !@main_menu      // Main Menu
+&raw("OptionsButton") Button      !@options_button // Options Button
+&raw("OptionsMenu")   VerticalBox !@options_menu   // Options Menu
+&raw("PlayButton")    Button      !@play_button    // Play Button
+&raw("QuitButton")    Button      !@quit_button    // Quit Button
+&raw("Return")        Button      !@return         // Return
+&raw("Setting001")    Button      !@setting_001    // Setting 001
+&raw("Setting002")    Button      !@setting_002    // Setting 002
+&raw("Setting003")    Button      !@setting_003    // Setting 003
+
+$$ .

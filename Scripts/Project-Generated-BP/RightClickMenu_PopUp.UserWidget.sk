@@ -1,0 +1,14 @@
+// Right Click Menu Pop Up
+//
+// UE4 name of this class: RightClickMenu_PopUp_C
+
+// UE4 Asset Name: RightClickMenu_PopUp
+// UE4 Package Name: "/Game/Menus/RightClickMenu_PopUp"
+
+annotations: &reflected_data &name("RightClickMenu_PopUp_C")
+
+$$ @
+
+&raw("RightClickPopUpBox") VerticalBox !@right_click_pop_up_box // Right Click Pop Up Box
+
+$$ .

@@ -1,0 +1,7 @@
+// Item
+//
+// UE4 name of this class: Item
+
+annotations: &reflected_cpp &name("Item")
+
+$$ .

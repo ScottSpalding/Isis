@@ -78,7 +78,7 @@ ACombatEffect* AIsisGameMode::MakeNewCombatEffectFromId(int32 DesiredId)
 {
 	FActorSpawnParameters spawnParams;
 	spawnParams.Owner = this;
-	FRotator rotator = FRotator();
+	FRotator rotator = FRotator(0.0f, 0.0f, 0.0f);
 	FVector spawnLocation = FVector(0.0f, 0.0f, 0.0f);
 	// check nullptr
 	ACombatEffect* NewCombatEffect = GetWorld()->SpawnActor<ACombatEffect>(ToCreate, spawnLocation, rotator, spawnParams);

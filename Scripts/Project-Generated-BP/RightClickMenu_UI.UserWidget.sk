@@ -1,0 +1,54 @@
+// Right Click Menu UI
+//
+// UE4 name of this class: RightClickMenu_UI_C
+
+// UE4 Asset Name: RightClickMenu_UI
+// UE4 Package Name: "/Game/Menus/RightClickMenu_UI"
+
+annotations: &reflected_data &name("RightClickMenu_UI_C")
+
+$$ @
+
+&raw("Main_UI")                 CanvasPanel          !@main_ui                     // Main UI
+&raw("MouseRightClick")         MulticastDelegate()  !@mouse_right_click           // Mouse Right Click
+&raw("RightClickMenuPopUp_Ref") RightClickMenu_PopUp !@right_click_menu_pop_up_ref // Right Click Menu Pop Up Ref
+&raw("RightClickMenuSlot_Ref")  CanvasPanelSlot      !@right_click_menu_slot_ref   // Right Click Menu Slot Ref
+&raw("RightClickMainUI")        RightClickMenu_UI    !@right_click_main_ui         // Right Click Main UI
+&raw("OptionWasClicked")        MulticastDelegate()  !@option_was_clicked          // Option Was Clicked
+&raw("Clicked Game Space")      GameSpace_BP         !@clicked_game_space          // Clicked Game Space
+
+$$ @initialize
+// Initialize
+//
+// UE4 name of this method: Initialize
+
+&aka("Initialize")
+
+() 
+
+$$ @populate_right_click_menu_pop_up
+// Populate Right Click Menu Pop Up
+//
+// UE4 name of this method: PopulateRightClickMenuPopUp
+
+&aka("PopulateRightClickMenuPopUp")
+
+() 
+
+$$ @on_mouse_button_down
+// The system calls this method to notify the widget that a mouse button was pressed within it. This event is bubbled.
+// 
+// @param my_geometry The Geometry of the widget receiving the event
+// @param mouse_event Information about the input event
+// @return Whether the event was handled along with possible requests for the system to take action.
+//
+// UE4 name of this method: OnMouseButtonDown
+// Blueprint category: Mouse
+
+&aka("OnMouseButtonDown")
+
+(Geometry     my_geometry : Geometry!
+ PointerEvent mouse_event : PointerEvent!
+) EventReply
+
+$$ .

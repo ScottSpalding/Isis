@@ -12,4 +12,13 @@ $$ @
 /* &raw("UberGraphFrame")   PointerToUberGraphFrame !@uber_graph_frame   // Currently unsupported */
 &raw("DefaultSceneRoot") SceneComponent !@default_scene_root // Default Scene Root
 
+$$ @spawn_player_pawn_in_given_location_better
+// Spawn Player Pawn in Given Location Better
+//
+// UE4 name of this method: SpawnPlayerPawnInGivenLocationBetter
+
+&aka("SpawnPlayerPawnInGivenLocationBetter")
+
+(GameSpace_BP desired_game_space : GameSpace_BP!null) 
+
 $$ .

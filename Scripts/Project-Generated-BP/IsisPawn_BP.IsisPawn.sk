@@ -9,7 +9,8 @@ annotations: &reflected_data &name("IsisPawn_BP_C")
 
 $$ @
 
-/* &raw("UberGraphFrame")   PointerToUberGraphFrame !@uber_graph_frame   // Currently unsupported */
-&raw("DefaultSceneRoot") SceneComponent !@default_scene_root // Default Scene Root
+/* &raw("UberGraphFrame")     PointerToUberGraphFrame !@uber_graph_frame    // Currently unsupported */
+&raw("PlayerCharacter_BP") ChildActorComponent !@player_character_bp // Player Character BP
+&raw("Sphere")             StaticMeshComponent !@sphere              // Sphere
 
 $$ .

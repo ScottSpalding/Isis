@@ -9,10 +9,28 @@ annotations: &reflected_data &name("GameSpace_BP_C")
 
 $$ @
 
-/* &raw("UberGraphFrame")  PointerToUberGraphFrame !@uber_graph_frame  // Currently unsupported */
-&raw("GameSpaceSquare") StaticMeshComponent !@game_space_square // Game Space Square
-&raw("GameSpaceVisual") StaticMeshComponent !@game_space_visual // Game Space Visual
-&raw("wtf")             Integer             !@wtf               // Wtf
+/* &raw("UberGraphFrame")        PointerToUberGraphFrame     !@uber_graph_frame        // Currently unsupported */
+&raw("GameSpaceSquare")       StaticMeshComponent         !@game_space_square       // Game Space Square
+&raw("RightClickMenu_GS_Ref") RightClickMenu_UI           !@right_click_menu_gs_ref // Right Click Menu GS Ref
+&raw("NewVar_0")              IsisSinglePlayerGameMode_BP !@new_var_0               // New Var 0
+
+$$ @player_pawn_start_selection
+// Player Pawn Start Selection
+//
+// UE4 name of this method: PlayerPawnStartSelection
+
+&aka("PlayerPawnStartSelection")
+
+(IsisPawn_BP selected_pawn : IsisPawn_BP!null) 
+
+$$ @create_right_click_menu
+// CreateRightClickMenu
+//
+// UE4 name of this method: CreateRightClickMenu
+
+&aka("CreateRightClickMenu")
+
+(GameSpace_BP clicked_game_space : GameSpace_BP!null) 
 
 $$ @point_arrow_at_location
 // Point Arrow at Location

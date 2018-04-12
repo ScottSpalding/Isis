@@ -1,0 +1,15 @@
+// Main Menu Level BP
+//
+// UE4 name of this class: MainMenuLevel_BP_C
+
+// UE4 Asset Name: MainMenuLevel_BP
+// UE4 Package Name: "/Game/Levels/MainMenuLevel_BP"
+
+annotations: &reflected_data &name("MainMenuLevel_BP_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
+&raw("NewVar_0") MainMenu_BP !@new_var_0 // New Var 0
+
+$$ .
