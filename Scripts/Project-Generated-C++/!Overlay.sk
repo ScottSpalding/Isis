@@ -1,31 +1,17 @@
-$$ UStruct < Object
-// UStruct
 $$ Enum < Object
 // Enum
+$$ UStruct < Object
+// UStruct
 $$ Entity < Object
 $$ ActorComponent < Entity
 $$ Actor < Entity
-$$ Info < Actor
 $$ Controller < Actor
+$$ Info < Actor
 $$ AIController < Controller
 $$ Pawn < Actor
-$$ GameModeBase < Info
 $$ GameStateBase < Info
+$$ GameModeBase < Info
 $$ GameMode < GameModeBase
-$$ IsisAIController < AIController
-// Isis AIController
-//
-// UE4 name of this class: IsisAIController
-
-annotations: &reflected_cpp &name("IsisAIController")
-
-$$ TableRowBase < UStruct
-// Base class for all table row structs to inherit from.
-//
-// UE4 name of this struct: TableRowBase
-
-annotations: &reflected_cpp &name("TableRowBase")
-
 $$ GameBoard < Actor
 // Game Board
 //
@@ -63,13 +49,72 @@ $$ @core_game_space
 
 () GameSpace
 
-$$ GameState < GameStateBase
-$$ IsisAIControllerSimple < IsisAIController
-// Isis AIController Simple
+$$ IsisAIController < AIController
+// Isis AIController
 //
-// UE4 name of this class: IsisAIControllerSimple
+// UE4 name of this class: IsisAIController
 
-annotations: &reflected_cpp &name("IsisAIControllerSimple")
+annotations: &reflected_cpp &name("IsisAIController")
+
+$$ GameState < GameStateBase
+$$ TableRowBase < UStruct
+// Base class for all table row structs to inherit from.
+//
+// UE4 name of this struct: TableRowBase
+
+annotations: &reflected_cpp &name("TableRowBase")
+
+$$ CombatEffectManager < ActorComponent
+// Combat Effect Manager
+//
+// UE4 name of this class: CombatEffectManager
+
+annotations: &reflected_cpp &name("CombatEffectManager")
+
+$$ @
+
+/* &raw("ActiveCombatEffects")              None    !@active_combat_effects                  // Currently unsupported */
+&raw("mDoCombatEffectsNeedRecalculated") Boolean !@m_do_combat_effects_need_recalculated? // M Do Combat Effects Need Recalculated
+
+$$ @do_combat_effects_need_recalculated
+// Do Combat Effects Need Recalculated
+//
+// UE4 name of this method: DoCombatEffectsNeedRecalculated
+// Blueprint category: Stats
+
+&aka("DoCombatEffectsNeedRecalculated")
+
+() Boolean
+
+$$ @update_stats
+// Update Stats
+//
+// UE4 name of this method: UpdateStats
+// Blueprint category: Stats
+
+&aka("UpdateStats")
+
+(IsisPawn pawn_to_apply_stats_to : IsisPawn!null) 
+
+$$ @remove_combat_effect
+// Remove Combat Effect
+//
+// UE4 name of this method: RemoveCombatEffect
+// Blueprint category: CombatEffect
+
+&aka("RemoveCombatEffect")
+
+(CombatEffect combat_effect : CombatEffect!null) 
+
+$$ @add_combat_effect
+// Add Combat Effect
+//
+// UE4 name of this method: AddCombatEffect
+// Blueprint category: CombatEffect
+
+&aka("AddCombatEffect")
+
+(CombatEffect combat_effect : CombatEffect!null) 
 
 $$ CombatEffect < Actor
 // Combat Effect
@@ -445,58 +490,6 @@ $$ @_wait_leave_effect_delegate
 
 (;
  IsisPawn pawn_to_apply_combat_effect_to)
-
-$$ CombatEffectManager < ActorComponent
-// Combat Effect Manager
-//
-// UE4 name of this class: CombatEffectManager
-
-annotations: &reflected_cpp &name("CombatEffectManager")
-
-$$ @
-
-/* &raw("ActiveCombatEffects")              None    !@active_combat_effects                  // Currently unsupported */
-&raw("mDoCombatEffectsNeedRecalculated") Boolean !@m_do_combat_effects_need_recalculated? // M Do Combat Effects Need Recalculated
-
-$$ @do_combat_effects_need_recalculated
-// Do Combat Effects Need Recalculated
-//
-// UE4 name of this method: DoCombatEffectsNeedRecalculated
-// Blueprint category: Stats
-
-&aka("DoCombatEffectsNeedRecalculated")
-
-() Boolean
-
-$$ @update_stats
-// Update Stats
-//
-// UE4 name of this method: UpdateStats
-// Blueprint category: Stats
-
-&aka("UpdateStats")
-
-(IsisPawn pawn_to_apply_stats_to : IsisPawn!null) 
-
-$$ @remove_combat_effect
-// Remove Combat Effect
-//
-// UE4 name of this method: RemoveCombatEffect
-// Blueprint category: CombatEffect
-
-&aka("RemoveCombatEffect")
-
-(CombatEffect combat_effect : CombatEffect!null) 
-
-$$ @add_combat_effect
-// Add Combat Effect
-//
-// UE4 name of this method: AddCombatEffect
-// Blueprint category: CombatEffect
-
-&aka("AddCombatEffect")
-
-(CombatEffect combat_effect : CombatEffect!null) 
 
 $$ GameSpace < Actor
 // Game Space
@@ -1171,6 +1164,13 @@ $$ IsisAIControllerRandom < IsisAIController
 // UE4 name of this class: IsisAIControllerRandom
 
 annotations: &reflected_cpp &name("IsisAIControllerRandom")
+
+$$ IsisAIControllerSimple < IsisAIController
+// Isis AIController Simple
+//
+// UE4 name of this class: IsisAIControllerSimple
+
+annotations: &reflected_cpp &name("IsisAIControllerSimple")
 
 $$ CombatEffectType < TableRowBase
 // Combat Effect Type
