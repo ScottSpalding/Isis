@@ -1,0 +1,36 @@
+// ETurn State
+//
+// UE4 name of this enum: ETurnState
+
+// UE4 Asset Name: ETurnState
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/ETurnState"
+
+annotations: &reflected_data &name("ETurnState")
+
+$$ @@
+
+ETurnState !@@game_loading
+ETurnState !@@pre_game_setup
+ETurnState !@@turn_based_combat
+ETurnState !@@free_roam
+ETurnState !@@game_over
+ETurnState !@@other
+ETurnState !@@eturn_state_max
+
+$$ @@!
+// ETurnState
+// EnumPath: /Game/AdvancedTurnBasedTileToolkit/Core/ETurnState.ETurnState
+
+()
+
+  [
+  @@game_loading:      ETurnState!int(0)
+  @@pre_game_setup:    ETurnState!int(1)
+  @@turn_based_combat: ETurnState!int(2)
+  @@free_roam:         ETurnState!int(3)
+  @@game_over:         ETurnState!int(4)
+  @@other:             ETurnState!int(5)
+  @@eturn_state_max:   ETurnState!int(6)
+  ]
+
+$$ .

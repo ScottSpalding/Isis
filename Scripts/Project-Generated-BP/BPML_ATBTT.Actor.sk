@@ -1,0 +1,12 @@
+// BPML ATBTT
+//
+// UE4 name of this class: BPML_ATBTT_C
+
+// UE4 Asset Name: BPML_ATBTT
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/BPML_ATBTT"
+
+annotations: &reflected_data &name("BPML_ATBTT_C")
+
+$$ @
+
+$$ .

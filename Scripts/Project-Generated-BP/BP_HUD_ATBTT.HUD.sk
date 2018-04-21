@@ -1,0 +1,25 @@
+// BP HUD ATBTT
+//
+// UE4 name of this class: BP_HUD_ATBTT_C
+
+// UE4 Asset Name: BP_HUD_ATBTT
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/UI/BP_HUD_ATBTT"
+
+annotations: &reflected_data &name("BP_HUD_ATBTT_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")   PointerToUberGraphFrame !@uber_graph_frame   // Currently unsupported */
+&raw("DefaultSceneRoot") SceneComponent !@default_scene_root // Default Scene Root
+&raw("WbpAtbttRef")      WBP_ATBTT      !@wbp_atbtt_ref      // Wbp Atbtt Ref
+
+$$ @client_initialize
+// Client Initialize
+//
+// UE4 name of this method: Client_Initialize
+
+&aka("Client_Initialize")
+
+() 
+
+$$ .

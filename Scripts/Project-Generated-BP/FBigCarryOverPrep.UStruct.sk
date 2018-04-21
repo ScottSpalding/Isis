@@ -1,0 +1,26 @@
+// FBig Carry Over Prep
+//
+// UE4 name of this struct: FBigCarryOverPrep
+
+// UE4 Asset Name: FBigCarryOverPrep
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/FBigCarryOverPrep"
+
+annotations: &reflected_data &name("FBigCarryOverPrep")
+
+$$ @
+
+&raw("Step_3_2DFD24EA4E0917A95AFC29B33415331E") List{FBigCarryOverPrepStep} !@step_3_2dfd // Step
+
+$$ @!
+() FBigCarryOverPrep
+
+$$ @!copy
+(FBigCarryOverPrep other) FBigCarryOverPrep
+
+$$ @assign
+(FBigCarryOverPrep other) FBigCarryOverPrep
+
+$$ @!!
+() FBigCarryOverPrep
+
+$$ .

@@ -1,0 +1,21 @@
+// BPI HUD
+//
+// UE4 name of this class: BPI_HUD_C
+
+// UE4 Asset Name: BPI_HUD
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/BPI_HUD"
+
+annotations: &reflected_data &name("BPI_HUD_C")
+
+$$ @
+
+$$ @hudturn_toggle
+// HUDTurn Toggle
+//
+// UE4 name of this method: HUDTurnToggle
+
+&aka("HUDTurnToggle")
+
+(Boolean player_turn? : false) 
+
+$$ .

@@ -1,0 +1,39 @@
+// FAction
+//
+// UE4 name of this struct: FAction
+
+// UE4 Asset Name: FAction
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/FAction"
+
+annotations: &reflected_data &name("FAction")
+
+$$ @
+
+&raw("ExecutingObject_48_B8CEE4754D06AD6899A7CA85AEC583DC")    Entity          !@executing_object_48_b8ce    // Executing Object
+&raw("ActionName_49_845FC3B248AAC2EC5C1C4299F1C962FE")         Name            !@action_name_49_845f         // Action Name
+&raw("bInstantDeactivate_51_680F16F446243F347E48868F16EF7671") Boolean         !@instant_deactivate_51_680f? // Instant Deactivate
+&raw("AtCustomIndex_52_06504EDC4FBED618A7E33B90CEDA2F4F")      Integer         !@at_custom_index_52_0650     // At Custom Index
+&raw("bWithPrevious_55_939C83E04BF3F18A4A57BEA1F929AA3F")      Boolean         !@with_previous_55_939c?      // With Previous
+&raw("ActivationDelay_54_4153F84D4B519AE62D39C1ACCF2256EB")    Real            !@activation_delay_54_4153    // Activation Delay
+&raw("Booleans_58_DB3E61034D6DC5C7280B50B4924DDA6E")           List{Boolean}   !@booleans_58_db3e            // Booleans
+&raw("Integers_57_DE66D0A1411D7F2814C4268C56ECE5B7")           List{Integer}   !@integers_57_de66            // Integers
+&raw("Floats_59_4C25CDC0447BEFF404385486FB90A960")             List{Real}      !@floats_59_4c25              // Floats
+&raw("Strings_60_DCCC70E245E254DC0B59FDAF85CE282C")            List{String}    !@strings_60_dccc             // Strings
+&raw("Vectors_61_41687ED94D4284975ECF72A15D8A965A")            List{Vector3}   !@vectors_61_4168             // Vectors
+&raw("Transforms_62_CB407989443428D532A400AF755075C8")         List{Transform} !@transforms_62_cb40          // Transforms
+&raw("Actors_63_6F884D25484AEFC0660887B9107F352B")             List{Actor}     !@actors_63_6f88              // Actors
+&raw("Units_64_0E33B3A5435A330604C4EF9EBD58D887")              List{BP_Unit}   !@units_64_0e33               // Units
+
+$$ @!
+() FAction
+
+$$ @!copy
+(FAction other) FAction
+
+$$ @assign
+(FAction other) FAction
+
+$$ @!!
+() FAction
+
+$$ .

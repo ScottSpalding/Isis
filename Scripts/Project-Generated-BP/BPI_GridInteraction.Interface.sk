@@ -1,0 +1,42 @@
+// BPI Grid Interaction
+//
+// UE4 name of this class: BPI_GridInteraction_C
+
+// UE4 Asset Name: BPI_GridInteraction
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/BPI_GridInteraction"
+
+annotations: &reflected_data &name("BPI_GridInteraction_C")
+
+$$ @
+
+$$ @activate_hover_tick
+// Activate Hover Tick
+//
+// UE4 name of this method: ActivateHoverTick
+
+&aka("ActivateHoverTick")
+
+() 
+
+$$ @hover
+// Hover
+//
+// UE4 name of this method: Hover
+
+&aka("Hover")
+
+(Vector3 location : Vector3!) 
+
+$$ @click
+// Click
+//
+// UE4 name of this method: Click
+
+&aka("Click")
+
+(Vector3    location   : Vector3!
+ Key        key        : Key!
+ Boolean    released?  : false
+ EClickType click_type : EClickType.@@primary) 
+
+$$ .

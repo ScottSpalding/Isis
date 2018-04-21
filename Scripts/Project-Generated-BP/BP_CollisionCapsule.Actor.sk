@@ -1,0 +1,16 @@
+// BP Collision Capsule
+//
+// UE4 name of this class: BP_CollisionCapsule_C
+
+// UE4 Asset Name: BP_CollisionCapsule
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Grid/BP_CollisionCapsule"
+
+annotations: &reflected_data &name("BP_CollisionCapsule_C")
+
+$$ @
+
+&raw("Capsule")          CapsuleComponent !@capsule            // Capsule
+&raw("DefaultSceneRoot") SceneComponent   !@default_scene_root // Default Scene Root
+&raw("GridIndex")        Integer          !@grid_index         // Grid Index this capsule is spawned at
+
+$$ .

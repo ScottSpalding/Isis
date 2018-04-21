@@ -1,0 +1,26 @@
+// FCover Array
+//
+// UE4 name of this struct: FCoverArray
+
+// UE4 Asset Name: FCoverArray
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Grid/FCoverArray"
+
+annotations: &reflected_data &name("FCoverArray")
+
+$$ @
+
+&raw("Struct_Cover_4_36D5EA7843785AF25ADF39AB714A3781") List{FCover} !@struct_cover_4_36d5 // Struct Cover
+
+$$ @!
+() FCoverArray
+
+$$ @!copy
+(FCoverArray other) FCoverArray
+
+$$ @assign
+(FCoverArray other) FCoverArray
+
+$$ @!!
+() FCoverArray
+
+$$ .

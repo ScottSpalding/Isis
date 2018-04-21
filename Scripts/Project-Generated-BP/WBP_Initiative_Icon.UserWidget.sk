@@ -1,0 +1,30 @@
+// WBP Initiative Icon
+//
+// UE4 name of this class: WBP_Initiative_Icon_C
+
+// UE4 Asset Name: WBP_Initiative_Icon
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/UI/WBP_Initiative_Icon"
+
+annotations: &reflected_data &name("WBP_Initiative_Icon_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")      PointerToUberGraphFrame !@uber_graph_frame      // Currently unsupported */
+&raw("background")          Image              !@background            // Background
+&raw("icon")                Button             !@icon                  // Icon
+&raw("name")                TextBlock          !@name                  // Name
+&raw("ParentInitiativeBar") WBP_Initiative_Bar !@parent_initiative_bar // Parent Initiative Bar
+&raw("Unit")                BP_Unit            !@unit                  // Unit
+&raw("Style")               SlateBrush         !@style                 // Style
+
+$$ @update
+// Update
+//
+// UE4 name of this method: Update
+
+&aka("Update")
+
+(WBP_Initiative_Bar parent_initiative_bar : WBP_Initiative_Bar!null
+ BP_Unit            unit                  : BP_Unit!null) 
+
+$$ .

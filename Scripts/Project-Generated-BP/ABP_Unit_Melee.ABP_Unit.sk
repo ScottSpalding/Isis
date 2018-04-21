@@ -1,0 +1,12 @@
+// ABP Unit Melee
+//
+// UE4 name of this class: ABP_Unit_Melee_C
+
+// UE4 Asset Name: ABP_Unit_Melee
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Units/ABP_Unit_Melee"
+
+annotations: &reflected_data &name("ABP_Unit_Melee_C")
+
+$$ @
+
+$$ .

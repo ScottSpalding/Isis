@@ -1,0 +1,64 @@
+// Handles most actions that will be displayed to the players. Events are first calculated server side at grid-level, which then sends a list of actions to each client. These actions are then animated in order through this manager.
+//
+// UE4 name of this class: BP_ActionManager_C
+
+// UE4 Asset Name: BP_ActionManager
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/BP_ActionManager"
+
+annotations: &reflected_data &name("BP_ActionManager_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")      PointerToUberGraphFrame !@uber_graph_frame      // Currently unsupported */
+&raw("Actions")             List{FAction} !@actions               // Actions
+&raw("OngoingActionsCount") Integer       !@ongoing_actions_count // Ongoing Actions Count
+&raw("CurrentAction")       FAction       !@current_action        // Current Action
+&raw("CurrentActions")      List{FAction} !@current_actions       // Current Actions
+&raw("ActorDestroyDelay")   Real          !@actor_destroy_delay   // Actor Destroy Delay
+
+$$ @run_next_action
+// Run Next Action
+//
+// UE4 name of this method: RunNextAction
+
+&aka("RunNextAction")
+
+() 
+
+$$ @initialize_queued_actions
+// Initialize Queued Actions
+//
+// UE4 name of this method: InitializeQueuedActions
+
+&aka("InitializeQueuedActions")
+
+() 
+
+$$ @multicast_initialize_queued_actions
+// Multicast Initialize Queued Actions
+//
+// UE4 name of this method: MulticastInitializeQueuedActions
+
+&aka("MulticastInitializeQueuedActions")
+
+(List{FAction} actions : List{FAction}!) 
+
+$$ @animate_action
+// Animate Action
+//
+// UE4 name of this method: AnimateAction
+
+&aka("AnimateAction")
+
+(FAction action : FAction!) 
+
+$$ @end_action
+// End Action
+//
+// UE4 name of this method: EndAction
+
+&aka("EndAction")
+
+() 
+
+$$ .

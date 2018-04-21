@@ -1,0 +1,269 @@
+// Handles starting and ending unit turns, holds the initiative order, current turn, current active unit and functions related to manipulating the turn order.
+//
+// UE4 name of this class: BP_TurnManager_C
+
+// UE4 Asset Name: BP_TurnManager
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/BP_TurnManager"
+
+annotations: &reflected_data &name("BP_TurnManager_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")        PointerToUberGraphFrame !@uber_graph_frame         // Currently unsupported */
+&raw("DefaultSceneRoot")      SceneComponent !@default_scene_root       // Default Scene Root
+&raw("ActiveUnit")            BP_Unit        !@active_unit              // Active Unit
+&raw("InitiativeOrderUnits")  List{BP_Unit}  !@initiative_order_units   // Initiative Order Units
+&raw("GridManagerRef")        BP_GridManager !@grid_manager_ref         // Grid Manager Ref
+&raw("TurnManagerRef")        Entity         !@turn_manager_ref         // Turn Manager Ref
+/* &raw("Delays")                None           !@delays                   // Currently unsupported */
+&raw("CurrentTurn")           Integer        !@current_turn             // Current Turn
+&raw("UnitActivationDelay")   Real           !@unit_activation_delay    // Unit Activation Delay
+&raw("GameStateRef")          BP_ATBTT_State !@game_state_ref           // Game State Ref
+&raw("bGameOver")             Boolean        !@game_over?               // Game Over
+&raw("ReadyPlayerCount")      Integer        !@ready_player_count       // Ready Player Count
+&raw("ActiveUnitAnimate")     BP_Unit        !@active_unit_animate      // Active Unit Animate
+&raw("CurrentTurnAnimate")    Integer        !@current_turn_animate     // Current Turn Animate
+&raw("bShouldWaitForActions") Boolean        !@should_wait_for_actions? // Should Wait for Actions
+
+$$ @end_entire_faction_turn
+// Ends the turn for each unit in a faction successively until a unit from the next faction in initiative is activated.
+//
+// UE4 name of this method: EndEntireFactionTurn
+
+&aka("EndEntireFactionTurn")
+
+(Boolean end_status_effects? : true) 
+
+$$ @next_turn_if_unit_exhausted_set
+// If the unit to be activated is exhausted, this indicates that all units in initiative have acted (and become exhausted), and we have looped around. If so, set exhausted to false for all units in initiative and increase turn counter by one
+//
+// UE4 name of this method: SetNextTurnIfUnitExhausted
+
+&aka("SetNextTurnIfUnitExhausted")
+
+(BP_Unit unit_pending_activation : BP_Unit!null) 
+
+$$ @update_ability_box
+// Updates ability box based on the abilities of the inputted unit
+//
+// UE4 name of this method: UpdateAbilityBox
+
+&aka("UpdateAbilityBox")
+
+(BP_Unit unit_to_update : BP_Unit!null) 
+
+$$ @select_unit
+// Assigns unit as the selected unit by PC_ATBTT, causing the current unit marker to follow it. Also assigns unit as the unit to follow by the grid camera
+//
+// UE4 name of this method: SelectUnit
+
+&aka("SelectUnit")
+
+(BP_Unit selected_unit : BP_Unit!null) 
+
+$$ @display_game_over_and_freeze_turn
+// Displays game over message, depending on the faction of what unit remains. Then prevents any further actions from occuring by not calling EndAction
+//
+// UE4 name of this method: DisplayGameOverAndFreezeTurn
+
+&aka("DisplayGameOverAndFreezeTurn")
+
+(BP_Unit remaining_unit : BP_Unit!null) 
+
+$$ @update_initiative_bar
+// Updates initiative bar based on inputted array of units
+//
+// UE4 name of this method: UpdateInitiativeBar
+
+&aka("UpdateInitiativeBar")
+
+(List{BP_Unit} units_in_initiative : List{BP_Unit}!) 
+
+$$ @check_if_game_over
+// Returns true if only one faction of units rematins in the initiative array
+//
+// UE4 name of this method: CheckIfGameOver
+
+&aka("CheckIfGameOver")
+
+(Boolean game_over? : false) 
+
+$$ @check_if_contains_single_faction
+// Returns true if the units in the input array all have the same faction. Used to check if all other units have been killed, signalling that the game should end.
+//
+// UE4 name of this method: CheckIfContainsSingleFaction
+
+&aka("CheckIfContainsSingleFaction")
+
+(List{BP_Unit} units                    : List{BP_Unit}!
+ Boolean       contains_single_faction? : false) 
+
+$$ @swap_to_unit
+// Swaps from one unit to another, setting the new unit to initiative index 0
+//
+// UE4 name of this method: SwapToUnit
+
+&aka("SwapToUnit")
+
+(BP_Unit target_unit : BP_Unit!null
+ Boolean success?    : false) 
+
+$$ @unit_last_in_current_faction_set
+// Loops through initiative array until a unit with a different faction than the inputted one is found. Moves the inputted unit just before this unit in initiative. Used in games with separate turns for various factions, when you want to delay this unit until the rest of its faction have acted.
+//
+// UE4 name of this method: SetUnitLastInCurrentFaction
+
+&aka("SetUnitLastInCurrentFaction")
+
+(BP_Unit       unit                   : BP_Unit!null
+ List{BP_Unit} initiative_order_units : List{BP_Unit}!) 
+
+$$ @move_unit_to_initiative_index
+// Moves a unit from its current place in initiative to a different index as specified
+//
+// UE4 name of this method: MoveUnitToInitiativeIndex
+
+&aka("MoveUnitToInitiativeIndex")
+
+(BP_Unit       unit                   : BP_Unit!null
+ Integer       index                  : 0
+ List{BP_Unit} initiative_order_units : List{BP_Unit}!) 
+
+$$ @let_the_first_unit_become_the_last
+// Takes the first unit in the initiative array and moves it to the end. Usen when the active unit has ended its turn
+//
+// UE4 name of this method: LetTheFirstUnitBecomeTheLast
+
+&aka("LetTheFirstUnitBecomeTheLast")
+
+(List{BP_Unit} units : List{BP_Unit}!
+ List{BP_Unit} out   : List{BP_Unit}!) 
+
+$$ @move_active_unit_in_initiative
+// Moves the active unit to a place in the initiative array based on the input
+//
+// UE4 name of this method: MoveActiveUnitInInitiative
+
+&aka("MoveActiveUnitInInitiative")
+
+(EInitiativeSlot selection              : EInitiativeSlot.@@end
+ List{BP_Unit}   initiative_order_units : List{BP_Unit}!) 
+
+$$ @sort_units_in_initiative_order
+// Places unit references in the initiative array based on their initiative value, from highest to lowest
+//
+// UE4 name of this method: SortUnitsInInitiativeOrder
+
+&aka("SortUnitsInInitiativeOrder")
+
+(List{BP_Unit} array        : List{BP_Unit}!
+ List{BP_Unit} sorted_units : List{BP_Unit}!) 
+
+$$ @find_index_of_next_faction
+// Loops through initiative array to find the first unit with a different faction than the current one, returning its index
+//
+// UE4 name of this method: FindIndexOfNextFaction
+
+&aka("FindIndexOfNextFaction")
+
+(Boolean success? : false
+ Integer index    : 0) 
+
+$$ @find_first_index_of_next_round
+// Loops through initiative array until it finds a unit with exhaused set to true, indicating that this unit has already acted, thus being the first unit in the next round
+//
+// UE4 name of this method: FindFirstIndexOfNextRound
+
+&aka("FindFirstIndexOfNextRound")
+
+(Integer index : 0) 
+
+$$ @end_action
+// End Action
+//
+// UE4 name of this method: EndAction
+
+&aka("EndAction")
+
+() 
+
+$$ @initialize
+// Initialize
+//
+// UE4 name of this method: Initialize
+
+&aka("Initialize")
+
+() 
+
+$$ @begin_unit_turn
+// Begin Unit Turn
+//
+// UE4 name of this method: BeginUnitTurn
+
+&aka("BeginUnitTurn")
+
+(BP_Unit unit                        : BP_Unit!null
+ Boolean first_end_active_unit_turn? : true
+ Boolean use_delay?                  : true) 
+
+$$ @end_turn
+// End Turn
+//
+// UE4 name of this method: EndTurn
+
+&aka("EndTurn")
+
+(Boolean         exhaust_unit?           : true
+ Boolean         auto_next_turn?         : true
+ EInitiativeSlot move_to_initiative_slot : EInitiativeSlot.@@end
+ Boolean         end_status_effects?     : true
+ Boolean         use_delay?              : true) 
+
+$$ @reactivate_active_unit
+// Reactivate Active Unit
+//
+// UE4 name of this method: ReactivateActiveUnit
+
+&aka("ReactivateActiveUnit")
+
+() 
+
+$$ @animate_action
+// Animate Action
+//
+// UE4 name of this method: AnimateAction
+
+&aka("AnimateAction")
+
+(FAction action : FAction!) 
+
+$$ @notify_player_ready
+// Notify Player Ready
+//
+// UE4 name of this method: NotifyPlayerReady
+
+&aka("NotifyPlayerReady")
+
+() 
+
+$$ @start_match
+// Start Match
+//
+// UE4 name of this method: StartMatch
+
+&aka("StartMatch")
+
+() 
+
+$$ @multicast_show_waiting_for_players
+// Multicast Show Waiting for Players
+//
+// UE4 name of this method: MulticastShowWaitingForPlayers
+
+&aka("MulticastShowWaitingForPlayers")
+
+(Integer current_ready_players : 0
+ Integer max_players           : 0) 
+
+$$ .

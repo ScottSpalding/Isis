@@ -1,0 +1,34 @@
+// EMove Cost
+//
+// UE4 name of this enum: EMoveCost
+
+// UE4 Asset Name: EMoveCost
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Abilities/EMoveCost"
+
+annotations: &reflected_data &name("EMoveCost")
+
+$$ @@
+
+EMoveCost !@@no_cost
+EMoveCost !@@static_cost
+EMoveCost !@@per_move_attribute_value
+EMoveCost !@@from_pathfinding_cost
+EMoveCost !@@same_as_ability
+EMoveCost !@@emove_cost_max
+
+$$ @@!
+// EMoveCost
+// EnumPath: /Game/AdvancedTurnBasedTileToolkit/Core/Abilities/EMoveCost.EMoveCost
+
+()
+
+  [
+  @@no_cost:                  EMoveCost!int(0)
+  @@static_cost:              EMoveCost!int(1)
+  @@per_move_attribute_value: EMoveCost!int(2)
+  @@from_pathfinding_cost:    EMoveCost!int(3)
+  @@same_as_ability:          EMoveCost!int(4)
+  @@emove_cost_max:           EMoveCost!int(5)
+  ]
+
+$$ .

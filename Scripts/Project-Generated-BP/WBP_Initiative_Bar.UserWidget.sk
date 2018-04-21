@@ -1,0 +1,26 @@
+// WBP Initiative Bar
+//
+// UE4 name of this class: WBP_Initiative_Bar_C
+
+// UE4 Asset Name: WBP_Initiative_Bar
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/UI/WBP_Initiative_Bar"
+
+annotations: &reflected_data &name("WBP_Initiative_Bar_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")      PointerToUberGraphFrame !@uber_graph_frame      // Currently unsupported */
+&raw("GridPanelInitiative") GridPanel !@grid_panel_initiative // Grid Panel Initiative
+&raw("InitiativeButton")    Button    !@initiative_button     // Initiative Button
+&raw("bDisableNextHover")   Boolean   !@disable_next_hover?   // Disable Next Hover
+
+$$ @refresh
+// Refresh
+//
+// UE4 name of this method: Refresh
+
+&aka("Refresh")
+
+(List{BP_Unit} units : List{BP_Unit}!) 
+
+$$ .

@@ -1,0 +1,46 @@
+// BP Unit Stealth Component
+//
+// UE4 name of this class: BP_UnitStealthComponent_C
+
+// UE4 Asset Name: BP_UnitStealthComponent
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Units/BP_UnitStealthComponent"
+
+annotations: &reflected_data &name("BP_UnitStealthComponent_C")
+
+$$ @
+
+/* &raw("UberGraphFrame") PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
+&raw("OwningUnit")     BP_Unit        !@owning_unit      // Owning Unit
+&raw("GridManagerRef") BP_GridManager !@grid_manager_ref // Grid Manager Ref
+&raw("bUnaware")       Boolean        !@unaware?         // If true, unit will be removed from initiative at the start of game, and can be added back through listen and spot events
+
+$$ @spot
+// Spot
+//
+// UE4 name of this method: Spot
+
+&aka("Spot")
+
+(Integer index : 0
+ Integer range : 0) 
+
+$$ @listen
+// Listen
+//
+// UE4 name of this method: Listen
+
+&aka("Listen")
+
+(Integer index : 0
+ Integer range : 0) 
+
+$$ @wake
+// Wake
+//
+// UE4 name of this method: Wake
+
+&aka("Wake")
+
+() 
+
+$$ .

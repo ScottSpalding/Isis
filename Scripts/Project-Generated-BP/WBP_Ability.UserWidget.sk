@@ -1,0 +1,41 @@
+// WBP Ability
+//
+// UE4 name of this class: WBP_Ability_C
+
+// UE4 Asset Name: WBP_Ability
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/UI/WBP_Ability"
+
+annotations: &reflected_data &name("WBP_Ability_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")   PointerToUberGraphFrame !@uber_graph_frame   // Currently unsupported */
+&raw("AbilityButton")    Button         !@ability_button     // Ability Button
+&raw("AbilityNumber")    TextBlock      !@ability_number     // Ability Number
+&raw("Charges")          TextBlock      !@charges            // Charges
+&raw("Cooldown")         TextBlock      !@cooldown           // Cooldown
+&raw("Style")            SlateBrush     !@style              // Style
+&raw("AbilityImage")     Texture        !@ability_image      // Ability Image
+&raw("HoverColor")       Color          !@hover_color        // Hover Color
+&raw("Ability")          BP_Ability     !@ability            // Ability
+&raw("ParentAbilityBox") WBP_AbilityBox !@parent_ability_box // Parent Ability Box
+
+$$ @update
+// Update
+//
+// UE4 name of this method: Update
+
+&aka("Update")
+
+(BP_Ability ability : BP_Ability!null) 
+
+$$ @activate
+// Activate
+//
+// UE4 name of this method: Activate
+
+&aka("Activate")
+
+() 
+
+$$ .

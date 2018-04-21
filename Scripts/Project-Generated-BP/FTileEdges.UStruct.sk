@@ -1,0 +1,33 @@
+// FTile Edges
+//
+// UE4 name of this struct: FTileEdges
+
+// UE4 Asset Name: FTileEdges
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Tiles/FTileEdges"
+
+annotations: &reflected_data &name("FTileEdges")
+
+$$ @
+
+&raw("North_67_C2378B3F46E0B63FC225108A6A9AA328")     Integer !@north_67_c237      // North
+&raw("East_66_2F68B50C411B0DE2AEEFC2B4A83C3AD0")      Integer !@east_66_2f68       // East
+&raw("South_69_C87DB9A24864AB2C1DA74AA39A5CC766")     Integer !@south_69_c87d      // South
+&raw("West_68_9F64AC804934E7C237D83F9539A121A1")      Integer !@west_68_9f64       // West
+&raw("NorthEast_70_45A075E04C68BE45156759AC193A8DE5") Integer !@north_east_70_45a0 // North East
+&raw("SouthEast_71_8E374295464DE10A7E137AB6136DE226") Integer !@south_east_71_8e37 // South East
+&raw("SouthWest_72_45CB5EBB423D92CF6CFB808A60E1BDAB") Integer !@south_west_72_45cb // South West
+&raw("NorthWest_73_8172159B4D1B38E88CA31B9710201C73") Integer !@north_west_73_8172 // North West
+
+$$ @!
+() FTileEdges
+
+$$ @!copy
+(FTileEdges other) FTileEdges
+
+$$ @assign
+(FTileEdges other) FTileEdges
+
+$$ @!!
+() FTileEdges
+
+$$ .

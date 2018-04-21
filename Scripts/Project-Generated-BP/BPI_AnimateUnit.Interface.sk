@@ -1,0 +1,30 @@
+// BPI Animate Unit
+//
+// UE4 name of this class: BPI_AnimateUnit_C
+
+// UE4 Asset Name: BPI_AnimateUnit
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/BPI_AnimateUnit"
+
+annotations: &reflected_data &name("BPI_AnimateUnit_C")
+
+$$ @
+
+$$ @animate_ability
+// Animate Ability
+//
+// UE4 name of this method: AnimateAbility
+
+&aka("AnimateAbility")
+
+(FAction ability_action : FAction!) 
+
+$$ @animate_movement
+// Animate Movement
+//
+// UE4 name of this method: AnimateMovement
+
+&aka("AnimateMovement")
+
+(Real speed : 0.0) 
+
+$$ .

@@ -1,0 +1,27 @@
+// FInt XY
+//
+// UE4 name of this struct: FIntXY
+
+// UE4 Asset Name: FIntXY
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/FIntXY"
+
+annotations: &reflected_data &name("FIntXY")
+
+$$ @
+
+&raw("X_3_A7A611BD4C48EAC198C73FBAF6618F56") Integer !@x_3_a7a6 // X
+&raw("Y_5_5866C8434BA09D57C7BCB69CB32418C5") Integer !@y_5_5866 // Y
+
+$$ @!
+() FIntXY
+
+$$ @!copy
+(FIntXY other) FIntXY
+
+$$ @assign
+(FIntXY other) FIntXY
+
+$$ @!!
+() FIntXY
+
+$$ .

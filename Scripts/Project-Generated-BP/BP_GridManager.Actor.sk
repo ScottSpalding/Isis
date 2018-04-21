@@ -1,0 +1,1421 @@
+// Spawns the grid and all grid based arrays. Holds the location on the grid of all actors and the walkability between tiles. Runs pathfinding, visibility and all other grid-based code. Holds many such functions that are generally called by other blueprints. Also responsible for instantiating meshes.
+//
+// UE4 name of this class: BP_GridManager_C
+
+// UE4 Asset Name: BP_GridManager
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Grid/BP_GridManager"
+
+annotations: &reflected_data &name("BP_GridManager_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")              PointerToUberGraphFrame                  !@uber_graph_frame                 // Currently unsupported */
+&raw("HeightmapBox")                BoxComponent                             !@heightmap_box                    // Heightmap Box
+&raw("CollisionPlane")              StaticMeshComponent                      !@collision_plane                  // Collision Plane
+&raw("Scene")                       SceneComponent                           !@scene                            // Scene
+&raw("GridSizeX")                   Integer                                  !@grid_size_x                      // The size in tiles of the grid in the X dimension
+&raw("GridSizeY")                   Integer                                  !@grid_size_y                      // The size in tiles of the grid in the Y dimension
+&raw("GridSizeZ")                   Integer                                  !@grid_size_z                      // Grid Size Z
+&raw("bHexGrid")                    Boolean                                  !@hex_grid?                        // Shall the grid have a hexagonal layout?
+&raw("bSnapToCustomGrid")           Boolean                                  !@snap_to_custom_grid?             // Shall pawns and tiles snap to the grid? For square grids you can just use UE4's regular grid snapping. Snap to custom grid can be disabled for individual pawns and tiles in their public variables
+&raw("bShowCollisionPlane")         Boolean                                  !@show_collision_plane?            // Shows the collision plane that handles collision for the trace when the player clicks a tile. Make it visible if your default tile is invisible to place actors easily on the grid surface.
+&raw("bCollisionPlaneWalkable")     Boolean                                  !@collision_plane_walkable?        // Is the default tile that makes up the grid walkable? If not, individual walkable tiles must be placed.
+&raw("bShowDefaultTile")            Boolean                                  !@show_default_tile?               // Will the default tile, and thus the initial grid, be visible?
+&raw("bPregenerateGameplayGrids")   Boolean                                  !@pregenerate_gameplay_grids?      // Generates some of the grids used for gameplay in the construction scripts o they won't have to load on Event Begin Play. Speeds up startup, but slows down the construction script. Activate before packaging.
+&raw("Heightmap")                   EHeight                                  !@heightmap                        // false = no heightmap; OneLevel = traces from the sky (at MaxGridHeight) to the center of each tile once to generate a single layer heightmap; Multilevel = Traces from sky to each tile center, then continues downward and adds a level for each level found that is further from the previous than HeightBetweenLevels until MaxLevels or MinGridHeight is reached
+&raw("bTraceForWalls")              Boolean                                  !@trace_for_walls?                 // Automaticalle traces between all adjacent tiles using RangeTrace and removes the edge between tiles if the trace hits.
+&raw("TraceForWallsHeight")         Real                                     !@trace_for_walls_height           // The height at which the Trace for Walls function should check for walls between tiles
+&raw("bAutoEdgeCostsBasedOnHeight") Boolean                                  !@auto_edge_costs_based_on_height? // Compares height of all adjacent tiles and sets walkability to false if the difference is more that HeightImpassableCutoff and to difference/heightSlowIncrement if lower than HeightImpassableCutoff but lower that HeightSlowIncrement
+&raw("HeightImpassableCutoff")      Real                                     !@height_impassable_cutoff         // See AutoHeightBasedEdgeCosts
+&raw("HeightSlowIncrement")         Real                                     !@height_slow_increment            // See AutoHeightBasedEdgeCosts
+&raw("bInstantiate")                Boolean                                  !@instantiate?                     // Turns the meshes of all tile actors with "Instantiate" set to true to instanced static meshes
+&raw("Path")                        InstancedStaticMeshComponent             !@path                             // Path
+&raw("TileInMoveRangeMC")           InstancedStaticMeshComponent             !@tile_in_move_range_mc            // Tile in Move Range MC
+&raw("PathSpline")                  SplineComponent                          !@path_spline                      // Path Spline
+&raw("LoopTime")                    Real                                     !@loop_time                        // Loop Time
+&raw("HoverMarker")                 StaticMeshComponent                      !@hover_marker                     // Hover Marker
+&raw("CurrentUnitMarker")           StaticMeshComponent                      !@current_unit_marker              // Current Unit Marker
+&raw("TargetMarker")                StaticMeshComponent                      !@target_marker                    // Target Marker
+&raw("SplineComponents")            List{SplineMeshComponent}                !@spline_components                // Holds references to spawned spline mesh components. Used for clearing spline meshes
+&raw("DefaultTileMesh")             StaticMesh                               !@default_tile_mesh                // Mesh used to populate the ground level of a grid
+&raw("HoverMarkerMesh")             StaticMesh                               !@hover_marker_mesh                // Mesh of marker displayed under cursor
+&raw("CurrentUnitMarkerMesh")       StaticMesh                               !@current_unit_marker_mesh         // Mesh of marker displaying the current active unit
+&raw("TargetMarkerMesh")            StaticMesh                               !@target_marker_mesh               // Mesh showing the target of an ability
+&raw("TileInSightRangeMesh")        StaticMesh                               !@tile_in_sight_range_mesh         // Mesh showing if a tile is in attack range and visible
+&raw("TileInMoveRangeMesh")         StaticMesh                               !@tile_in_move_range_mesh          // Mesh showing if a tile can be moved to
+&raw("TileInLongMoveRangeMesh")     StaticMesh                               !@tile_in_long_move_range_mesh     // Mesh showing if a tile can be moved to using multiple action points (AP)
+&raw("SplinePathMesh")              StaticMesh                               !@spline_path_mesh                 // Mesh for one segment of the spline for showing movement path
+&raw("PathMesh")                    StaticMesh                               !@path_mesh                        // Mesh for showing one point of a movement path, if spline meshes are not used. Automatically rotates to align with the path.
+&raw("TileInSightRangeMC")          InstancedStaticMeshComponent             !@tile_in_sight_range_mc           // Tile in Sight Range MC
+&raw("SplineHeight")                Real                                     !@spline_height                    // How far above the ground should the markers for the current pawn, target and movement spline should be
+&raw("TileInRangeZOffset")          Real                                     !@tile_in_range_zoffset            // How far off the underlying tile should the tiles in range should be
+&raw("VisibilityTraceHeight")       Real                                     !@visibility_trace_height          // The height of the visibility tracing of pawns
+&raw("bGridSetupDone")              Boolean                                  !@grid_setup_done?                 // Grid Setup Done
+&raw("TileXSize")                   Real                                     !@tile_xsize                       // Size in X dimension of the default tile (cm)
+&raw("InstanceIDTemp")              Integer                                  !@instance_idtemp                  // Instance IDTemp
+&raw("ISMTiles")                    List{InstancedStaticMeshComponent}       !@ismtiles                         // ISMTiles
+&raw("ISMMeshes")                   List{StaticMesh}                         !@ismmeshes                        // ISMMeshes
+&raw("ISMMaterials")                List{Material}                           !@ismmaterials                     // ISMMaterials
+&raw("bFoundNoMaterialMatch")       Boolean                                  !@found_no_material_match?         // Found No Material Match
+&raw("bInstantiating")              Boolean                                  !@instantiating?                   // DO NOT EDIT
+&raw("TileYSize")                   Real                                     !@tile_ysize                       // Tile YSize
+&raw("CurrentInstantiatingTile")    Actor                                    !@current_instantiating_tile       // Current Instantiating Tile
+&raw("TileInLongMoveRangeMC")       InstancedStaticMeshComponent             !@tile_in_long_move_range_mc       // Tile in Long Move Range MC
+&raw("MaxGridHeight")               Real                                     !@max_grid_height                  // The height above the Grid Manager from which traces are done to find walkability. Meshes above this height will not be checked
+&raw("MinGridHeight")               Real                                     !@min_grid_height                  // The height below the Grid Manager from which traces are done to find walkability. Meshes below this height will not be checked
+&raw("bShowHeightmapBoundingBox")   Boolean                                  !@show_heightmap_bounding_box?     // Shows a bounding box displaying the maximum and minimum Z location the Grid Manager will check for walkable tiles when using heightmaps.
+&raw("bUseDecals")                  Boolean                                  !@use_decals?                      // Whether meshes or decals are used for showing tiles in range, target and hover markers etc.
+&raw("HoverMarkerDecal")            DecalComponent                           !@hover_marker_decal               // Hover Marker Decal
+&raw("CurrentMarkerDecal")          DecalComponent                           !@current_marker_decal             // Current Marker Decal
+&raw("TargetMarkerDecal")           DecalComponent                           !@target_marker_decal              // Target Marker Decal
+&raw("DecalSize")                   Vector3                                  !@decal_size                       // The size of decals placed on a square grid if the tile size is 200. If lower or higher than 200 decal size will be modified proportionately.
+&raw("TileInMoveRangeDecalT")       MaterialInterface                        !@tile_in_move_range_decal_t       // Decal texture for showing a tile in move range
+&raw("TileInSightRangeDecalT")      MaterialInterface                        !@tile_in_sight_range_decal_t      // Decal texture for showing a tile in sight range
+&raw("HoverMarkerDecalT")           MaterialInterface                        !@hover_marker_decal_t             // Decal texture for hover marker
+&raw("CurrentMarkerDecalT")         MaterialInterface                        !@current_marker_decal_t           // Decal texture for active unit marker
+&raw("TargetMarkerDecalT")          MaterialInterface                        !@target_marker_decal_t            // Decal texture for target marker
+&raw("bDiagonalMovement")           Boolean                                  !@diagonal_movement?               // If set to false tiles will not be connected to diagonal tiles by default
+&raw("bDisplayPathAsSpline")        Boolean                                  !@display_path_as_spline?          // If false, instead displays path as several instanced meshes
+&raw("DisplaySplineType")           ESplinePointType                         !@display_spline_type              // How should the path spline be displayed in game?
+&raw("bCanPlayerSwitchUnits")       Boolean                                  !@can_player_switch_units?         // Can the player switch between pawns that have not acted this turn by clicking them?
+&raw("TileInLongMoveRangeDecalT")   MaterialInterface                        !@tile_in_long_move_range_decal_t  // Decal texture for showing tiles in move range costing multiple action points
+&raw("CurrentDecals")               List{DecalComponent}                     !@current_decals                   // Array containing all decals that have currently been spawned. Is used for looping through and deleting all decals.
+&raw("HeightBetweenLevels")         Real                                     !@height_between_levels            // The minimum distance that must separate two levels on a multi-level grid
+&raw("GridSizeSquared")             Integer                                  !@grid_size_squared                // Grid Size Squared
+&raw("ArrowDecal")                  DecalComponent                           !@arrow_decal                      // Arrow Decal
+&raw("ArrowFlat")                   InstancedStaticMeshComponent             !@arrow_flat                       // Arrow Flat
+&raw("bDisplayTileIndexes")         Boolean                                  !@display_tile_indexes?            // For debugging. Displays the tile indexes of all tiles in the viewport. Pregenerate Gameplay Grids must be set to true for this to work.
+&raw("bDisplayTileEdges")           Boolean                                  !@display_tile_edges?              // For debugging. Displays the edges of all tiles in the viewport. Pregenerate Gameplay Grids must be set to true for this to work.
+&raw("DefaultTile")                 HierarchicalInstancedStaticMeshComponent !@default_tile                     // Default Tile
+&raw("VisibleCrosshairs")           List{BillboardComponent}                 !@visible_crosshairs               // Visible Crosshairs
+&raw("bWillblueprintsbenativized")  Boolean                                  !@willblueprintsbenativized?       // A bug in Unreal Engine causes struct arrays to be filled with random values if they are resized in nativized projects. I have reported, but for now I have added a workaround in the Pathfinding function.
+&raw("DebugMarker")                 InstancedStaticMeshComponent             !@debug_marker                     // Debug Marker
+&raw("DebugMarkerMesh")             StaticMesh                               !@debug_marker_mesh                // Mesh used for debugging purposes. Handy for displaying the locations of tiles in an array among other things.
+&raw("MaxLevels")                   Integer                                  !@max_levels                       // If heightmap is set to multilevel, designates the maximum number of levels that will be generated. Any levels above this will be ignored. I recommend not having this higher than the maximum number of levels you want for your map, as this causes unneccessary processing.
+&raw("ReachableTileMarkers")        List{Vector3}                            !@reachable_tile_markers           // Requires pregenerating gameplay grids. Add elements to this array and position them using widgets to specify what areas of a map can be reached. Is not necessary, but will prevent the hover marker from showing over tiles the player cannot reach. Uses pathfinding to find all tiles reachable from the specified locations, and removes all else from the grid.
+&raw("OnUnitEnterTileAnimate")      MulticastDelegate
+  (
+  BP_Unit unit
+  Integer path_index
+  )                                                                          !@on_unit_enter_tile_animate       // On Unit Enter Tile Animate
+&raw("bUseInitiativeBar")           Boolean                                  !@use_initiative_bar?              // Specifies whether the initiative bar shall be used in WBP_ATBTT
+&raw("OnUnitEnterTileSimulate")     MulticastDelegate
+  (
+  BP_Unit unit
+  Integer grid_index
+  Integer path_index
+  )                                                                          !@on_unit_enter_tile_simulate      // On Unit Enter Tile Simulate
+&raw("OnUnitExitTileAnimate")       MulticastDelegate
+  (
+  BP_Unit unit
+  Integer path_index
+  )                                                                          !@on_unit_exit_tile_animate        // On Unit Exit Tile Animate
+&raw("OnUnitExitTileSimulate")      MulticastDelegate
+  (
+  BP_Unit unit
+  Integer grid_index
+  Integer path_index
+  )                                                                          !@on_unit_exit_tile_simulate       // On Unit Exit Tile Simulate
+/* &raw("GridUnits")                   None                                     !@grid_units                       // Currently unsupported */
+&raw("GridEdges")                   List{FEdgesNew}                          !@grid_edges                       // Holds the edges of all tiles, designating which tiles can be moved to from any given tile and what the cost of movement is
+&raw("GridBaseEdges")               List{FEdgesNew}                          !@grid_base_edges                  // Stores GridEdges before heightmaps are added, for cases where one wants to ignore heightmap modifications of the grid. Use GridEdges in most cases.
+&raw("GameStateRef")                BP_ATBTT_State                           !@game_state_ref                   // Game State Ref
+&raw("ActionManager")               BP_ActionManager                         !@action_manager                   // Action Manager
+&raw("TurnManager")                 BP_TurnManager                           !@turn_manager                     // Turn Manager
+/* &raw("SearchedTiles")               None                                     !@searched_tiles                   // Currently unsupported */
+&raw("CollisionCapsules")           List{BP_CollisionCapsule}                !@collision_capsules               // Collision Capsules
+/* &raw("GridLocations")               None                                     !@grid_locations                   // Currently unsupported */
+&raw("bDebugSwitch")                Boolean                                  !@debug_switch?                    // Used for debugging to compare two different approaches. No function on its own.
+&raw("bGridHasHoles")               Boolean                                  !@grid_has_holes?                  // Grid Has Holes
+/* &raw("GridBigIndexes")              None                                     !@grid_big_indexes                 // Currently unsupported */
+&raw("MaxUnitSize")                 Integer                                  !@max_unit_size                    // 0 means big units are disabled. The maximum size of unit that the grid will genrate walkability for. What each size represents is defined in GenerateBigUnitArray function.
+/* &raw("GridSimpleCosts")             None                                     !@grid_simple_costs                // Currently unsupported */
+&raw("BigSizeIndexes")              List{FNestedIntArray}                    !@big_size_indexes                 // Big Size Indexes
+/* &raw("GridBigSizeMods")             None                                     !@grid_big_size_mods               // Currently unsupported */
+&raw("bUseSimpleCosts")             Boolean                                  !@use_simple_costs?                // If true, an extra map is used for walkability in addition to GridEdges, which allows tiles to have global costs, which can be simpler to work with, particularly for games requiring lots of live walkability modification. Interacts with the pathfinding types starting with Simple
+&raw("OnUnitEndMovementSimulate")   MulticastDelegate
+  (
+  BP_Unit unit
+  Integer grid_index
+  )                                                                          !@on_unit_end_movement_simulate    // On Unit End Movement Simulate
+&raw("OnUnitEndMovementAnimate")    MulticastDelegate
+  (
+  BP_Unit unit
+  Integer grid_index
+  )                                                                          !@on_unit_end_movement_animate     // On Unit End Movement Animate
+/* &raw("GridObjects")                 None                                     !@grid_objects                     // Currently unsupported */
+&raw("bVersion181")                 Boolean                                  !@version_181?                     // Version 181
+
+$$ @interact_with_objects
+// Interact with Objects
+//
+// UE4 name of this method: InteractWithObjects
+
+&aka("InteractWithObjects")
+
+(Integer     grid_index         : 0
+ Actor       triggering_actor   : Actor!null
+ EntityClass specific_class     : EntityClass!null
+ Boolean     repeat_if_many?    : false
+ Integer     interaction_type   : 0
+ Integer     current_path_index : -1) 
+
+$$ @remove_object_from_grid
+// Remove Object from Grid
+//
+// UE4 name of this method: RemoveObjectFromGrid
+
+&aka("RemoveObjectFromGrid")
+
+(Entity  object     : Entity!null
+ Integer grid_index : 0) 
+
+$$ @add_object_to_grid
+// Add Object to Grid
+//
+// UE4 name of this method: AddObjectToGrid
+
+&aka("AddObjectToGrid")
+
+(Entity  object     : Entity!null
+ Integer grid_index : 0) 
+
+$$ @find_total_path_cost
+// Loops through a linked array of grid indexes and finds the total movement cost
+//
+// UE4 name of this method: FindTotalPathCost
+// Blueprint category: Pathfinding
+
+&aka("FindTotalPathCost")
+
+(List{Integer} path_indexes      : List{Integer}!
+ Integer       origin_grid_index : 0
+ Integer       cost              : 0) 
+
+$$ @find_reachable_index_closest_to_target_thorough
+// Used specifically for AI units that can pass through other units to make sure they take the optimal path in cases where the last two indexes of their original calculated path overlaps with another unit
+//
+// UE4 name of this method: FindReachableIndexClosestToTargetThorough
+// Blueprint category: Pathfinding
+
+&aka("FindReachableIndexClosestToTargetThorough")
+
+(Integer          start_index        : 0
+ Integer          target_index       : 0
+ Integer          distance_to_target : 0
+ Integer          move_range         : 0
+ EPathfindingType type               : EPathfindingType.@@standard
+ Boolean          path_found?        : false
+ Integer          grid_index         : 0
+ Integer          cost               : 0) 
+
+$$ @display_big_unit_warning
+// Display Big Unit Warning
+//
+// UE4 name of this method: DisplayBigUnitWarning
+// Blueprint category: Miscellaneous
+
+&aka("DisplayBigUnitWarning")
+
+() 
+
+$$ @remove_unit_from_big_unit_array
+// Finds all tiles currently occupied by a big unit and removes references of it from these tiles
+//
+// UE4 name of this method: RemoveUnitFromBigUnitArray
+// Blueprint category: Experimental
+
+&aka("RemoveUnitFromBigUnitArray")
+
+(BP_Unit unit : BP_Unit!null) 
+
+$$ @modify_big_unit_array
+// Modifies the big unit array based on a Grid Index and size
+//
+// UE4 name of this method: ModifyBigUnitArray
+// Blueprint category: Experimental
+
+&aka("ModifyBigUnitArray")
+
+(Integer grid_index : 0
+ Integer size       : 0) 
+
+$$ @modify_big_unit_array_by_unit
+// Modifies the big unit array based on the input unit's grid index and size
+//
+// UE4 name of this method: ModifyBigUnitArrayByUnit
+// Blueprint category: Experimental
+
+&aka("ModifyBigUnitArrayByUnit")
+
+(BP_Unit unit : BP_Unit!null) 
+
+$$ @find_big_indexes_from_indexes
+// Finds all indexes that will be occupied by a big unit of the input Size on the input GridIndexes
+//
+// UE4 name of this method: FindBigIndexesFromIndexes
+// Blueprint category: Experimental
+
+&aka("FindBigIndexesFromIndexes")
+
+(List{Integer} grid_indexes     : List{Integer}!
+ Integer       size             : 0
+ List{Integer} big_grid_indexes : List{Integer}!) 
+
+$$ @remove_unit_from_grid
+// Removes references to this unit in the GridUnits map
+//
+// UE4 name of this method: RemoveUnitFromGrid
+// Blueprint category: Utility
+
+&aka("RemoveUnitFromGrid")
+
+(BP_Unit unit : BP_Unit!null) 
+
+$$ @add_unit_to_grid
+// Inserts a unit into the GridUnits map at the specified grid index. If unit is big, also adds it to surrounding tiles as appropriate.
+//
+// UE4 name of this method: AddUnitToGrid
+// Blueprint category: Utility
+
+&aka("AddUnitToGrid")
+
+(BP_Unit unit       : BP_Unit!null
+ Integer grid_index : 0) 
+
+$$ @make_simple_costs_map
+// If bUseSimpleCosts is true, adds the simple costs of all tiles to the GridSimpleCosts map. By default this map is checked by any units with a pathfinding type with "simple" in its name
+//
+// UE4 name of this method: MakeSimpleCostsMap
+// Blueprint category: Startup
+
+&aka("MakeSimpleCostsMap")
+
+() 
+
+$$ @big_search_step
+// Part of MakeBigUnitArray function that checks the max unit size that can occupy one particular grid index
+//
+// UE4 name of this method: BigSearchStep
+// Blueprint category: Startup
+
+&aka("BigSearchStep")
+
+(List{FIndexEdge} search_steps : List{FIndexEdge}!
+ Integer          grid_index   : 0
+ Boolean          success?     : false) 
+
+$$ @make_big_unit_array
+// Experimental work-in-progress. Uses predefined search patterns to find the max size of unit that can occupy each tile. Does currently not support hexagonal or multi-level grids.
+//
+// UE4 name of this method: MakeBigUnitArray
+// Blueprint category: Startup
+
+&aka("MakeBigUnitArray")
+
+() 
+
+$$ @remove_edges_on_grid_borders
+// Removes any edges pointing from the indexes at the edges to the grid to indexes outside these grid indexes (which are invalid at the north and south edge and wraps around to the other side of the grid for the east and west edges)
+//
+// UE4 name of this method: RemoveEdgesOnGridBorders
+// Blueprint category: Startup
+
+&aka("RemoveEdgesOnGridBorders")
+
+() 
+
+$$ @edges_based_on_terrain_set
+// Pregenerate Gameplay Grids: Generates some of the grids used for gameplay in the construction scripts o they won't have to load on Event Begin Play. Speeds up startup, but slows down the construction script. Activate before packaging.
+//
+// UE4 name of this method: SetEdgesBasedOnTerrain
+// Blueprint category: Startup
+
+&aka("SetEdgesBasedOnTerrain")
+
+() 
+
+$$ @create_locations_and_heightmap
+// At startup, generates a map of all grid tile locations. Heightmap = false: flat grid, heightmap = One Level: Uses line traces to find highest points within defined boundries that blocks PathTrace. Heightmap = multilevel: Keeps tracing after first hit, adding more levels to the locations map when found until outside MinGridHeight
+//
+// UE4 name of this method: CreateLocationsAndHeightmap
+// Blueprint category: Startup
+
+&aka("CreateLocationsAndHeightmap")
+
+(Integer grid_index : 0
+ Vector3 location   : Vector3!) 
+
+$$ @find_appropriate_default_decal
+// Checks if user has altered the default mesh. If not, assigns the default mesh
+//
+// UE4 name of this method: FindAppropriateDefaultDecal
+// Blueprint category: Startup
+
+&aka("FindAppropriateDefaultDecal")
+
+(MaterialInterface current_mesh : MaterialInterface!null
+ MaterialInterface square_mesh  : MaterialInterface!null
+ MaterialInterface hex_mesh     : MaterialInterface!null
+) MaterialInterface
+
+$$ @clear_collision_capsules
+// Clears all spawned collision capsules (see SpawnCollisionCapsule)
+//
+// UE4 name of this method: ClearCollisionCapsules
+// Blueprint category: Miscellaneous
+
+&aka("ClearCollisionCapsules")
+
+() 
+
+$$ @spawn_collision_capsule
+// Spawns capsules that overlap the Pawn channel. Useful for testing collision with units when calculating, as animations might be out of sync with calculations, making direct collision checks with unit meshes unreliable.
+//
+// UE4 name of this method: SpawnCollisionCapsule
+// Blueprint category: Miscellaneous
+
+&aka("SpawnCollisionCapsule")
+
+(Integer grid_index : 0) 
+
+$$ @pregenerate_gameplay_grids
+// Generates grids and realigns units. Is by default run in construction script if PregenerateGameplayGrids is true. Displays tile edges and indexes if specified. If changes are made to the grid by placing new tiles/terrain etc. this function should be re-run for the edge array to update appropriately. 
+//
+// UE4 name of this method: PregenerateGameplayGrids
+// Blueprint category: Startup
+
+&aka("PregenerateGameplayGrids")
+
+() 
+
+$$ @spawn_tile_grid
+// Spawns Tile Instnced meshes in a grid pattern based on grid size and type
+//
+// UE4 name of this method: SpawnTileGrid
+// Blueprint category: Startup
+
+&aka("SpawnTileGrid")
+
+() 
+
+$$ @setup_grid_collision
+// Individual collision for each tile is disabled
+// at runtime for performance reasons. the collision
+// plane does the same thing cheaper.
+//
+// UE4 name of this method: SetupGridCollision
+// Blueprint category: Startup
+
+&aka("SetupGridCollision")
+
+() 
+
+$$ @generate_grid_edges
+// Generates all grid edges, determining what tiles can be moved between and the movement cost for each edge.
+//
+// UE4 name of this method: GenerateGridEdges
+// Blueprint category: Startup
+
+&aka("GenerateGridEdges")
+
+() 
+
+$$ @edge_cost_from_zdifference
+// Compares height difference of two tiles. Returns the appropriate edge cost between them based on the values specified. If the difference is larger than the Height Impassable Cutoff, returns 0 (indicating that the edge should be removed). If the difference is lower than Height Impassable Cutoff, but higher than Height Slow Increment, returns a value corresponding to the height difference divided by the height slow increment.
+//
+// UE4 name of this method: GetEdgeCostFromZDifference
+// Blueprint category: Startup
+
+&aka("GetEdgeCostFromZDifference")
+
+(Real    parent_z   : 0.0
+ Integer grid_index : 0
+ Integer cost       : 0) 
+
+$$ @convert_indexes_to_offset_locations
+// Converts an array of grid indexes into locations offset by TileInRangeOffset
+//
+// UE4 name of this method: ConvertIndexesToOffsetLocations
+// Blueprint category: Utility
+
+&aka("ConvertIndexesToOffsetLocations")
+
+(List{Integer} indexes   : List{Integer}!
+ List{Vector3} locations : List{Vector3}!) 
+
+$$ @spawn_tile_markers_at_locations
+// Spawns specified tile markers (decals or ISMs as specified) at all locations inputted. Spawned decals are stored in the CurrentDecals array, primarily so they can be easily deleted later if needed
+//
+// UE4 name of this method: SpawnTileMarkersAtLocations
+// Blueprint category: Miscellaneous
+
+&aka("SpawnTileMarkersAtLocations")
+
+(List{Vector3}                locations  : List{Vector3}!
+ Boolean                      use_decal? : false
+ MaterialInterface            decal      : MaterialInterface!null
+ InstancedStaticMeshComponent mesh       : InstancedStaticMeshComponent!null) 
+
+$$ @is_tile_valid
+// Checks if a tile index is within grid bounds and is passable
+//
+// UE4 name of this method: IsTileValid
+// Blueprint category: Utility
+
+&aka("IsTileValid")
+
+(Integer index  : 0
+ Boolean true_? : false) 
+
+$$ @check_if_straight_adjacent
+// Checks if two adjacent tiles are not diagonally adjacent
+//
+// UE4 name of this method: CheckIfStraightAdjacent
+// Blueprint category: Utility
+
+&aka("CheckIfStraightAdjacent")
+
+(Integer index_1   : 0
+ Integer index_2   : 0
+ Boolean straight? : false) 
+
+$$ @trace_on_grid
+// fires a line trace between two tiles, noting if it is a hit
+//
+// UE4 name of this method: TraceOnGrid
+// Blueprint category: Utility
+
+&aka("TraceOnGrid")
+
+(Integer         start_index     : 0
+ Integer         target_index    : 0
+ ETraceTypeQuery trace_channel   : ETraceTypeQuery.@@visibility
+ EDrawDebugTrace draw_debug_type : EDrawDebugTrace.@@none
+ Real            trace_height    : 0.0
+ Boolean         hit?            : false) 
+
+$$ @evenr_to_axial
+// Converts from even row hexagonal coordinates to axial coordinates
+//
+// UE4 name of this method: EvenrToAxial
+// Blueprint category: Miscellaneous
+
+&aka("EvenrToAxial")
+
+(Integer hex_col : 0
+ Integer hex_row : 0
+ Integer q       : 0
+ Integer r       : 0) 
+
+$$ @evenr_to_cube
+// Converts from even row hexagonal coordinates to cube coordinates
+//
+// UE4 name of this method: EvenrToCube
+// Blueprint category: Miscellaneous
+
+&aka("EvenrToCube")
+
+(Integer hex_col : 0
+ Integer hex_row : 0
+ Integer x       : 0
+ Integer y       : 0
+ Integer z       : 0) 
+
+$$ @spawn_marker_at_index
+// Adds an instance of a specified mesh ISM at the location corresponding to the inputted index. Adds TileInRangeZOffset to the height of the mesh
+//
+// UE4 name of this method: SpawnMarkerAtIndex
+// Blueprint category: Miscellaneous
+
+&aka("SpawnMarkerAtIndex")
+
+(Integer                      index       : 0
+ InstancedStaticMeshComponent marker_mesh : InstancedStaticMeshComponent!null) 
+
+$$ @find_appropriate_default_mesh
+// Checks if user has altered the default mesh. If not, assigns the default mesh
+//
+// UE4 name of this method: FindAppropriateDefaultMesh
+// Blueprint category: Startup
+
+&aka("FindAppropriateDefaultMesh")
+
+(StaticMesh current_mesh : StaticMesh!null
+ StaticMesh square_mesh  : StaticMesh!null
+ StaticMesh hex_mesh     : StaticMesh!null
+) StaticMesh
+
+$$ @select_default_meshes
+// When switching between hex and square grids, assigns the default meshes appropriately if the defaults have not been modified by the user
+//
+// UE4 name of this method: SelectDefaultMeshes
+// Blueprint category: Startup
+
+&aka("SelectDefaultMeshes")
+
+() 
+
+$$ @convert_from_world_to_grid
+// Takes an in-game location and converts it into a grid location (a relative location to grid index 0)
+//
+// UE4 name of this method: ConvertFromWorldToGrid
+// Blueprint category: Utility
+
+&aka("ConvertFromWorldToGrid")
+
+(Vector3  : Vector3!
+ Vector3  : Vector3!) 
+
+$$ @convert_from_grid_to_world
+// Gets a grid location and converts it into an actual world location, taking the Grid Managers transform into account
+//
+// UE4 name of this method: ConvertFromGridToWorld
+// Blueprint category: Utility
+
+&aka("ConvertFromGridToWorld")
+
+(Vector3  : Vector3!
+ Vector3  : Vector3!) 
+
+$$ @find_overlapping_tile_locations
+// Traces from the sky to the ground. If PathTrace hits, traces upwards from hit location. If the new trace does not hit anything before it has traveled HeightBetweenLevels this location is added to the output array. A new trace is then fired at HeightBetweenLevels under the first hit location and the process continues until the trace reaches MinGridHeight or the number of levels exeeds MaxLevels
+//
+// UE4 name of this method: FindOverlappingTileLocations
+// Blueprint category: Startup
+
+&aka("FindOverlappingTileLocations")
+
+(Integer       index          : 0
+ Vector3       start_location : Vector3!
+ List{Vector3} locations      : List{Vector3}!) 
+
+$$ @prevent_incompatible_variable_combinations
+// Prevent the user from choosing incompatible combinations of public variables
+//
+// UE4 name of this method: PreventIncompatibleVariableCombinations
+// Blueprint category: Startup
+
+&aka("PreventIncompatibleVariableCombinations")
+
+() 
+
+$$ @create_grid_locations
+// Create the vector grids that form the basis of moving between grid array indexes and world locations
+//
+// UE4 name of this method: CreateGridLocations
+// Blueprint category: Startup
+
+&aka("CreateGridLocations")
+
+() 
+
+$$ @setup_heightmap_box
+// Scale and Position HeightmapBox. Is used to show the the maximum and minimum Z locations on which heightmap tracing is used
+//
+// UE4 name of this method: SetupHeightmapBox
+// Blueprint category: Startup
+
+&aka("SetupHeightmapBox")
+
+() 
+
+$$ @setup_collision_plane
+// Scale and position the collision plane. This makes individual collision volumes unecessary for flat grids, and makes it possible to place meshes in the viewport if the default tile is invisible
+//
+// UE4 name of this method: SetupCollisionPlane
+// Blueprint category: Startup
+
+&aka("SetupCollisionPlane")
+
+() 
+
+$$ @setup_scale_and_default_tiles
+// Setup the default mesh and tile size
+//
+// UE4 name of this method: SetupScaleAndDefaultTiles
+// Blueprint category: Startup
+
+&aka("SetupScaleAndDefaultTiles")
+
+() 
+
+$$ @remove_unreachable_tiles
+// If the ReachableTileMarkers array is not empty, runs pathfinding from each of these markers, making any tiles that are not found impassable. Used mostly for looks, so that the hover marker does not appear over tiles the player could never reach.
+//
+// UE4 name of this method: RemoveUnreachableTiles
+// Blueprint category: Startup
+
+&aka("RemoveUnreachableTiles")
+
+() 
+
+$$ @realign_and_attach_all_unit_meshes
+// Attaches all units to the grid manager, ensures their skeletal meshes align with their collision capsules and centers them on their tile.
+//
+// UE4 name of this method: RealignAndAttachAllUnitMeshes
+// Blueprint category: Startup
+
+&aka("RealignAndAttachAllUnitMeshes")
+
+() 
+
+$$ @add_all_tile_actor_edges
+//  Gets the edge costs of all tile actors and add them to the edge array.
+//
+// UE4 name of this method: AddAllTileActorEdges
+// Blueprint category: Startup
+
+&aka("AddAllTileActorEdges")
+
+() 
+
+$$ @remove_too_steep_edges
+// Set the edges of tiles to impassable if they are further apart than the HeightImpassableCutoff to their neighbors
+//
+// UE4 name of this method: RemoveTooSteepEdges
+// Blueprint category: Startup
+
+&aka("RemoveTooSteepEdges")
+
+() 
+
+$$ @connect_multi_level_tiles
+// Loops through all tiles on levels higher than the base level and connects them to adjacent tiles on any level if the difference in height is sufficiently small, as specified by HeightImpassableCutoff
+//
+// UE4 name of this method: ConnectMultiLevelTiles
+// Blueprint category: Startup
+
+&aka("ConnectMultiLevelTiles")
+
+() 
+
+$$ @convert_grid_struct_to_index
+// Takes X, Y and Z grid positions and converts these into a regular grid index.
+//
+// UE4 name of this method: ConvertGridStructToIndex
+// Blueprint category: Utility
+
+&aka("ConvertGridStructToIndex")
+
+(FGridIndex struct : FGridIndex!
+ Integer    index  : 0) 
+
+$$ @convert_grid_index_to_struct
+// converts a grid index to a struct specifying grid position as X, Y and Z instead of a continous rising number
+//
+// UE4 name of this method: ConvertGridIndexToStruct
+// Blueprint category: Utility
+
+&aka("ConvertGridIndexToStruct")
+
+(Integer    index  : 0
+ FGridIndex struct : FGridIndex!) 
+
+$$ @check_if_tile_is_visible_from_other_tile
+// Checks if tile can be seen from another, using line trace if specified
+//
+// UE4 name of this method: CheckIfTileIsVisibleFromOtherTile
+// Blueprint category: Visibility
+
+&aka("CheckIfTileIsVisibleFromOtherTile")
+
+(Integer start_index       : 0
+ Integer target_index      : 0
+ Real    max_zdifference   : 0.0
+ Integer distance          : 0
+ Integer min_range         : 0
+ Boolean check_visibility? : false
+ Boolean visible?          : false) 
+
+$$ @spawn_debug_marker
+// Spawns an arrow mesh at index or location. Useful for debugging when checking the indexes contained in an array.
+//
+// UE4 name of this method: SpawnDebugMarker
+// Blueprint category: Miscellaneous
+
+&aka("SpawnDebugMarker")
+
+(Vector3 location   : Vector3!
+ Integer index      : 0
+ Boolean use_index? : true) 
+
+$$ @remove_crosshairs
+// Removes all crosshairs spawned by the ShowCrosshairsOnUnits function
+//
+// UE4 name of this method: RemoveCrosshairs
+// Blueprint category: Visibility
+
+&aka("RemoveCrosshairs")
+
+() 
+
+$$ @show_crosshairs_on_units
+// Shows a crosshair next to the health bar of all units specified. By default used to show which units can be seen from a tile being hovered over. Crosshairs are removed by calling the RemoveCrosshairs function
+//
+// UE4 name of this method: ShowCrosshairsOnUnits
+// Blueprint category: Visibility
+
+&aka("ShowCrosshairsOnUnits")
+
+(List{BP_Unit} units : List{BP_Unit}!) 
+
+$$ @trace_for_walls
+// Uses the WallTrace channel to trace straight in all direction from the centre of a tile to the centre of its neightbors. If blocked, edges between these tiles are removed.
+//
+// UE4 name of this method: TraceForWalls
+// Blueprint category: Miscellaneous
+
+&aka("TraceForWalls")
+
+(Integer tile_index         : 0
+ Boolean debug_show_traces? : false) 
+
+$$ @display_tile_edges
+// Pregenerate gameplay grids must be enabled for this function to function. Displays the edges and edge costs of all tiles.
+//
+// UE4 name of this method: DisplayTileEdges
+// Blueprint category: Miscellaneous
+
+&aka("DisplayTileEdges")
+
+() 
+
+$$ @display_tile_indexes
+// Pregenerate gameplay grids must be enabled for this function to function. Displays the grid indexes of all tiles.
+//
+// UE4 name of this method: DisplayTileIndexes
+// Blueprint category: Miscellaneous
+
+&aka("DisplayTileIndexes")
+
+() 
+
+$$ @collision_plane_and_heightmap_box_scale_and_location_set
+// Scales the collision box and heightmap box to cover the entire grid
+//
+// UE4 name of this method: SetCollisionPlaneAndHeightmapBoxScaleAndLocation
+// Blueprint category: Startup
+
+&aka("SetCollisionPlaneAndHeightmapBoxScaleAndLocation")
+
+(Vector3 location : Vector3!
+ Real    scale_x  : 0.0
+ Real    scale_y  : 0.0) 
+
+$$ @hex_south_east_even
+// For hex grids: Returns the specified adjacent grid index to the grid index inputted
+//
+// UE4 name of this method: GetHexSouthEastEven
+// Blueprint category: Directions
+
+&aka("GetHexSouthEastEven")
+
+(Integer  : 0
+ Integer  : 0) 
+
+$$ @hex_north_east_even
+// For hex grids: Returns the specified adjacent grid index to the grid index inputted
+//
+// UE4 name of this method: GetHexNorthEastEven
+// Blueprint category: Directions
+
+&aka("GetHexNorthEastEven")
+
+(Integer  : 0
+ Integer  : 0) 
+
+$$ @hex_south_east_odd
+// For hex grids: Returns the specified adjacent grid index to the grid index inputted
+//
+// UE4 name of this method: GetHexSouthEastOdd
+// Blueprint category: Directions
+
+&aka("GetHexSouthEastOdd")
+
+(Integer  : 0
+ Integer  : 0) 
+
+$$ @hex_north_east_odd
+// For hex grids: Returns the specified adjacent grid index to the grid index inputted
+//
+// UE4 name of this method: GetHexNorthEastOdd
+// Blueprint category: Directions
+
+&aka("GetHexNorthEastOdd")
+
+(Integer  : 0
+ Integer  : 0) 
+
+$$ @hex_north_west_even
+// For hex grids: Returns the specified adjacent grid index to the grid index inputted
+//
+// UE4 name of this method: GetHexNorthWestEven
+// Blueprint category: Directions
+
+&aka("GetHexNorthWestEven")
+
+(Integer  : 0
+ Integer  : 0) 
+
+$$ @hex_south_west_even
+// For hex grids: Returns the specified adjacent grid index to the grid index inputted
+//
+// UE4 name of this method: GetHexSouthWestEven
+// Blueprint category: Directions
+
+&aka("GetHexSouthWestEven")
+
+(Integer  : 0
+ Integer  : 0) 
+
+$$ @hex_south_west_odd
+// For hex grids: Returns the specified adjacent grid index to the grid index inputted
+//
+// UE4 name of this method: GetHexSouthWestOdd
+// Blueprint category: Directions
+
+&aka("GetHexSouthWestOdd")
+
+(Integer  : 0
+ Integer  : 0) 
+
+$$ @hexn_nrth_west_odd
+// For hex grids: Returns the specified adjacent grid index to the grid index inputted
+//
+// UE4 name of this method: GetHexnNrthWestOdd
+// Blueprint category: Directions
+
+&aka("GetHexnNrthWestOdd")
+
+(Integer  : 0
+ Integer  : 0) 
+
+$$ @is_index_on_odd_row
+// For hex grids: Returns true if grid index is on an odd row of the grid
+//
+// UE4 name of this method: IsIndexOnOddRow
+// Blueprint category: Miscellaneous
+
+&aka("IsIndexOnOddRow")
+
+(Integer   : 0
+ Boolean ? : false) 
+
+$$ @north_west
+// For Square grids: Returns the specified adjacent grid index to the grid index inputted
+//
+// UE4 name of this method: GetNorthWest
+// Blueprint category: Directions
+
+&aka("GetNorthWest")
+
+(Integer  : 0
+ Integer  : 0) 
+
+$$ @south_west
+// For Square grids: Returns the specified adjacent grid index to the grid index inputted
+//
+// UE4 name of this method: GetSouthWest
+// Blueprint category: Directions
+
+&aka("GetSouthWest")
+
+(Integer  : 0
+ Integer  : 0) 
+
+$$ @south_east
+// For Square grids: Returns the specified adjacent grid index to the grid index inputted
+//
+// UE4 name of this method: GetSouthEast
+// Blueprint category: Directions
+
+&aka("GetSouthEast")
+
+(Integer  : 0
+ Integer  : 0) 
+
+$$ @north_east
+// For Square grids: Returns the specified adjacent grid index to the grid index inputted
+//
+// UE4 name of this method: GetNorthEast
+// Blueprint category: Directions
+
+&aka("GetNorthEast")
+
+(Integer  : 0
+ Integer  : 0) 
+
+$$ @west
+// Returns the specified adjacent grid index to the grid index inputted
+//
+// UE4 name of this method: GetWest
+// Blueprint category: Directions
+
+&aka("GetWest")
+
+(Integer  : 0
+ Integer  : 0) 
+
+$$ @south_square
+// For Square grids: Returns the specified adjacent grid index to the grid index inputted
+//
+// UE4 name of this method: GetSouthSquare
+// Blueprint category: Directions
+
+&aka("GetSouthSquare")
+
+(Integer  : 0
+ Integer  : 0) 
+
+$$ @east
+// Returns the specified adjacent grid index to the grid index inputted
+//
+// UE4 name of this method: GetEast
+// Blueprint category: Directions
+
+&aka("GetEast")
+
+(Integer  : 0
+ Integer  : 0) 
+
+$$ @north_square
+// For Square grids: Returns the specified adjacent grid index to the grid index inputted
+//
+// UE4 name of this method: GetNorthSquare
+// Blueprint category: Directions
+
+&aka("GetNorthSquare")
+
+(Integer  : 0
+ Integer  : 0) 
+
+$$ @adjacent_indexes
+// Gets all indexes adjacent to a tile. Warning: will find tiles outside the grid for tiles on grid edges. Make sure to remove these in later steps if using this function in cases where this might occur.
+//
+// UE4 name of this method: GetAdjacentIndexes
+// Blueprint category: Utility
+
+&aka("GetAdjacentIndexes")
+
+(Integer       index       : 0
+ Boolean       diagonal?   : false
+ Boolean       all_levels? : false
+ List{Integer} integers    : List{Integer}!) 
+
+$$ @convert_location_to_index_2d
+// Gets a location and finds the closest corresponding location. Does not take overlapping tiles into account
+//
+// UE4 name of this method: ConvertLocationToIndex2D
+// Blueprint category: Utility
+
+&aka("ConvertLocationToIndex2D")
+
+(Vector3 vector           : Vector3!
+ Integer index            : 0
+ Vector3 corrected_vector : Vector3!) 
+
+$$ @convert_location_to_index_3dnaive
+// Converts a location to a grid index using traces. Is used in cases where the heightmap has not yet been generated. If heightmap is already generated, instead use the more efficient non-naive version of this function
+//
+// UE4 name of this method: ConvertLocationToIndex3DNaive
+// Blueprint category: Startup
+
+&aka("ConvertLocationToIndex3DNaive")
+
+(Vector3 vector   : Vector3!
+ Boolean success? : false
+ Integer index    : 0
+ Vector3 location : Vector3!) 
+
+$$ @convert_location_to_index_3d
+// Gets a location and finds the closest corresponding location. Takes overlapping tiles into account
+//
+// UE4 name of this method: ConvertLocationToIndex3D
+// Blueprint category: Utility
+
+&aka("ConvertLocationToIndex3D")
+
+(Vector3 vector   : Vector3!
+ Boolean success? : false
+ Integer index    : 0) 
+
+$$ @add_multilevel_grid_at_index
+// Checks below the initial location hit by Path Trace during startup, searching for platforms with enough space above them that they should be walkable without units clipping through the roof. Keep searching until all potential platforms are found.
+//
+// UE4 name of this method: AddMultilevelGridAtIndex
+// Blueprint category: Startup
+
+&aka("AddMultilevelGridAtIndex")
+
+(Integer index          : 0
+ Vector3 start_location : Vector3!
+ Integer top_level      : 0) 
+
+$$ @make_tile_passable
+// Adds edges to all adjacent tiles on the same level that are not impassable. Generally do not use this function and use AddEdge instead. This function does not connect to tiles on other levels and can cause issues if the tile is on an edge.
+//
+// UE4 name of this method: MakeTilePassable
+// Blueprint category: Miscellaneous
+
+&aka("MakeTilePassable")
+
+(Integer index : 0
+ Integer cost  : 1) 
+
+$$ @add_edge_both_ways
+// Adds an edge from a tile to another, as well as from the target defined by the edge back to this tile
+//
+// UE4 name of this method: AddEdgeBothWays
+// Blueprint category: Utility
+
+&aka("AddEdgeBothWays")
+
+(Integer tile_index : 0
+ Integer edge       : 0
+ Integer cost       : 1) 
+
+$$ @add_edge
+// Adds a single edge to an index of the edge array
+//
+// UE4 name of this method: AddEdge
+// Blueprint category: Utility
+
+&aka("AddEdge")
+
+(Integer tile_index : 0
+ Integer edge       : 0
+ Integer cost       : 1) 
+
+$$ @block_corners_inbetween_diagonal_tiles
+// Removes the diagonal edge between two tiles. Used for making certain tiles block movement across their corners
+//
+// UE4 name of this method: BlockCornersInbetweenDiagonalTiles
+// Blueprint category: Startup
+
+&aka("BlockCornersInbetweenDiagonalTiles")
+
+(Integer index_1 : 0
+ Integer index_2 : 0) 
+
+$$ @remove_tile_edge_both_ways
+// Removes the edges connecting two tiles in both directions, making it impossible to move directly between them.
+//
+// UE4 name of this method: RemoveTileEdgeBothWays
+// Blueprint category: Utility
+
+&aka("RemoveTileEdgeBothWays")
+
+(Integer index_1 : 0
+ Integer index_2 : 0) 
+
+$$ @make_tile_impassable
+// Removes all edges of tile as well as all edges going to this tile from neighboring tiles
+//
+// UE4 name of this method: MakeTileImpassable
+// Blueprint category: Utility
+
+&aka("MakeTileImpassable")
+
+(Integer index : 0) 
+
+$$ @edge_cost_set
+// Sets the cost of an existing edge to a different cost as specified.
+//
+// UE4 name of this method: SetEdgeCost
+// Blueprint category: Utility
+
+&aka("SetEdgeCost")
+
+(Integer tile_index : 0
+ Integer edge       : 0
+ Integer new_cost   : 0) 
+
+$$ @remove_tile_edge
+// Removes the specified edge from the edges array
+//
+// UE4 name of this method: RemoveTileEdge
+// Blueprint category: Utility
+
+&aka("RemoveTileEdge")
+
+(Integer tile_index : 0
+ Integer edge       : 0) 
+
+$$ @add_tile_edges_to_grid_edges_array
+// Adds the edges of a tile to the edge array by adding them to the index of the tile as well as connection up neighboring tiles to this tile appropriately
+//
+// UE4 name of this method: AddTileEdgesToGridEdgesArray
+// Blueprint category: Startup
+
+&aka("AddTileEdgesToGridEdgesArray")
+
+(BP_GA_Tile tile : BP_GA_Tile!null) 
+
+$$ @teleport_unit_on_grid
+// Moves a unit from one tile to another, updating the units array appropriately
+//
+// UE4 name of this method: TeleportUnitOnGrid
+// Blueprint category: Utility
+
+&aka("TeleportUnitOnGrid")
+
+(Transform transform  : Transform!
+ Boolean   use_index? : true
+ Integer   index      : 0
+ BP_Unit   unit       : BP_Unit!null) 
+
+$$ @find_distance_iin_tiles_between_indexes
+// Finds number of tiles separating two tile indexes. (renamed from Find Distance (in Tiles) Between Indexes)
+//
+// UE4 name of this method: FindDistanceIinTilesBetweenIndexes
+// Blueprint category: Utility
+
+&aka("FindDistanceIinTilesBetweenIndexes")
+
+(Integer index_1         : 0
+ Integer index_2         : 0
+ Boolean diamond_shaped? : false
+ Integer distance        : 0) 
+
+$$ @is_tile_impassable
+// Checks if grid index has any edges. If not, is assumed to be impassable. Note: Can potentially be moved into from other tiles, but cannot be moved out of.
+//
+// UE4 name of this method: IsTileImpassable
+// Blueprint category: Pathfinding
+
+&aka("IsTileImpassable")
+
+(Integer index         : 0
+ Boolean return_value? : false) 
+
+$$ @scale_decal_relative_to_tile_size
+// resizes a decal component relative to the size of the grid
+//
+// UE4 name of this method: ScaleDecalRelativeToTileSize
+// Blueprint category: Startup
+
+&aka("ScaleDecalRelativeToTileSize")
+
+(DecalComponent decal_component : DecalComponent!null) 
+
+$$ @marker_location_set
+// Sets the location of a marker, either directly or using a grid index
+//
+// UE4 name of this method: SetMarkerLocation
+// Blueprint category: Utility
+
+&aka("SetMarkerLocation")
+
+(Vector3             location        : Vector3!
+ Boolean             use_index?      : true
+ Integer             index           : 0
+ DecalComponent      decal_component : DecalComponent!null
+ StaticMeshComponent smcomponent     : StaticMeshComponent!null
+ Boolean             visibility?     : false) 
+
+$$ @marker_visibility_set
+// Sets the visibility of a marker. Either for a decal or static mesh depending on the value of Use Decals in BP_GridManager
+//
+// UE4 name of this method: SetMarkerVisibility
+// Blueprint category: Utility
+
+&aka("SetMarkerVisibility")
+
+(Boolean             new_visibility? : false
+ DecalComponent      decal           : DecalComponent!null
+ StaticMeshComponent static_mesh     : StaticMeshComponent!null) 
+
+$$ @display_path_as_spline
+// Spawns spline meshes all along the inputted spline
+//
+// UE4 name of this method: DisplayPathAsSpline
+// Blueprint category: Pathfinding
+
+&aka("DisplayPathAsSpline")
+
+(SplineComponent path_spline    : SplineComponent!null
+ List{Vector3}   path_locations : List{Vector3}!) 
+
+$$ @clear_all_in_range_mesh_markers
+// Clears all tiles in move/sight range
+//
+// UE4 name of this method: ClearAllInRangeMeshMarkers
+// Blueprint category: Visibility
+
+&aka("ClearAllInRangeMeshMarkers")
+
+() 
+
+$$ @create_spline_path
+// Makes an array of grid locations from an array of grid indexes and builds a spline from these.
+//
+// UE4 name of this method: CreateSplinePath
+// Blueprint category: Pathfinding
+
+&aka("CreateSplinePath")
+
+(List{Integer}   path_indexes   : List{Integer}!
+ Vector3         offset         : Vector3!
+ List{Vector3}   path_locations : List{Vector3}!
+ SplineComponent path_spline    : SplineComponent!null) 
+
+$$ @display_path_as_instanced_meshes
+// Spawns ISMs (specified by the path mesh set in the grid manager's public variables) on selected locations, rotating them to align with the path.
+//
+// UE4 name of this method: DisplayPathAsInstancedMeshes
+// Blueprint category: Pathfinding
+
+&aka("DisplayPathAsInstancedMeshes")
+
+(List{Vector3} path_locations : List{Vector3}!) 
+
+$$ @create_base_edges
+// Pregenerate Gameplay Grids: Generates some of the grids used for gameplay in the construction scripts o they won't have to load on Event Begin Play. Speeds up startup, but slows down the construction script. Activate before packaging.
+//
+// UE4 name of this method: CreateBaseEdges
+// Blueprint category: Startup
+
+&aka("CreateBaseEdges")
+
+() 
+
+$$ @convert_index_to_location_hex_grid
+// Used when first generating the grid. Do not use on runtime. Instead get the index from the Vector Field Array, which is generated using this function.
+//
+// UE4 name of this method: ConvertIndexToLocationHexGrid
+// Blueprint category: Startup
+
+&aka("ConvertIndexToLocationHexGrid")
+
+(Integer index  : 0
+ Vector3 vector : Vector3!) 
+
+$$ @convert_index_to_location_square_grid
+// Used when first generating the grid. Do not use on runtime. Instead get the index from the Vector Field Array, which is generated using this function.
+//
+// UE4 name of this method: ConvertIndexToLocationSquareGrid
+// Blueprint category: Startup
+
+&aka("ConvertIndexToLocationSquareGrid")
+
+(Integer index  : 0
+ Vector3 vector : Vector3!) 
+
+$$ @convert_instances_to_actors
+// Reverses the process done by checking instantiate
+//
+// UE4 name of this method: ConvertInstancesToActors
+// Blueprint category: Miscellaneous
+
+&aka("ConvertInstancesToActors")
+
+() 
+
+$$ @convert_index_to_location
+// Finds the location corresponding to a grid index (renamed from Index To Vector on Grid)
+//
+// UE4 name of this method: ConvertIndexToLocation
+// Blueprint category: Utility
+
+&aka("ConvertIndexToLocation")
+
+(Integer index   : 0
+ Real    zoffset : 0.0
+ Vector3 vector  : Vector3!) 
+
+$$ @clear_path
+// Clears all path spline components or all Path ISMs.
+//
+// UE4 name of this method: ClearPath
+// Blueprint category: Pathfinding
+
+&aka("ClearPath")
+
+() 
+
+$$ @print_elapsed_time
+// For debugging. Prints the time passed in milliseconds since this function was last run. Only gives an accurate time for intervals of less than one second.
+//
+// UE4 name of this method: PrintElapsedTime
+// Blueprint category: Miscellaneous
+
+&aka("PrintElapsedTime")
+
+(Color   text_color  : Color!rgba(1.0,1.0,1.0,1.0)
+ String  label       : ""
+ Boolean do_not_log? : false) 
+
+$$ @add_viewport_units_to_grid_units_array
+// Gets all units in game and adds them to the Units map based on their index variable
+//
+// UE4 name of this method: AddViewportUnitsToGridUnitsArray
+// Blueprint category: Startup
+
+&aka("AddViewportUnitsToGridUnitsArray")
+
+() 
+
+$$ @indexes_in_range
+// Gets all grid indexes within a set range of a tile index
+//
+// UE4 name of this method: GetIndexesInRange
+// Blueprint category: Visibility
+
+&aka("GetIndexesInRange")
+
+(Integer      start_index     : 0
+ Integer      range           : 0
+ Boolean      diamond_shaped? : false
+ Boolean      all_levels?     : false
+ List{FRange} in_range_tiles  : List{FRange}!) 
+
+$$ @hit_tile_location_and_index
+// Gets the tile index and location corresponding to the point under the cursor
+//
+// UE4 name of this method: GetHitTileLocationAndIndex
+// Blueprint category: Utility
+
+&aka("GetHitTileLocationAndIndex")
+
+(Integer index      : 0
+ Vector3 location   : Vector3!
+ Boolean trace_hit? : false) 
+
+$$ @activate_grid_manager
+// Activate Grid Manager
+//
+// UE4 name of this method: ActivateGridManager
+
+&aka("ActivateGridManager")
+
+() 
+
+$$ @complete_setup_from_controller
+// Complete Setup from Controller
+//
+// UE4 name of this method: CompleteSetupFromController
+
+&aka("CompleteSetupFromController")
+
+() 
+
+$$ @end_action
+// End Action
+//
+// UE4 name of this method: EndAction
+
+&aka("EndAction")
+
+() 
+
+$$ @animate_action
+// Animate Action
+//
+// UE4 name of this method: AnimateAction
+
+&aka("AnimateAction")
+
+(FAction action : FAction!) 
+
+$$ .

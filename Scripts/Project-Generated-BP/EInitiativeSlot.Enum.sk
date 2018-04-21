@@ -1,0 +1,32 @@
+// EInitiative Slot
+//
+// UE4 name of this enum: EInitiativeSlot
+
+// UE4 Asset Name: EInitiativeSlot
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/EInitiativeSlot"
+
+annotations: &reflected_data &name("EInitiativeSlot")
+
+$$ @@
+
+EInitiativeSlot !@@end
+EInitiativeSlot !@@first
+EInitiativeSlot !@@second
+EInitiativeSlot !@@last_in_faction
+EInitiativeSlot !@@einitiative_slot_max
+
+$$ @@!
+// EInitiativeSlot
+// EnumPath: /Game/AdvancedTurnBasedTileToolkit/Core/EInitiativeSlot.EInitiativeSlot
+
+()
+
+  [
+  @@end:                  EInitiativeSlot!int(0)
+  @@first:                EInitiativeSlot!int(1)
+  @@second:               EInitiativeSlot!int(2)
+  @@last_in_faction:      EInitiativeSlot!int(3)
+  @@einitiative_slot_max: EInitiativeSlot!int(4)
+  ]
+
+$$ .

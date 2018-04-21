@@ -1,0 +1,27 @@
+// FTwo Ints
+//
+// UE4 name of this struct: FTwoInts
+
+// UE4 Asset Name: FTwoInts
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Grid/FTwoInts"
+
+annotations: &reflected_data &name("FTwoInts")
+
+$$ @
+
+&raw("Int1_20_04F5146E4812421E189381BAA7434B02") Integer !@int_1_20_04f5 // Int 1
+&raw("Int2_21_238D510F4FAE44066E03EEA11735CD85") Integer !@int_2_21_238d // Int 2
+
+$$ @!
+() FTwoInts
+
+$$ @!copy
+(FTwoInts other) FTwoInts
+
+$$ @assign
+(FTwoInts other) FTwoInts
+
+$$ @!!
+() FTwoInts
+
+$$ .

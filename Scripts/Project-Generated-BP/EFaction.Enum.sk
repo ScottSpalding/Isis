@@ -1,0 +1,32 @@
+// EFaction
+//
+// UE4 name of this enum: EFaction
+
+// UE4 Asset Name: EFaction
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Units/EFaction"
+
+annotations: &reflected_data &name("EFaction")
+
+$$ @@
+
+EFaction !@@empty
+EFaction !@@player
+EFaction !@@enemy
+EFaction !@@faction_3
+EFaction !@@efaction_max
+
+$$ @@!
+// EFaction
+// EnumPath: /Game/AdvancedTurnBasedTileToolkit/Core/Units/EFaction.EFaction
+
+()
+
+  [
+  @@empty:        EFaction!int(0)
+  @@player:       EFaction!int(1)
+  @@enemy:        EFaction!int(2)
+  @@faction_3:    EFaction!int(3)
+  @@efaction_max: EFaction!int(4)
+  ]
+
+$$ .

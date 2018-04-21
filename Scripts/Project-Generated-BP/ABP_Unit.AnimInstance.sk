@@ -1,0 +1,91 @@
+// ABP Unit
+//
+// UE4 name of this class: ABP_Unit_C
+
+// UE4 Asset Name: ABP_Unit
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Units/ABP_Unit"
+
+annotations: &reflected_data &name("ABP_Unit_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")                                                  PointerToUberGraphFrame   !@uber_graph_frame                        // Currently unsupported */
+&raw("AnimGraphNode_Root_E02A347C471A2D10D6A5DF82F916D9F0")             AnimNode_Root             !@anim_graph_node_root_e02a               // Anim Graph Node Root E02A347C471A2D10D6A5DF82F916D9F0
+&raw("AnimGraphNode_TransitionResult_F1B9309B43E8D13FFEB5C99C82691C5C") AnimNode_TransitionResult !@anim_graph_node_transition_result_f1b9  // Anim Graph Node Transition Result F1B9309B43E8D13FFEB5C99C82691C5C
+&raw("AnimGraphNode_TransitionResult_3D01319643B58BFEB1ABFBB500DAB7EE") AnimNode_TransitionResult !@anim_graph_node_transition_result_3d01  // Anim Graph Node Transition Result 3D01319643B58BFEB1ABFBB500DAB7EE
+&raw("AnimGraphNode_TransitionResult_D7F518FB439D1B9188E32296ADA91C0B") AnimNode_TransitionResult !@anim_graph_node_transition_result_d7f5  // Anim Graph Node Transition Result D7F518FB439D1B9188E32296ADA91C0B
+&raw("AnimGraphNode_TransitionResult_1F2D3E504ECAD015B5C75785B116EC5F") AnimNode_TransitionResult !@anim_graph_node_transition_result_1f2d  // Anim Graph Node Transition Result 1F2D3E504ECAD015B5C75785B116EC5F
+&raw("AnimGraphNode_TransitionResult_DD7C1FFB45E81116594C238ECBD7458B") AnimNode_TransitionResult !@anim_graph_node_transition_result_dd7c  // Anim Graph Node Transition Result DD7C1FFB45E81116594C238ECBD7458B
+&raw("AnimGraphNode_SequencePlayer_1AD335B54C8EFEA774E43E9D11D8B3FA")   AnimNode_SequencePlayer   !@anim_graph_node_sequence_player_1ad3    // Anim Graph Node Sequence Player 1AD335B54C8EFEA774E43E9D11D8B3FA
+&raw("AnimGraphNode_StateResult_C2A4BA484FC083AC6BD507B5082318B4")      AnimNode_Root             !@anim_graph_node_state_result_c2a4       // Anim Graph Node State Result C2A4BA484FC083AC6BD507B5082318B4
+&raw("AnimGraphNode_SequencePlayer_CE11CF7E497815C5386697AB1D060478")   AnimNode_SequencePlayer   !@anim_graph_node_sequence_player_ce11    // Anim Graph Node Sequence Player CE11CF7E497815C5386697AB1D060478
+&raw("AnimGraphNode_StateResult_29C008AD4451092097D1F4B14ECDDFE1")      AnimNode_Root             !@anim_graph_node_state_result_29c0       // Anim Graph Node State Result 29C008AD4451092097D1F4B14ECDDFE1
+&raw("AnimGraphNode_SequencePlayer_E7D30EF245A0AC2661A0CB8C99B2CA2E")   AnimNode_SequencePlayer   !@anim_graph_node_sequence_player_e7d3    // Anim Graph Node Sequence Player E7D30EF245A0AC2661A0CB8C99B2CA2E
+&raw("AnimGraphNode_StateResult_E9FDE8A24E4682C961A6DA94F174D1E7")      AnimNode_Root             !@anim_graph_node_state_result_e9fd       // Anim Graph Node State Result E9FDE8A24E4682C961A6DA94F174D1E7
+&raw("AnimGraphNode_BlendSpacePlayer_87D0E30C4C9BDCFCE60D33916C975617") AnimNode_BlendSpacePlayer !@anim_graph_node_blend_space_player_87d0 // Anim Graph Node Blend Space Player 87D0E30C4C9BDCFCE60D33916C975617
+&raw("AnimGraphNode_StateResult_5F485B434631BE879A1E45B4CA4CF4FE")      AnimNode_Root             !@anim_graph_node_state_result_5f48       // Anim Graph Node State Result 5F485B434631BE879A1E45B4CA4CF4FE
+&raw("AnimGraphNode_StateMachine_39DB3AF944746E95D48A4E9CC3CE75E6")     AnimNode_StateMachine     !@anim_graph_node_state_machine_39db      // Anim Graph Node State Machine 39DB3AF944746E95D48A4E9CC3CE75E6
+&raw("bAttack")                                                         Boolean                   !@attack?                                 // Attack
+&raw("bDeath")                                                          Boolean                   !@death?                                  // Death
+&raw("bTakeDamage")                                                     Boolean                   !@take_damage?                            // Take Damage
+&raw("bBreak")                                                          Boolean                   !@break?                                  // Break
+&raw("Speed")                                                           Real                      !@speed                                   // Speed
+&raw("OnActionHit")                                                     MulticastDelegate()       !@on_action_hit                           // On Action Hit
+&raw("bShoot")                                                          Boolean                   !@shoot?                                  // Shoot
+&raw("OwningUnit")                                                      BP_Unit                   !@owning_unit                             // Owning Unit
+
+$$ @anim_notify_hit_end
+// Anim Notify Hit End
+//
+// UE4 name of this method: AnimNotify_HitEnd
+
+&aka("AnimNotify_HitEnd")
+
+() 
+
+$$ @anim_notify_action_hit
+// Anim Notify Action Hit
+//
+// UE4 name of this method: AnimNotify_ActionHit
+
+&aka("AnimNotify_ActionHit")
+
+() 
+
+$$ @anim_notify_action_end
+// Anim Notify Action End
+//
+// UE4 name of this method: AnimNotify_ActionEnd
+
+&aka("AnimNotify_ActionEnd")
+
+() 
+
+$$ @anim_notify_death_end
+// Anim Notify Death End
+//
+// UE4 name of this method: AnimNotify_DeathEnd
+
+&aka("AnimNotify_DeathEnd")
+
+() 
+
+$$ @animate_ability
+// Animate Ability
+//
+// UE4 name of this method: AnimateAbility
+
+&aka("AnimateAbility")
+
+(FAction ability_action : FAction!) 
+
+$$ @animate_movement
+// Animate Movement
+//
+// UE4 name of this method: AnimateMovement
+
+&aka("AnimateMovement")
+
+(Real speed : 0.0) 
+
+$$ .

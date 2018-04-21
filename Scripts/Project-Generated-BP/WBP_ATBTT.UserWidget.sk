@@ -1,0 +1,50 @@
+// A very simple HUD that shows if it's the Player or Enemy turn. Acts as an example for communication between other blueprints and the HUD.
+//
+// UE4 name of this class: WBP_ATBTT_C
+
+// UE4 Asset Name: WBP_ATBTT
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/UI/WBP_ATBTT"
+
+annotations: &reflected_data &name("WBP_ATBTT_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")       PointerToUberGraphFrame !@uber_graph_frame        // Currently unsupported */
+&raw("EndTurn")              Button             !@end_turn                // End Turn
+&raw("NumPlayers")           TextBlock          !@num_players             // Num Players
+&raw("text_game_over")       TextBlock          !@text_game_over          // Text Game Over
+&raw("WaitingForPlayersBox") HorizontalBox      !@waiting_for_players_box // Waiting for Players Box
+&raw("WBP_AbilityBox")       WBP_AbilityBox     !@wbp_ability_box         // WBP Ability Box
+&raw("WBP_EdgeScrolling")    WBP_EdgeScrolling  !@wbp_edge_scrolling      // WBP Edge Scrolling
+&raw("WBP_Initiative_Bar")   WBP_Initiative_Bar !@wbp_initiative_bar      // WBP Initiative Bar
+&raw("Grid Manager Ref")     BP_GridManager     !@grid_manager_ref        // Grid Manager Ref
+
+$$ @update_waiting_for_players
+// Update Waiting for Players
+//
+// UE4 name of this method: UpdateWaitingForPlayers
+
+&aka("UpdateWaitingForPlayers")
+
+(Integer current_ready_players : 0
+ Integer max_players           : 0) 
+
+$$ @hudturn_toggle
+// HUDTurn Toggle
+//
+// UE4 name of this method: HUDTurnToggle
+
+&aka("HUDTurnToggle")
+
+(Boolean player_turn? : false) 
+
+$$ @game_over_hud
+// Game Over HUD
+//
+// UE4 name of this method: Game Over HUD
+
+&aka("Game Over HUD")
+
+(EFaction winner : EFaction.@@empty) 
+
+$$ .

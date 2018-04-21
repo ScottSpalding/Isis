@@ -1,0 +1,27 @@
+// FEdge Cost
+//
+// UE4 name of this struct: FEdgeCost
+
+// UE4 Asset Name: FEdgeCost
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Grid/FEdgeCost"
+
+annotations: &reflected_data &name("FEdgeCost")
+
+$$ @
+
+&raw("Index_4_160B2584496E59F61DE06C821382105B") Integer !@index_4_160b // Index
+&raw("Cost_5_A9F9F0E74CF53F1494DAC5BEA2D7E35B")  Integer !@cost_5_a9f9  // Cost
+
+$$ @!
+() FEdgeCost
+
+$$ @!copy
+(FEdgeCost other) FEdgeCost
+
+$$ @assign
+(FEdgeCost other) FEdgeCost
+
+$$ @!!
+() FEdgeCost
+
+$$ .

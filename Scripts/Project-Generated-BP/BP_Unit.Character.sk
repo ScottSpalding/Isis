@@ -1,0 +1,275 @@
+// The parent class for all Unit actors. Handles everything except animations, including movement and attacking, taking damage and destroying pawns. Also handles grid snapping and the health bar. To create a new pawn it is recommended to create a duplicate of any of the example pawns instead of creating a child of Unit_Parent as these also hold animation nodes.
+//
+// UE4 name of this class: BP_Unit_C
+
+// UE4 Asset Name: BP_Unit
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Units/BP_Unit"
+
+annotations: &reflected_data &name("BP_Unit_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")                  PointerToUberGraphFrame    !@uber_graph_frame                   // Currently unsupported */
+&raw("HealthBillboard")                 MaterialBillboardComponent !@health_billboard                   // Health Billboard
+&raw("CrosshairBillboard")              BillboardComponent         !@crosshair_billboard                // Crosshair Billboard
+/* &raw("TimelineMove__Direction_E657E17243E601A8A6A39A8C4C629A32")ETimelineDirection !@timeline_move_direction_e657       // Currently unsupported */
+&raw("TimelineMove")                    TimelineComponent          !@timeline_move                      // Timeline Move
+&raw("GridIndex")                       Integer                    !@grid_index                         // DO NOT EDIT: Pawn's index on grid
+&raw("bIgnoreSnapToCustomGrid")         Boolean                    !@ignore_snap_to_custom_grid?        // Should this actor ignore snapping to a custom grid?
+&raw("bPlaceActorAtAnchor")             Boolean                    !@place_actor_at_anchor?             // RESETS AUTOMATICALLY: Moves the actor to the location of its mesh, which might have moved due to grid snapping
+&raw("MaxAP")                           Integer                    !@max_ap                             // The value Current Move is set to at the end of this pawn's turn
+&raw("CurrentAP")                       Integer                    !@current_ap                         // The move a pawn begins play with, in number of tiles/turn
+&raw("Move")                            Integer                    !@move                               // Move distance of unit for 1 AP
+&raw("Range")                           Integer                    !@range                              // How far can the pawn attack?
+&raw("MinimumRange")                    Integer                    !@minimum_range                      // The minimum distance in tiles the unit must be from a tile it wants to target.
+&raw("MaxHealth")                       Real                       !@max_health                         // If Current Health = Max Health the health bar will appear full
+&raw("CurrentHealth")                   Real                       !@current_health                     // Current health of pawn. 0 = dead
+&raw("Damage")                          Real                       !@damage                             // How much damage does the pawn deal?
+&raw("Initiative")                      Real                       !@initiative                         // Higher is earlier. When will this unit act? If equal to another unit this will be determined by the order they were placed. The default units have initiative set to 0 for enemies and 1 for players, sorting them neatly into two separate acting teams.
+&raw("bAIControlled")                   Boolean                    !@aicontrolled?                      // Should this unit be controlled by the AI (does not turn it into an enemy unless so specified by its faction and Allied Factions)
+&raw("Faction")                         EFaction                   !@faction                            // DO NOT CHOOSE EMPTY. Which faction is the unit. Checked by other unit's AlliedFactions to determine how they interact with this unit
+/* &raw("AlliedFactions")                  None                       !@allied_factions                    // Currently unsupported */
+&raw("bDiamondShapedVisibility")        Boolean                    !@diamond_shaped_visibility?         // Should visibility be calculated in a diamong shape (diagonal distance counting as twice as long as straight)
+&raw("MaxSpeed")                        Real                       !@max_speed                          // Max speed along spline
+&raw("Acceleration")                    Real                       !@acceleration                       // Acceleration along spline up to max speed
+&raw("CurrentSpeed")                    Real                       !@current_speed                      // Current Speed
+&raw("CurrentSplineDistance")           Real                       !@current_spline_distance            // Current Spline Distance
+&raw("StopXTilesFromTarget")            Integer                    !@stop_xtiles_from_target            // Stop XTiles from Target
+&raw("GridManagerRef")                  BP_GridManager             !@grid_manager_ref                   // Grid Manager Ref
+&raw("DynamicHealthBarMaterial")        MaterialInstanceDynamic    !@dynamic_health_bar_material        // DO NOT EDIT: Used  to visualize remaining health in the health bar
+&raw("PreferredRange")                  EMovePriority              !@preferred_range                    // This unit preference when it comes to deciding move location when using attributes that do not generate values for all possible tiles. Short move means the unit moves as few tiles as possible towards it target while it still can use its ability. Long and close range means it prefers to be as far away/close to its target as possible.
+&raw("PathfindingType")                 EPathfindingType           !@pathfinding_type                   // Type of pathfinding this unit is set to use by default. Properties of this pathfinding is defined in the GridManager's RunPathfinding function.
+&raw("MaxSearchRange")                  Integer                    !@max_search_range                   // How far will the AI pathfinding search for a target before giving up?
+&raw("SpeedModifier")                   Real                       !@speed_modifier                     // Speed Modifier
+&raw("ConstuctionScriptFactionCompare") EFaction                   !@constuction_script_faction_compare // Used by construction script to automatically add own faction to AlliedFactions
+&raw("bTraceForGround")                 Boolean                    !@trace_for_ground?                  // If true, will trace to find the ground every tick while movement. Can prevent clipping on bumpy terrain.
+&raw("bExhausted")                      Boolean                    !@exhausted?                         // Exhausted
+&raw("PathSplineRef")                   BP_PathSpline              !@path_spline_ref                    // Path Spline Ref
+&raw("GameStateRef")                    BP_ATBTT_State             !@game_state_ref                     // Game State Ref
+&raw("OnActionHit")                     MulticastDelegate()        !@on_action_hit                      // On Action Hit
+&raw("Icon")                            Texture2D                  !@icon                               // Icon representing this unit. Used in initiative bar
+&raw("Name")                            Name                       !@name                               // Name of this unit. Used in initiative bar
+&raw("bAutoInitiativeOnSpawn")          Boolean                    !@auto_initiative_on_spawn?          // If true, this unit will automatically be added at the end of initiative when spawned in the game. If false, must be added manually or it will never get its turn.
+&raw("DefaultAbility")                  EntityClass                !@default_ability                    // Class of ability that this unit uses if it does not have an ability system component.
+&raw("DefaultAbilityRef")               BP_Ability                 !@default_ability_ref                // Default Ability Ref
+&raw("EnterTileCounter")                Integer                    !@enter_tile_counter                 // Enter Tile Counter
+&raw("ExitTileCounter")                 Integer                    !@exit_tile_counter                  // Exit Tile Counter
+&raw("bAttachOnConstruction")           Boolean                    !@attach_on_construction?            // If true, unit will attach itself to the grid manager when placed in the viewport
+&raw("DefaultOwningPlayer")             Integer                    !@default_owning_player              // Should always be 0 for single player games. On login, players will get control of all units of one specific DefaultOwningPlayer value. If a unit is activated that does not have an owning player, the game will stop, as no one can give input to this unit, uless it is AI controlled.
+&raw("Size")                            Integer                    !@size                               // Designates how many tiles the unit occupies. 
+&raw("BigUnitOffset")                   Vector3                    !@big_unit_offset                    // Big Unit Offset
+&raw("CurrentModifiedBigIndexes")       List{FEdgeCost}            !@current_modified_big_indexes       // Current Modified Big Indexes
+&raw("bOwnedByServer")                  Boolean                    !@owned_by_server?                   // Owned by Server
+&raw("bVersion181")                     Boolean                    !@version_181?                       // Version 181
+
+$$ @handle_unit_spawning
+// Used in construction script for when a unit is spawned. Adds the unit to the grid and initiative order
+//
+// UE4 name of this method: HandleUnitSpawning
+
+&aka("HandleUnitSpawning")
+
+() 
+
+$$ @snap_to_grid
+// Moves the mesh of the unit to the center of the closest tile. Used in construction script when dragging the unit
+//
+// UE4 name of this method: SnapToGrid
+
+&aka("SnapToGrid")
+
+() 
+
+$$ @default_allied_faction_set
+// Makes the unit allied to its own faction and enemy of all other factions by default
+//
+// UE4 name of this method: SetDefaultAlliedFaction
+
+&aka("SetDefaultAlliedFaction")
+
+() 
+
+$$ @attach_to_grid_manager_and_determine_index
+// Attaches the unit to the grid manager if enabled and finds the unit's current grid index based on its location
+//
+// UE4 name of this method: AttachToGridManagerAndDetermineIndex
+
+&aka("AttachToGridManagerAndDetermineIndex")
+
+() 
+
+$$ @up_health_bar_set
+// Sets up parameter for adjusting health bar fill
+//
+// UE4 name of this method: SetUpHealthBar
+
+&aka("SetUpHealthBar")
+
+() 
+
+$$ @align_unit_to_grid
+// Ensures that the unit is centered on its tile and the skeletal mesh is centered on the capsule. Will also attach to grid manager if enabled. Called by the grid manager at the start of the game, on all clients.
+//
+// UE4 name of this method: AlignUnitToGrid
+
+&aka("AlignUnitToGrid")
+
+(Boolean attach? : true) 
+
+$$ @simulate_move
+// Moves the reference of this unit from index to index in the Units Map, checking for any events along the way. Does not physically move the actor, which should be called later.
+//
+// UE4 name of this method: SimulateMove
+
+&aka("SimulateMove")
+
+(List{Integer} path_indexes      : List{Integer}!
+ Integer       new_actions_count : 0) 
+
+$$ @handle_enter_exit_tile_events
+// Calls Enter and Exit tile events in the grid manager as they occur during animating unit movement
+//
+// UE4 name of this method: HandleEnterExitTileEvents
+
+&aka("HandleEnterExitTileEvents")
+
+() 
+
+$$ @remove_unit_from_game
+// Removes all references of this unit from the grid, initiative and the turn manager, making it undetectable by most ATBTT functions. Will in practice kill the unit without having to destroy it. Useful if unit is killed during combat simulations, but these animations have not played out yet, requiring the actor itself to exist for animation purposes, but preventing it from being targeted or selected.
+//
+// UE4 name of this method: RemoveUnitFromGame
+
+&aka("RemoveUnitFromGame")
+
+() 
+
+$$ @refresh_unit
+// Sets current AP to the same as max and sets exhausted to false. Run to make unit abailable for use in a new turn.
+//
+// UE4 name of this method: RefreshUnit
+
+&aka("RefreshUnit")
+
+() 
+
+$$ @accelerate_and_move_unit_along_spline
+// Moves and rotates unit along its PathSpline at a speed and acceleration defined by the corresponding attributes
+//
+// UE4 name of this method: AccelerateAndMoveUnitAlongSpline
+
+&aka("AccelerateAndMoveUnitAlongSpline")
+
+() 
+
+$$ @end_action
+// End Action
+//
+// UE4 name of this method: EndAction
+
+&aka("EndAction")
+
+() 
+
+$$ @kill_unit
+// Kill Unit
+//
+// UE4 name of this method: KillUnit
+
+&aka("KillUnit")
+
+(Boolean auto_animate? : false) 
+
+$$ @choose_move_or_stop
+// Choose Move or Stop
+//
+// UE4 name of this method: ChooseMoveOrStop
+
+&aka("ChooseMoveOrStop")
+
+() 
+
+$$ @activate_unit
+// Activate Unit
+//
+// UE4 name of this method: ActivateUnit
+
+&aka("ActivateUnit")
+
+() 
+
+$$ @stop_move_timeline
+// Stop Move Timeline
+//
+// UE4 name of this method: StopMoveTimeline
+
+&aka("StopMoveTimeline")
+
+() 
+
+$$ @take_damage
+// Take Damage
+//
+// UE4 name of this method: TakeDamage
+
+&aka("TakeDamage")
+
+(Real    damage        : 0.0
+ Boolean auto_animate? : false) 
+
+$$ @animate_movement
+// Animate Movement
+//
+// UE4 name of this method: AnimateMovement
+
+&aka("AnimateMovement")
+
+(List{Vector3} path_locations          : List{Vector3}!
+ Integer       stop_xtiles_from_target : 0) 
+
+$$ @animate_take_damage
+// Animate Take Damage
+//
+// UE4 name of this method: AnimateTakeDamage
+
+&aka("AnimateTakeDamage")
+
+(Real damage : 0.0) 
+
+$$ @animate_unit
+// Animate Unit
+//
+// UE4 name of this method: AnimateUnit
+
+&aka("AnimateUnit")
+
+(FAction action : FAction!) 
+
+$$ @animate_death
+// Animate Death
+//
+// UE4 name of this method: AnimateDeath
+
+&aka("AnimateDeath")
+
+() 
+
+$$ @animate_action
+// Animate Action
+//
+// UE4 name of this method: AnimateAction
+
+&aka("AnimateAction")
+
+(FAction action : FAction!) 
+
+$$ @move_custom_path
+// Move Custom Path
+//
+// UE4 name of this method: MoveCustomPath
+
+&aka("MoveCustomPath")
+
+(List{Integer} path_indexes : List{Integer}!) 
+
+$$ .

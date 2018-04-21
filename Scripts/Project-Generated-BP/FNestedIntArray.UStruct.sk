@@ -1,0 +1,26 @@
+// FNested Int Array
+//
+// UE4 name of this struct: FNestedIntArray
+
+// UE4 Asset Name: FNestedIntArray
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Grid/FNestedIntArray"
+
+annotations: &reflected_data &name("FNestedIntArray")
+
+$$ @
+
+&raw("Integers_3_136E09F448F495B28EB3CC8EE4A57BCF") List{Integer} !@integers_3_136e // Integers
+
+$$ @!
+() FNestedIntArray
+
+$$ @!copy
+(FNestedIntArray other) FNestedIntArray
+
+$$ @assign
+(FNestedIntArray other) FNestedIntArray
+
+$$ @!!
+() FNestedIntArray
+
+$$ .

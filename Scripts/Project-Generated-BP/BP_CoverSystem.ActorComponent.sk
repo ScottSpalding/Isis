@@ -1,0 +1,82 @@
+// BP Cover System
+//
+// UE4 name of this class: BP_CoverSystem_C
+
+// UE4 Asset Name: BP_CoverSystem
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Grid/BP_CoverSystem"
+
+annotations: &reflected_data &name("BP_CoverSystem_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")  PointerToUberGraphFrame                  !@uber_graph_frame  // Currently unsupported */
+&raw("GridManagerRef")  BP_GridManager                           !@grid_manager_ref  // Grid Manager Ref
+&raw("GridCoverTiles")  List{FCoverArray}                        !@grid_cover_tiles  // Grid Cover Tiles
+&raw("FullCoverHeight") Real                                     !@full_cover_height // Full Cover Height
+&raw("HalfCoverHeight") Real                                     !@half_cover_height // Half Cover Height
+&raw("FullCoverAmount") Real                                     !@full_cover_amount // Full Cover Amount
+&raw("HalfCoverAmount") Real                                     !@half_cover_amount // Half Cover Amount
+&raw("CoverHISM")       HierarchicalInstancedStaticMeshComponent !@cover_hism        // Cover HISM
+&raw("CoverMesh")       StaticMesh                               !@cover_mesh        // Cover Mesh
+&raw("CoverHalfHISM")   HierarchicalInstancedStaticMeshComponent !@cover_half_hism   // Cover Half HISM
+&raw("CoverHalfMesh")   StaticMesh                               !@cover_half_mesh   // Cover Half Mesh
+
+$$ @cover_meshe_transforms_around_index
+// Returns all transforms around a tile based on adjacent tile cover values, used for spawning cover meshes in other blueprints
+//
+// UE4 name of this method: GetCoverMesheTransformsAroundIndex
+
+&aka("GetCoverMesheTransformsAroundIndex")
+
+(Integer         index                 : 0
+ List{Transform} full_cover_transforms : List{Transform}!
+ List{Transform} half_cover_transforms : List{Transform}!) 
+
+$$ @assess_tile_danger_value
+// Returns a safety value based on how many hostile units can see it and if the tile gives cover from these units
+//
+// UE4 name of this method: AssessTileDangerValue
+
+&aka("AssessTileDangerValue")
+
+(Integer  index   : 0
+ EFaction faction : EFaction.@@empty
+ Real     value   : 0.0) 
+
+$$ @calculate_hit_chance
+// Finds the chance to hit a tile from another, based on cover, distance and accuracy
+//
+// UE4 name of this method: CalculateHitChance
+
+&aka("CalculateHitChance")
+
+(Real    base_hit_chance : 0.0
+ Real    range_modifier  : 0.0
+ Real    other_modifier  : 0.0
+ Integer source_index    : 0
+ Integer target_index    : 0
+ Boolean diamond_shaped? : false
+ Boolean hit?            : false
+ Real    hit_chance      : 0.0) 
+
+$$ @find_target_cover_relative_to_source
+// Checks if the target index has cover relative to the source index
+//
+// UE4 name of this method: FindTargetCoverRelativeToSource
+
+&aka("FindTargetCoverRelativeToSource")
+
+(Integer source_index : 0
+ Integer target_index : 0
+ Real    cover        : 0.0) 
+
+$$ @generate_cover
+// Runs CoverTraces at all straight edges of all tiles and stores cover values based on whether a high trace is blocked (full cover), a lower one (half cover) or not blocked at all (no cover)
+//
+// UE4 name of this method: GenerateCover
+
+&aka("GenerateCover")
+
+() 
+
+$$ .

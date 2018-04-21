@@ -1,0 +1,37 @@
+// A platform that is useful for creating multi-level grids. Turns invisible if the camera is zoomed close to reveal the levels below. Create child actors of this blueprint and replace the meshes with meshes of any size and shape.
+//
+// UE4 name of this class: BP_GA_Platform_C
+
+// UE4 Asset Name: BP_GA_Platform
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Tiles/BP_GA_Platform"
+
+annotations: &reflected_data &name("BP_GA_Platform_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")              PointerToUberGraphFrame   !@uber_graph_frame              // Currently unsupported */
+&raw("Opaque")                      StaticMeshComponent       !@opaque                        // Opaque
+&raw("Translucent")                 StaticMeshComponent       !@translucent                   // Translucent
+&raw("OpaqueMeshes")                List{StaticMeshComponent} !@opaque_meshes                 // Holds all meshes of this actor that start with O. These will be shown if the grid camera is scrolled far enough out as defined by the grid camera
+&raw("TranslucentMeshes")           List{StaticMeshComponent} !@translucent_meshes            // Holds all meshes of this actor that do not start with O. These will be shown if the grid camera is scrolled close enough in as defined by the grid camera
+&raw("bAboveTransparencyThreshold") Boolean                   !@above_transparency_threshold? // Above Transparency Threshold
+
+$$ @make_transparent
+// Make Transparent
+//
+// UE4 name of this method: MakeTransparent
+
+&aka("MakeTransparent")
+
+() 
+
+$$ @make_opaque
+// Make Opaque
+//
+// UE4 name of this method: MakeOpaque
+
+&aka("MakeOpaque")
+
+() 
+
+$$ .

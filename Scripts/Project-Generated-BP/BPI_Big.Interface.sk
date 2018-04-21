@@ -1,0 +1,21 @@
+// BPI Big
+//
+// UE4 name of this class: BPI_Big_C
+
+// UE4 Asset Name: BPI_Big
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/BPI_Big"
+
+annotations: &reflected_data &name("BPI_Big_C")
+
+$$ @
+
+$$ @toggle_offset
+// Toggle Offset
+//
+// UE4 name of this method: ToggleOffset
+
+&aka("ToggleOffset")
+
+(Boolean offset? : false) 
+
+$$ .

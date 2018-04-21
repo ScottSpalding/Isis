@@ -1,0 +1,30 @@
+// EHeight
+//
+// UE4 name of this enum: EHeight
+
+// UE4 Asset Name: EHeight
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Grid/EHeight"
+
+annotations: &reflected_data &name("EHeight")
+
+$$ @@
+
+EHeight !@@false
+EHeight !@@one_level
+EHeight !@@multilevel
+EHeight !@@eheight_max
+
+$$ @@!
+// EHeight
+// EnumPath: /Game/AdvancedTurnBasedTileToolkit/Core/Grid/EHeight.EHeight
+
+()
+
+  [
+  @@false:       EHeight!int(0)
+  @@one_level:   EHeight!int(1)
+  @@multilevel:  EHeight!int(2)
+  @@eheight_max: EHeight!int(3)
+  ]
+
+$$ .

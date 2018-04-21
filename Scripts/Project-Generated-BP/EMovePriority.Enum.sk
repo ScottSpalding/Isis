@@ -1,0 +1,32 @@
+// EMove Priority
+//
+// UE4 name of this enum: EMovePriority
+
+// UE4 Asset Name: EMovePriority
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Units/EMovePriority"
+
+annotations: &reflected_data &name("EMovePriority")
+
+$$ @@
+
+EMovePriority !@@close_range
+EMovePriority !@@long_range
+EMovePriority !@@short_move
+EMovePriority !@@close_range_including_overlapping_
+EMovePriority !@@emove_priority_max
+
+$$ @@!
+// EMovePriority
+// EnumPath: /Game/AdvancedTurnBasedTileToolkit/Core/Units/EMovePriority.EMovePriority
+
+()
+
+  [
+  @@close_range:                        EMovePriority!int(0)
+  @@long_range:                         EMovePriority!int(1)
+  @@short_move:                         EMovePriority!int(2)
+  @@close_range_including_overlapping_: EMovePriority!int(3)
+  @@emove_priority_max:                 EMovePriority!int(4)
+  ]
+
+$$ .

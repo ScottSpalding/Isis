@@ -1,0 +1,28 @@
+// FPathfinding
+//
+// UE4 name of this struct: FPathfinding
+
+// UE4 Asset Name: FPathfinding
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Grid/FPathfinding"
+
+annotations: &reflected_data &name("FPathfinding")
+
+$$ @
+
+&raw("Index_2_5AE4BBF04D72C5B42460BFA5E0B6194B")  Integer !@index_2_5ae4  // Index
+&raw("Cost_6_814E1E3C4BD931C65DCA6E85ABE78039")   Integer !@cost_6_814e   // Cost
+&raw("Parent_9_0C00A7F84152DF85DBC6BABA34152BFA") Integer !@parent_9_0c00 // Parent
+
+$$ @!
+() FPathfinding
+
+$$ @!copy
+(FPathfinding other) FPathfinding
+
+$$ @assign
+(FPathfinding other) FPathfinding
+
+$$ @!!
+() FPathfinding
+
+$$ .

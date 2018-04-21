@@ -1,0 +1,13 @@
+// Base class of the heads-up display. This has a canvas and a debug canvas on which primitives can be drawn.
+// It also contains a list of simple hit boxes that can be used for simple item click detection.
+// A method of rendering debug text is also included.
+// Provides some simple methods for rendering text, textures, rectangles and materials which can also be accessed from blueprints.
+// @see UCanvas
+// @see FHUDHitBox
+// @see FDebugTextInfo
+//
+// UE4 name of this class: HUD
+
+annotations: &reflected_cpp &name("HUD")
+
+$$ .

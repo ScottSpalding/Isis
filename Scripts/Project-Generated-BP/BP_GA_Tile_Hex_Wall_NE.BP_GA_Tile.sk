@@ -1,0 +1,14 @@
+// BP GA Tile Hex Wall NE
+//
+// UE4 name of this class: BP_GA_Tile_Hex_Wall_NE_C
+
+// UE4 Asset Name: BP_GA_Tile_Hex_Wall_NE
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Tiles/Hexagonal/BP_GA_Tile_Hex_Wall_NE"
+
+annotations: &reflected_data &name("BP_GA_Tile_Hex_Wall_NE_C")
+
+$$ @
+
+&raw("Mesh") StaticMeshComponent !@mesh // Mesh
+
+$$ .

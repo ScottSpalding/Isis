@@ -1,0 +1,26 @@
+// FBig Search New
+//
+// UE4 name of this struct: FBigSearchNew
+
+// UE4 Asset Name: FBigSearchNew
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/FBigSearchNew"
+
+annotations: &reflected_data &name("FBigSearchNew")
+
+$$ @
+
+&raw("Steps_6_657C6B824839960C4F094496E3EC0DAA") List{FBigSearchPrepStepNew} !@steps_6_657c // Steps
+
+$$ @!
+() FBigSearchNew
+
+$$ @!copy
+(FBigSearchNew other) FBigSearchNew
+
+$$ @assign
+(FBigSearchNew other) FBigSearchNew
+
+$$ @!!
+() FBigSearchNew
+
+$$ .

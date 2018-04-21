@@ -1,0 +1,28 @@
+// FGrid Index
+//
+// UE4 name of this struct: FGridIndex
+
+// UE4 Asset Name: FGridIndex
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Grid/FGridIndex"
+
+annotations: &reflected_data &name("FGridIndex")
+
+$$ @
+
+&raw("X_3_BE2701F64B1E45822A9DE8B9FA2023C3") Integer !@x_3_be27 // X
+&raw("Y_4_2E3B434E4C774C986F904BA6E25E9FDB") Integer !@y_4_2e3b // Y
+&raw("Z_6_093341934298B08C6507DBA731E596C0") Integer !@z_6_0933 // Z
+
+$$ @!
+() FGridIndex
+
+$$ @!copy
+(FGridIndex other) FGridIndex
+
+$$ @assign
+(FGridIndex other) FGridIndex
+
+$$ @!!
+() FGridIndex
+
+$$ .

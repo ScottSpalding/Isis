@@ -1,0 +1,26 @@
+// FBig Carry Over
+//
+// UE4 name of this struct: FBigCarryOver
+
+// UE4 Asset Name: FBigCarryOver
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Grid/FBigCarryOver"
+
+annotations: &reflected_data &name("FBigCarryOver")
+
+$$ @
+
+&raw("Steps_3_97EADE464976A3C3A74D1F8778BD3D3D") List{FEdgeCost} !@steps_3_97ea // Steps
+
+$$ @!
+() FBigCarryOver
+
+$$ @!copy
+(FBigCarryOver other) FBigCarryOver
+
+$$ @assign
+(FBigCarryOver other) FBigCarryOver
+
+$$ @!!
+() FBigCarryOver
+
+$$ .

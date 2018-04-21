@@ -1,0 +1,42 @@
+// EPathfinding Type
+//
+// UE4 name of this enum: EPathfindingType
+
+// UE4 Asset Name: EPathfindingType
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Units/EPathfindingType"
+
+annotations: &reflected_data &name("EPathfindingType")
+
+$$ @@
+
+EPathfindingType !@@standard
+EPathfindingType !@@pass_through_friendly
+EPathfindingType !@@ignore_cost
+EPathfindingType !@@big
+EPathfindingType !@@no_diagonal_movement
+EPathfindingType !@@simple_mixed
+EPathfindingType !@@simple_pure
+EPathfindingType !@@simple_ignore_cost
+EPathfindingType !@@custom_1
+EPathfindingType !@@epathfinding_type_max
+
+$$ @@!
+// EPathfindingType
+// EnumPath: /Game/AdvancedTurnBasedTileToolkit/Core/Units/EPathfindingType.EPathfindingType
+
+()
+
+  [
+  @@standard:              EPathfindingType!int(0)
+  @@pass_through_friendly: EPathfindingType!int(1)
+  @@ignore_cost:           EPathfindingType!int(2)
+  @@big:                   EPathfindingType!int(3)
+  @@no_diagonal_movement:  EPathfindingType!int(4)
+  @@simple_mixed:          EPathfindingType!int(5)
+  @@simple_pure:           EPathfindingType!int(6)
+  @@simple_ignore_cost:    EPathfindingType!int(7)
+  @@custom_1:              EPathfindingType!int(8)
+  @@epathfinding_type_max: EPathfindingType!int(9)
+  ]
+
+$$ .

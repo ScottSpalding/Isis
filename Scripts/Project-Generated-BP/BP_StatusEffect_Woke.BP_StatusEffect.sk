@@ -1,0 +1,32 @@
+// BP Status Effect Woke
+//
+// UE4 name of this class: BP_StatusEffect_Woke_C
+
+// UE4 Asset Name: BP_StatusEffect_Woke
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Abilities/BP_StatusEffect_Woke"
+
+annotations: &reflected_data &name("BP_StatusEffect_Woke_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
+
+$$ @run_on_turn_start
+// Run on Turn Start
+//
+// UE4 name of this method: RunOnTurnStart
+
+&aka("RunOnTurnStart")
+
+() 
+
+$$ @animate_activation
+// Animate Activation
+//
+// UE4 name of this method: AnimateActivation
+
+&aka("AnimateActivation")
+
+() 
+
+$$ .

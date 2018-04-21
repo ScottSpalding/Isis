@@ -1,0 +1,27 @@
+// FIndex Edge
+//
+// UE4 name of this struct: FIndexEdge
+
+// UE4 Asset Name: FIndexEdge
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/FIndexEdge"
+
+annotations: &reflected_data &name("FIndexEdge")
+
+$$ @
+
+&raw("TileIndex_2_5B2B2646462D4A6014BB829DCF3578EF") Integer !@tile_index_2_5b2b // Tile Index
+&raw("EdgeIndex_4_FA041F994D431643B370B8B4C4BB9227") Integer !@edge_index_4_fa04 // Edge Index
+
+$$ @!
+() FIndexEdge
+
+$$ @!copy
+(FIndexEdge other) FIndexEdge
+
+$$ @assign
+(FIndexEdge other) FIndexEdge
+
+$$ @!!
+() FIndexEdge
+
+$$ .

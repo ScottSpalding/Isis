@@ -1,0 +1,27 @@
+// FBig Search Prep Step New
+//
+// UE4 name of this struct: FBigSearchPrepStepNew
+
+// UE4 Asset Name: FBigSearchPrepStepNew
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/FBigSearchPrepStepNew"
+
+annotations: &reflected_data &name("FBigSearchPrepStepNew")
+
+$$ @
+
+&raw("Parent_3_A4A22E5641C235C94EDA8EA87D8AE14E") FIntXY !@parent_3_a4a2 // Parent
+&raw("Edge_4_898D48E1448227EEEE473792D74FFF15")   FIntXY !@edge_4_898d   // Edge
+
+$$ @!
+() FBigSearchPrepStepNew
+
+$$ @!copy
+(FBigSearchPrepStepNew other) FBigSearchPrepStepNew
+
+$$ @assign
+(FBigSearchPrepStepNew other) FBigSearchPrepStepNew
+
+$$ @!!
+() FBigSearchPrepStepNew
+
+$$ .

@@ -1,0 +1,12 @@
+// BP Unit Anim Auto
+//
+// UE4 name of this class: BP_Unit_Anim_Auto_C
+
+// UE4 Asset Name: BP_Unit_Anim_Auto
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Units/BP_Unit_Anim_Auto"
+
+annotations: &reflected_data &name("BP_Unit_Anim_Auto_C")
+
+$$ @
+
+$$ .

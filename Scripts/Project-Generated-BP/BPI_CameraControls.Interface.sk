@@ -1,0 +1,57 @@
+// BPI Camera Controls
+//
+// UE4 name of this class: BPI_CameraControls_C
+
+// UE4 Asset Name: BPI_CameraControls
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/BPI_CameraControls"
+
+annotations: &reflected_data &name("BPI_CameraControls_C")
+
+$$ @
+
+$$ @pan_to_location
+// Pan to Location
+//
+// UE4 name of this method: PanToLocation
+
+&aka("PanToLocation")
+
+(Vector3 location : Vector3!) 
+
+$$ @follow_actor
+// Follow Actor
+//
+// UE4 name of this method: FollowActor
+
+&aka("FollowActor")
+
+(Actor actor : Actor!null) 
+
+$$ @rotate
+// Rotate
+//
+// UE4 name of this method: Rotate
+
+&aka("Rotate")
+
+(Real axis_value : 0.0) 
+
+$$ @zoom
+// Zoom
+//
+// UE4 name of this method: Zoom
+
+&aka("Zoom")
+
+(Real value : 0.0) 
+
+$$ @pan
+// Pan
+//
+// UE4 name of this method: Pan
+
+&aka("Pan")
+
+(Vector2 axis_value : Vector2!) 
+
+$$ .

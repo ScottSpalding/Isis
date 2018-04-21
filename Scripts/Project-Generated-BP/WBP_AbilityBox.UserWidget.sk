@@ -1,0 +1,34 @@
+// WBP Ability Box
+//
+// UE4 name of this class: WBP_AbilityBox_C
+
+// UE4 Asset Name: WBP_AbilityBox
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/UI/WBP_AbilityBox"
+
+annotations: &reflected_data &name("WBP_AbilityBox_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")      PointerToUberGraphFrame !@uber_graph_frame     // Currently unsupported */
+&raw("AbilityDescription")  TextBlock !@ability_description  // Ability Description
+&raw("GridPanel_Abilities") GridPanel !@grid_panel_abilities // Grid Panel Abilities
+
+$$ @refresh
+// Refresh
+//
+// UE4 name of this method: Refresh
+
+&aka("Refresh")
+
+(BP_Unit unit : BP_Unit!null) 
+
+$$ @press_shortcut_key
+// Press Shortcut Key
+//
+// UE4 name of this method: PressShortcutKey
+
+&aka("PressShortcutKey")
+
+(Key key : Key!) 
+
+$$ .

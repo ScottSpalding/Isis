@@ -1,0 +1,19 @@
+// Template blueprint for blueprints that need to find the index they are placed on and be able to snap to the grid. Parent blueprint of Tile_Parent
+//
+// UE4 name of this class: BP_GridActor_C
+
+// UE4 Asset Name: BP_GridActor
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Grid/BP_GridActor"
+
+annotations: &reflected_data &name("BP_GridActor_C")
+
+$$ @
+
+&raw("GridAnchor")              SceneComponent !@grid_anchor                 // Grid Anchor
+&raw("SceneComponent")          SceneComponent !@scene_component             // Scene Component
+&raw("GridIndex")               Integer        !@grid_index                  // DO NOT EDIT: The index on the grid array of this actor
+&raw("bIgnoreSnapToCustomGrid") Boolean        !@ignore_snap_to_custom_grid? // Should this actor ignore snapping to a custom grid?
+&raw("bPlaceActorAtAnchor")     Boolean        !@place_actor_at_anchor?      // RESETS AUTOMATICALLY: Moves the actor to the location of its mesh, which might have moved due to grid snapping
+&raw("GridManagerRef")          BP_GridManager !@grid_manager_ref            // Grid Manager Ref
+
+$$ .

@@ -1,0 +1,89 @@
+// Along with basic game state duties, serves as a common blueprint to call on to get references to important singleton blueprints.
+//
+// UE4 name of this class: BP_ATBTT_State_C
+
+// UE4 Asset Name: BP_ATBTT_State
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/BP_ATBTT_State"
+
+annotations: &reflected_data &name("BP_ATBTT_State_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")            PointerToUberGraphFrame !@uber_graph_frame              // Currently unsupported */
+&raw("DefaultSceneRoot")          SceneComponent      !@default_scene_root            // Default Scene Root
+&raw("GridManager")               BP_GridManager      !@grid_manager                  // Grid Manager
+&raw("TurnManager")               BP_TurnManager      !@turn_manager                  // Turn Manager
+&raw("OnSetupCoreBlueprintsDone") MulticastDelegate() !@on_setup_core_blueprints_done // On Setup Core Blueprints Done
+&raw("TurnState")                 ETurnState          !@turn_state                    // Turn State
+/* &raw("Delays")                    None                !@delays                        // Currently unsupported */
+&raw("DebugDispatcher")           MulticastDelegate
+  (
+  Name name
+  )                                                   !@debug_dispatcher              // Debug Dispatcher
+&raw("PlayerPawnRef")             BP_GridCamera       !@player_pawn_ref               // Player Pawn Ref
+&raw("ActionManager")             BP_ActionManager    !@action_manager                // Action Manager
+
+$$ @turn_manager
+// Get Turn Manager
+//
+// UE4 name of this method: GetTurnManager
+
+&aka("GetTurnManager")
+
+(BP_TurnManager turn_manager : BP_TurnManager!null) 
+
+$$ @action_manager
+// Get Action Manager
+//
+// UE4 name of this method: GetActionManager
+
+&aka("GetActionManager")
+
+(BP_ActionManager action_manader : BP_ActionManager!null) 
+
+$$ @grid_manager
+// Get Grid Manager
+//
+// UE4 name of this method: GetGridManager
+
+&aka("GetGridManager")
+
+(BP_GridManager grid_manager : BP_GridManager!null) 
+
+$$ @setup_core_blueprints
+// Spawns Turn and Action managers. Adds references to these and the grid manager to the game state. The game state is used as a singleton blueprint where other blueprints can easily access these references.
+//
+// UE4 name of this method: SetupCoreBlueprints
+
+&aka("SetupCoreBlueprints")
+
+() 
+
+$$ @find_number_of_unit_owners
+// Looks at the DefaultOwningPlayer value of all units and returns the number of different owners. Used to determine whether enough players have logged in to take control of all units.
+//
+// UE4 name of this method: FindNumberOfUnitOwners
+
+&aka("FindNumberOfUnitOwners")
+
+(Integer owner_count : 0) 
+
+$$ @animate_action
+// Animate Action
+//
+// UE4 name of this method: AnimateAction
+
+&aka("AnimateAction")
+
+(FAction action : FAction!) 
+
+$$ @end_action
+// End Action
+//
+// UE4 name of this method: EndAction
+
+&aka("EndAction")
+
+() 
+
+$$ .

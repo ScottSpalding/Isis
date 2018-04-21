@@ -1,0 +1,26 @@
+// FNested Int XY
+//
+// UE4 name of this struct: FNestedIntXY
+
+// UE4 Asset Name: FNestedIntXY
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Grid/FNestedIntXY"
+
+annotations: &reflected_data &name("FNestedIntXY")
+
+$$ @
+
+&raw("IntegerPairs_3_7963E9264AE8E5DD6B526280A5D1ED85") List{FIntXY} !@integer_pairs_3_7963 // Integer Pairs
+
+$$ @!
+() FNestedIntXY
+
+$$ @!copy
+(FNestedIntXY other) FNestedIntXY
+
+$$ @assign
+(FNestedIntXY other) FNestedIntXY
+
+$$ @!!
+() FNestedIntXY
+
+$$ .

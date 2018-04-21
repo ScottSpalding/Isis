@@ -1,0 +1,14 @@
+// BP GA Tile Hex 2Cost
+//
+// UE4 name of this class: BP_GA_Tile_Hex_2Cost_C
+
+// UE4 Asset Name: BP_GA_Tile_Hex_2Cost
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Tiles/Hexagonal/BP_GA_Tile_Hex_2Cost"
+
+annotations: &reflected_data &name("BP_GA_Tile_Hex_2Cost_C")
+
+$$ @
+
+&raw("StaticMesh2") StaticMeshComponent !@static_mesh_2 // Static Mesh 2
+
+$$ .

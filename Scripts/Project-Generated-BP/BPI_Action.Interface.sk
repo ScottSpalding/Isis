@@ -1,0 +1,30 @@
+// BPI Action
+//
+// UE4 name of this class: BPI_Action_C
+
+// UE4 Asset Name: BPI_Action
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/BPI_Action"
+
+annotations: &reflected_data &name("BPI_Action_C")
+
+$$ @
+
+$$ @end_action
+// End Action
+//
+// UE4 name of this method: EndAction
+
+&aka("EndAction")
+
+() 
+
+$$ @animate_action
+// Animate Action
+//
+// UE4 name of this method: AnimateAction
+
+&aka("AnimateAction")
+
+(FAction action : FAction!) 
+
+$$ .

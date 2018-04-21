@@ -1,0 +1,27 @@
+// FRange
+//
+// UE4 name of this struct: FRange
+
+// UE4 Asset Name: FRange
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Grid/FRange"
+
+annotations: &reflected_data &name("FRange")
+
+$$ @
+
+&raw("Index_3_592D3F6941003C4E9102F8894E1E7024")    Integer !@index_3_592d    // Index
+&raw("Distance_6_AE3A36EF41EB389FF9D98081AFAFA7B2") Integer !@distance_6_ae3a // Distance
+
+$$ @!
+() FRange
+
+$$ @!copy
+(FRange other) FRange
+
+$$ @assign
+(FRange other) FRange
+
+$$ @!!
+() FRange
+
+$$ .

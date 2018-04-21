@@ -1,0 +1,27 @@
+// FCover
+//
+// UE4 name of this struct: FCover
+
+// UE4 Asset Name: FCover
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Grid/FCover"
+
+annotations: &reflected_data &name("FCover")
+
+$$ @
+
+&raw("Index_2_23F28F914A09213C3A3AAB8279706908") Integer !@index_2_23f2 // Index
+&raw("Cover_5_8D1CCDD445C6D108F9B9E2AFD4B871C4") Real    !@cover_5_8d1c // Cover
+
+$$ @!
+() FCover
+
+$$ @!copy
+(FCover other) FCover
+
+$$ @assign
+(FCover other) FCover
+
+$$ @!!
+() FCover
+
+$$ .

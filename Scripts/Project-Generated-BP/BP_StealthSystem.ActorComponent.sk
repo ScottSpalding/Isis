@@ -1,0 +1,59 @@
+// BP Stealth System
+//
+// UE4 name of this class: BP_StealthSystem_C
+
+// UE4 Asset Name: BP_StealthSystem
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Grid/BP_StealthSystem"
+
+annotations: &reflected_data &name("BP_StealthSystem_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")    PointerToUberGraphFrame !@uber_graph_frame    // Currently unsupported */
+&raw("OnMakeNoise")       MulticastDelegate
+  (
+  Integer index
+  Integer range
+  )                                         !@on_make_noise       // On Make Noise
+&raw("OnCheckIfSeen")     MulticastDelegate
+  (
+  Integer index
+  Integer range
+  )                                         !@on_check_if_seen    // On Check if Seen
+&raw("DefaultNoiseRange") Integer           !@default_noise_range // Default Noise Range
+&raw("DefaultSpotRange")  Integer           !@default_spot_range  // Default Spot Range
+/* &raw("UnawareFactions")   None              !@unaware_factions    // Currently unsupported */
+&raw("bSetupDone")        Boolean           !@setup_done?         // Setup Done
+
+$$ @make_noise
+// Make Noise
+//
+// UE4 name of this method: MakeNoise
+
+&aka("MakeNoise")
+
+(Integer index : 0
+ Integer range : 0) 
+
+$$ @check_if_seen
+// Check if Seen
+//
+// UE4 name of this method: CheckIfSeen
+
+&aka("CheckIfSeen")
+
+(Integer index : 0
+ Integer range : 0) 
+
+$$ @alert_units_on_enter_tile
+// Alert Units on Enter Tile
+//
+// UE4 name of this method: AlertUnitsOnEnterTile
+
+&aka("AlertUnitsOnEnterTile")
+
+(BP_Unit unit       : BP_Unit!null
+ Integer grid_index : 0
+ Integer path_index : 0) 
+
+$$ .

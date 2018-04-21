@@ -1,0 +1,28 @@
+// EClick Type
+//
+// UE4 name of this enum: EClickType
+
+// UE4 Asset Name: EClickType
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Grid/EClickType"
+
+annotations: &reflected_data &name("EClickType")
+
+$$ @@
+
+EClickType !@@primary
+EClickType !@@secondary
+EClickType !@@eclick_type_max
+
+$$ @@!
+// EClickType
+// EnumPath: /Game/AdvancedTurnBasedTileToolkit/Core/Grid/EClickType.EClickType
+
+()
+
+  [
+  @@primary:         EClickType!int(0)
+  @@secondary:       EClickType!int(1)
+  @@eclick_type_max: EClickType!int(2)
+  ]
+
+$$ .

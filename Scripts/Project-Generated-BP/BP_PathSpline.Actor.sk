@@ -1,0 +1,15 @@
+// BP Path Spline
+//
+// UE4 name of this class: BP_PathSpline_C
+
+// UE4 Asset Name: BP_PathSpline
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Units/BP_PathSpline"
+
+annotations: &reflected_data &name("BP_PathSpline_C")
+
+$$ @
+
+&raw("Spline")           SplineComponent !@spline             // Spline
+&raw("DefaultSceneRoot") SceneComponent  !@default_scene_root // Default Scene Root
+
+$$ .

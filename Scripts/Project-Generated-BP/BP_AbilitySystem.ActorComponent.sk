@@ -1,0 +1,143 @@
+// BP Ability System
+//
+// UE4 name of this class: BP_AbilitySystem_C
+
+// UE4 Asset Name: BP_AbilitySystem
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Units/BP_AbilitySystem"
+
+annotations: &reflected_data &name("BP_AbilitySystem_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")            PointerToUberGraphFrame !@uber_graph_frame              // Currently unsupported */
+&raw("Abilities")                 List{EntityClass}     !@abilities                     // Abilities this unit will start the game with
+&raw("Charges")                   List{Integer}         !@charges                       // Charges
+&raw("Cooldowns")                 List{Integer}         !@cooldowns                     // Cooldowns
+&raw("AbilityRefs")               List{BP_Ability}      !@ability_refs                  // Ability Refs
+&raw("ActiveAbility")             BP_Ability            !@active_ability                // Active Ability
+&raw("OwningUnit")                BP_Unit               !@owning_unit                   // Owning Unit
+&raw("GridManagerRef")            BP_GridManager        !@grid_manager_ref              // Grid Manager Ref
+&raw("AbilityCounter")            Integer               !@ability_counter               // Ability Counter
+&raw("AbilityComparisons")        List{BP_Ability}      !@ability_comparisons           // Ability Comparisons
+&raw("AbilityValues")             List{Real}            !@ability_values                // Ability Values
+&raw("StoredGridPaths")           List{FPathfinding}    !@stored_grid_paths             // Stored Grid Paths
+&raw("StoredPaths")               List{FPathfinding}    !@stored_paths                  // Stored Paths
+&raw("SafetyValuesOld")           List{Real}            !@safety_values_old             // Safety Values Old
+&raw("StatusEffects")             List{BP_StatusEffect} !@status_effects                // Status Effects
+&raw("bPathfindingPrecalculated") Boolean               !@pathfinding_precalculated?    // Pathfinding Precalculated
+&raw("bSafetyPrecalculated")      Boolean               !@safety_precalculated?         // Safety Precalculated
+/* &raw("StartingStatusEffects")     None                  !@starting_status_effects       // Currently unsupported */
+&raw("StatusEffectCounter")       Integer               !@status_effect_counter         // Status Effect Counter
+&raw("AIStartDelay")              Real                  !@aistart_delay                 // AIStart Delay
+&raw("GameStateRef")              BP_ATBTT_State        !@game_state_ref                // Game State Ref
+/* &raw("StoredPathsMap")            None                  !@stored_paths_map              // Currently unsupported */
+/* &raw("SafetyValues")              None                  !@safety_values                 // Currently unsupported */
+&raw("EvaluateTilesLoopsPerTick") Integer               !@evaluate_tiles_loops_per_tick // Evaluate Tiles Loops Per Tick
+&raw("SafetyPregenAbility")       BP_Ability            !@safety_pregen_ability         // Safety Pregen Ability
+
+$$ @check_if_ability_can_be_used
+// Returns true if the ability has remaining charges and is not on cooldown
+//
+// UE4 name of this method: CheckIfAbilityCanBeUsed
+
+&aka("CheckIfAbilityCanBeUsed")
+
+(Integer ability_refs_index : 0
+ Boolean can_use?           : false) 
+
+$$ @reduce_cooldowns
+// Reduces the cooldown of all abilities on cooldown by one. Generally used at the start of a unit's turn
+//
+// UE4 name of this method: ReduceCooldowns
+
+&aka("ReduceCooldowns")
+
+() 
+
+$$ @check_if_has_status_effect
+// Returns true and with a reference to the specific status effect if this component contains the input SE
+//
+// UE4 name of this method: CheckIfHasStatusEffect
+
+&aka("CheckIfHasStatusEffect")
+
+(EntityClass     status_effect      : EntityClass!null
+ Boolean         has_status_effect? : false
+ BP_StatusEffect status_effect_ref  : BP_StatusEffect!null) 
+
+$$ @check_if_has_ability
+// Returns true and with a reference to the specific ability if this component contains the input ability
+//
+// UE4 name of this method: CheckIfHasAbility
+
+&aka("CheckIfHasAbility")
+
+(EntityClass ability      : EntityClass!null
+ Boolean     has_ability? : false
+ BP_Ability  ability_ref  : BP_Ability!null) 
+
+$$ @add_status_effect
+// Spawns a status effect actor, assigns it to the owning unit and activates it
+//
+// UE4 name of this method: AddStatusEffect
+
+&aka("AddStatusEffect")
+
+(EntityClass     status_effect     : EntityClass!null
+ BP_StatusEffect status_effect_ref : BP_StatusEffect!null) 
+
+$$ @destroy_all_status_effects
+// Destroys all status effects referenced by this component
+//
+// UE4 name of this method: DestroyAllStatusEffects
+
+&aka("DestroyAllStatusEffects")
+
+() 
+
+$$ @evaluate_abilities
+// Evaluate Abilities
+//
+// UE4 name of this method: EvaluateAbilities
+
+&aka("EvaluateAbilities")
+
+() 
+
+$$ @return_value
+// Return Value
+//
+// UE4 name of this method: ReturnValue
+
+&aka("ReturnValue")
+
+(Real value : 0.0) 
+
+$$ @activate_unit_ability
+// Activate Unit Ability
+//
+// UE4 name of this method: ActivateUnitAbility
+
+&aka("ActivateUnitAbility")
+
+() 
+
+$$ @or_run_safety_pregen
+// Get or Run Safety Pregen
+//
+// UE4 name of this method: GetOrRunSafetyPregen
+
+&aka("GetOrRunSafetyPregen")
+
+(BP_Ability ability : BP_Ability!null) 
+
+$$ @activate_ability_if_active_unit
+// Activate Ability if Active Unit
+//
+// UE4 name of this method: ActivateAbilityIfActiveUnit
+
+&aka("ActivateAbilityIfActiveUnit")
+
+(BP_Ability ability : BP_Ability!null) 
+
+$$ .

@@ -1,0 +1,216 @@
+// Controls panning, zooming and rotating the camera as well as following the current pawn if EnableFollowCam is set to true
+//
+// UE4 name of this class: BP_GridCamera_C
+
+// UE4 Asset Name: BP_GridCamera
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/BP_GridCamera"
+
+annotations: &reflected_data &name("BP_GridCamera_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")                                      PointerToUberGraphFrame !@uber_graph_frame                // Currently unsupported */
+&raw("Camera")                                              CameraComponent    !@camera                          // Camera
+&raw("CameraSpringArm")                                     SpringArmComponent !@camera_spring_arm               // Camera Spring Arm
+&raw("Capsule")                                             CapsuleComponent   !@capsule                         // Capsule
+&raw("TL_Rotate_Rotation_E4863C244BE92EA0B1284BB06E5A99AB") Real               !@tl_rotate_rotation_e486         // TL Rotate Rotation E4863C244BE92EA0B1284BB06E5A99AB
+/* &raw("TL_Rotate__Direction_E4863C244BE92EA0B1284BB06E5A99AB")ETimelineDirection !@tl_rotate_direction_e486        // Currently unsupported */
+&raw("TL_Rotate")                                           TimelineComponent  !@tl_rotate                       // TL Rotate
+&raw("ZoomUp_time_10029EC043A255242BB0DDB44B701D85")        Real               !@zoom_up_time_1002               // Zoom Up Time 10029EC043A255242BB0DDB44B701D85
+/* &raw("ZoomUp__Direction_10029EC043A255242BB0DDB44B701D85")  ETimelineDirection !@zoom_up_direction_1002          // Currently unsupported */
+&raw("ZoomUp")                                              TimelineComponent  !@zoom_up                         // Zoom Up
+&raw("CameraMoveSpeed")                                     Real               !@camera_move_speed               // The speed at which the camera moves using WASD
+&raw("CameraZoomSpeed")                                     Real               !@camera_zoom_speed               // The Speed at which the camera scrolls using the scroll wheel
+&raw("CameraRotateSpeed")                                   Real               !@camera_rotate_speed             // How fast will the camera rotate using Q and E?
+&raw("ZoomRoof")                                            Real               !@zoom_roof                       // The max distance the camera can be zoomed out
+&raw("ZoomFloor")                                           Real               !@zoom_floor                      // The max distance the camera can be zoomed down
+&raw("bUseFollowCam")                                       Boolean            !@use_follow_cam?                 // Will the camera follow the current pawn (disabled when panning)
+&raw("TouchPoints")                                         Integer            !@touch_points                    // How many fingers are currently touching the screen?
+&raw("TouchPointsOld")                                      Integer            !@touch_points_old                // How many touch points were touching the screen the last time we checked?
+&raw("CameraLocationStart")                                 Vector3            !@camera_location_start           // Where was the camera located before we touch panned it?
+&raw("TouchLocationStart")                                  Vector2            !@touch_location_start            // Where was a finger located when it first touched the screen?
+&raw("TouchDistanceStart")                                  Real               !@touch_distance_start            // How far were two fingers apart when they first touched the screen?
+&raw("SpringArmLengthStart")                                Real               !@spring_arm_length_start         // How long was the camera spring arm before touch zoom began?
+&raw("TouchRotationStart")                                  RotationAngles     !@touch_rotation_start            // How was the angle between two fingers before touch rotate began?
+&raw("CameraRotationStart")                                 RotationAngles     !@camera_rotation_start           // How was the rotation of the camera before touch rotate began?
+&raw("bCurrentlyRotating")                                  Boolean            !@currently_rotating?             // Currently Rotating
+&raw("bCurrentlyZooming")                                   Boolean            !@currently_zooming?              // Currently Zooming
+&raw("CurrentTouchLocation")                                Vector2            !@current_touch_location          // Current Touch Location
+&raw("bCanPan")                                             Boolean            !@can_pan?                        // Can the camera be panned?
+&raw("bCanRotate")                                          Boolean            !@can_rotate?                     // Can the camera be rotated?
+&raw("bCanZoom")                                            Boolean            !@can_zoom?                       // Can the camera zoom?
+&raw("CameraYawStart")                                      Real               !@camera_yaw_start                // The start yaw for 90 degree rotation
+&raw("bNinetyDegreeRotation")                               Boolean            !@ninety_degree_rotation?         // If true, rotation is done in 90 degree increment. If false, rotation is continous
+&raw("RotationAxisValue")                                   Real               !@rotation_axis_value             // The direction of rotation for 90 degree rotation
+&raw("SpringArmStartLength")                                Real               !@spring_arm_start_length         // Spring Arm Start Length
+&raw("DistanceToZoom")                                      Real               !@distance_to_zoom                // Distance to Zoom
+&raw("PlatformTranslucencyThreshold")                       Real               !@platform_translucency_threshold // The height relative to the spring arm length at which platforms with traslucency are made translucent
+&raw("FollowTarget")                                        Vector3            !@follow_target                   // Follow Target
+&raw("bPanToCustomLocation")                                Boolean            !@pan_to_custom_location?         // Pan to Custom Location
+&raw("UIInputUpDown")                                       Real               !@uiinput_up_down                 // UIInput Up Down
+&raw("UIInputRightLeft")                                    Real               !@uiinput_right_left              // UIInput Right Left
+&raw("bEdgeScrolling")                                      Boolean            !@edge_scrolling?                 // If true, the camera will pan if the cursor is on the edge of the screen
+&raw("EdgeScrollingEdgeSize")                               Real               !@edge_scrolling_edge_size        // Edge Scrolling Edge Size
+&raw("PreviousLocation")                                    Vector3            !@previous_location               // Previous Location
+&raw("PreviousRotation")                                    RotationAngles     !@previous_rotation               // Previous Rotation
+&raw("bMoving")                                             Boolean            !@moving?                         // Moving
+&raw("bCheckForMovement")                                   Boolean            !@check_for_movement?             // Check for Movement
+&raw("GameStateRef")                                        BP_ATBTT_State     !@game_state_ref                  // Game State Ref
+&raw("ActorToFollow")                                       Actor              !@actor_to_follow                 // Actor to Follow
+&raw("bTouchControls")                                      Boolean            !@touch_controls?                 // Touch Controls
+&raw("bCheckPlatformTranslucency")                          Boolean            !@check_platform_translucency?    // Check Platform Translucency
+
+$$ @follow_target_tick
+// If either an ActorToFollow is specified or PanToCustomLocation is true, the grid camera will follow this actor/location.
+//
+// UE4 name of this method: FollowTargetTick
+
+&aka("FollowTargetTick")
+
+() 
+
+$$ @center_camera
+// Centers the camera spring arm to its root component. This is necessary to make sure PanToLocation events center on their target appropriately if the player has manually panned off center.
+//
+// UE4 name of this method: CenterCamera
+
+&aka("CenterCamera")
+
+() 
+
+$$ @update_platform_translucency
+// Looks at all actors of type BP_GA_Platform and makes all both above the threshold translucent and all below opaque . Used when zooming to see and click through higher levels.
+//
+// UE4 name of this method: UpdatePlatformTranslucency
+
+&aka("UpdatePlatformTranslucency")
+
+() 
+
+$$ @make_platforms_above_threshold_translucent
+// Looks at all actors of type BP_GA_Platform and makes all above the specified threshold translucent. Used when zooming to see and click through higher levels.
+//
+// UE4 name of this method: MakePlatformsAboveThresholdTranslucent
+
+&aka("MakePlatformsAboveThresholdTranslucent")
+
+(Real threshold : 0.0) 
+
+$$ @make_platforms_below_threshold_opaque
+// Looks at all actors of type BP_GA_Platform and makes all below the specified threshold opaque. Used when zooming to see and click through higher levels.
+//
+// UE4 name of this method: MakePlatformsBelowThresholdOpaque
+
+&aka("MakePlatformsBelowThresholdOpaque")
+
+(Real threshold : 0.0) 
+
+$$ @reset_touch_camera
+// Reset Touch Camera
+//
+// UE4 name of this method: Reset Touch Camera
+
+&aka("Reset Touch Camera")
+
+() 
+
+$$ @touch_controls
+// Touch Controls
+//
+// UE4 name of this method: TouchControls
+
+&aka("TouchControls")
+
+() 
+
+$$ @setup
+// Setup
+//
+// UE4 name of this method: Setup
+
+&aka("Setup")
+
+() 
+
+$$ @rotate
+// Rotate
+//
+// UE4 name of this method: Rotate
+
+&aka("Rotate")
+
+(Real axis_value : 0.0) 
+
+$$ @pan
+// Pan
+//
+// UE4 name of this method: Pan
+
+&aka("Pan")
+
+(Vector2 axis_value : Vector2!) 
+
+$$ @zoom
+// Zoom
+//
+// UE4 name of this method: Zoom
+
+&aka("Zoom")
+
+(Real value : 0.0) 
+
+$$ @follow_actor
+// Follow Actor
+//
+// UE4 name of this method: FollowActor
+
+&aka("FollowActor")
+
+(Actor actor : Actor!null) 
+
+$$ @pan_to_location
+// Pan to Location
+//
+// UE4 name of this method: PanToLocation
+
+&aka("PanToLocation")
+
+(Vector3 location : Vector3!xyz(0, 0, 0)) 
+
+$$ @server_notify_player_ready
+// Server Notify Player Ready
+//
+// UE4 name of this method: ServerNotifyPlayerReady
+
+&aka("ServerNotifyPlayerReady")
+
+() 
+
+$$ @edge_scrolling
+// Edge Scrolling
+//
+// UE4 name of this method: EdgeScrolling
+
+&aka("EdgeScrolling")
+
+() 
+
+$$ @check_for_movement
+// Check for Movement
+//
+// UE4 name of this method: CheckForMovement
+
+&aka("CheckForMovement")
+
+() 
+
+$$ @handle_platform_translucency_on_follow
+// Handle Platform Translucency on Follow
+//
+// UE4 name of this method: HandlePlatformTranslucencyOnFollow
+
+&aka("HandlePlatformTranslucencyOnFollow")
+
+() 
+
+$$ .

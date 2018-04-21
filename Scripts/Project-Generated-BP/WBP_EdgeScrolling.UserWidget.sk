@@ -1,0 +1,14 @@
+// WBP Edge Scrolling
+//
+// UE4 name of this class: WBP_EdgeScrolling_C
+
+// UE4 Asset Name: WBP_EdgeScrolling
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/UI/WBP_EdgeScrolling"
+
+annotations: &reflected_data &name("WBP_EdgeScrolling_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
+
+$$ .

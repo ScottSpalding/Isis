@@ -1,0 +1,39 @@
+// BPI Singletons
+//
+// UE4 name of this class: BPI_Singletons_C
+
+// UE4 Asset Name: BPI_Singletons
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/BPI_Singletons"
+
+annotations: &reflected_data &name("BPI_Singletons_C")
+
+$$ @
+
+$$ @turn_manager
+// Get Turn Manager
+//
+// UE4 name of this method: GetTurnManager
+
+&aka("GetTurnManager")
+
+(BP_TurnManager turn_manager : BP_TurnManager!null) 
+
+$$ @action_manager
+// Get Action Manager
+//
+// UE4 name of this method: GetActionManager
+
+&aka("GetActionManager")
+
+(BP_ActionManager action_manader : BP_ActionManager!null) 
+
+$$ @grid_manager
+// Get Grid Manager
+//
+// UE4 name of this method: GetGridManager
+
+&aka("GetGridManager")
+
+(BP_GridManager grid_manager : BP_GridManager!null) 
+
+$$ .

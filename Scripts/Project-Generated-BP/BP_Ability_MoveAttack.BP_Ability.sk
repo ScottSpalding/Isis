@@ -1,0 +1,170 @@
+// BP Ability Move Attack
+//
+// UE4 name of this class: BP_Ability_MoveAttack_C
+
+// UE4 Asset Name: BP_Ability_MoveAttack
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Abilities/BP_Ability_MoveAttack"
+
+annotations: &reflected_data &name("BP_Ability_MoveAttack_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")     PointerToUberGraphFrame !@uber_graph_frame     // Currently unsupported */
+&raw("StoredLocations")    List{Vector3} !@stored_locations     // Stored Locations
+&raw("Damage")             Real          !@damage               // Damage
+&raw("MoveDisplayIndexes") List{Integer} !@move_display_indexes // Move Display Indexes
+
+$$ @find_target_value
+// Checks a target index and estimates the value of using this ability on said target. Returns .5 by default, but will generally be modified in child blueprints
+//
+// UE4 name of this method: FindTargetValue
+
+&aka("FindTargetValue")
+
+(Integer target_index : 0
+ Real    value        : 0.0) 
+
+$$ @hover
+// Hover
+//
+// UE4 name of this method: Hover
+
+&aka("Hover")
+
+(Integer index    : 0
+ Vector3 location : Vector3!xyz(0, 0, 0)) 
+
+$$ @client_display_path
+// Client Display Path
+//
+// UE4 name of this method: Client_DisplayPath
+
+&aka("Client_DisplayPath")
+
+(List{Vector3} path_locations : List{Vector3}!) 
+
+$$ @client_hide_target_marker
+// Client Hide Target Marker
+//
+// UE4 name of this method: Client_HideTargetMarker
+
+&aka("Client_HideTargetMarker")
+
+() 
+
+$$ @click_empty_tile
+// Click Empty Tile
+//
+// UE4 name of this method: ClickEmptyTile
+
+&aka("ClickEmptyTile")
+
+() 
+
+$$ @player_activate
+// Player Activate
+//
+// UE4 name of this method: Player_Activate
+
+&aka("Player_Activate")
+
+(BP_Unit unit : BP_Unit!null) 
+
+$$ @multicast_assign_cover_mesh
+// Multicast Assign Cover Mesh
+//
+// UE4 name of this method: Multicast_AssignCoverMesh
+
+&aka("Multicast_AssignCoverMesh")
+
+() 
+
+$$ @client_spawn_cover_meshes
+// Client Spawn Cover Meshes
+//
+// UE4 name of this method: Client_SpawnCoverMeshes
+
+&aka("Client_SpawnCoverMeshes")
+
+(List{Transform} array : List{Transform}!) 
+
+$$ @spawn_tile_markers
+// Spawn Tile Markers
+//
+// UE4 name of this method: SpawnTileMarkers
+
+&aka("SpawnTileMarkers")
+
+(BP_Unit       owning_unit : BP_Unit!null
+ List{Vector3} locations   : List{Vector3}!) 
+
+$$ @attack_hit
+// Attack Hit
+//
+// UE4 name of this method: AttackHit
+
+&aka("AttackHit")
+
+() 
+
+$$ @attack
+// Attack
+//
+// UE4 name of this method: Attack
+
+&aka("Attack")
+
+(BP_Unit attacker    : BP_Unit!null
+ BP_Unit target_unit : BP_Unit!null
+ Real    damage      : 0.0) 
+
+$$ @found_no_valid_target
+// Found No Valid Target
+//
+// UE4 name of this method: FoundNoValidTarget
+
+&aka("FoundNoValidTarget")
+
+() 
+
+$$ @execute_ability
+// Execute Ability
+//
+// UE4 name of this method: ExecuteAbility
+
+&aka("ExecuteAbility")
+
+(Integer target_index : 0) 
+
+$$ @animate_action
+// Animate Action
+//
+// UE4 name of this method: AnimateAction
+
+&aka("AnimateAction")
+
+(FAction action : FAction!) 
+
+$$ @deactivate_ability
+// Deactivate Ability
+//
+// UE4 name of this method: DeactivateAbility
+
+&aka("DeactivateAbility")
+
+() 
+
+$$ @click
+// Click
+//
+// UE4 name of this method: Click
+
+&aka("Click")
+
+(Integer    index      : 0
+ Vector3    location   : Vector3!xyz(0, 0, 0)
+ Key        key        : Key!
+ Boolean    released?  : false
+ EClickType click_type : EClickType.@@primary) 
+
+$$ .

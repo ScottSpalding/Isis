@@ -1,0 +1,186 @@
+// Controls player mouse input and the actions associated with clicking and hovering over tiles
+//
+// UE4 name of this class: BP_PlayerController_ATBTT_C
+
+// UE4 Asset Name: BP_PlayerController_ATBTT
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/BP_PlayerController_ATBTT"
+
+annotations: &reflected_data &name("BP_PlayerController_ATBTT_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")         PointerToUberGraphFrame !@uber_graph_frame         // Currently unsupported */
+&raw("GridManagerRef")         BP_GridManager !@grid_manager_ref         // Grid Manager Ref
+&raw("CurrentTileHover")       Integer        !@current_tile_hover       // The index of the tile that the mouse is currently over
+&raw("GridCameraRef")          BP_GridCamera  !@grid_camera_ref          // Grid Camera Ref
+&raw("GameStateRef")           BP_ATBTT_State !@game_state_ref           // Game State Ref
+&raw("HudRef")                 BP_HUD_ATBTT   !@hud_ref                  // Hud Ref
+&raw("bBeginPlayDone")         Boolean        !@begin_play_done?         // Begin Play Done
+&raw("CurrentLocationHover")   Vector3        !@current_location_hover   // Current Location Hover
+&raw("PreviousHoverIndex2D")   Integer        !@previous_hover_index_2d  // Previous Hover Index 2D
+&raw("SelectedUnit")           BP_Unit        !@selected_unit            // Selected Unit
+&raw("PreviousMouseXLocation") Real           !@previous_mouse_xlocation // Previous Mouse XLocation
+&raw("BigUnitOffset")          Vector3        !@big_unit_offset          // Big Unit Offset
+&raw("bReleased")              Boolean        !@released?                // Released
+
+$$ @choose_action_after_click
+// Looks at clicked location and hands the result over to the appropriate ability if the current unit is active and owned by this controller
+//
+// UE4 name of this method: ChooseActionAfterClick
+
+&aka("ChooseActionAfterClick")
+
+(Vector3    location   : Vector3!
+ Key        key        : Key!
+ Boolean    released?  : false
+ EClickType click_type : EClickType.@@primary) 
+
+$$ @scale_markers
+// Scale Markers
+//
+// UE4 name of this method: ScaleMarkers
+
+&aka("ScaleMarkers")
+
+(Vector3 scale : Vector3!) 
+
+$$ @touch_hover
+// Touch Hover
+//
+// UE4 name of this method: TouchHover
+
+&aka("TouchHover")
+
+(Integer index : 0) 
+
+$$ @server_decide_what_to_show_on_hover
+// Server Decide What to Show on Hover
+//
+// UE4 name of this method: ServerDecideWhatToShowOnHover
+
+&aka("ServerDecideWhatToShowOnHover")
+
+(Integer current_tile_hover : 0
+ Vector3 big_unit_offset    : Vector3!
+ Vector3 hover_location     : Vector3!) 
+
+$$ @assign_units
+// Assign Units
+//
+// UE4 name of this method: AssignUnits
+
+&aka("AssignUnits")
+
+(Actor   owner             : Actor!null
+ Integer default_owner     : 0
+ Boolean called_by_server? : false) 
+
+$$ @server_find_units
+// Server Find Units
+//
+// UE4 name of this method: ServerFindUnits
+
+&aka("ServerFindUnits")
+
+(Actor   owning_pc         : Actor!null
+ Boolean called_by_server? : false) 
+
+$$ @setup
+// Setup
+//
+// UE4 name of this method: Setup
+
+&aka("Setup")
+
+() 
+
+$$ @client_setup
+// Client Setup
+//
+// UE4 name of this method: ClientSetup
+
+&aka("ClientSetup")
+
+() 
+
+$$ @server_hovered_tile_invalid
+// Server Hovered Tile Invalid
+//
+// UE4 name of this method: ServerHoveredTileInvalid
+
+&aka("ServerHoveredTileInvalid")
+
+() 
+
+$$ @server_choose_action_after_click
+// Server Choose Action After Click
+//
+// UE4 name of this method: ServerChooseActionAfterClick
+
+&aka("ServerChooseActionAfterClick")
+
+(Vector3    clicked_location : Vector3!
+ Key        key              : Key!
+ Boolean    released?        : false
+ EClickType click_type       : EClickType.@@primary) 
+
+$$ @client_set_hover_marker_location_and_visibility
+// Client Set Hover Marker Location and Visibility
+//
+// UE4 name of this method: ClientSetHoverMarkerLocationAndVisibility
+
+&aka("ClientSetHoverMarkerLocationAndVisibility")
+
+(Vector3 location : Vector3!
+ Boolean visible? : false) 
+
+$$ @server_swap_to_unit
+// Server Swap to Unit
+//
+// UE4 name of this method: Server_SwapToUnit
+
+&aka("Server_SwapToUnit")
+
+(BP_Unit unit : BP_Unit!null) 
+
+$$ @hover
+// Hover
+//
+// UE4 name of this method: Hover
+
+&aka("Hover")
+
+(Vector3 location : Vector3!xyz(0, 0, 0)) 
+
+$$ @click
+// Click
+//
+// UE4 name of this method: Click
+
+&aka("Click")
+
+(Vector3    location   : Vector3!xyz(0, 0, 0)
+ Key        key        : Key!
+ Boolean    released?  : false
+ EClickType click_type : EClickType.@@primary) 
+
+$$ @activate_hover_tick
+// Activate Hover Tick
+//
+// UE4 name of this method: ActivateHoverTick
+
+&aka("ActivateHoverTick")
+
+() 
+
+$$ @end_turn_if_allowed
+// End Turn if Allowed
+//
+// UE4 name of this method: EndTurnIfAllowed
+
+&aka("EndTurnIfAllowed")
+
+(PlayerController calling_controller      : PlayerController!null
+ Boolean          end_whole_faction_turn? : false) 
+
+$$ .

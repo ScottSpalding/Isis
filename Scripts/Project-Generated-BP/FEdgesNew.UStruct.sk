@@ -1,0 +1,26 @@
+// FEdges New
+//
+// UE4 name of this struct: FEdgesNew
+
+// UE4 Asset Name: FEdgesNew
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Grid/FEdgesNew"
+
+annotations: &reflected_data &name("FEdgesNew")
+
+$$ @
+
+/* &raw("Edges_11_9927F5E2456172C410B1EF9B55E5B35E")None !@edges_11_9927 // Currently unsupported */
+
+$$ @!
+() FEdgesNew
+
+$$ @!copy
+(FEdgesNew other) FEdgesNew
+
+$$ @assign
+(FEdgesNew other) FEdgesNew
+
+$$ @!!
+() FEdgesNew
+
+$$ .

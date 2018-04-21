@@ -1,0 +1,26 @@
+// FObjects
+//
+// UE4 name of this struct: FObjects
+
+// UE4 Asset Name: FObjects
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Grid/FObjects"
+
+annotations: &reflected_data &name("FObjects")
+
+$$ @
+
+&raw("Objects_3_12F3C5204DD2BB671D82CBBE7610A99B") List{Entity} !@objects_3_12f3 // Objects
+
+$$ @!
+() FObjects
+
+$$ @!copy
+(FObjects other) FObjects
+
+$$ @assign
+(FObjects other) FObjects
+
+$$ @!!
+() FObjects
+
+$$ .

@@ -1,0 +1,77 @@
+// The blueprint on which all tiles are based. To create a new tile, make a child of this blueprint or a duplicate of any other tile blueprint. Handles grid positioning and snapping and interacts with Grid Manager for instantiating meshes.
+//
+// UE4 name of this class: BP_GA_Tile_C
+
+// UE4 Asset Name: BP_GA_Tile
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Tiles/BP_GA_Tile"
+
+annotations: &reflected_data &name("BP_GA_Tile_C")
+
+$$ @
+
+&raw("EdgeCost")             FTileEdges      !@edge_cost              // For Square Tiles: 0 = Wall, 1 = Walkable, 2+= walkable with cost
+&raw("bInstantiate")         Boolean         !@instantiate?           // Can this actor be instantiated?
+&raw("InstanceID")           Integer         !@instance_id            // DO NOT EDIT: Part of the Instantiate experimental system
+&raw("bInstanceVisibility")  Boolean         !@instance_visibility?   // DO NOT EDIT: Part of the Instantiate experimental system
+&raw("EdgeCosts")            List{FEdgeCost} !@edge_costs             // Holds grid indexes and costs of all edges. Is normally populated by looking at the EdgeCost struct.
+&raw("BlockedCornerIndexes") List{FTwoInts}  !@blocked_corner_indexes // Holds the indexes of tiles on either side of a corner. Marked so edges between these will be removed if the EdgeCost of the corner between these is set to -1
+&raw("Edges")                List{Integer}   !@edges                  // Indexes of all edges of this tile
+&raw("CustomEdges")          List{FEdgeCost} !@custom_edges           // Any edges added to this array will be added as edges to this tile during setup.
+&raw("SimpleCost")           Integer         !@simple_cost            // If any of the simple pathfinding types are used, this value determines the universal cost of entering this tile, no matter from what direction. 0 = impassable.
+
+$$ @mesh_to_instance
+// Mesh to Instance
+//
+// UE4 name of this method: MeshToInstance
+
+&aka("MeshToInstance")
+
+() 
+
+$$ @vector_array_interface
+// Get Vector Array Interface
+//
+// UE4 name of this method: Get Vector Array Interface
+
+&aka("Get Vector Array Interface")
+
+() 
+
+$$ @vector_to_index_interface
+// Vector To Index Interface
+//
+// UE4 name of this method: Vector to Index Interface
+
+&aka("Vector to Index Interface")
+
+() 
+
+$$ @make_blocked_corner_indexes_array
+// Make Blocked Corner Indexes Array
+//
+// UE4 name of this method: MakeBlockedCornerIndexesArray
+
+&aka("MakeBlockedCornerIndexesArray")
+
+() 
+
+$$ @make_edge_costs_array
+// Adds all edge costs from the EdgeCost struct to the EdgeCosts array
+//
+// UE4 name of this method: MakeEdgeCostsArray
+
+&aka("MakeEdgeCostsArray")
+
+() 
+
+$$ @add_edge_cost_to_grid_edges_array
+// Add Edge Cost to Grid Edges Array
+//
+// UE4 name of this method: AddEdgeCostToGridEdgesArray
+
+&aka("AddEdgeCostToGridEdgesArray")
+
+(Integer index : 0
+ Integer cost  : 0) 
+
+$$ .

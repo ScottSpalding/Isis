@@ -1,0 +1,93 @@
+// BP Status Effect
+//
+// UE4 name of this class: BP_StatusEffect_C
+
+// UE4 Asset Name: BP_StatusEffect
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Abilities/BP_StatusEffect"
+
+annotations: &reflected_data &name("BP_StatusEffect_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")      PointerToUberGraphFrame !@uber_graph_frame      // Currently unsupported */
+&raw("EffectIndicator")     BillboardComponent !@effect_indicator      // Effect Indicator
+&raw("DefaultSceneRoot")    SceneComponent     !@default_scene_root    // Default Scene Root
+&raw("OwningUnit")          BP_Unit            !@owning_unit           // Owning Unit
+&raw("GridManagerRef")      BP_GridManager     !@grid_manager_ref      // Grid Manager Ref
+&raw("DestroyDelay")        Real               !@destroy_delay         // Destroy Delay
+&raw("bUseEffectIndicator") Boolean            !@use_effect_indicator? // Use Effect Indicator
+&raw("DestroyCounter")      Integer            !@destroy_counter       // Destroy Counter
+
+$$ @end_action
+// End Action
+//
+// UE4 name of this method: EndAction
+
+&aka("EndAction")
+
+() 
+
+$$ @activate
+// Activate
+//
+// UE4 name of this method: Activate
+
+&aka("Activate")
+
+(BP_Unit target_unit : BP_Unit!null) 
+
+$$ @run_on_turn_start
+// Run on Turn Start
+//
+// UE4 name of this method: RunOnTurnStart
+
+&aka("RunOnTurnStart")
+
+() 
+
+$$ @run_on_turn_end
+// Run on Turn End
+//
+// UE4 name of this method: RunOnTurnEnd
+
+&aka("RunOnTurnEnd")
+
+() 
+
+$$ @animate_activation
+// Animate Activation
+//
+// UE4 name of this method: AnimateActivation
+
+&aka("AnimateActivation")
+
+() 
+
+$$ @disable
+// Disable
+//
+// UE4 name of this method: Disable
+
+&aka("Disable")
+
+() 
+
+$$ @animate_action
+// Animate Action
+//
+// UE4 name of this method: AnimateAction
+
+&aka("AnimateAction")
+
+(FAction action : FAction!) 
+
+$$ @multicast_test
+// Multicast Test
+//
+// UE4 name of this method: MulticastTest
+
+&aka("MulticastTest")
+
+() 
+
+$$ .

@@ -1,0 +1,23 @@
+// BPI Interact
+//
+// UE4 name of this class: BPI_Interact_C
+
+// UE4 Asset Name: BPI_Interact
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Grid/BPI_Interact"
+
+annotations: &reflected_data &name("BPI_Interact_C")
+
+$$ @
+
+$$ @interact
+// Interact
+//
+// UE4 name of this method: Interact
+
+&aka("Interact")
+
+(Actor   triggering_actor   : Actor!null
+ Integer interaction_type   : 0
+ Integer current_path_index : -1) 
+
+$$ .

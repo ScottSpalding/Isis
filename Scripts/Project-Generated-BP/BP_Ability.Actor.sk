@@ -1,0 +1,319 @@
+// Parent of all ability blueprints. Handles both displaying and executing the ability for players as well as calculating the value of its use for AI units.
+//
+// UE4 name of this class: BP_Ability_C
+
+// UE4 Asset Name: BP_Ability
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/Abilities/BP_Ability"
+
+annotations: &reflected_data &name("BP_Ability_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")               PointerToUberGraphFrame !@uber_graph_frame                // Currently unsupported */
+&raw("DefaultSceneRoot")             SceneComponent     !@default_scene_root              // Default Scene Root
+&raw("TargetIndex")                  Integer            !@target_index                    // Target Index
+&raw("GridManagerRef")               BP_GridManager     !@grid_manager_ref                // Grid Manager Ref
+&raw("TurnManagerRef")               Entity             !@turn_manager_ref                // Turn Manager Ref
+&raw("GameStateRef")                 BP_ATBTT_State     !@game_state_ref                  // Game State Ref
+&raw("HoveredTile")                  Integer            !@hovered_tile                    // Hovered Tile
+&raw("OwningUnit")                   BP_Unit            !@owning_unit                     // Owning Unit
+&raw("bCustomActionOnReactivation")  Boolean            !@custom_action_on_reactivation?  // Custom Action on Reactivation
+&raw("bDisableInput")                Boolean            !@disable_input?                  // Disable Input
+&raw("Range")                        Integer            !@range                           // Range
+&raw("MinRange")                     Integer            !@min_range                       // Min Range
+&raw("APCost")                       Integer            !@apcost                          // APCost
+/* &raw("PossibleTargets")              None               !@possible_targets                // Currently unsupported */
+&raw("DefaultCharges")               Integer            !@default_charges                 // Default Charges
+&raw("DefaultCooldown")              Integer            !@default_cooldown                // Default Cooldown
+&raw("Icon")                         Texture            !@icon                            // Icon
+&raw("IconHoverColor")               Color              !@icon_hover_color                // Icon Hover Color
+&raw("HoverMarkerMesh")              StaticMesh         !@hover_marker_mesh               // Hover Marker Mesh
+&raw("OnAbilityAssesmentDone")       MulticastDelegate
+  (
+  Real value
+  )                                                     !@on_ability_assesment_done       // On Ability Assesment Done
+&raw("EstimatedValue")               Real               !@estimated_value                 // Estimated Value
+&raw("HoverMarkerDecal")             MaterialInterface  !@hover_marker_decal              // Hover Marker Decal
+&raw("bAIDelayOn")                   Boolean            !@aidelay_on?                     // AIDelay On
+&raw("AIDelayTime")                  Real               !@aidelay_time                    // AIDelay Time
+&raw("ValueModifier")                Real               !@value_modifier                  // Value Modifier
+&raw("bCustomTargetMarker")          Boolean            !@custom_target_marker?           // Custom Target Marker
+&raw("bDiamondShapedVisibility")     Boolean            !@diamond_shaped_visibility?      // Diamond Shaped Visibility
+&raw("bUseOnAllies")                 Boolean            !@use_on_allies?                  // Use on Allies
+&raw("bCanTargetSelf")               Boolean            !@can_target_self?                // Can Target Self
+&raw("EvaluationLoopsPerTick")       Integer            !@evaluation_loops_per_tick       // Evaluation Loops Per Tick
+&raw("bUseSlowLoops")                Boolean            !@use_slow_loops?                 // Use Slow Loops
+&raw("CombinedValues")               List{Real}         !@combined_values                 // Combined Values
+&raw("PossibleMoveTargets")          List{Integer}      !@possible_move_targets           // Possible Move Targets
+&raw("MoveTargetIndex")              Integer            !@move_target_index               // Move Target Index
+&raw("bUsePregeneratedSafetyValues") Boolean            !@use_pregenerated_safety_values? // Use Pregenerated Safety Values
+&raw("bUsePregeneratedPaths")        Boolean            !@use_pregenerated_paths?         // Use Pregenerated Paths
+&raw("TileValuesOld")                List{Real}         !@tile_values_old                 // Tile Values Old
+&raw("bUseTileValues")               Boolean            !@use_tile_values?                // Use Tile Values
+&raw("TargetIndexes")                List{Integer}      !@target_indexes                  // Target Indexes
+&raw("TargetValues")                 List{Real}         !@target_values                   // Target Values
+&raw("bUseUnitAttributes")           Boolean            !@use_unit_attributes?            // Use Unit Attributes
+&raw("bDisplayInvalidTiles")         Boolean            !@display_invalid_tiles?          // Display Invalid Tiles
+&raw("StoredGridPaths")              List{FPathfinding} !@stored_grid_paths               // Stored Grid Paths
+&raw("bUseEndsTurn")                 Boolean            !@use_ends_turn?                  // Use Ends Turn
+&raw("PossibleMove")                 Integer            !@possible_move                   // Possible Move
+/* &raw("StoredPathsMap")               None               !@stored_paths_map                // Currently unsupported */
+&raw("MoveCost")                     EMoveCost          !@move_cost                       // Move Cost
+&raw("StaticMoveCost")               Integer            !@static_move_cost                // Static Move Cost
+&raw("AIActivationDelay")            Real               !@aiactivation_delay              // AIActivation Delay
+/* &raw("TileValues")                   None               !@tile_values                     // Currently unsupported */
+&raw("EvaluationLoopDelay")          Real               !@evaluation_loop_delay           // Evaluation Loop Delay
+&raw("bVersion181")                  Boolean            !@version_181?                    // Version 181
+
+$$ @default_click
+// By default switches to a clicked unit. Meant to be used if we want a general effect that is shared among several abilities. If so, this function can be called from any ability where a specific effect is not specified.
+//
+// UE4 name of this method: DefaultClick
+
+&aka("DefaultClick")
+
+(Integer grid_index : 0
+ Vector3 location   : Vector3!) 
+
+$$ @pay_move_apcost
+// If the ability includes movement in addition to its main effect, this function can be used to pay an AP cost specific to movement. The cost is defined by the MoveCost variable of this attribute
+//
+// UE4 name of this method: PayMoveAPCost
+
+&aka("PayMoveAPCost")
+
+() 
+
+$$ @update_attributes
+// Updates range, minimum range and diamond shaped visibility of this ability to be the same as these values in the owning unit, if so specified by bUseUnitAttributes
+//
+// UE4 name of this method: UpdateAttributes
+
+&aka("UpdateAttributes")
+
+() 
+
+$$ @find_ability_specific_tile_value_modifier
+// As part of FindCombinedTileAndTargetValue_SingleUnit, this function can be used to modify the estimated value of a tile, in cases where this should be influenced by the ability in question
+//
+// UE4 name of this method: FindAbilitySpecificTileValueModifier
+
+&aka("FindAbilitySpecificTileValueModifier")
+
+(Integer grid_index     : 0
+ Integer target_index   : 0
+ Real    value_modifier : 0.0) 
+
+$$ @check_requirements
+// Checks if all requirements are met before activating/evaluating this ability. Requirements should be specified in child blueprints, and could for instance be actors that are referenced by this ability, that we need to ensure exist to prevent errors
+//
+// UE4 name of this method: CheckRequirements
+
+&aka("CheckRequirements")
+
+(Boolean meets_requirements? : false) 
+
+$$ @display_ability_warning
+// Displays a debug warning due to a requirement for this skill not being met
+//
+// UE4 name of this method: DisplayAbilityWarning
+
+&aka("DisplayAbilityWarning")
+
+(BP_Unit    unit        : BP_Unit!null
+ BP_Ability ability     : BP_Ability!null
+ String     requirement : "") 
+
+$$ @add_status_effect
+// Spawns a status effect actor, ties it to the target and activates it
+//
+// UE4 name of this method: AddStatusEffect
+
+&aka("AddStatusEffect")
+
+(EntityClass status_effect : EntityClass!null
+ BP_Unit     target        : BP_Unit!null
+ Boolean     success?      : false) 
+
+$$ @wake_nearby_units
+// Any units with a stealth component that are not in initiative within the specified ranges are alerted and added to initiative. Always within move range, but for view range only if the specified grid index is in the front of the unit and not blocked
+//
+// UE4 name of this method: WakeNearbyUnits
+
+&aka("WakeNearbyUnits")
+
+(Integer index       : 0
+ Integer noise_range : 0
+ Integer view_range  : 0) 
+
+$$ @assign_ability_to_unit
+// Sets this ability to be the current active ability of the owning unit. Deactivates any previous active ability.
+//
+// UE4 name of this method: AssignAbilityToUnit
+
+&aka("AssignAbilityToUnit")
+
+(BP_Unit owning_unit : BP_Unit!null) 
+
+$$ @pay_apcost
+// Subtracts the default or the specified AP cost from the current AP of the active unit. If bUseEndsTurn is true, always sets AP to 0, which normally will end the unit's turn
+//
+// UE4 name of this method: PayAPCost
+
+&aka("PayAPCost")
+
+(Boolean use_custom_cost? : false
+ Integer custom_cost      : 0) 
+
+$$ @find_target_value
+// Checks a target index and estimates the value of using this ability on said target. Returns .5 by default, but will generally be modified in child blueprints
+//
+// UE4 name of this method: FindTargetValue
+
+&aka("FindTargetValue")
+
+(Integer target_index : 0
+ Real    value        : 0.0) 
+
+$$ @end_action
+// End Action
+//
+// UE4 name of this method: EndAction
+
+&aka("EndAction")
+
+() 
+
+$$ @click
+// Click
+//
+// UE4 name of this method: Click
+
+&aka("Click")
+
+(Integer    index      : 0
+ Vector3    location   : Vector3!
+ Key        key        : Key!
+ Boolean    released?  : false
+ EClickType click_type : EClickType.@@primary) 
+
+$$ @activate
+// Activate
+//
+// UE4 name of this method: Activate
+
+&aka("Activate")
+
+(BP_Unit owning_unit : BP_Unit!null
+ Boolean reassess?   : true) 
+
+$$ @hover
+// Hover
+//
+// UE4 name of this method: Hover
+
+&aka("Hover")
+
+(Integer index    : 0
+ Vector3 location : Vector3!) 
+
+$$ @player_activate
+// Player Activate
+//
+// UE4 name of this method: Player_Activate
+
+&aka("Player_Activate")
+
+(BP_Unit unit : BP_Unit!null) 
+
+$$ @ai_activate
+// AI Activate
+//
+// UE4 name of this method: AI_Activate
+
+&aka("AI_Activate")
+
+(BP_Unit unit : BP_Unit!null) 
+
+$$ @clear_meshes
+// Clear Meshes
+//
+// UE4 name of this method: ClearMeshes
+
+&aka("ClearMeshes")
+
+() 
+
+$$ @deactivate_ability
+// Deactivate Ability
+//
+// UE4 name of this method: DeactivateAbility
+
+&aka("DeactivateAbility")
+
+() 
+
+$$ @assess_ability_value
+// Assess Ability Value
+//
+// UE4 name of this method: AssessAbilityValue
+
+&aka("AssessAbilityValue")
+
+(BP_Unit unit : BP_Unit!null) 
+
+$$ @execute_ability
+// Execute Ability
+//
+// UE4 name of this method: ExecuteAbility
+
+&aka("ExecuteAbility")
+
+(Integer target_index : 0) 
+
+$$ @found_no_valid_target
+// Found No Valid Target
+//
+// UE4 name of this method: FoundNoValidTarget
+
+&aka("FoundNoValidTarget")
+
+() 
+
+$$ @client_clear_path
+// Client Clear Path
+//
+// UE4 name of this method: Client_ClearPath
+
+&aka("Client_ClearPath")
+
+() 
+
+$$ @clear_activation_markers
+// Clear Activation Markers
+//
+// UE4 name of this method: ClearActivationMarkers
+
+&aka("ClearActivationMarkers")
+
+() 
+
+$$ @return_value
+// Return Value
+//
+// UE4 name of this method: ReturnValue
+
+&aka("ReturnValue")
+
+(Real value : 0.0) 
+
+$$ @animate_action
+// Animate Action
+//
+// UE4 name of this method: AnimateAction
+
+&aka("AnimateAction")
+
+(FAction action : FAction!) 
+
+$$ .
