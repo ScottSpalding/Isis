@@ -1,0 +1,39 @@
+// Card Layout Struct
+//
+// UE4 name of this struct: CardLayout_Struct
+
+// UE4 Asset Name: CardLayout_Struct
+// UE4 Package Name: "/Game/CCGToolkit/CardLayouts/CardLayout_Struct"
+
+annotations: &reflected_data &name("CardLayout_Struct")
+
+$$ @
+
+&raw("Radial_Offset_63_27FAD59A447F45367C5C0CBE03296182")          Real                      !@radial_offset_63_27fa           // The Verticle "Radial" offset which is applied to the cards Y position. 
+&raw("Spacing_Min_75_CC9BD8D24ADC3374218F9FAB7A5C09A1")            Real                      !@spacing_min_75_cc9b             // The Minimum distance between each of the cards.
+&raw("Spacing_Max_70_350249A24474D77A2D4C5583A228FDFE")            Real                      !@spacing_max_70_3502             // The Maximum distance between each of the cards. Note: Used when Dynamic Spacing is enabled. 
+&raw("Dynamic_Spacing_57_D610AB164F52F834317944A7AAF00737")        Boolean                   !@dynamic_spacing_57_d610?        // Dynamic spacing will interpolate between the minimim and maximum card spacing, based on the number of cards in hand. For the best result, also set "Max Cards In Hand" to determin the interpolation value between the Min and Max spacing. 
+&raw("Screen_Offset_X_36_B561F7534CA553EA83E8EA96FB3A535D")        Real                      !@screen_offset_x_36_b561         // Percentage offset from along the X axis. 0% = Far Left, 50% = Center of the screen, 100% = Far Right 
+&raw("Screen_Offset_Y_25_EEA02E92413A169634B9F7956FE86689")        Real                      !@screen_offset_y_25_eea0         // Percentage offset from along the X axis. 0% = Bottom (Offscreen), 50% = Center of the screen, 100% = Top of the Screen 
+&raw("Rotation_Scale_Factor_66_5B6EC28C427AEA88736C62B274E16525")  Real                      !@rotation_scale_factor_66_5b6e   // Rotates the cards based on the radius offset and card gap. (Value = 0 - 1)
+&raw("Max_Cards_In_Hand_48_087DE02E48149B64F51D5D9CCF70468B")      Integer                   !@max_cards_in_hand_48_087d       // Maximum number of cards allowed in hand when using this specific profile. Note: This does not determin the maximum number of cards the player can hold. This is mainly used to determing additional backend calculations, but should also line up to the maximum number of cards the the player can hold in this profile. 
+&raw("Fly_In_Direction_23_1AF06DAC41F6B4E1B2C92E84E7ABD86E")       Boolean                   !@fly_in_direction_23_1af0?       // Simple Boolean which toggles whether the cards will fly in from the left or right side of the screen by default. (False = Left, True =  Right) 
+&raw("Transform_Pivot_22_C81FC54C4FF2B5B0225C728F258279D2")        Vector2                   !@transform_pivot_22_c81f         // The pivot location for the card. (Default is set to be the Bottom Center of the card) 
+&raw("Scale_67_848009A44284DC42BD7E1EB5182ED657")                  Real                      !@scale_67_8480                   // Scale of the card on Screen. 
+&raw("Offset_68_93327F7B4B3877A1E66303838B198221")                 Real                      !@offset_68_9332                  // The number of cards that the system will offset (Fanned)
+&raw("Rotate_Cards_To_Offset_31_85E992094DC9A80F22DEA3B2DFFB7030") Boolean                   !@rotate_cards_to_offset_31_85e9? // Whether the cards should rotate based on their position. 
+&raw("Positioning_Profile_43_B8F4C3B94DF4E03B612981B12DD913E5")    Positioning_Profiles_Enum !@positioning_profile_43_b8f4     // Which Positioning Profile will be used when calculating the cards position. 
+
+$$ @!
+() CardLayout_Struct
+
+$$ @!copy
+(CardLayout_Struct other) CardLayout_Struct
+
+$$ @assign
+(CardLayout_Struct other) CardLayout_Struct
+
+$$ @!!
+() CardLayout_Struct
+
+$$ .

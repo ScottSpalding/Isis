@@ -1,0 +1,28 @@
+// Cost Type Enum
+//
+// UE4 name of this enum: CostType_Enum
+
+// UE4 Asset Name: CostType_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/CostType_Enum"
+
+annotations: &reflected_data &name("CostType_Enum")
+
+$$ @@
+
+CostType_Enum !@@mana
+CostType_Enum !@@turn_point
+CostType_Enum !@@cost_type_max
+
+$$ @@!
+// CostType_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/CostType_Enum.CostType_Enum
+
+()
+
+  [
+  @@mana:          CostType_Enum!int(0)
+  @@turn_point:    CostType_Enum!int(1)
+  @@cost_type_max: CostType_Enum!int(2)
+  ]
+
+$$ .

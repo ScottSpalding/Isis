@@ -1,0 +1,137 @@
+// Card Game Instance
+//
+// UE4 name of this class: CardGameInstance_C
+
+// UE4 Asset Name: CardGameInstance
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/CardGameInstance"
+
+annotations: &reflected_data &name("CardGameInstance_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")     PointerToUberGraphFrame !@uber_graph_frame     // Currently unsupported */
+&raw("EnableLAN")          Boolean        !@enable_lan?          // Enable LAN
+&raw("MainMenu")           MainMenu       !@main_menu            // Main Menu UMG Blueprint reference
+&raw("LoadingScreen")      LoadingScreen  !@loading_screen       // Loading Screen UMG Blueprint reference
+&raw("CurrentGameState")   GameState_Enum !@current_game_state   // Current Game State
+&raw("ChosenCardSet_Enum") CardSet_Enum   !@chosen_card_set_enum // Holds an enum reference to the chosen deck
+&raw("Arena")              ArenaList_Enum !@arena                // Arena
+&raw("Platform")           Platform_Enum  !@platform             // Platform
+&raw("SelectedCardSet")    String         !@selected_card_set    // Selected Card Set
+&raw("Platform_Array")     List{String}   !@platform_array       // Platform Array
+&raw("Deck")               List{Name}     !@deck                 // Deck
+&raw("DeckBuilder")        DeckBuilder    !@deck_builder         // Deck Builder
+&raw("bAIOpponent")        Boolean        !@aiopponent?          // AIOpponent
+
+$$ @game_state
+// Get Game State
+//
+// UE4 name of this method: GetGameState
+
+&aka("GetGameState")
+
+(GameState_Enum in_state      : GameState_Enum.@@startup
+ GameState_Enum current_state : GameState_Enum.@@startup
+ Boolean        in_state?     : false) 
+
+$$ @current_platform
+// Get Current Platform
+//
+// UE4 name of this method: GetCurrentPlatform
+
+&aka("GetCurrentPlatform")
+
+(Platform_Enum return_platform : Platform_Enum.@@windows
+ Boolean       mobile?         : false) 
+
+$$ @begin_play
+// Begin Play
+//
+// UE4 name of this method: BeginPlay
+
+&aka("BeginPlay")
+
+() 
+
+$$ @on_failure_1cf36da1490848c36909c9bc7fd543c0
+// On Failure 1CF36DA1490848C36909C9BC7FD543C0
+//
+// UE4 name of this method: OnFailure_1CF36DA1490848C36909C9BC7FD543C0
+
+&aka("OnFailure_1CF36DA1490848C36909C9BC7FD543C0")
+
+() 
+
+$$ @on_success_1cf36da1490848c36909c9bc7fd543c0
+// On Success 1CF36DA1490848C36909C9BC7FD543C0
+//
+// UE4 name of this method: OnSuccess_1CF36DA1490848C36909C9BC7FD543C0
+
+&aka("OnSuccess_1CF36DA1490848C36909C9BC7FD543C0")
+
+() 
+
+$$ @on_failure_8de0865549a12c603fed9f9349855ff3
+// On Failure 8DE0865549A12C603FED9F9349855FF3
+//
+// UE4 name of this method: OnFailure_8DE0865549A12C603FED9F9349855FF3
+
+&aka("OnFailure_8DE0865549A12C603FED9F9349855FF3")
+
+() 
+
+$$ @on_success_8de0865549a12c603fed9f9349855ff3
+// On Success 8DE0865549A12C603FED9F9349855FF3
+//
+// UE4 name of this method: OnSuccess_8DE0865549A12C603FED9F9349855FF3
+
+&aka("OnSuccess_8DE0865549A12C603FED9F9349855FF3")
+
+() 
+
+$$ @on_failure_fbaf263a48388da23b3e7480a79b3d87
+// On Failure FBAF263A48388DA23B3E7480A79B3D87
+//
+// UE4 name of this method: OnFailure_FBAF263A48388DA23B3E7480A79B3D87
+
+&aka("OnFailure_FBAF263A48388DA23B3E7480A79B3D87")
+
+() 
+
+$$ @on_success_fbaf263a48388da23b3e7480a79b3d87
+// On Success FBAF263A48388DA23B3E7480A79B3D87
+//
+// UE4 name of this method: OnSuccess_FBAF263A48388DA23B3E7480A79B3D87
+
+&aka("OnSuccess_FBAF263A48388DA23B3E7480A79B3D87")
+
+() 
+
+$$ @show_main_menu_event
+// Show Main Menu Event
+//
+// UE4 name of this method: ShowMainMenuEvent
+
+&aka("ShowMainMenuEvent")
+
+() 
+
+$$ @show_loading_screen
+// Show Loading Screen
+//
+// UE4 name of this method: ShowLoadingScreen
+
+&aka("ShowLoadingScreen")
+
+() 
+
+$$ @event_host_game
+// Event Host Game
+//
+// UE4 name of this method: Event_HostGame
+
+&aka("Event_HostGame")
+
+(ArenaList_Enum selected_arena : ArenaList_Enum.@@empty) 
+
+$$ .

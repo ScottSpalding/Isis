@@ -1,0 +1,95 @@
+// Game Snapshot Function Library
+//
+// UE4 name of this class: GameSnapshot_FunctionLibrary_C
+
+// UE4 Asset Name: GameSnapshot_FunctionLibrary
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/FunctionLibraries/GameSnapshot_FunctionLibrary"
+
+annotations: &reflected_data &name("GameSnapshot_FunctionLibrary_C")
+
+$$ @
+
+$$ @@simulate_attack_owned_card
+// Simulate Attack Owned Card
+//
+// UE4 name of this method: SimulateAttackOwnedCard
+
+&aka("SimulateAttackOwnedCard")
+
+(Integer                calling_player_id             : 0
+ Sk3DCard               calling_card                  : Sk3DCard!null
+ Sk3DCard               recieving_card                : Sk3DCard!null
+ Integer                attack_own_card_default_value : 0
+ Entity                 world_context                 : Entity!null
+ CardInteraction_Struct return_interaction            : CardInteraction_Struct!
+ Boolean                valid?                        : false) 
+
+$$ @@simulate_attack_player
+// Simulate Attack Player
+//
+// UE4 name of this method: SimulateAttackPlayer
+
+&aka("SimulateAttackPlayer")
+
+(Integer                calling_player_id       : 0
+ Sk3DCard               calling_card            : Sk3DCard!null
+ Integer                recieving_player_id     : 0
+ Integer                pts_for_player_damage   : 0
+ Integer                pts_for_removing_player : 0
+ Entity                 world_context           : Entity!null
+ CardInteraction_Struct return_interaction      : CardInteraction_Struct!
+ Boolean                removes_player?         : false
+ Boolean                valid?                  : false) 
+
+$$ @@simulate_attack_cards
+// Simulate Attack Cards
+//
+// UE4 name of this method: SimulateAttackCards
+
+&aka("SimulateAttackCards")
+
+(Integer                calling_player_id               : 0
+ Sk3DCard               calling_card                    : Sk3DCard!null
+ Sk3DCard               recieving_card                  : Sk3DCard!null
+ Integer                pts_for_damage                  : 0
+ Integer                pts_for_removing_card_from_play : 0
+ Boolean                include_card_value?             : false
+ Entity                 world_context                   : Entity!null
+ CardInteraction_Struct return_interaction              : CardInteraction_Struct!
+ Boolean                removed_from_play?              : false
+ Boolean                valid?                          : false) 
+
+$$ @@generate_card_snapshot_simulation
+// Generate Card Snapshot Simulation
+//
+// UE4 name of this method: GenerateCardSnapshotSimulation
+
+&aka("GenerateCardSnapshotSimulation")
+
+(Sk3DCard                     card                     : Sk3DCard!null
+ Integer                      controller_id            : 0
+ Entity                       world_context            : Entity!null
+ List{CardInteraction_Struct} return_interaction_array : List{CardInteraction_Struct}!) 
+
+$$ @@generate_simulation_play_list
+// Generate Simulation Play List
+//
+// UE4 name of this method: GenerateSimulationPlayList
+
+&aka("GenerateSimulationPlayList")
+
+(Integer    controller_id : 0
+ Entity     world_context : Entity!null
+ PlayStruct play_list     : PlayStruct!) 
+
+$$ @@game_state_snapshot
+// Get Game State Snapshot
+//
+// UE4 name of this method: GetGameStateSnapshot
+
+&aka("GetGameStateSnapshot")
+
+(Entity                   world_context   : Entity!null
+ GameStateSnapshot_Struct return_snapshot : GameStateSnapshot_Struct!) 
+
+$$ .

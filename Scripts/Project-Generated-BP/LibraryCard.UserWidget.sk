@@ -1,0 +1,118 @@
+// Library Card
+//
+// UE4 name of this class: LibraryCard_C
+
+// UE4 Asset Name: LibraryCard
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Menu/DeckBuilder/LibraryCard"
+
+annotations: &reflected_data &name("LibraryCard_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")       PointerToUberGraphFrame         !@uber_graph_frame      // Currently unsupported */
+&raw("CardSelected_2")       WidgetAnimation                 !@card_selected_2       // Card Selected 2
+&raw("CardSelected")         WidgetAnimation                 !@card_selected         // Card Selected
+&raw("Scale")                WidgetAnimation                 !@scale                 // Scale
+&raw("Pop")                  WidgetAnimation                 !@pop                   // Pop
+&raw("Border_1")             Border                          !@border_1              // Border 1
+&raw("Card_Button")          Button                          !@card_button           // Card Button
+&raw("CardCount_SizeBox")    SizeBox                         !@card_count_size_box   // Card Count Size Box
+&raw("CardCount_Text")       TextBlock                       !@card_count_text       // Card Count Text
+&raw("Lock_image")           Image                           !@lock_image            // Lock Image
+&raw("Overlay_0")            Overlay                         !@overlay_0             // Overlay 0
+&raw("ViewCard_Default")     ViewCard_Default                !@view_card_default     // View Card Default
+&raw("ViewCard_Default_C_2") ViewCard_Default                !@view_card_default_c_2 // View Card Default C 2
+&raw("CardName")             Name                            !@card_name             // Card Name
+&raw("CardSet")              CardSet_Enum                    !@card_set              // Card Set
+&raw("SelectableState_Enum") LibraryCardSelectableState_Enum !@selectable_state_enum // Selectable State Enum
+&raw("CardsAvailable")       Integer                         !@cards_available       // Cards Available
+&raw("ParentWidget_Ref")     Widget                          !@parent_widget_ref     // Parent Widget Ref
+&raw("bIsMousedOver")        Boolean                         !@is_moused_over?       // Is Moused Over
+&raw("bIsPreviewEnabled")    Boolean                         !@is_preview_enabled?   // Is Preview Enabled
+&raw("ViewCardPreview")      CardPreview                     !@view_card_preview     // View Card Preview
+&raw("CardPreview_Ref")      ScreenCardPreview               !@card_preview_ref      // Card Preview Ref
+
+$$ @on_card_clicked
+// On Card Clicked
+//
+// UE4 name of this method: OnCardClicked
+
+&aka("OnCardClicked")
+
+() 
+
+$$ @update_library_card_state_visuals
+// Update Library Card State Visuals
+//
+// UE4 name of this method: UpdateLibraryCardStateVisuals
+
+&aka("UpdateLibraryCardStateVisuals")
+
+() 
+
+$$ @update_library_card_state
+// Update Library Card State
+//
+// UE4 name of this method: UpdateLibraryCardState
+
+&aka("UpdateLibraryCardState")
+
+() 
+
+$$ @enable_card_preview
+// Enable Card Preview
+//
+// UE4 name of this method: EnableCardPreview
+
+&aka("EnableCardPreview")
+
+() 
+
+$$ @return_deck_selection
+// Return Deck Selection
+//
+// UE4 name of this method: ReturnDeckSelection
+
+&aka("ReturnDeckSelection")
+
+(String deck_selection : "") 
+
+$$ @update_visual_stats
+// Update Visual Stats
+//
+// UE4 name of this method: UpdateVisualStats
+
+&aka("UpdateVisualStats")
+
+() 
+
+$$ @return_preview
+// Return Preview
+//
+// UE4 name of this method: ReturnPreview
+
+&aka("ReturnPreview")
+
+(Boolean preview_enabled? : false) 
+
+$$ @return_card_set
+// Return Card Set
+//
+// UE4 name of this method: ReturnCardSet
+
+&aka("ReturnCardSet")
+
+(CardSet_Enum card_set : CardSet_Enum.@@empty) 
+
+$$ @return_option
+// Return Option
+//
+// UE4 name of this method: ReturnOption
+
+&aka("ReturnOption")
+
+(CardRowOptions option         : CardRowOptions.@@none
+ String         card_set       : ""
+ Widget         calling_widget : Widget!null) 
+
+$$ .

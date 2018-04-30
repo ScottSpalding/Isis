@@ -1,0 +1,7 @@
+// BTNode
+//
+// UE4 name of this class: BTNode
+
+annotations: &reflected_cpp &name("BTNode")
+
+$$ .

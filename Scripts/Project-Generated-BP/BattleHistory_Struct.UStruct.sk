@@ -1,0 +1,30 @@
+// Battle History Struct
+//
+// UE4 name of this struct: BattleHistory_Struct
+
+// UE4 Asset Name: BattleHistory_Struct
+// UE4 Package Name: "/Game/CCGToolkit/CardGame/Structs/GameStructs/BattleHistory_Struct"
+
+annotations: &reflected_data &name("BattleHistory_Struct")
+
+$$ @
+
+&raw("OwningControllerID_19_C79C7D5D4FE1EFD4D4A5D3960E3FDBBD")   Integer       !@owning_controller_id_19_c79c   // Owning Controller ID
+&raw("Interaction_Type_17_1D2364A9486F10FB5AA296950A6CCC0F")     PlayType_Enum !@interaction_type_17_1d23       // Interaction Type
+&raw("TalkingCard_36_991C803C4A9F71946672D8B5341AA363")          Card_Struct   !@talking_card_36_991c           // Talking Card
+&raw("RecievingCard_26_FAD6A996453B2F7BFD49CFA9707658CA")        Card_Struct   !@recieving_card_26_fad6         // Recieving Card
+&raw("OR_RecievingPlayerID_34_9B665724458A180D6656E4A49B173002") Integer       !@or_recieving_player_id_34_9b66 // OR Recieving Player ID
+
+$$ @!
+() BattleHistory_Struct
+
+$$ @!copy
+(BattleHistory_Struct other) BattleHistory_Struct
+
+$$ @assign
+(BattleHistory_Struct other) BattleHistory_Struct
+
+$$ @!!
+() BattleHistory_Struct
+
+$$ .

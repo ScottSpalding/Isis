@@ -1,0 +1,33 @@
+// Player State Snapshot Struct
+//
+// UE4 name of this struct: PlayerStateSnapshot_Struct
+
+// UE4 Asset Name: PlayerStateSnapshot_Struct
+// UE4 Package Name: "/Game/CCGToolkit/CardGame/Structs/GameStructs/PlayerStateSnapshot_Struct"
+
+annotations: &reflected_data &name("PlayerStateSnapshot_Struct")
+
+$$ @
+
+&raw("PlayerID_21_B8BADC6B461C4044BBEDFD81B6CE7E43")          Integer           !@player_id_21_b8ba         // Player ID
+&raw("Card_Struct_Array_35_AB2A94A240987ECB0D26A1ABC50FDF30") List{Card_Struct} !@card_struct_array_35_ab2a // Card Struct Array
+&raw("Card_IDs_Array_29_B23CBBEE4C9681914EBC88B550CFA796")    List{Integer}     !@card_ids_array_29_b23c    // Card IDs Array
+&raw("Cards_In_Hand_7_B0F03135457C5635889403B7EE31FF30")      List{Name}        !@cards_in_hand_7_b0f0      // Cards in Hand
+&raw("Deck_9_E6C0B42E420C6332441B27B18CE95080")               List{Name}        !@deck_9_e6c0               // Deck
+&raw("Health_19_E5704D084695FDA5AA01A9B1E0FF8661")            Integer           !@health_19_e570            // Health
+&raw("Mana_18_1357ADEA46C0E49FEB3591B64E4152D9")              Integer           !@mana_18_1357              // Mana
+&raw("Turn_17_0671877440C53AA9D4114A840DCA0BEE")              Integer           !@turn_17_0671              // Turn
+
+$$ @!
+() PlayerStateSnapshot_Struct
+
+$$ @!copy
+(PlayerStateSnapshot_Struct other) PlayerStateSnapshot_Struct
+
+$$ @assign
+(PlayerStateSnapshot_Struct other) PlayerStateSnapshot_Struct
+
+$$ @!!
+() PlayerStateSnapshot_Struct
+
+$$ .

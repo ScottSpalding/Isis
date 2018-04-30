@@ -1,0 +1,36 @@
+// Expandable Deck Selection Row
+//
+// UE4 name of this class: ExpandableDeckSelectionRow_C
+
+// UE4 Asset Name: ExpandableDeckSelectionRow
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Menu/ExpandableDeckSelectionRow"
+
+annotations: &reflected_data &name("ExpandableDeckSelectionRow_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")         PointerToUberGraphFrame !@uber_graph_frame         // Currently unsupported */
+&raw("OpenRow")                WidgetAnimation !@open_row                 // Open Row
+&raw("Cards_Image")            Image           !@cards_image              // Cards Image
+&raw("Deck_Image")             Image           !@deck_image               // Deck Image
+&raw("DeckName_Text")          TextBlock       !@deck_name_text           // Deck Name Text
+&raw("DeckStats")              DeckStats       !@deck_stats               // Deck Stats
+&raw("Graph_SizeBox")          SizeBox         !@graph_size_box           // Graph Size Box
+&raw("Image_0")                Image           !@image_0                  // Image 0
+&raw("Option1_Button")         Button          !@option_1_button          // Option 1 Button
+&raw("Option1_Text")           TextBlock       !@option_1_text            // Option 1 Text
+&raw("Option2_Button")         Button          !@option_2_button          // Option 2 Button
+&raw("Option2_Text")           TextBlock       !@option_2_text            // Option 2 Text
+&raw("Row_Button")             Button          !@row_button               // Row Button
+&raw("RowImage_Border")        Border          !@row_image_border         // Row Image Border
+&raw("TextBlock_63")           TextBlock       !@text_block_63            // Text Block 63
+&raw("ToggleExpandRow_Button") Button          !@toggle_expand_row_button // Toggle Expand Row Button
+&raw("Deck_Number")            Integer         !@deck_number              // Deck Number
+&raw("CardSet")                CardSet_Enum    !@card_set                 // Card Set
+&raw("CardSetName")            String          !@card_set_name            // Card Set Name
+&raw("WidgetParent")           Widget          !@widget_parent            // Widget Parent
+&raw("RowOption_1")            CardRowOptions  !@row_option_1             // Row Option 1
+&raw("RowOption_2")            CardRowOptions  !@row_option_2             // Row Option 2
+&raw("ShowStatGraph")          Boolean         !@show_stat_graph?         // Show Stat Graph
+
+$$ .

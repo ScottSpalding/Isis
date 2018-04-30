@@ -1,0 +1,27 @@
+// Point Allocation Struct
+//
+// UE4 name of this struct: PointAllocation_Struct
+
+// UE4 Asset Name: PointAllocation_Struct
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIPointsAllocation/PointAllocation_Struct"
+
+annotations: &reflected_data &name("PointAllocation_Struct")
+
+$$ @
+
+&raw("Evaluation_19_59E481AD449D169EE3C58B9005661CC2")  EvaluationPoints_Struct  !@evaluation_19_59e4  // Evaluation
+&raw("Calculation_25_207A44BB44734F0B26CC4DAD8AD3021A") CalculationPoints_Struct !@calculation_25_207a // Calculation
+
+$$ @!
+() PointAllocation_Struct
+
+$$ @!copy
+(PointAllocation_Struct other) PointAllocation_Struct
+
+$$ @assign
+(PointAllocation_Struct other) PointAllocation_Struct
+
+$$ @!!
+() PointAllocation_Struct
+
+$$ .

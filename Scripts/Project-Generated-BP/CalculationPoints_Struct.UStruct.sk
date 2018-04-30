@@ -1,0 +1,32 @@
+// Calculation Points Struct
+//
+// UE4 name of this struct: CalculationPoints_Struct
+
+// UE4 Asset Name: CalculationPoints_Struct
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIPointsAllocation/CalculationPoints_Struct"
+
+annotations: &reflected_data &name("CalculationPoints_Struct")
+
+$$ @
+
+&raw("bInclude_AI_Points_Per_Card_1_447417954E46142D87B6B4A2618442CF")         Boolean !@include_ai_points_per_card_1_4474?         // Include AI Points Per Card
+&raw("Pts_Card_Removed_From_Play_5_3D6FE87A4123294B619AE7B3ABDB24DF")          Integer !@pts_card_removed_from_play_5_3d6f          // Pts Card Removed from Play
+&raw("Pts_Card_Damaged_7_E76C8C0D41673057B6E08A8735EEB648")                    Integer !@pts_card_damaged_7_e76c                    // Pts Card Damaged
+&raw("Pts_Per_Damage_Point_To_Player_10_686425A54EF255DA300025861D57B060")     Integer !@pts_per_damage_point_to_player_10_6864     // Pts Per Damage Point to Player
+&raw("Pts_Player_Removed_From_Play_19_4F1883E24AA575AE2CA1AABD42E1843B")       Integer !@pts_player_removed_from_play_19_4f18       // Pts Player Removed from Play
+&raw("-Pts_Owning_Card_Removed_From_Play_16_48B50C28403B266954A3BD9E276B0D4A") Integer !@_pts_owning_card_removed_from_play_16_48b5 // - Pts Owning Card Removed from Play
+&raw("Pts_Attack_Owned_Card_With_Value_22_37B5B6914D7F0FA269A93D8B38CC19B7")   Integer !@pts_attack_owned_card_with_value_22_37b5   // Pts Attack Owned Card with Value
+
+$$ @!
+() CalculationPoints_Struct
+
+$$ @!copy
+(CalculationPoints_Struct other) CalculationPoints_Struct
+
+$$ @assign
+(CalculationPoints_Struct other) CalculationPoints_Struct
+
+$$ @!!
+() CalculationPoints_Struct
+
+$$ .

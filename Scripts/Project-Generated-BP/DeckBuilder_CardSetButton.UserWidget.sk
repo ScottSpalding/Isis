@@ -1,0 +1,38 @@
+// Deck Builder Card Set Button
+//
+// UE4 name of this class: DeckBuilder_CardSetButton_C
+
+// UE4 Asset Name: DeckBuilder_CardSetButton
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Menu/DeckBuilder/DeckBuilder_CardSetButton"
+
+annotations: &reflected_data &name("DeckBuilder_CardSetButton_C")
+
+$$ @
+
+/* &raw("UberGraphFrame") PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
+&raw("Cardset_Button") Button       !@cardset_button // Cardset Button
+&raw("Cardset_Text")   TextBlock    !@cardset_text   // Cardset Text
+&raw("CardSet")        CardSet_Enum !@card_set       // Card Set
+&raw("ParentWidget")   Widget       !@parent_widget  // Parent Widget
+&raw("bIsSelected")    Boolean      !@is_selected?   // Is Selected
+
+$$ @update_button_state
+// Update Button State
+//
+// UE4 name of this method: UpdateButtonState
+
+&aka("UpdateButtonState")
+
+(Boolean selected? : false) 
+
+$$ @initiate_card_set_button
+// Initiate Card Set Button
+//
+// UE4 name of this method: InitiateCardSetButton
+
+&aka("InitiateCardSetButton")
+
+(CardSet_Enum card_set      : CardSet_Enum.@@empty
+ Widget       parent_widget : Widget!null) 
+
+$$ .

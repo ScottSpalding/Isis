@@ -1,0 +1,22 @@
+// Pause Menu
+//
+// UE4 name of this class: PauseMenu_C
+
+// UE4 Asset Name: PauseMenu
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Menu/PauseMenu"
+
+annotations: &reflected_data &name("PauseMenu_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")    PointerToUberGraphFrame !@uber_graph_frame   // Currently unsupported */
+&raw("Button_Exit")       Button      !@button_exit        // Button Exit
+&raw("Button_MainMenu")   Button      !@button_main_menu   // Button Main Menu
+&raw("Button_Resume")     Button      !@button_resume      // Button Resume
+&raw("Fade_Image")        Image       !@fade_image         // Fade Image
+&raw("Image_1609")        Image       !@image_1609         // Image 1609
+&raw("Menu_Button")       Button      !@menu_button        // Menu Button
+&raw("Menu_Canvas")       CanvasPanel !@menu_canvas        // Menu Canvas
+&raw("MenuSelection_Box") VerticalBox !@menu_selection_box // Menu Selection Box
+
+$$ .

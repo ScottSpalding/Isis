@@ -1,0 +1,36 @@
+// Card Effects Enum
+//
+// UE4 name of this enum: CardEffects_Enum
+
+// UE4 Asset Name: CardEffects_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Effects_Enums/CardEffects_Enum"
+
+annotations: &reflected_data &name("CardEffects_Enum")
+
+$$ @@
+
+CardEffects_Enum !@@on_card_placed
+CardEffects_Enum !@@on_attack
+CardEffects_Enum !@@decreased_health
+CardEffects_Enum !@@increased_health
+CardEffects_Enum !@@on_ability_used
+CardEffects_Enum !@@on_death
+CardEffects_Enum !@@card_effects_max
+
+$$ @@!
+// CardEffects_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Effects_Enums/CardEffects_Enum.CardEffects_Enum
+
+()
+
+  [
+  @@on_card_placed:   CardEffects_Enum!int(0)
+  @@on_attack:        CardEffects_Enum!int(1)
+  @@decreased_health: CardEffects_Enum!int(2)
+  @@increased_health: CardEffects_Enum!int(3)
+  @@on_ability_used:  CardEffects_Enum!int(4)
+  @@on_death:         CardEffects_Enum!int(5)
+  @@card_effects_max: CardEffects_Enum!int(6)
+  ]
+
+$$ .

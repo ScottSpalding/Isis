@@ -1,0 +1,54 @@
+// Ability Type Enum
+//
+// UE4 name of this enum: AbilityType_Enum
+
+// UE4 Asset Name: AbilityType_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/AbilityType_Enum"
+
+annotations: &reflected_data &name("AbilityType_Enum")
+
+$$ @@
+
+AbilityType_Enum !@@none
+AbilityType_Enum !@@draw_card_s_
+AbilityType_Enum !@@increase_attack
+AbilityType_Enum !@@clone
+AbilityType_Enum !@@increase_player_health
+AbilityType_Enum !@@retaliation_damage
+AbilityType_Enum !@@damage_all_cards_on_board
+AbilityType_Enum !@@spawn_random_card_from_deck
+AbilityType_Enum !@@give_turn_points_to_all_active_cards
+AbilityType_Enum !@@increase_turn_points_
+AbilityType_Enum !@@discard_cards_in_hand
+AbilityType_Enum !@@pickup_first_creature_in_the_graveyard_to_board_
+AbilityType_Enum !@@pickup_first_creature_in_the_graveyard_to_hand_
+AbilityType_Enum !@@possess_opponents_card
+AbilityType_Enum !@@swap_cards_in_hand
+AbilityType_Enum !@@ability_type_max
+
+$$ @@!
+// AbilityType_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/AbilityType_Enum.AbilityType_Enum
+
+()
+
+  [
+  @@none:                                             AbilityType_Enum!int(0)
+  @@draw_card_s_:                                     AbilityType_Enum!int(1)
+  @@increase_attack:                                  AbilityType_Enum!int(2)
+  @@clone:                                            AbilityType_Enum!int(3)
+  @@increase_player_health:                           AbilityType_Enum!int(4)
+  @@retaliation_damage:                               AbilityType_Enum!int(5)
+  @@damage_all_cards_on_board:                        AbilityType_Enum!int(6)
+  @@spawn_random_card_from_deck:                      AbilityType_Enum!int(7)
+  @@give_turn_points_to_all_active_cards:             AbilityType_Enum!int(8)
+  @@increase_turn_points_:                            AbilityType_Enum!int(9)
+  @@discard_cards_in_hand:                            AbilityType_Enum!int(10)
+  @@pickup_first_creature_in_the_graveyard_to_board_: AbilityType_Enum!int(11)
+  @@pickup_first_creature_in_the_graveyard_to_hand_:  AbilityType_Enum!int(12)
+  @@possess_opponents_card:                           AbilityType_Enum!int(13)
+  @@swap_cards_in_hand:                               AbilityType_Enum!int(14)
+  @@ability_type_max:                                 AbilityType_Enum!int(15)
+  ]
+
+$$ .

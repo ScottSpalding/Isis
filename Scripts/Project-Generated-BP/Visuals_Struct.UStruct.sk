@@ -1,0 +1,31 @@
+// Visuals Struct
+//
+// UE4 name of this struct: Visuals_Struct
+
+// UE4 Asset Name: Visuals_Struct
+// UE4 Package Name: "/Game/CCGToolkit/CardGame/Structs/CardStructs/Visuals_Struct"
+
+annotations: &reflected_data &name("Visuals_Struct")
+
+$$ @
+
+&raw("Frame_Texture_2_0873B0F846A6FEF4337C1297F45F3E46")   Texture          !@frame_texture_2_0873   // Card Frame Texture Reference
+&raw("Image_Texture_4_FBC1542B4338E556104ADCAAE75901DF")   Texture          !@image_texture_4_fbc1   // Card Image Texture Reference
+&raw("Back_Texture_6_11FA48F242A7293E1E403B91C51E29C5")    Texture          !@back_texture_6_11fa    // Card Back Texture Reference
+&raw("Frame_Material_9_1DA5CEA343DFE6E43F5482B41219CDBE")  MaterialInstance !@frame_material_9_1da5  // Card Frame Material Instance Reference
+&raw("Image_Material_11_B47B170347BAF8D97051E184AF303305") MaterialInstance !@image_material_11_b47b // Card Image Material Instance Reference
+&raw("Back_material_13_FE63DDF8493026E1382A4B8FF3BCE580")  MaterialInstance !@back_material_13_fe63  // Card Back Material Instance Reference
+
+$$ @!
+() Visuals_Struct
+
+$$ @!copy
+(Visuals_Struct other) Visuals_Struct
+
+$$ @assign
+(Visuals_Struct other) Visuals_Struct
+
+$$ @!!
+() Visuals_Struct
+
+$$ .

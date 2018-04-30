@@ -1,0 +1,38 @@
+// AIPersonality Focus Enum
+//
+// UE4 name of this enum: AIPersonalityFocus_Enum
+
+// UE4 Asset Name: AIPersonalityFocus_Enum
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIPersonality/AIPersonalityFocus_Enum"
+
+annotations: &reflected_data &name("AIPersonalityFocus_Enum")
+
+$$ @@
+
+AIPersonalityFocus_Enum !@@none
+AIPersonalityFocus_Enum !@@increase_player_health
+AIPersonalityFocus_Enum !@@damage_cards
+AIPersonalityFocus_Enum !@@damage_opponent_player
+AIPersonalityFocus_Enum !@@playing_cards
+AIPersonalityFocus_Enum !@@picking_up_cards
+AIPersonalityFocus_Enum !@@opponent_hindrance
+AIPersonalityFocus_Enum !@@aipersonality_focus_max
+
+$$ @@!
+// AIPersonalityFocus_Enum
+// EnumPath: /Game/CCGToolkit/CardGameAI/AIPersonality/AIPersonalityFocus_Enum.AIPersonalityFocus_Enum
+
+()
+
+  [
+  @@none:                    AIPersonalityFocus_Enum!int(0)
+  @@increase_player_health:  AIPersonalityFocus_Enum!int(1)
+  @@damage_cards:            AIPersonalityFocus_Enum!int(2)
+  @@damage_opponent_player:  AIPersonalityFocus_Enum!int(3)
+  @@playing_cards:           AIPersonalityFocus_Enum!int(4)
+  @@picking_up_cards:        AIPersonalityFocus_Enum!int(5)
+  @@opponent_hindrance:      AIPersonalityFocus_Enum!int(6)
+  @@aipersonality_focus_max: AIPersonalityFocus_Enum!int(7)
+  ]
+
+$$ .

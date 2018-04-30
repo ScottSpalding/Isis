@@ -1,0 +1,32 @@
+// Card Set Enum
+//
+// UE4 name of this enum: CardSet_Enum
+
+// UE4 Asset Name: CardSet_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/CardSet_Enum"
+
+annotations: &reflected_data &name("CardSet_Enum")
+
+$$ @@
+
+CardSet_Enum !@@empty
+CardSet_Enum !@@basic_set
+CardSet_Enum !@@debug_card_set
+CardSet_Enum !@@empty_set
+CardSet_Enum !@@card_set_max
+
+$$ @@!
+// CardSet_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/CardSet_Enum.CardSet_Enum
+
+()
+
+  [
+  @@empty:          CardSet_Enum!int(0)
+  @@basic_set:      CardSet_Enum!int(1)
+  @@debug_card_set: CardSet_Enum!int(2)
+  @@empty_set:      CardSet_Enum!int(3)
+  @@card_set_max:   CardSet_Enum!int(4)
+  ]
+
+$$ .

@@ -1,0 +1,36 @@
+// Notification Manager
+//
+// UE4 name of this class: NotificationManager_C
+
+// UE4 Asset Name: NotificationManager
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Additional/NotificationManager"
+
+annotations: &reflected_data &name("NotificationManager_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")            PointerToUberGraphFrame   !@uber_graph_frame              // Currently unsupported */
+&raw("VerticalBox_0")             VerticalBox               !@vertical_box_0                // Vertical Box 0
+&raw("LogMessages_Array")         List{NotificationMessage} !@log_messages_array            // Log Messages Array
+&raw("MaxMessagesDisplayedInLog") Integer                   !@max_messages_displayed_in_log // Max Messages Displayed in Log
+
+$$ @log_notification_message
+// Log Notification Message
+//
+// UE4 name of this method: LogNotificationMessage
+
+&aka("LogNotificationMessage")
+
+(String message : ""
+ Color  colour  : Color!) 
+
+$$ @remove_log_message
+// Remove Log Message
+//
+// UE4 name of this method: RemoveLogMessage
+
+&aka("RemoveLogMessage")
+
+(NotificationMessage message : NotificationMessage!null) 
+
+$$ .

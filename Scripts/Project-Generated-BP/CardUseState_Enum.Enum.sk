@@ -1,0 +1,30 @@
+// Card Use State Enum
+//
+// UE4 name of this enum: CardUseState_Enum
+
+// UE4 Asset Name: CardUseState_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/CardUseState_Enum"
+
+annotations: &reflected_data &name("CardUseState_Enum")
+
+$$ @@
+
+CardUseState_Enum !@@remain_in_play
+CardUseState_Enum !@@single_use_send_to_graveyard_before_ability
+CardUseState_Enum !@@single_use_send_to_graveyard_after_ability
+CardUseState_Enum !@@card_use_state_max
+
+$$ @@!
+// CardUseState_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/CardUseState_Enum.CardUseState_Enum
+
+()
+
+  [
+  @@remain_in_play:                              CardUseState_Enum!int(0)
+  @@single_use_send_to_graveyard_before_ability: CardUseState_Enum!int(1)
+  @@single_use_send_to_graveyard_after_ability:  CardUseState_Enum!int(2)
+  @@card_use_state_max:                          CardUseState_Enum!int(3)
+  ]
+
+$$ .

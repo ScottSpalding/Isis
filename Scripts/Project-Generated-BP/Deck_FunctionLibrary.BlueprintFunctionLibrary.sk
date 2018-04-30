@@ -1,0 +1,12 @@
+// Deck Function Library
+//
+// UE4 name of this class: Deck_FunctionLibrary_C
+
+// UE4 Asset Name: Deck_FunctionLibrary
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/FunctionLibraries/Deck_FunctionLibrary"
+
+annotations: &reflected_data &name("Deck_FunctionLibrary_C")
+
+$$ @
+
+$$ .

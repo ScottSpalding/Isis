@@ -1,0 +1,14 @@
+// Auto Rotate to Player
+//
+// UE4 name of this class: AutoRotateToPlayer_C
+
+// UE4 Asset Name: AutoRotateToPlayer
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Gameplay/AutoRotateToPlayer"
+
+annotations: &reflected_data &name("AutoRotateToPlayer_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
+
+$$ .

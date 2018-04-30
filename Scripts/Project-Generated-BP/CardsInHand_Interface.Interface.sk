@@ -1,0 +1,12 @@
+// Cards in Hand Interface
+//
+// UE4 name of this class: CardsInHand_Interface_C
+
+// UE4 Asset Name: CardsInHand_Interface
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Interface/CardsInHand_Interface"
+
+annotations: &reflected_data &name("CardsInHand_Interface_C")
+
+$$ @
+
+$$ .

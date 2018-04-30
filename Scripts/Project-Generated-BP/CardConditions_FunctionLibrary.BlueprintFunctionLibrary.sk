@@ -1,0 +1,133 @@
+// Card Conditions Function Library
+//
+// UE4 name of this class: CardConditions_FunctionLibrary_C
+
+// UE4 Asset Name: CardConditions_FunctionLibrary
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/FunctionLibraries/CardConditions_FunctionLibrary"
+
+annotations: &reflected_data &name("CardConditions_FunctionLibrary_C")
+
+$$ @
+
+$$ @@condition_if_low_playable_cards_in_hand_aionly_
+// Condition if Low Playable Cards in Hand(A IOnly)
+//
+// UE4 name of this method: ConditionIfLowPlayableCardsInHand(AIOnly)
+
+&aka("ConditionIfLowPlayableCardsInHand(AIOnly)")
+
+(Integer player_id     : 0
+ Integer low_value     : 2
+ Entity  world_context : Entity!null
+ Boolean valid?        : false) 
+
+$$ @@condition_if_player_has_cards_in_graveyard
+// Condition if Player Has Cards in Graveyard
+//
+// UE4 name of this method: ConditionIfPlayerHasCardsInGraveyard
+
+&aka("ConditionIfPlayerHasCardsInGraveyard")
+
+(Controller controller             : Controller!null
+ Boolean    ai_only?               : false
+ Integer    min_cards_in_graveyard : 5
+ Entity     world_context          : Entity!null
+ Boolean    valid?                 : false) 
+
+$$ @@condition_is_not_owning_player
+// Condition Is Not Owning Player
+//
+// UE4 name of this method: ConditionIsNotOwningPlayer
+
+&aka("ConditionIsNotOwningPlayer")
+
+(Integer  player_id      : 0
+ Sk3DCard recieving_card : Sk3DCard!null
+ Entity   world_context  : Entity!null
+ Boolean  valid?         : false) 
+
+$$ @@condition_if_recieving_card_type
+// Condition if Recieving Card Type
+//
+// UE4 name of this method: ConditionIfRecievingCardType
+
+&aka("ConditionIfRecievingCardType")
+
+(Sk3DCard     recieving_card      : Sk3DCard!null
+ CardTypeEnum recieving_card_type : CardTypeEnum.@@none
+ Entity       world_context       : Entity!null
+ Boolean      valid?              : false) 
+
+$$ @@condition_if_placed_on_owned_placement
+// Condition if Placed on Owned Placement
+//
+// UE4 name of this method: ConditionIfPlacedOnOwnedPlacement
+
+&aka("ConditionIfPlacedOnOwnedPlacement")
+
+(Integer  player_id      : 0
+ Sk3DCard recieving_card : Sk3DCard!null
+ Boolean  oppenent?      : false
+ Entity   world_context  : Entity!null
+ Boolean  valid?         : false) 
+
+$$ @@condition_if_end_of_play_aionly_
+// Condition if End Of Play(A IOnly)
+//
+// UE4 name of this method: ConditionIfEndOfPlay(AIOnly)
+
+&aka("ConditionIfEndOfPlay(AIOnly)")
+
+(Integer player_id     : 0
+ Entity  world_context : Entity!null
+ Boolean valid?        : false) 
+
+$$ @@condition_if_start_of_play_aionly_
+// Condition if Start Of Play(A IOnly)
+//
+// UE4 name of this method: ConditionIfStartOfPlay(AIOnly)
+
+&aka("ConditionIfStartOfPlay(AIOnly)")
+
+(Integer player_id     : 0
+ Entity  world_context : Entity!null
+ Boolean valid?        : false) 
+
+$$ @@condition_if_player_high_health
+// Condition if Player High Health
+//
+// UE4 name of this method: ConditionIfPlayerHighHealth
+
+&aka("ConditionIfPlayerHighHealth")
+
+(Integer player_id     : 0
+ Entity  world_context : Entity!null
+ Boolean valid?        : false) 
+
+$$ @@condition_if_player_low_health
+// Condition if Player Low Health
+//
+// UE4 name of this method: ConditionIfPlayerLowHealth
+
+&aka("ConditionIfPlayerLowHealth")
+
+(Integer player_id     : 0
+ Entity  world_context : Entity!null
+ Boolean valid?        : false) 
+
+$$ @@condition_if_card_type_in_play
+// Condition if Card Type in Play
+//
+// UE4 name of this method: ConditionIfCardTypeInPlay
+
+&aka("ConditionIfCardTypeInPlay")
+
+(Controller   controller             : Controller!null
+ Integer      min_creatures_on_board : 0
+ Boolean      opponent?              : false
+ CardTypeEnum card_type              : CardTypeEnum.@@none
+ Boolean      ai_only?               : false
+ Entity       world_context          : Entity!null
+ Boolean      valid?                 : false) 
+
+$$ .

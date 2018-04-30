@@ -1,0 +1,49 @@
+// View Card Default
+//
+// UE4 name of this class: ViewCard_Default_C
+
+// UE4 Asset Name: ViewCard_Default
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Gameplay/ViewCard_Default"
+
+annotations: &reflected_data &name("ViewCard_Default_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")    PointerToUberGraphFrame !@uber_graph_frame   // Currently unsupported */
+&raw("Attack_Icon")       Image        !@attack_icon        // Attack Icon
+&raw("Attack_Overlay")    Overlay      !@attack_overlay     // Attack Overlay
+&raw("Attack_Text")       TextBlock    !@attack_text        // Attack Text
+&raw("Card_Frame")        Image        !@card_frame         // Card Frame
+&raw("Card_Image")        Image        !@card_image         // Card Image
+&raw("CardType_Text")     TextBlock    !@card_type_text     // Card Type Text
+&raw("Description_Text")  TextBlock    !@description_text   // Description Text
+&raw("Gem_Icon")          Image        !@gem_icon           // Gem Icon
+&raw("Health_Overlay")    Overlay      !@health_overlay     // Health Overlay
+&raw("Health_Text")       TextBlock    !@health_text        // Health Text
+&raw("Heart_Icon")        Image        !@heart_icon         // Heart Icon
+&raw("ManaCost_Text")     TextBlock    !@mana_cost_text     // Mana Cost Text
+&raw("Shadow_Image")      Image        !@shadow_image       // Shadow Image
+&raw("Text_Name")         TextBlock    !@text_name          // Text Name
+&raw("ViewCard_Canvas")   CanvasPanel  !@view_card_canvas   // View Card Canvas
+&raw("CardName")          Name         !@card_name          // Card Name
+&raw("CardBrush")         SlateBrush   !@card_brush         // Card Brush
+&raw("CardSize")          Vector2      !@card_size          // Card Size
+&raw("ViewportSize")      Vector2      !@viewport_size      // Viewport Size
+&raw("Card_Frame_Brush")  SlateBrush   !@card_frame_brush   // Card Frame Brush
+&raw("CardWidget_Parent") CardWidget   !@card_widget_parent // Card Widget Parent
+&raw("3DCardParent")      Sk3DCard     !@3dcard_parent      // 3DCard Parent
+&raw("bIsPreview")        Boolean      !@is_preview?        // Is Preview
+&raw("bIsFaceUp")         Boolean      !@is_face_up?        // Is Face Up
+&raw("CardBackBrush")     SlateBrush   !@card_back_brush    // Card Back Brush
+&raw("CardSet")           CardSet_Enum !@card_set           // Card Set
+
+$$ @facedown_set
+// Set Facedown
+//
+// UE4 name of this method: SetFacedown
+
+&aka("SetFacedown")
+
+(Boolean enable_facedown? : false) 
+
+$$ .

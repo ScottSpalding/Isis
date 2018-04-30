@@ -1,0 +1,30 @@
+// Card Interaction Struct
+//
+// UE4 name of this struct: CardInteraction_Struct
+
+// UE4 Asset Name: CardInteraction_Struct
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIPlaysData/CardInteraction_Struct"
+
+annotations: &reflected_data &name("CardInteraction_Struct")
+
+$$ @
+
+&raw("OwningControllerID_19_C79C7D5D4FE1EFD4D4A5D3960E3FDBBD") Integer       !@owning_controller_id_19_c79c // Owning Controller ID
+&raw("Interaction_Type_17_1D2364A9486F10FB5AA296950A6CCC0F")   PlayType_Enum !@interaction_type_17_1d23     // Interaction Type
+&raw("TalkingCard_23_991C803C4A9F71946672D8B5341AA363")        Actor         !@talking_card_23_991c         // Talking Card
+&raw("RecievingActor_10_FAD6A996453B2F7BFD49CFA9707658CA")     Actor         !@recieving_actor_10_fad6      // Recieving Actor
+&raw("Value_13_4BAC455846FD3EFF34A17587FA6A81B9")              Integer       !@value_13_4bac                // Value
+
+$$ @!
+() CardInteraction_Struct
+
+$$ @!copy
+(CardInteraction_Struct other) CardInteraction_Struct
+
+$$ @assign
+(CardInteraction_Struct other) CardInteraction_Struct
+
+$$ @!!
+() CardInteraction_Struct
+
+$$ .

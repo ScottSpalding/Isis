@@ -1,0 +1,35 @@
+// Log Function Library
+//
+// UE4 name of this class: Log_FunctionLibrary_C
+
+// UE4 Asset Name: Log_FunctionLibrary
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/FunctionLibraries/Log_FunctionLibrary"
+
+annotations: &reflected_data &name("Log_FunctionLibrary_C")
+
+$$ @
+
+$$ @@pickup_card_s_log_message
+// Pickup Card(S) Log Message
+//
+// UE4 name of this method: PickupCard(s)_LogMessage
+
+&aka("PickupCard(s)_LogMessage")
+
+(Integer ability_int   : 0
+ Entity  world_context : Entity!null
+ String  return_string : "") 
+
+$$ @@add_message_to_log
+// Add Message to Log
+//
+// UE4 name of this method: AddMessageToLog
+
+&aka("AddMessageToLog")
+
+(CardGamePlayerController calling_player  : CardGamePlayerController!null
+ String                   message         : ""
+ Color                    specified_color : Color!
+ Entity                   world_context   : Entity!null) 
+
+$$ .

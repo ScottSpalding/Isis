@@ -1,0 +1,20 @@
+// Card Preview
+//
+// UE4 name of this class: CardPreview_C
+
+// UE4 Asset Name: CardPreview
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Gameplay/CardPreview"
+
+annotations: &reflected_data &name("CardPreview_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")    PointerToUberGraphFrame !@uber_graph_frame    // Currently unsupported */
+&raw("BeginPreview")      WidgetAnimation  !@begin_preview       // Begin Preview
+&raw("ViewCard_Default")  ViewCard_Default !@view_card_default   // View Card Default
+&raw("scale")             Real             !@scale               // Scale
+&raw("bIsPlatformMobile") Boolean          !@is_platform_mobile? // Is Platform Mobile
+&raw("CardPreivewSize")   Vector2          !@card_preivew_size   // Card Preivew Size
+&raw("Card3DParent_Ref")  Sk3DCard         !@card_3dparent_ref   // Card 3DParent Ref
+
+$$ .

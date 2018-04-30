@@ -1,0 +1,111 @@
+// Opponent Profile UI
+//
+// UE4 name of this class: OpponentProfileUI_C
+
+// UE4 Asset Name: OpponentProfileUI
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Gameplay/OpponentProfileUI"
+
+annotations: &reflected_data &name("OpponentProfileUI_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")   PointerToUberGraphFrame !@uber_graph_frame   // Currently unsupported */
+&raw("Bar_1")            Image      !@bar_1              // Bar 1
+&raw("Bar_2")            Image      !@bar_2              // Bar 2
+&raw("CardsInDeck_Text") TextBlock  !@cards_in_deck_text // Cards in Deck Text
+&raw("DeckFrame")        Image      !@deck_frame         // Deck Frame
+&raw("DeckIcon")         Image      !@deck_icon          // Deck Icon
+&raw("HealthFrame")      Image      !@health_frame       // Health Frame
+&raw("HealthIcon")       Image      !@health_icon        // Health Icon
+&raw("Mana_Text")        TextBlock  !@mana_text          // Mana Text
+&raw("Player_Frame")     Image      !@player_frame       // Player Frame
+&raw("Player_image")     Image      !@player_image       // Player Image
+&raw("PlayerName2_Text") TextBlock  !@player_name_2_text // Player Name 2 Text
+&raw("PlayerTurn_Text")  TextBlock  !@player_turn_text   // Player Turn Text
+&raw("TextBlock_1251")   TextBlock  !@text_block_1251    // Text Block 1251
+&raw("TurnFrame")        Image      !@turn_frame         // Turn Frame
+&raw("TurnIcon")         Image      !@turn_icon          // Turn Icon
+&raw("bOpponent")        Boolean    !@opponent?          // Opponent
+&raw("Controller_Ref")   Controller !@controller_ref     // Controller Ref
+&raw("PlayerName")       String     !@player_name        // Player Name
+&raw("PlayerID")         Integer    !@player_id          // Player ID
+&raw("Health")           Integer    !@health             // Health
+&raw("CardsInDeck")      Integer    !@cards_in_deck      // Cards in Deck
+&raw("PlayerTurn")       Integer    !@player_turn        // Player Turn
+&raw("Mana")             Integer    !@mana               // Mana
+&raw("ManaMax")          Integer    !@mana_max           // Mana Max
+&raw("bPlayerSet")       Boolean    !@player_set?        // Player Set
+
+$$ @uidata_set
+// Set UIData
+//
+// UE4 name of this method: SetUIData
+
+&aka("SetUIData")
+
+(String  name          : ""
+ Integer health        : 0
+ Integer cards_in_deck : 0
+ Integer player_turn   : 0
+ Integer mana          : 0
+ Integer mana_max      : 0) 
+
+$$ @player_data
+// Get Player Data
+//
+// UE4 name of this method: GetPlayerData
+
+&aka("GetPlayerData")
+
+(Integer player_id : 0) 
+
+$$ @update_uiplayer_stats
+// Update UIPlayer Stats
+//
+// UE4 name of this method: UpdateUIPlayerStats
+
+&aka("UpdateUIPlayerStats")
+
+(Boolean force_clean_visual_update? : false) 
+
+$$ @update_uiturn_state
+// Update UITurn State
+//
+// UE4 name of this method: UpdateUITurnState
+
+&aka("UpdateUITurnState")
+
+(Boolean       turn_active? : false
+ GameTurn_Enum turn_state   : GameTurn_Enum.@@turn_active) 
+
+$$ @update_uigame_turn_time
+// Update UIGame Turn Time
+//
+// UE4 name of this method: UpdateUIGameTurnTime
+
+&aka("UpdateUIGameTurnTime")
+
+() 
+
+$$ @update_player_state_ui
+// Update Player State UI
+//
+// UE4 name of this method: UpdatePlayerStateUI
+
+&aka("UpdatePlayerStateUI")
+
+(Integer new_param   : 0
+ Integer new_param_1 : 0
+ Integer new_param_2 : 0
+ Integer new_param_3 : 0) 
+
+$$ @update_player_ui
+// Update Player UI
+//
+// UE4 name of this method: UpdatePlayerUI
+
+&aka("UpdatePlayerUI")
+
+(Integer controller_id : 0) 
+
+$$ .

@@ -1,0 +1,15 @@
+// Custom Deck Save
+//
+// UE4 name of this class: CustomDeckSave_C
+
+// UE4 Asset Name: CustomDeckSave
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/SaveGame/CustomDeckSave"
+
+annotations: &reflected_data &name("CustomDeckSave_C")
+
+$$ @
+
+&raw("CustomDeck") List{Name} !@custom_deck // Custom Deck
+&raw("bEditable")  Boolean    !@editable?   // Editable
+
+$$ .

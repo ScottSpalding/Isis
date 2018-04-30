@@ -1,0 +1,81 @@
+// Player Profile UI
+//
+// UE4 name of this class: PlayerProfileUI_C
+
+// UE4 Asset Name: PlayerProfileUI
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Gameplay/PlayerProfileUI"
+
+annotations: &reflected_data &name("PlayerProfileUI_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")   PointerToUberGraphFrame !@uber_graph_frame   // Currently unsupported */
+&raw("Bar_1")            Image               !@bar_1              // Bar 1
+&raw("Bar_2")            Image               !@bar_2              // Bar 2
+&raw("CardsInDeck_Text") TextBlock           !@cards_in_deck_text // Cards in Deck Text
+&raw("DeckFrame")        Image               !@deck_frame         // Deck Frame
+&raw("DeckIcon")         Image               !@deck_icon          // Deck Icon
+&raw("HealthFrame")      Image               !@health_frame       // Health Frame
+&raw("HealthIcon")       Image               !@health_icon        // Health Icon
+&raw("Mana_Text")        TextBlock           !@mana_text          // Mana Text
+&raw("ManaBar_70")       ManaBar             !@mana_bar_70        // Mana Bar 70
+&raw("Player_Frame")     Image               !@player_frame       // Player Frame
+&raw("Player_Image")     Image               !@player_image       // Player Image
+&raw("PlayerName2_Text") TextBlock           !@player_name_2_text // Player Name 2 Text
+&raw("PlayerTurn_Text")  TextBlock           !@player_turn_text   // Player Turn Text
+&raw("TextBlock_1251")   TextBlock           !@text_block_1251    // Text Block 1251
+&raw("TunrFrame")        Image               !@tunr_frame         // Tunr Frame
+&raw("TurnIcon")         Image               !@turn_icon          // Turn Icon
+&raw("bOpponent")        Boolean             !@opponent?          // Opponent
+&raw("PlayerState_Ref")  CardGamePlayerState !@player_state_ref   // Player State Ref
+
+$$ @update_uiplayer_stats
+// Update UIPlayer Stats
+//
+// UE4 name of this method: UpdateUIPlayerStats
+
+&aka("UpdateUIPlayerStats")
+
+(Boolean force_clean_visual_update? : false) 
+
+$$ @update_uiturn_state
+// Update UITurn State
+//
+// UE4 name of this method: UpdateUITurnState
+
+&aka("UpdateUITurnState")
+
+(Boolean       turn_active? : false
+ GameTurn_Enum turn_state   : GameTurn_Enum.@@turn_active) 
+
+$$ @update_uigame_turn_time
+// Update UIGame Turn Time
+//
+// UE4 name of this method: UpdateUIGameTurnTime
+
+&aka("UpdateUIGameTurnTime")
+
+() 
+
+$$ @update_player_state_ui
+// Update Player State UI
+//
+// UE4 name of this method: UpdatePlayerStateUI
+
+&aka("UpdatePlayerStateUI")
+
+(Integer new_param   : 0
+ Integer new_param_1 : 0
+ Integer new_param_2 : 0
+ Integer new_param_3 : 0) 
+
+$$ @update_player_ui
+// Update Player UI
+//
+// UE4 name of this method: UpdatePlayerUI
+
+&aka("UpdatePlayerUI")
+
+(CardGamePlayerState player_state_ref : CardGamePlayerState!null) 
+
+$$ .

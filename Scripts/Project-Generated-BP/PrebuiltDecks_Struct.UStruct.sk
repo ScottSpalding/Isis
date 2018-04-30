@@ -1,0 +1,29 @@
+// Prebuilt Decks Struct
+//
+// UE4 name of this struct: PrebuiltDecks_Struct
+
+// UE4 Asset Name: PrebuiltDecks_Struct
+// UE4 Package Name: "/Game/CCGToolkit/CardGame/Structs/GameStructs/PrebuiltDecks_Struct"
+
+annotations: &reflected_data &name("PrebuiltDecks_Struct")
+
+$$ @
+
+/* &raw("Deck_Name_16_5539FA204245C926C60065B4BA6DB7D8")       None                          !@deck_name_16_5539       // Currently unsupported */
+&raw("bEditable_19_5EDACB7A42926A5B9F05CB98C0201374")       Boolean                       !@editable_19_5eda?       // Editable
+&raw("Deck_Description_8_F2AF72C74ACB4CCBB3FDB9B2A4758368") String                        !@deck_description_8_f2af // Deck Description
+&raw("CardsInDeck_13_4DD7B99C42F905691ADE8280F5D6525F")     List{PrebuildDecksSub_Struct} !@cards_in_deck_13_4dd7   // Cards in Deck
+
+$$ @!
+() PrebuiltDecks_Struct
+
+$$ @!copy
+(PrebuiltDecks_Struct other) PrebuiltDecks_Struct
+
+$$ @assign
+(PrebuiltDecks_Struct other) PrebuiltDecks_Struct
+
+$$ @!!
+() PrebuiltDecks_Struct
+
+$$ .

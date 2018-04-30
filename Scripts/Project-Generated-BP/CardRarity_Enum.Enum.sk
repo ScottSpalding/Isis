@@ -1,0 +1,34 @@
+// Card Rarity Enum
+//
+// UE4 name of this enum: CardRarity_Enum
+
+// UE4 Asset Name: CardRarity_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/CardRarity_Enum"
+
+annotations: &reflected_data &name("CardRarity_Enum")
+
+$$ @@
+
+CardRarity_Enum !@@common
+CardRarity_Enum !@@un_common
+CardRarity_Enum !@@rare
+CardRarity_Enum !@@ultra_rare
+CardRarity_Enum !@@legendary
+CardRarity_Enum !@@card_rarity_max
+
+$$ @@!
+// CardRarity_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/CardRarity_Enum.CardRarity_Enum
+
+()
+
+  [
+  @@common:          CardRarity_Enum!int(0)
+  @@un_common:       CardRarity_Enum!int(1)
+  @@rare:            CardRarity_Enum!int(2)
+  @@ultra_rare:      CardRarity_Enum!int(3)
+  @@legendary:       CardRarity_Enum!int(4)
+  @@card_rarity_max: CardRarity_Enum!int(5)
+  ]
+
+$$ .

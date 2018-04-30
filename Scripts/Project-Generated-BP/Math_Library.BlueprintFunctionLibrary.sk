@@ -1,0 +1,47 @@
+// Math Library
+//
+// UE4 name of this class: Math_Library_C
+
+// UE4 Asset Name: Math_Library
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/FunctionLibraries/Math_Library"
+
+annotations: &reflected_data &name("Math_Library_C")
+
+$$ @
+
+$$ @@weighted_int_in_range
+// Weighted Int in Range
+//
+// UE4 name of this method: WeightedIntInRange
+
+&aka("WeightedIntInRange")
+
+(Integer max_result    : 0
+ Entity  world_context : Entity!null
+ Integer result        : 0) 
+
+$$ @@percentage_of_int_
+// Percentage Of(Int)
+//
+// UE4 name of this method: PercentageOf(Int)
+
+&aka("PercentageOf(Int)")
+
+(Integer percentage_of : 0
+ Integer total         : 0
+ Entity  world_context : Entity!null
+ Real    percentage    : 0.0) 
+
+$$ @@percentage_of_float_
+// Percentage Of(Float)
+//
+// UE4 name of this method: PercentageOf(Float)
+
+&aka("PercentageOf(Float)")
+
+(Real   percentage_of : 0.0
+ Real   total         : 0.0
+ Entity world_context : Entity!null
+ Real   percentage    : 0.0) 
+
+$$ .

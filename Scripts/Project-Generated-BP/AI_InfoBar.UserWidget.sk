@@ -1,0 +1,43 @@
+// AI Info Bar
+//
+// UE4 name of this class: AI_InfoBar_C
+
+// UE4 Asset Name: AI_InfoBar
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/UI/AI_InfoBar"
+
+annotations: &reflected_data &name("AI_InfoBar_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")              PointerToUberGraphFrame !@uber_graph_frame              // Currently unsupported */
+&raw("AI_UI")                       Border               !@ai_ui                         // AI UI
+&raw("Button_0")                    Button               !@button_0                      // Button 0
+&raw("CanvasPanel_0")               CanvasPanel          !@canvas_panel_0                // Canvas Panel 0
+&raw("CardsInHand_ScrollBox")       ScrollBox            !@cards_in_hand_scroll_box      // Cards in Hand Scroll Box
+&raw("InceractableCards_ScrollBox") ScrollBox            !@inceractable_cards_scroll_box // Inceractable Cards Scroll Box
+&raw("PriorityList_ScrollBox")      ScrollBox            !@priority_list_scroll_box      // Priority List Scroll Box
+&raw("ProgressBar_0")               ProgressBar          !@progress_bar_0                // Progress Bar 0
+&raw("ProgressBar_1")               ProgressBar          !@progress_bar_1                // Progress Bar 1
+&raw("ProgressBar_2")               ProgressBar          !@progress_bar_2                // Progress Bar 2
+&raw("ProgressBar_124")             ProgressBar          !@progress_bar_124              // Progress Bar 124
+&raw("TextBlock_0")                 TextBlock            !@text_block_0                  // Text Block 0
+&raw("TextBlock_1")                 TextBlock            !@text_block_1                  // Text Block 1
+&raw("TextBlock_2")                 TextBlock            !@text_block_2                  // Text Block 2
+&raw("TextBlock_3")                 TextBlock            !@text_block_3                  // Text Block 3
+&raw("TextBlock_5")                 TextBlock            !@text_block_5                  // Text Block 5
+&raw("TextBlock_7")                 TextBlock            !@text_block_7                  // Text Block 7
+&raw("AIParent")                    CardGameAIController !@aiparent                      // AIParent
+
+$$ @value_set
+// Set Value
+//
+// UE4 name of this method: Set Value
+
+&aka("Set Value")
+
+(Real total               : 0.0
+ Real board_state         : 0.0
+ Real cards_in_hand_state : 0.0
+ Real health              : 0.0) 
+
+$$ .

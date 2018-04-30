@@ -1,0 +1,32 @@
+// Priority Enum
+//
+// UE4 name of this enum: Priority_Enum
+
+// UE4 Asset Name: Priority_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/System_Enums/Priority_Enum"
+
+annotations: &reflected_data &name("Priority_Enum")
+
+$$ @@
+
+Priority_Enum !@@none
+Priority_Enum !@@low
+Priority_Enum !@@medium
+Priority_Enum !@@high
+Priority_Enum !@@priority_max
+
+$$ @@!
+// Priority_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/System_Enums/Priority_Enum.Priority_Enum
+
+()
+
+  [
+  @@none:         Priority_Enum!int(0)
+  @@low:          Priority_Enum!int(1)
+  @@medium:       Priority_Enum!int(2)
+  @@high:         Priority_Enum!int(3)
+  @@priority_max: Priority_Enum!int(4)
+  ]
+
+$$ .

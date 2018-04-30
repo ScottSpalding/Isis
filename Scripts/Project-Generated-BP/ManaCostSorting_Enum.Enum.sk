@@ -1,0 +1,28 @@
+// Mana Cost Sorting Enum
+//
+// UE4 name of this enum: ManaCostSorting_Enum
+
+// UE4 Asset Name: ManaCostSorting_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/System_Enums/ManaCostSorting_Enum"
+
+annotations: &reflected_data &name("ManaCostSorting_Enum")
+
+$$ @@
+
+ManaCostSorting_Enum !@@lowest_to_highest
+ManaCostSorting_Enum !@@highest_to_lowest
+ManaCostSorting_Enum !@@mana_cost_sorting_max
+
+$$ @@!
+// ManaCostSorting_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/System_Enums/ManaCostSorting_Enum.ManaCostSorting_Enum
+
+()
+
+  [
+  @@lowest_to_highest:     ManaCostSorting_Enum!int(0)
+  @@highest_to_lowest:     ManaCostSorting_Enum!int(1)
+  @@mana_cost_sorting_max: ManaCostSorting_Enum!int(2)
+  ]
+
+$$ .

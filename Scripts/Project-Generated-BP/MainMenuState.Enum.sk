@@ -1,0 +1,42 @@
+// Main Menu State
+//
+// UE4 name of this enum: MainMenuState
+
+// UE4 Asset Name: MainMenuState
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Menu_Enums/MainMenuState"
+
+annotations: &reflected_data &name("MainMenuState")
+
+$$ @@
+
+MainMenuState !@@main_menu
+MainMenuState !@@play_options
+MainMenuState !@@deck_selection
+MainMenuState !@@create_game
+MainMenuState !@@arena_selection
+MainMenuState !@@join_find_game
+MainMenuState !@@deck_builder
+MainMenuState !@@store
+MainMenuState !@@game_options
+MainMenuState !@@main_menu_state_max
+
+$$ @@!
+// MainMenuState
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Menu_Enums/MainMenuState.MainMenuState
+
+()
+
+  [
+  @@main_menu:           MainMenuState!int(0)
+  @@play_options:        MainMenuState!int(1)
+  @@deck_selection:      MainMenuState!int(2)
+  @@create_game:         MainMenuState!int(3)
+  @@arena_selection:     MainMenuState!int(4)
+  @@join_find_game:      MainMenuState!int(5)
+  @@deck_builder:        MainMenuState!int(6)
+  @@store:               MainMenuState!int(7)
+  @@game_options:        MainMenuState!int(8)
+  @@main_menu_state_max: MainMenuState!int(9)
+  ]
+
+$$ .

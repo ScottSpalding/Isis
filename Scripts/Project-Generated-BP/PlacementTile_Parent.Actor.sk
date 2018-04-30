@@ -1,0 +1,18 @@
+// Placement Tile Parent
+//
+// UE4 name of this class: PlacementTile_Parent_C
+
+// UE4 Asset Name: PlacementTile_Parent
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Gameplay/PlacementTiles/PlacementTile_Parent"
+
+annotations: &reflected_data &name("PlacementTile_Parent_C")
+
+$$ @
+
+&raw("TileOutline")      StaticMeshComponent !@tile_outline       // Tile Outline
+&raw("Arrow")            ArrowComponent      !@arrow              // Arrow
+&raw("Decal")            DecalComponent      !@decal              // Decal
+&raw("Box")              BoxComponent        !@box                // Box
+&raw("DefaultSceneRoot") SceneComponent      !@default_scene_root // Default Scene Root
+
+$$ .

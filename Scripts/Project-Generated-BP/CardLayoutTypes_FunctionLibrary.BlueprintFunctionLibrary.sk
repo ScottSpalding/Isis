@@ -1,0 +1,68 @@
+// Card Layout Types Function Library
+//
+// UE4 name of this class: CardLayoutTypes_FunctionLibrary_C
+
+// UE4 Asset Name: CardLayoutTypes_FunctionLibrary
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/FunctionLibraries/CardLayoutTypes_FunctionLibrary"
+
+annotations: &reflected_data &name("CardLayoutTypes_FunctionLibrary_C")
+
+$$ @
+
+$$ @@horizontal
+// Horizontal
+//
+// UE4 name of this method: Horizontal
+
+&aka("Horizontal")
+
+(Widget          card_widget_reference          : Widget!null
+ Integer         card_loop_index                : 0
+ Integer         cards_in_hand                  : 0
+ Integer         max_card_in_hand               : 0
+ Vector2         screen_resolution              : Vector2!
+ Vector2         card_size                      : Vector2!
+ Boolean         fly_in_direction?              : false
+ Boolean         rotate_cards_to_offset?        : false
+ Real            radius_offset                  : 0.0
+ Real            rotation_distance_scale_factor : 0.0
+ Real            card_spacing                   : 0.0
+ Boolean         dynamic_spacing?               : false
+ Real            card_spacing_max               : 0.0
+ Real            screen_offset_x                : 0.0
+ Real            screen_offset_y                : 0.0
+ Real            card_scale                     : 0.0
+ Real            viewport_scale                 : 0.0
+ Real            card_offset                    : 0.0
+ Entity          world_context                  : Entity!null
+ WidgetTransform goal_transform                 : WidgetTransform!) 
+
+$$ @@fanned
+// Fanned
+//
+// UE4 name of this method: Fanned
+
+&aka("Fanned")
+
+(Widget          card_widget_reference          : Widget!null
+ Integer         card_loop_index                : 0
+ Integer         cards_in_hand                  : 0
+ Integer         max_cards_in_hand              : 0
+ Vector2         screen_resolution              : Vector2!
+ Vector2         card_size                      : Vector2!
+ Boolean         fly_in_direction?              : false
+ Boolean         rotate_cards_to_offset?        : false
+ Real            card_offset                    : 0.0
+ Real            rotation_distance_scale_factor : 0.0
+ Real            radius_offset                  : 0.0
+ Real            card_spacing_min_              : 0.0
+ Boolean         dynamic_spacing?               : false
+ Real            dynamic_spacing_max_offset     : 0.0
+ Real            screen_offset_x                : 0.0
+ Real            screen_offset_y                : 0.0
+ Real            viewport_scale                 : 0.0
+ Real            card_scale                     : 0.0
+ Entity          world_context                  : Entity!null
+ WidgetTransform goal_transform                 : WidgetTransform!) 
+
+$$ .

@@ -1,0 +1,12 @@
+// Example
+//
+// UE4 name of this class: Example_C
+
+// UE4 Asset Name: Example
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Maps/Example"
+
+annotations: &reflected_data &name("Example_C")
+
+$$ @
+
+$$ .

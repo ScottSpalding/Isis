@@ -1,0 +1,36 @@
+// Platform Enum
+//
+// UE4 name of this enum: Platform_Enum
+
+// UE4 Asset Name: Platform_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/System_Enums/Platform_Enum"
+
+annotations: &reflected_data &name("Platform_Enum")
+
+$$ @@
+
+Platform_Enum !@@windows
+Platform_Enum !@@i_os
+Platform_Enum !@@android
+Platform_Enum !@@html5
+Platform_Enum !@@mac
+Platform_Enum !@@linux
+Platform_Enum !@@platform_max
+
+$$ @@!
+// Platform_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/System_Enums/Platform_Enum.Platform_Enum
+
+()
+
+  [
+  @@windows:      Platform_Enum!int(0)
+  @@i_os:         Platform_Enum!int(1)
+  @@android:      Platform_Enum!int(2)
+  @@html5:        Platform_Enum!int(3)
+  @@mac:          Platform_Enum!int(4)
+  @@linux:        Platform_Enum!int(5)
+  @@platform_max: Platform_Enum!int(6)
+  ]
+
+$$ .

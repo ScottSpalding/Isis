@@ -1,0 +1,12 @@
+// Placement Tile Middle
+//
+// UE4 name of this class: PlacementTile_Middle_C
+
+// UE4 Asset Name: PlacementTile_Middle
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Gameplay/PlacementTiles/PlacementTile_Middle"
+
+annotations: &reflected_data &name("PlacementTile_Middle_C")
+
+$$ @
+
+$$ .

@@ -1,0 +1,30 @@
+// Mana Bar Icon
+//
+// UE4 name of this class: ManaBar_Icon_C
+
+// UE4 Asset Name: ManaBar_Icon
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Gameplay/ManaBar_Icon"
+
+annotations: &reflected_data &name("ManaBar_Icon_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")      PointerToUberGraphFrame !@uber_graph_frame    // Currently unsupported */
+&raw("Activated")           WidgetAnimation !@activated           // Activated
+&raw("Pulse_Mana")          WidgetAnimation !@pulse_mana          // Pulse Mana
+&raw("Image_73")            Image           !@image_73            // Image 73
+&raw("Mana_Brush_Active")   SlateBrush      !@mana_brush_active   // Mana Brush Active
+&raw("Mana_Brush_Inactive") SlateBrush      !@mana_brush_inactive // Mana Brush Inactive
+&raw("Active")              Boolean         !@active?             // Active
+
+$$ @active_state_set
+// Set Active State
+//
+// UE4 name of this method: SetActiveState
+
+&aka("SetActiveState")
+
+(Boolean active? : false
+ Integer index   : 0) 
+
+$$ .

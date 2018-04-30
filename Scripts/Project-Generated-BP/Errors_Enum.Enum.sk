@@ -1,0 +1,50 @@
+// Errors Enum
+//
+// UE4 name of this enum: Errors_Enum
+
+// UE4 Asset Name: Errors_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/System_Enums/Errors_Enum"
+
+annotations: &reflected_data &name("Errors_Enum")
+
+$$ @@
+
+Errors_Enum !@@valid_drop
+Errors_Enum !@@not_a_valid_placement
+Errors_Enum !@@cast_failed_to_player
+Errors_Enum !@@placement_full_or_not_valid_player_placement
+Errors_Enum !@@placement_full
+Errors_Enum !@@not_enough_mana
+Errors_Enum !@@max_cards_allowed_for_placement
+Errors_Enum !@@placement_does_not_support_card_type
+Errors_Enum !@@incorrect_player_placement_for_card
+Errors_Enum !@@invalid_placement
+Errors_Enum !@@no_supported_drop_location_found
+Errors_Enum !@@card_not_found_in_hand_server_
+Errors_Enum !@@one_is_invalid
+Errors_Enum !@@errors_max
+
+$$ @@!
+// Errors_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/System_Enums/Errors_Enum.Errors_Enum
+
+()
+
+  [
+  @@valid_drop:                                   Errors_Enum!int(0)
+  @@not_a_valid_placement:                        Errors_Enum!int(1)
+  @@cast_failed_to_player:                        Errors_Enum!int(2)
+  @@placement_full_or_not_valid_player_placement: Errors_Enum!int(3)
+  @@placement_full:                               Errors_Enum!int(4)
+  @@not_enough_mana:                              Errors_Enum!int(5)
+  @@max_cards_allowed_for_placement:              Errors_Enum!int(6)
+  @@placement_does_not_support_card_type:         Errors_Enum!int(7)
+  @@incorrect_player_placement_for_card:          Errors_Enum!int(8)
+  @@invalid_placement:                            Errors_Enum!int(9)
+  @@no_supported_drop_location_found:             Errors_Enum!int(10)
+  @@card_not_found_in_hand_server_:               Errors_Enum!int(11)
+  @@one_is_invalid:                               Errors_Enum!int(12)
+  @@errors_max:                                   Errors_Enum!int(13)
+  ]
+
+$$ .

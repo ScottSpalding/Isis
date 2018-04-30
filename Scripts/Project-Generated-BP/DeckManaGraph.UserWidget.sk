@@ -1,0 +1,49 @@
+// Deck Mana Graph
+//
+// UE4 name of this class: DeckManaGraph_C
+
+// UE4 Asset Name: DeckManaGraph
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Additional/DeckManaGraph"
+
+annotations: &reflected_data &name("DeckManaGraph_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")      PointerToUberGraphFrame !@uber_graph_frame     // Currently unsupported */
+&raw("AverageMana_Text")    TextBlock             !@average_mana_text    // Average Mana Text
+&raw("Graph_HorizontalBox") HorizontalBox         !@graph_horizontal_box // Graph Horizontal Box
+&raw("ManaBar_1")           VerticleManaBar       !@mana_bar_1           // Mana Bar 1
+&raw("ManaBar_2")           VerticleManaBar       !@mana_bar_2           // Mana Bar 2
+&raw("ManaBar_3")           VerticleManaBar       !@mana_bar_3           // Mana Bar 3
+&raw("ManaBar_4")           VerticleManaBar       !@mana_bar_4           // Mana Bar 4
+&raw("ManaBar_5")           VerticleManaBar       !@mana_bar_5           // Mana Bar 5
+&raw("ManaBar_6")           VerticleManaBar       !@mana_bar_6           // Mana Bar 6
+&raw("ManaBar_7")           VerticleManaBar       !@mana_bar_7           // Mana Bar 7
+&raw("ManaBar_8")           VerticleManaBar       !@mana_bar_8           // Mana Bar 8
+&raw("ManaBar_9")           VerticleManaBar       !@mana_bar_9           // Mana Bar 9
+&raw("ManaBar_10")          VerticleManaBar       !@mana_bar_10          // Mana Bar 10
+&raw("GraphWidgetsArray")   List{VerticleManaBar} !@graph_widgets_array  // Graph Widgets Array
+&raw("ValuesArray")         List{Integer}         !@values_array         // Values Array
+&raw("AverageValueTotal")   Integer               !@average_value_total  // Average Value Total
+&raw("ManaValues_Array")    List{Integer}         !@mana_values_array    // Mana Values Array
+
+$$ @update_graph_data
+// Update Graph Data
+//
+// UE4 name of this method: UpdateGraphData
+
+&aka("UpdateGraphData")
+
+(List{Integer} array   : List{Integer}!
+ Real          average : 0.0) 
+
+$$ @setup_graph_prerequisites
+// Setup Graph Prerequisites
+//
+// UE4 name of this method: SetupGraphPrerequisites
+
+&aka("SetupGraphPrerequisites")
+
+() 
+
+$$ .

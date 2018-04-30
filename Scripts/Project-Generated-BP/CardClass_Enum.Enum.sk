@@ -1,0 +1,34 @@
+// Card Class Enum
+//
+// UE4 name of this enum: CardClass_Enum
+
+// UE4 Asset Name: CardClass_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/CardClass_Enum"
+
+annotations: &reflected_data &name("CardClass_Enum")
+
+$$ @@
+
+CardClass_Enum !@@none
+CardClass_Enum !@@warrior
+CardClass_Enum !@@mage
+CardClass_Enum !@@spy
+CardClass_Enum !@@obelisk
+CardClass_Enum !@@card_class_max
+
+$$ @@!
+// CardClass_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/CardClass_Enum.CardClass_Enum
+
+()
+
+  [
+  @@none:           CardClass_Enum!int(0)
+  @@warrior:        CardClass_Enum!int(1)
+  @@mage:           CardClass_Enum!int(2)
+  @@spy:            CardClass_Enum!int(3)
+  @@obelisk:        CardClass_Enum!int(4)
+  @@card_class_max: CardClass_Enum!int(5)
+  ]
+
+$$ .

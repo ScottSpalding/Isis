@@ -1,0 +1,170 @@
+// Card Game Mode
+//
+// UE4 name of this class: CardGameMode_C
+
+// UE4 Asset Name: CardGameMode
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/CardGameMode"
+
+annotations: &reflected_data &name("CardGameMode_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")       PointerToUberGraphFrame !@uber_graph_frame       // Currently unsupported */
+&raw("DefaultSceneRoot")     SceneComponent    !@default_scene_root     // Default Scene Root
+&raw("GameSeconds")          Real              !@game_seconds           // Game Seconds
+&raw("CountdownTimer")       Integer           !@countdown_timer        // Countdown Timer
+&raw("GameState_Ref")        CardGameState     !@game_state_ref         // Game State Ref
+&raw("Mana_Min")             Integer           !@mana_min               // Mana Min
+&raw("Mana_Max")             Integer           !@mana_max               // Mana Max
+&raw("PlayerStartingHealth") Integer           !@player_starting_health // Player Starting Health
+&raw("bSkipStartTimer")      Boolean           !@skip_start_timer?      // Skip Start Timer
+&raw("MaxNumOfPlayers")      Integer           !@max_num_of_players     // Currently only 2 player is supported by the game mode
+&raw("bGameActive")          Boolean           !@game_active?           // Game Active
+&raw("GameControllersArray") List{Controller}  !@game_controllers_array // Game Controllers Array
+&raw("PlayerStateArray")     List{Actor}       !@player_state_array     // Player State Array
+&raw("BoardPlayersArray")    List{BoardPlayer} !@board_players_array    // Board Players Array
+&raw("bSingleClientEnabled") Boolean           !@single_client_enabled? // Single Client Enabled
+&raw("bSpectator")           Boolean           !@spectator?             // Spectator
+
+$$ @create_card_game_aiopponent
+// Create Card Game AIOpponent
+//
+// UE4 name of this method: CreateCardGameAIOpponent
+// Blueprint category: AIOpponent
+
+&aka("CreateCardGameAIOpponent")
+
+() 
+
+$$ @remove_player_from_game
+// Remove Player from Game
+//
+// UE4 name of this method: RemovePlayerFromGame
+// Blueprint category: System
+
+&aka("RemovePlayerFromGame")
+
+(Controller controller : Controller!null) 
+
+$$ @board_player_references_set
+// Set Board Player References
+//
+// UE4 name of this method: SetBoardPlayerReferences
+// Blueprint category: System
+
+&aka("SetBoardPlayerReferences")
+
+(Controller controller : Controller!null) 
+
+$$ @add_player_to_array
+// Add Player to Array
+//
+// UE4 name of this method: AddPlayerToArray
+// Blueprint category: System
+
+&aka("AddPlayerToArray")
+
+(Actor      plater_state      : Actor!null
+ Controller player_controller : Controller!null
+ Controller controller        : Controller!null) 
+
+$$ @card_game_player_id_set
+// Set Card Game Player Id
+//
+// UE4 name of this method: SetCardGamePlayerId
+// Blueprint category: System
+
+&aka("SetCardGamePlayerId")
+
+(Entity     player_state : Entity!null
+ Controller controller   : Controller!null) 
+
+$$ @board_player_reference_set
+// Set Board Player Reference
+//
+// UE4 name of this method: SetBoardPlayerReference
+// Blueprint category: Gameplay
+
+&aka("SetBoardPlayerReference")
+
+() 
+
+$$ @player_controllers
+// Get Player Controllers
+//
+// UE4 name of this method: GetPlayerControllers
+// Blueprint category: System
+
+&aka("GetPlayerControllers")
+
+(Controller player_1 : Controller!null
+ Controller player_2 : Controller!null) 
+
+$$ @turn_mana
+// Get Turn Mana
+//
+// UE4 name of this method: GetTurnMana
+// Blueprint category: Gameplay
+
+&aka("GetTurnMana")
+
+(Controller controller : Controller!null
+ Integer    mana       : 0) 
+
+$$ @calculate_mana_for_turn
+// Calculate Mana for Turn
+//
+// UE4 name of this method: CalculateManaForTurn
+// Blueprint category: Gameplay
+
+&aka("CalculateManaForTurn")
+
+(Integer player_turn : 0
+ Integer mana        : 0) 
+
+$$ @check_game_preconditions
+// Check Game Preconditions
+//
+// UE4 name of this method: CheckGamePreconditions
+
+&aka("CheckGamePreconditions")
+
+() 
+
+$$ @game_start_countdown
+// Game Start Countdown
+//
+// UE4 name of this method: GameStartCountdown
+
+&aka("GameStartCountdown")
+
+() 
+
+$$ @server_end_game
+// Server End Game
+//
+// UE4 name of this method: Server_EndGame
+
+&aka("Server_EndGame")
+
+() 
+
+$$ @server_check_player_state
+// Server Check Player State
+//
+// UE4 name of this method: Server_CheckPlayerState
+
+&aka("Server_CheckPlayerState")
+
+() 
+
+$$ @force_spawn_aiopponent
+// Force Spawn AIOpponent
+//
+// UE4 name of this method: ForceSpawnAIOpponent
+
+&aka("ForceSpawnAIOpponent")
+
+() 
+
+$$ .

@@ -1,0 +1,38 @@
+// Card Type Enum
+//
+// UE4 name of this enum: CardTypeEnum
+
+// UE4 Asset Name: CardTypeEnum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/CardTypeEnum"
+
+annotations: &reflected_data &name("CardTypeEnum")
+
+$$ @@
+
+CardTypeEnum !@@none
+CardTypeEnum !@@h_e_r_o
+CardTypeEnum !@@c_r_e_a_t_u_r_e
+CardTypeEnum !@@s_p_e_l_l
+CardTypeEnum !@@t_r_a_p
+CardTypeEnum !@@a_u_r_a
+CardTypeEnum !@@b_o_o_s_t_e_r
+CardTypeEnum !@@card_type_enum_max
+
+$$ @@!
+// CardTypeEnum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/CardTypeEnum.CardTypeEnum
+
+()
+
+  [
+  @@none:               CardTypeEnum!int(0)
+  @@h_e_r_o:            CardTypeEnum!int(1)
+  @@c_r_e_a_t_u_r_e:    CardTypeEnum!int(2)
+  @@s_p_e_l_l:          CardTypeEnum!int(3)
+  @@t_r_a_p:            CardTypeEnum!int(4)
+  @@a_u_r_a:            CardTypeEnum!int(5)
+  @@b_o_o_s_t_e_r:      CardTypeEnum!int(6)
+  @@card_type_enum_max: CardTypeEnum!int(7)
+  ]
+
+$$ .

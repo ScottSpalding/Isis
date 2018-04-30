@@ -1,0 +1,41 @@
+// Screen Card Preview
+//
+// UE4 name of this class: ScreenCardPreview_C
+
+// UE4 Asset Name: ScreenCardPreview
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Additional/ScreenCardPreview"
+
+annotations: &reflected_data &name("ScreenCardPreview_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")       PointerToUberGraphFrame !@uber_graph_frame      // Currently unsupported */
+&raw("OpenPreview")          WidgetAnimation  !@open_preview          // Open Preview
+&raw("Image_0")              Image            !@image_0               // Image 0
+&raw("Image_1")              Image            !@image_1               // Image 1
+&raw("LockIcon")             Image            !@lock_icon             // Lock Icon
+&raw("MaxInDeck_Text")       TextBlock        !@max_in_deck_text      // Max in Deck Text
+&raw("ViewCard_Default_222") ViewCard_Default !@view_card_default_222 // View Card Default 222
+&raw("ParentWidget")         Widget           !@parent_widget         // Parent Widget
+
+$$ @on_mouse_button_down_0
+// On Mouse Button Down 0
+//
+// UE4 name of this method: OnMouseButtonDown_0
+
+&aka("OnMouseButtonDown_0")
+
+(Geometry     my_geometry : Geometry!
+ PointerEvent mouse_event : PointerEvent!
+) EventReply
+
+$$ @play_entry_animation
+// Play Entry Animation
+//
+// UE4 name of this method: PlayEntryAnimation
+
+&aka("PlayEntryAnimation")
+
+() 
+
+$$ .

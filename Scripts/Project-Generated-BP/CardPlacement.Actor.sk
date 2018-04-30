@@ -1,0 +1,148 @@
+// Card Placement
+//
+// UE4 name of this class: CardPlacement_C
+
+// UE4 Asset Name: CardPlacement
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Gameplay/CardPlacement"
+
+annotations: &reflected_data &name("CardPlacement_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")            PointerToUberGraphFrame !@uber_graph_frame            // Currently unsupported */
+&raw("PlacementCollision")        BoxComponent       !@placement_collision         // Placement Collision
+&raw("DefaultSceneRoot")          SceneComponent     !@default_scene_root          // Default Scene Root
+&raw("Card_Array")                List{Sk3DCard}     !@card_array                  // Card Array
+&raw("PlayerIndex")               Integer            !@player_index                // Player which this placement belongs to. Set to '0' if both players can play cards on this placement. 
+&raw("MaxCardsInPlacement")       Integer            !@max_cards_in_placement      // Max Number of cards allowed in the placement
+&raw("bMultiPlacement")           Boolean            !@multi_placement?            // Does this placement hold more then 1 card?
+&raw("bScaleMulticardPlacement")  Boolean            !@scale_multicard_placement?  // Scale the card placement or stack cards on top of one another
+&raw("bIsFull")                   Boolean            !@is_full?                    // Is Full
+&raw("PlacementWidth")            Real               !@placement_width             // The number of card widths this placement will span across
+&raw("CardSpacing")               Real               !@card_spacing                // Card spacing determinins the minimum spacing between each of the cards.
+&raw("CardWidth")                 Real               !@card_width                  // Card width detemins the overall width of each indavidual card. It is used to calculate the local size of the placement, and also specifies the maximum spacing cards can have between one another.
+&raw("bDynamicSpacing")           Boolean            !@dynamic_spacing?            // Dynamic spacing will dynamically change the spacing between each of the cards based on the current number of cards in the placement (Min = Card Spacing, Max = Card Width)
+&raw("FillDirection")             Direction_Enum     !@fill_direction              // Fill Direction
+&raw("bCenterOut")                Boolean            !@center_out?                 // Whether the cards in the placement should dynamicly position themselves within the placement bounds.
+&raw("bInvertPlacementDirection") Boolean            !@invert_placement_direction? // Invert Placement Direction
+&raw("bSupportsAllCardTypes")     Boolean            !@supports_all_card_types?    // Supports All Card Types
+&raw("bHero")                     Boolean            !@hero?                       // Hero
+&raw("bCreature")                 Boolean            !@creature?                   // Creature
+&raw("bSpell")                    Boolean            !@spell?                      // Spell
+&raw("bTrap")                     Boolean            !@trap?                       // Trap
+&raw("bAura")                     Boolean            !@aura?                       // Aura
+&raw("bBooster")                  Boolean            !@booster?                    // Booster
+&raw("ValidCardTypes_Array")      List{CardTypeEnum} !@valid_card_types_array      // Valid Card Types Array
+&raw("Row_X")                     Integer            !@row_x                       // Row X
+&raw("Row_Y")                     Integer            !@row_y                       // Row Y
+&raw("PlacementLeft")             CardPlacement      !@placement_left              // Placement Left
+&raw("PlacementRight")            CardPlacement      !@placement_right             // Placement Right
+&raw("Graveyard_Ref")             Graveyard          !@graveyard_ref               // Graveyard Ref
+&raw("bDisplayDemoCards")         Boolean            !@display_demo_cards?         // Display Demo Cards
+&raw("DemoCards")                 Integer            !@demo_cards                  // Demo Cards
+&raw("SingleTIle")                EntityClass        !@single_tile                 // Single TIle
+&raw("LeftEndTile")               EntityClass        !@left_end_tile               // Left End Tile
+&raw("CenterTile")                EntityClass        !@center_tile                 // Center Tile
+&raw("RightEndTile")              EntityClass        !@right_end_tile              // Right End Tile
+
+$$ @calculate_spacing_location
+// Calculate Spacing Location
+//
+// UE4 name of this method: CalculateSpacingLocation
+
+&aka("CalculateSpacingLocation")
+
+(Integer index                  : 0
+ Integer max_cards_in_placement : 0
+ Integer card_in_placement      : 0
+ Real    spacing                : 0.0
+) Real
+
+$$ @calculate_dynamic_spacing_location
+// Calculate Dynamic Spacing Location
+//
+// UE4 name of this method: CalculateDynamicSpacingLocation
+
+&aka("CalculateDynamicSpacingLocation")
+
+(Integer index                  : 0
+ Integer max_cards_in_placement : 0
+ Integer card_in_placement      : 0
+ Boolean center_out?            : false
+ Boolean overlap?               : false
+) Real
+
+$$ @create_visual_board_tiles
+// Create Visual Board Tiles
+//
+// UE4 name of this method: CreateVisualBoardTiles
+
+&aka("CreateVisualBoardTiles")
+
+() 
+
+$$ @placement_state
+// Get Placement State
+//
+// UE4 name of this method: GetPlacementState
+
+&aka("GetPlacementState")
+
+(Integer            player_index             : 0
+ Boolean            is_multi_card_placement? : false
+ Boolean            is_full?                 : false
+ Integer            cards_in_placement       : 0
+ Integer            max_cards_in_placement   : 0
+ Boolean            support_all_card_types?  : false
+ List{CardTypeEnum} valid_card_types_array   : List{CardTypeEnum}!) 
+
+$$ @compile_supported_card_types
+// Compile Supported Card Types
+//
+// UE4 name of this method: CompileSupportedCardTypes
+
+&aka("CompileSupportedCardTypes")
+
+() 
+
+$$ @remove_card_from_placement
+// Remove Card from Placement
+//
+// UE4 name of this method: RemoveCardFromPlacement
+
+&aka("RemoveCardFromPlacement")
+
+(Sk3DCard card_to_clear : Sk3DCard!null) 
+
+$$ @card_in_placement_location
+// Get Card in Placement Location
+//
+// UE4 name of this method: GetCardInPlacementLocation
+
+&aka("GetCardInPlacementLocation")
+
+(Integer        card_index         : 0
+ Integer        max_cards          : 0
+ Integer        cards_in_placement : 0
+ Vector3        return_vector      : Vector3!
+ RotationAngles return_rotation    : RotationAngles!) 
+
+$$ @remove_card_from_placement
+// Remove Card from Placement
+//
+// UE4 name of this method: RemoveCardFrom Placement
+
+&aka("RemoveCardFrom Placement")
+
+(Sk3DCard card_to_clear : Sk3DCard!null) 
+
+$$ @add_card_to_placement
+// Add Card to Placement
+//
+// UE4 name of this method: AddCardToPlacement
+
+&aka("AddCardToPlacement")
+
+(Sk3DCard card_to_add : Sk3DCard!null) 
+
+$$ .

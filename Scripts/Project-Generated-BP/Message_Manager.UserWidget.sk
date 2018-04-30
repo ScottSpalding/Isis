@@ -1,0 +1,28 @@
+// Message Manager
+//
+// UE4 name of this class: Message_Manager_C
+
+// UE4 Asset Name: Message_Manager
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Additional/Message_Manager"
+
+annotations: &reflected_data &name("Message_Manager_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")            PointerToUberGraphFrame !@uber_graph_frame              // Currently unsupported */
+&raw("VerticalBox_18")            VerticalBox      !@vertical_box_18               // Vertical Box 18
+&raw("LogMessages_Array")         List{LogMessage} !@log_messages_array            // Log Messages Array
+&raw("MaxMessagesDisplayedInLog") Integer          !@max_messages_displayed_in_log // Max Messages Displayed in Log
+
+$$ @log_message
+// Log Message
+//
+// UE4 name of this method: LogMessage
+
+&aka("LogMessage")
+
+(PlayerController calling_player  : PlayerController!null
+ String           message         : ""
+ Color            specified_color : Color!) 
+
+$$ .

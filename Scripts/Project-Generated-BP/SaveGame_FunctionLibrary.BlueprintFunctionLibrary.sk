@@ -1,0 +1,68 @@
+// Save Game Function Library
+//
+// UE4 name of this class: SaveGame_FunctionLibrary_C
+
+// UE4 Asset Name: SaveGame_FunctionLibrary
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/FunctionLibraries/SaveGame_FunctionLibrary"
+
+annotations: &reflected_data &name("SaveGame_FunctionLibrary_C")
+
+$$ @
+
+$$ @@deck_editable
+// Get Deck Editable
+//
+// UE4 name of this method: GetDeckEditable
+
+&aka("GetDeckEditable")
+
+(String  slot_name     : ""
+ Entity  world_context : Entity!null
+ Boolean editable?     : false) 
+
+$$ @@deck_valid
+// Get Deck Valid
+//
+// UE4 name of this method: GetDeckValid
+
+&aka("GetDeckValid")
+
+(String  slot_name     : ""
+ Entity  world_context : Entity!null
+ Boolean deck_valid?   : false) 
+
+$$ @@random_deck
+// Get Random Deck
+//
+// UE4 name of this method: GetRandomDeck
+
+&aka("GetRandomDeck")
+
+(Entity  world_context : Entity!null
+ String  random_deck   : ""
+ Boolean valid_deck?   : false) 
+
+$$ @@create_load_card_game_save
+// Create/ Load Card Game Save
+//
+// UE4 name of this method: Create/LoadCardGameSave
+
+&aka("Create/LoadCardGameSave")
+
+(String      slot_name       : ""
+ EntityClass save_game_class : EntityClass!null
+ Entity      world_context   : Entity!null
+ SaveGame    save_game       : SaveGame!null
+ Boolean     save_valid?     : false) 
+
+$$ @@remove_save_game_slot
+// Remove Save Game Slot
+//
+// UE4 name of this method: RemoveSaveGameSlot
+
+&aka("RemoveSaveGameSlot")
+
+(String save_game     : ""
+ Entity world_context : Entity!null) 
+
+$$ .

@@ -1,0 +1,30 @@
+// Board Player Effects Enum
+//
+// UE4 name of this enum: BoardPlayerEffects_Enum
+
+// UE4 Asset Name: BoardPlayerEffects_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Effects_Enums/BoardPlayerEffects_Enum"
+
+annotations: &reflected_data &name("BoardPlayerEffects_Enum")
+
+$$ @@
+
+BoardPlayerEffects_Enum !@@decreased_health
+BoardPlayerEffects_Enum !@@increased_health
+BoardPlayerEffects_Enum !@@death
+BoardPlayerEffects_Enum !@@board_player_effects_max
+
+$$ @@!
+// BoardPlayerEffects_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Effects_Enums/BoardPlayerEffects_Enum.BoardPlayerEffects_Enum
+
+()
+
+  [
+  @@decreased_health:         BoardPlayerEffects_Enum!int(0)
+  @@increased_health:         BoardPlayerEffects_Enum!int(1)
+  @@death:                    BoardPlayerEffects_Enum!int(2)
+  @@board_player_effects_max: BoardPlayerEffects_Enum!int(3)
+  ]
+
+$$ .

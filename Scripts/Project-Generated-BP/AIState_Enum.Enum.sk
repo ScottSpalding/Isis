@@ -1,0 +1,30 @@
+// AIState Enum
+//
+// UE4 name of this enum: AIState_Enum
+
+// UE4 Asset Name: AIState_Enum
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIPersonality/AIState_Enum"
+
+annotations: &reflected_data &name("AIState_Enum")
+
+$$ @@
+
+AIState_Enum !@@initialization_
+AIState_Enum !@@execution_
+AIState_Enum !@@termination_
+AIState_Enum !@@aistate_max
+
+$$ @@!
+// AIState_Enum
+// EnumPath: /Game/CCGToolkit/CardGameAI/AIPersonality/AIState_Enum.AIState_Enum
+
+()
+
+  [
+  @@initialization_: AIState_Enum!int(0)
+  @@execution_:      AIState_Enum!int(1)
+  @@termination_:    AIState_Enum!int(2)
+  @@aistate_max:     AIState_Enum!int(3)
+  ]
+
+$$ .

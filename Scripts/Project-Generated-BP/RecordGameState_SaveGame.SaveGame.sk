@@ -1,0 +1,14 @@
+// Record Game State Save Game
+//
+// UE4 name of this class: RecordGameState_SaveGame_C
+
+// UE4 Asset Name: RecordGameState_SaveGame
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/SaveGame/RecordGameState_SaveGame"
+
+annotations: &reflected_data &name("RecordGameState_SaveGame_C")
+
+$$ @
+
+&raw("Snapshot") List{GameStateSnapshot_Struct} !@snapshot // Snapshot
+
+$$ .

@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Pawn.h"
+#include "GameFramework/Character.h"
 
 #include "IsisPawn.generated.h"
 
@@ -134,7 +134,7 @@ class UIsisPawnStats;
 //};
 
 UCLASS()
-class ISIS_API AIsisPawn : public APawn
+class ISIS_API AIsisPawn : public ACharacter
 {
 	GENERATED_BODY()
 
@@ -176,8 +176,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "GameBoard")
 	bool Attack(AIsisPawn* TargetPawn);
 
-	UFUNCTION(BlueprintCallable, Category = "Stats")
-	void TakeDamage(int32 Damage);
+	//UFUNCTION(BlueprintCallable, Category = "Stats")
+	//void TakeDamage(int32 Damage);
 
 	UFUNCTION(BlueprintCallable, Category = "Stats")
 	void HealDamage(int32 Damage);

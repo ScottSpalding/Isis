@@ -1,0 +1,28 @@
+// Positioning Profiles Enum
+//
+// UE4 name of this enum: Positioning_Profiles_Enum
+
+// UE4 Asset Name: Positioning_Profiles_Enum
+// UE4 Package Name: "/Game/CCGToolkit/CardLayouts/Positioning_Profiles_Enum"
+
+annotations: &reflected_data &name("Positioning_Profiles_Enum")
+
+$$ @@
+
+Positioning_Profiles_Enum !@@fanned
+Positioning_Profiles_Enum !@@horizontal
+Positioning_Profiles_Enum !@@positioning_profiles_max
+
+$$ @@!
+// Positioning_Profiles_Enum
+// EnumPath: /Game/CCGToolkit/CardLayouts/Positioning_Profiles_Enum.Positioning_Profiles_Enum
+
+()
+
+  [
+  @@fanned:                   Positioning_Profiles_Enum!int(0)
+  @@horizontal:               Positioning_Profiles_Enum!int(1)
+  @@positioning_profiles_max: Positioning_Profiles_Enum!int(2)
+  ]
+
+$$ .

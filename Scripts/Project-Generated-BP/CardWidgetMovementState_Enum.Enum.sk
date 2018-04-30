@@ -1,0 +1,32 @@
+// Card Widget Movement State Enum
+//
+// UE4 name of this enum: CardWidgetMovementState_Enum
+
+// UE4 Asset Name: CardWidgetMovementState_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/CardWidgetMovementState_Enum"
+
+annotations: &reflected_data &name("CardWidgetMovementState_Enum")
+
+$$ @@
+
+CardWidgetMovementState_Enum !@@pending
+CardWidgetMovementState_Enum !@@move_to_hand_destination
+CardWidgetMovementState_Enum !@@move_to_preview_destination
+CardWidgetMovementState_Enum !@@return_from_preview_destination
+CardWidgetMovementState_Enum !@@card_widget_movement_state_max
+
+$$ @@!
+// CardWidgetMovementState_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/CardWidgetMovementState_Enum.CardWidgetMovementState_Enum
+
+()
+
+  [
+  @@pending:                         CardWidgetMovementState_Enum!int(0)
+  @@move_to_hand_destination:        CardWidgetMovementState_Enum!int(1)
+  @@move_to_preview_destination:     CardWidgetMovementState_Enum!int(2)
+  @@return_from_preview_destination: CardWidgetMovementState_Enum!int(3)
+  @@card_widget_movement_state_max:  CardWidgetMovementState_Enum!int(4)
+  ]
+
+$$ .

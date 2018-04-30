@@ -1,0 +1,68 @@
+// Deck Stats
+//
+// UE4 name of this class: DeckStats_C
+
+// UE4 Asset Name: DeckStats
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Additional/DeckStats"
+
+annotations: &reflected_data &name("DeckStats_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")      PointerToUberGraphFrame !@uber_graph_frame     // Currently unsupported */
+&raw("CardName_text")       TextBlock       !@card_name_text       // Card Name Text
+&raw("CardRare_Text")       TextBlock       !@card_rare_text       // Card Rare Text
+&raw("CardsInDeck_text")    TextBlock       !@cards_in_deck_text   // Cards in Deck Text
+&raw("CardsLegendary_Text") TextBlock       !@cards_legendary_text // Cards Legendary Text
+&raw("CardsUltrarare_Text") TextBlock       !@cards_ultrarare_text // Cards Ultrarare Text
+&raw("CardsUncommon_Text")  TextBlock       !@cards_uncommon_text  // Cards Uncommon Text
+&raw("CommonCards_Deck")    TextBlock       !@common_cards_deck    // Common Cards Deck
+&raw("Graph")               DeckManaGraph   !@graph                // Graph
+&raw("InvalidationBox_0")   InvalidationBox !@invalidation_box_0   // Invalidation Box 0
+&raw("TextBlock_1")         TextBlock       !@text_block_1         // Text Block 1
+&raw("TextBlock_2")         TextBlock       !@text_block_2         // Text Block 2
+&raw("TextBlock_4")         TextBlock       !@text_block_4         // Text Block 4
+&raw("TextBlock_7")         TextBlock       !@text_block_7         // Text Block 7
+&raw("TextBlock_8")         TextBlock       !@text_block_8         // Text Block 8
+&raw("TextBlock_9")         TextBlock       !@text_block_9         // Text Block 9
+&raw("CardSetName")         String          !@card_set_name        // Card Set Name
+&raw("Deck")                List{Name}      !@deck                 // Deck
+&raw("Card")                CardRarity_Enum !@card                 // Card
+
+$$ @stat_values_set
+// Set Stat Values
+//
+// UE4 name of this method: SetStatValues
+
+&aka("SetStatValues")
+
+() 
+
+$$ @graph_data_set
+// Set Graph Data
+//
+// UE4 name of this method: SetGraphData
+
+&aka("SetGraphData")
+
+() 
+
+$$ @load_deck
+// Load Deck
+//
+// UE4 name of this method: LoadDeck
+
+&aka("LoadDeck")
+
+() 
+
+$$ @populate_statistics
+// Populate Statistics
+//
+// UE4 name of this method: PopulateStatistics
+
+&aka("PopulateStatistics")
+
+(String card_set : "") 
+
+$$ .

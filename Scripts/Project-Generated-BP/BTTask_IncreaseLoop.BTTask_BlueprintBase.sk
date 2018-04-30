@@ -1,0 +1,19 @@
+// BTTask Increase Loop
+//
+// UE4 name of this class: BTTask_IncreaseLoop_C
+
+// UE4 Asset Name: BTTask_IncreaseLoop
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIBlueprints/Tasks/BTTask_IncreaseLoop"
+
+annotations: &reflected_data &name("BTTask_IncreaseLoop_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")        PointerToUberGraphFrame !@uber_graph_frame      // Currently unsupported */
+&raw("Loop")                  BlackboardKeySelector !@loop                  // Loop
+&raw("bFinalLoop")            BlackboardKeySelector !@final_loop            // B Final Loop
+&raw("bCardPlayed")           BlackboardKeySelector !@card_played           // B Card Played
+&raw("bInteractionPerformed") BlackboardKeySelector !@interaction_performed // B Interaction Performed
+&raw("bEndLoop")              Boolean               !@end_loop?             // End Loop
+
+$$ .

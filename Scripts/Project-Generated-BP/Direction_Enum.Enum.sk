@@ -1,0 +1,32 @@
+// Direction Enum
+//
+// UE4 name of this enum: Direction_Enum
+
+// UE4 Asset Name: Direction_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/System_Enums/Direction_Enum"
+
+annotations: &reflected_data &name("Direction_Enum")
+
+$$ @@
+
+Direction_Enum !@@left
+Direction_Enum !@@center_left
+Direction_Enum !@@center_right
+Direction_Enum !@@right
+Direction_Enum !@@direction_max
+
+$$ @@!
+// Direction_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/System_Enums/Direction_Enum.Direction_Enum
+
+()
+
+  [
+  @@left:          Direction_Enum!int(0)
+  @@center_left:   Direction_Enum!int(1)
+  @@center_right:  Direction_Enum!int(2)
+  @@right:         Direction_Enum!int(3)
+  @@direction_max: Direction_Enum!int(4)
+  ]
+
+$$ .

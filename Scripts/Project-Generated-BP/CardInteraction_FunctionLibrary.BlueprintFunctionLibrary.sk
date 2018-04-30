@@ -1,0 +1,108 @@
+// Card Interaction Function Library
+//
+// UE4 name of this class: CardInteraction_FunctionLibrary_C
+
+// UE4 Asset Name: CardInteraction_FunctionLibrary
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/FunctionLibraries/CardInteraction_FunctionLibrary"
+
+annotations: &reflected_data &name("CardInteraction_FunctionLibrary_C")
+
+$$ @
+
+$$ @@validate_card_interaction_conditions
+// Validate Card Interaction Conditions
+//
+// UE4 name of this method: ValidateCardInteractionConditions
+
+&aka("ValidateCardInteractionConditions")
+
+(Sk3DCard                   talking_card               : Sk3DCard!null
+ Sk3DCard                   recieving_card             : Sk3DCard!null
+ Boolean                    recieving_card_conditions? : false
+ Entity                     world_context              : Entity!null
+ Boolean                    return_valid?              : false
+ InteractionConditions_Enum condition_failure          : InteractionConditions_Enum.@@none) 
+
+$$ @@validate_player_interaction
+// Validate Player Interaction
+//
+// UE4 name of this method: ValidatePlayerInteraction
+
+&aka("ValidatePlayerInteraction")
+
+(Sk3DCard                   talking_card           : Sk3DCard!null
+ BoardPlayer                recieving_board_player : BoardPlayer!null
+ Entity                     world_context          : Entity!null
+ InteractionConditions_Enum condition_failure      : InteractionConditions_Enum.@@none
+) Boolean
+
+$$ @@validate_card_interaction
+// Validate Card Interaction
+//
+// UE4 name of this method: ValidateCardInteraction
+
+&aka("ValidateCardInteraction")
+
+(Sk3DCard                   talking_card                   : Sk3DCard!null
+ Sk3DCard                   recieving_card                 : Sk3DCard!null
+ Entity                     world_context                  : Entity!null
+ InteractionConditions_Enum calling_card_condition_failure : InteractionConditions_Enum.@@none
+ InteractionConditions_Enum talking_card_condition_failure : InteractionConditions_Enum.@@none
+) Boolean
+
+$$ @@is_same_owning_player
+// Is Same Owning Player
+//
+// UE4 name of this method: IsSameOwningPlayer
+
+&aka("IsSameOwningPlayer")
+
+(Sk3DCard talking_card   : Sk3DCard!null
+ Sk3DCard recieving_card : Sk3DCard!null
+ Entity   world_context  : Entity!null
+) Boolean
+
+$$ @@charge_interaction_points
+// Charge Interaction Points
+//
+// UE4 name of this method: ChargeInteractionPoints
+
+&aka("ChargeInteractionPoints")
+
+(Sk3DCard card_to_charge : Sk3DCard!null
+ Integer  cost           : 0
+ Entity   world_context  : Entity!null
+ Boolean  success?       : false) 
+
+$$ @@deal_damage_to_player
+// Deal Damage To Player
+//
+// UE4 name of this method: Deal Damage to Player
+
+&aka("Deal Damage to Player")
+
+(Boolean                    simple_damage?                : false
+ Sk3DCard                   talking_card                  : Sk3DCard!null
+ BoardPlayer                board_player                  : BoardPlayer!null
+ Integer                    damage_override               : 0
+ Entity                     world_context                 : Entity!null
+ Boolean                    success?                      : false
+ InteractionConditions_Enum interaction_condition_failure : InteractionConditions_Enum.@@none) 
+
+$$ @@deal_damage_to_card
+// Deal Damage To Card
+//
+// UE4 name of this method: Deal Damage to Card
+
+&aka("Deal Damage to Card")
+
+(Boolean                    simple_damage?         : false
+ Sk3DCard                   talking_card           : Sk3DCard!null
+ Sk3DCard                   recieving_card         : Sk3DCard!null
+ Integer                    damage_override        : 0
+ Entity                     world_context          : Entity!null
+ Boolean                    success?               : false
+ InteractionConditions_Enum calling_card_condition : InteractionConditions_Enum.@@none
+ InteractionConditions_Enum talking_card_condition : InteractionConditions_Enum.@@none) 
+
+$$ .

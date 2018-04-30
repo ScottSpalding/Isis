@@ -1,0 +1,178 @@
+// Misc Function Library
+//
+// UE4 name of this class: Misc_FunctionLibrary_C
+
+// UE4 Asset Name: Misc_FunctionLibrary
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/FunctionLibraries/Misc_FunctionLibrary"
+
+annotations: &reflected_data &name("Misc_FunctionLibrary_C")
+
+$$ @
+
+$$ @@wait_time_with_random_deviation
+// Get Wait Time with Random Deviation
+//
+// UE4 name of this method: GetWaitTimeWithRandomDeviation
+
+&aka("GetWaitTimeWithRandomDeviation")
+
+(Real   wait_time        : 0.0
+ Real   random_deviation : 0.0
+ Entity world_context    : Entity!null
+ Real   return_wait_time : 0.0) 
+
+$$ @@calculate_float_precision
+// Calculate Float Precision
+//
+// UE4 name of this method: CalculateFloatPrecision
+
+&aka("CalculateFloatPrecision")
+
+(Real   float         : 0.0
+ Entity world_context : Entity!null
+) Real
+
+$$ @@card_game_player_camera
+// Get Card Game Player Camera
+//
+// UE4 name of this method: GetCardGamePlayerCamera
+
+&aka("GetCardGamePlayerCamera")
+
+(CardGamePlayerController player_controller : CardGamePlayerController!null
+ Entity                   world_context     : Entity!null
+ CardGameCamera           chosen_camera     : CardGameCamera!null) 
+
+$$ @@modify_dpi_scaling
+// Modify DPI Scaling
+//
+// UE4 name of this method: ModifyDPI Scaling
+
+&aka("ModifyDPI Scaling")
+
+(Real    value               : 0.0
+ Boolean invert_dpi_scaling? : false
+ Entity  world_context       : Entity!null
+ Real    return_value        : 0.0) 
+
+$$ @@position_in_range
+// Get Position in Range
+//
+// UE4 name of this method: GetPositionInRange
+
+&aka("GetPositionInRange")
+
+(Real    global_edge_offset : 0.0
+ Real    xedge_offset       : 0.0
+ Real    yedge_offset       : 0.0
+ Entity  world_context      : Entity!null
+ Vector2 return_vector      : Vector2!) 
+
+$$ @@mouse_position_in_range
+// Get Mouse Position in Range
+//
+// UE4 name of this method: GetMousePositionInRange
+
+&aka("GetMousePositionInRange")
+
+(Vector2 size_offset        : Vector2!
+ Real    global_edge_offset : 0.0
+ Real    xedge_offset       : 0.0
+ Real    yedge_offset       : 0.0
+ Entity  world_context      : Entity!null
+ Vector2 return_vector      : Vector2!) 
+
+$$ @@world_rotation_for_player
+// Get World Rotation for Player
+//
+// UE4 name of this method: GetWorldRotationForPlayer
+
+&aka("GetWorldRotationForPlayer")
+
+(RotationAngles override_rotation_axis : RotationAngles!
+ Entity         world_context          : Entity!null
+ RotationAngles return_rotation        : RotationAngles!
+ Boolean        camera_valid?          : false) 
+
+$$ @@player_state_reference
+// Get Player State Reference
+//
+// UE4 name of this method: GetPlayerStateReference
+
+&aka("GetPlayerStateReference")
+
+(Controller controller    : Controller!null
+ Entity     world_context : Entity!null
+ Integer    self_player   : 0
+ Integer    oppenent      : 0) 
+
+$$ @@custom_print
+// Custom Print
+//
+// UE4 name of this method: CustomPrint
+
+&aka("CustomPrint")
+
+(String  a                : ""
+ String  b                : ""
+ String  c                : ""
+ String  d                : ""
+ Color   text_color       : Color!
+ Real    duration         : 10
+ Boolean print_to_screen? : true
+ Entity  world_context    : Entity!null) 
+
+$$ @@create_screen_display_message
+// Create Screen Display Message
+//
+// UE4 name of this method: CreateScreenDisplayMessage
+
+&aka("CreateScreenDisplayMessage")
+
+(String message         : ""
+ Color  specified_color : Color!
+ Real   duration        : 1
+ Entity world_context   : Entity!null) 
+
+$$ @@mouse_distance_in_world_space
+// Mouse Distance in World Space
+//
+// UE4 name of this method: MouseDistanceInWorldSpace
+
+&aka("MouseDistanceInWorldSpace")
+
+(CardGamePlayerController player_controller : CardGamePlayerController!null
+ Real                     distance          : 1000
+ Entity                   world_context     : Entity!null
+ Vector3                  location          : Vector3!
+ Transform                spawn_tranfrom    : Transform!) 
+
+$$ @@mouse_to_world_location
+// Mouse To World Location
+//
+// UE4 name of this method: Mouse to World Location
+// Blueprint category: Default
+
+&aka("Mouse to World Location")
+
+(PlayerController player_controller : PlayerController!null
+ Entity           world_context     : Entity!null
+ Actor            hit_actor         : Actor!null
+ Vector3          location          : Vector3!) 
+
+$$ @@p2dinterp_to_goal_location
+// 2DInterp to Goal Location
+//
+// UE4 name of this method: 2DInterpToGoalLocation
+
+&aka("2DInterpToGoalLocation")
+
+(WidgetTransform current_transform : WidgetTransform!
+ WidgetTransform goal_transform    : WidgetTransform!
+ Real            delta_time        : 0.0
+ Real            interp_speed      : 0.0
+ Entity          world_context     : Entity!null
+ WidgetTransform transform         : WidgetTransform!
+ Boolean         arrived?          : false) 
+
+$$ .

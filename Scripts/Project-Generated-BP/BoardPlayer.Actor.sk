@@ -1,0 +1,76 @@
+// Board Player
+//
+// UE4 name of this class: BoardPlayer_C
+
+// UE4 Asset Name: BoardPlayer
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Gameplay/BoardPlayer"
+
+annotations: &reflected_data &name("BoardPlayer_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")                                              PointerToUberGraphFrame !@uber_graph_frame                   // Currently unsupported */
+&raw("Player Tile")                                                 StaticMeshComponent     !@player_tile                        // Player Tile
+&raw("AutoRotateToPlayer")                                          AutoRotateToPlayer      !@auto_rotate_to_player              // Auto Rotate to Player
+&raw("Outline")                                                     StaticMeshComponent     !@outline                            // Outline
+&raw("Health_Text")                                                 TextRenderComponent     !@health_text                        // Health Text
+&raw("Heart_Icon")                                                  StaticMeshComponent     !@heart_icon                         // Heart Icon
+&raw("Arrow")                                                       ArrowComponent          !@arrow                              // Arrow
+&raw("Scene")                                                       SceneComponent          !@scene                              // Scene
+&raw("Billboard")                                                   BillboardComponent      !@billboard                          // Billboard
+&raw("[Player]")                                                    TextRenderComponent     !@_player_                           // [ Player]
+&raw("Box")                                                         BoxComponent            !@box                                // Box
+&raw("Cube")                                                        StaticMeshComponent     !@cube                               // Cube
+&raw("DefaultSceneRoot")                                            SceneComponent          !@default_scene_root                 // Default Scene Root
+&raw("ScaleHealthIcon_NewTrack_1_107EDEA3437C9970EF05A5BE340A0063") Real                    !@scale_health_icon_new_track_1_107e // Scale Health Icon New Track 1 107EDEA3437C9970EF05A5BE340A0063
+/* &raw("ScaleHealthIcon__Direction_107EDEA3437C9970EF05A5BE340A0063") ETimelineDirection      !@scale_health_icon_direction_107e   // Currently unsupported */
+&raw("ScaleHealthIcon")                                             TimelineComponent       !@scale_health_icon                  // Scale Health Icon
+&raw("Player_Health")                                               Integer                 !@player_health                      // Player Health 
+&raw("MaterialInstance")                                            MaterialInstanceDynamic !@material_instance                  // Material Instance
+&raw("PlayerIndex")                                                 Integer                 !@player_index                       // The Player Index 
+/* &raw("PlayerName")                                                  None                    !@player_name                        // Currently unsupported */
+&raw("OwningController")                                            Controller              !@owning_controller                  // Owning Contoller
+&raw("CardGameCamera_Ref")                                          CardGameCamera          !@card_game_camera_ref               // Card Game Camera Ref
+&raw("Temp_HealthIconRelativeScale")                                Vector3                 !@temp_health_icon_relative_scale    // Temp Health Icon Relative Scale
+&raw("bScaleingHealthIcon")                                         Boolean                 !@scaleing_health_icon?              // Scaleing Health Icon
+&raw("Temp_HealthTextColour")                                       Color                   !@temp_health_text_colour            // Temp Health Text Colour
+&raw("HealthDecreaseColour")                                        Color                   !@health_decrease_colour             // Health Decrease Colour
+&raw("HealthIncreaseColour")                                        Color                   !@health_increase_colour             // Health Increase Colour
+
+$$ @on_rep_player_health
+// On Rep Player Health
+//
+// UE4 name of this method: OnRep_Player_Health
+
+&aka("OnRep_Player_Health")
+
+() 
+
+$$ @update_health
+// Update Health
+//
+// UE4 name of this method: Update_Health
+
+&aka("Update_Health")
+
+(Integer heath : 0) 
+
+$$ @multicast_board_player_effect
+// Multicast Board Player Effect
+//
+// UE4 name of this method: Multicast_BoardPlayerEffect
+
+&aka("Multicast_BoardPlayerEffect")
+
+(BoardPlayerEffects_Enum effect : BoardPlayerEffects_Enum.@@decreased_health) 
+
+$$ @update_player_stats
+// Update Player Stats
+//
+// UE4 name of this method: UpdatePlayerStats
+
+&aka("UpdatePlayerStats")
+
+() 
+
+$$ .

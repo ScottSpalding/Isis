@@ -1,0 +1,30 @@
+// Turn State Enum
+//
+// UE4 name of this enum: TurnState_Enum
+
+// UE4 Asset Name: TurnState_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/TurnState_Enum"
+
+annotations: &reflected_data &name("TurnState_Enum")
+
+$$ @@
+
+TurnState_Enum !@@turn_active
+TurnState_Enum !@@turn_inactive
+TurnState_Enum !@@update_current_state
+TurnState_Enum !@@turn_state_max
+
+$$ @@!
+// TurnState_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/TurnState_Enum.TurnState_Enum
+
+()
+
+  [
+  @@turn_active:          TurnState_Enum!int(0)
+  @@turn_inactive:        TurnState_Enum!int(1)
+  @@update_current_state: TurnState_Enum!int(2)
+  @@turn_state_max:       TurnState_Enum!int(3)
+  ]
+
+$$ .

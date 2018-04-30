@@ -1,0 +1,17 @@
+// Search Bar
+//
+// UE4 name of this class: SearchBar_C
+
+// UE4 Asset Name: SearchBar
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Menu/DeckBuilder/SearchBar"
+
+annotations: &reflected_data &name("SearchBar_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")    PointerToUberGraphFrame !@uber_graph_frame    // Currently unsupported */
+&raw("Button_0")          Button          !@button_0            // Button 0
+&raw("EditableTextBox_0") EditableTextBox !@editable_text_box_0 // Editable Text Box 0
+&raw("ParentWidget_Ref")  Widget          !@parent_widget_ref   // Parent Widget Ref
+
+$$ .

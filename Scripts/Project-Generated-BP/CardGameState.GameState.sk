@@ -1,0 +1,260 @@
+// Card Game State
+//
+// UE4 name of this class: CardGameState_C
+
+// UE4 Asset Name: CardGameState
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/CardGameState"
+
+annotations: &reflected_data &name("CardGameState_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")                      PointerToUberGraphFrame        !@uber_graph_frame                        // Currently unsupported */
+&raw("DefaultSceneRoot")                    SceneComponent                 !@default_scene_root                      // Default Scene Root
+&raw("CardSystem_Ref")                      CardManager                    !@card_system_ref                         // Card System Ref
+&raw("CardGameMode_Ref")                    CardGameMode                   !@card_game_mode_ref                      // Card Game Mode Ref
+&raw("Platform")                            Platform_Enum                  !@platform                                // Platform
+&raw("CountdownTimer")                      Integer                        !@countdown_timer                         // Countdown Timer
+&raw("GameTime_Seconds")                    Integer                        !@game_time_seconds                       // Game Time Seconds
+&raw("GameTime_Minutes")                    Integer                        !@game_time_minutes                       // Game Time Minutes
+&raw("GameTurnState")                       GameTurn_Enum                  !@game_turn_state                         // Game Turn State
+&raw("TurnTimer_Ref")                       TimerHandle                    !@turn_timer_ref                          // Turn Timer Ref
+&raw("TurnDuration_Seconds")                Integer                        !@turn_duration_seconds                   // Turn Duration Seconds
+&raw("TurnDuration_Minutes")                Integer                        !@turn_duration_minutes                   // Turn Duration Minutes
+&raw("TurnTime_Seconds")                    Integer                        !@turn_time_seconds                       // Turn Time Seconds
+&raw("GameTimer_Ref")                       TimerHandle                    !@game_timer_ref                          // Game Timer Ref
+&raw("TurnTime_Minutes")                    Integer                        !@turn_time_minutes                       // Turn Time Minutes
+&raw("GameSeconds")                         Real                           !@game_seconds                            // Seconds the timer will tick. 1 = 1 second. 0.1 = 10 times a second.
+&raw("ActiveCards_Player1")                 List{Sk3DCard}                 !@active_cards_player_1                   // Active Cards Player 1
+&raw("ActiveCards_Player2")                 List{Sk3DCard}                 !@active_cards_player_2                   // Active Cards Player 2
+&raw("CardPlacements_Player1")              List{CardPlacement}            !@card_placements_player_1                // Card Placements Player 1
+&raw("TotalCardPlacementPositions_Player1") Integer                        !@total_card_placement_positions_player_1 // Total Card Placement Positions Player 1
+&raw("CardPlacements_Player2")              List{CardPlacement}            !@card_placements_player_2                // Card Placements Player 2
+&raw("PlayerTurn_Array")                    List{Controller}               !@player_turn_array                       // Player Turn Array
+&raw("GameSnapshot")                        List{GameStateSnapshot_Struct} !@game_snapshot                           // Game Snapshot
+&raw("BattleHistory")                       List{BattleHistory_Struct}     !@battle_history                          // Battle History
+&raw("CardReferenceArray")                  List{Sk3DCard}                 !@card_reference_array                    // Card Reference Array
+&raw("TotalCardPlacementPositions_Player2") Integer                        !@total_card_placement_positions_player_2 // Total Card Placement Positions Player 2
+&raw("Graveyards_Player1")                  Graveyard                      !@graveyards_player_1                     // Graveyards Player 1
+&raw("Graveyards_Player2")                  Graveyard                      !@graveyards_player_2                     // Graveyards Player 2
+&raw("PlayerState_Array")                   List{Actor}                    !@player_state_array                      // Player State Array
+&raw("bGameActive")                         Boolean                        !@game_active?                            // Game Active
+&raw("EnableBattleHistory")                 Boolean                        !@enable_battle_history?                  // Enable Battle History
+
+$$ @graveyard_reference
+// Get Graveyard Reference
+//
+// UE4 name of this method: GetGraveyardReference
+// Blueprint category: Board
+
+&aka("GetGraveyardReference")
+
+(Integer   player_id        : 0
+ Graveyard return_graveyard : Graveyard!null) 
+
+$$ @graveyard_references_per_player
+// Get Graveyard References Per Player
+//
+// UE4 name of this method: GetGraveyardReferencesPerPlayer
+// Blueprint category: Board
+
+&aka("GetGraveyardReferencesPerPlayer")
+
+() 
+
+$$ @record_battle_history
+// Record Battle History
+//
+// UE4 name of this method: RecordBattleHistory
+// Blueprint category: Recorded Game Data
+
+&aka("RecordBattleHistory")
+
+(BattleHistory_Struct battle_history_struct : BattleHistory_Struct!) 
+
+$$ @record_game_state_snapshot
+// Record Game State Snapshot
+//
+// UE4 name of this method: RecordGameStateSnapshot
+// Blueprint category: Recorded Game Data
+
+&aka("RecordGameStateSnapshot")
+
+() 
+
+$$ @begin_player_turn
+// Begin Player Turn
+//
+// UE4 name of this method: BeginPlayerTurn
+// Blueprint category: Gameplay
+
+&aka("BeginPlayerTurn")
+
+(Integer player_id : 0) 
+
+$$ @end_of_player_turn
+// End Of Player Turn
+//
+// UE4 name of this method: EndOfPlayerTurn
+// Blueprint category: Gameplay
+
+&aka("EndOfPlayerTurn")
+
+(Integer player_id : 0) 
+
+$$ @rotate_player_turn
+// Rotate Player Turn
+//
+// UE4 name of this method: RotatePlayerTurn
+// Blueprint category: Gameplay
+
+&aka("RotatePlayerTurn")
+
+() 
+
+$$ @card_placement_references
+// Get Card Placement References
+//
+// UE4 name of this method: GetCardPlacementReferences
+// Blueprint category: Board
+
+&aka("GetCardPlacementReferences")
+
+(Integer             player_id       : 0
+ List{CardPlacement} placement_array : List{CardPlacement}!
+ Integer             total           : 0) 
+
+$$ @compile_placements_per_player
+// Compile Placements Per Player
+//
+// UE4 name of this method: CompilePlacementsPerPlayer
+// Blueprint category: Board
+
+&aka("CompilePlacementsPerPlayer")
+
+() 
+
+$$ @board_state
+// Get Board State
+//
+// UE4 name of this method: GetBoardState
+// Blueprint category: Board
+
+&aka("GetBoardState")
+
+(Integer        player_id     : 0
+ List{Sk3DCard} player_cards  : List{Sk3DCard}!
+ List{Sk3DCard} oppened_cards : List{Sk3DCard}!) 
+
+$$ @remove_card_on_board
+// Remove Card on Board
+//
+// UE4 name of this method: RemoveCardOnBoard
+// Blueprint category: Board
+
+&aka("RemoveCardOnBoard")
+
+(Sk3DCard card_reference : Sk3DCard!null
+ Integer  player_id      : 0) 
+
+$$ @add_card_to_board
+// Add Card to Board
+//
+// UE4 name of this method: AddCardToBoard
+// Blueprint category: Board
+
+&aka("AddCardToBoard")
+
+(Sk3DCard card_reference : Sk3DCard!null
+ Integer  player_id      : 0) 
+
+$$ @request_change_turn_state
+// Request Change Turn State
+//
+// UE4 name of this method: RequestChangeTurnState
+// Blueprint category: System
+
+&aka("RequestChangeTurnState")
+
+(Controller controller            : Controller!null
+ Boolean    change_request_valid? : false) 
+
+$$ @check_player_turn_state
+// Check Player Turn State
+//
+// UE4 name of this method: CheckPlayerTurnState
+// Blueprint category: System
+
+&aka("CheckPlayerTurnState")
+
+(GameTurn_Enum game_turn_state : GameTurn_Enum.@@turn_active
+ Boolean       active_turn?    : false) 
+
+$$ @restet_turn_timer
+// Restet Turn Timer
+//
+// UE4 name of this method: RestetTurnTimer
+// Blueprint category: System
+
+&aka("RestetTurnTimer")
+
+() 
+
+$$ @turn_timer
+// Turn Timer
+//
+// UE4 name of this method: TurnTimer
+// Blueprint category: System
+
+&aka("TurnTimer")
+
+() 
+
+$$ @game_timer
+// Game Timer
+//
+// UE4 name of this method: GameTimer
+// Blueprint category: System
+
+&aka("GameTimer")
+
+() 
+
+$$ @server_request_change_turn_state
+// Server Request Change Turn State
+//
+// UE4 name of this method: Server_RequestChangeTurnState
+
+&aka("Server_RequestChangeTurnState")
+
+(Controller controller : Controller!null) 
+
+$$ @on_game_start
+// On Game Start
+//
+// UE4 name of this method: OnGameStart
+
+&aka("OnGameStart")
+
+() 
+
+$$ @server_force_change_turn_state
+// Server Force Change Turn State
+//
+// UE4 name of this method: Server_ForceChangeTurnState
+
+&aka("Server_ForceChangeTurnState")
+
+() 
+
+$$ @server_notify_end_game_state
+// Server Notify End Game State
+//
+// UE4 name of this method: Server_NotifyEndGameState
+
+&aka("Server_NotifyEndGameState")
+
+(EndGameResults_Enum player_1result : EndGameResults_Enum.@@victory
+ EndGameResults_Enum player_2result : EndGameResults_Enum.@@victory) 
+
+$$ .

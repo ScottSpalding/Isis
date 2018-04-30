@@ -1,0 +1,90 @@
+// Server Selection Menu
+//
+// UE4 name of this class: ServerSelectionMenu_C
+
+// UE4 Asset Name: ServerSelectionMenu
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Menu/ServerSelectionMenu"
+
+annotations: &reflected_data &name("ServerSelectionMenu_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")           PointerToUberGraphFrame !@uber_graph_frame            // Currently unsupported */
+&raw("Button_0")                 Button             !@button_0                    // Button 0
+&raw("Button_1")                 Button             !@button_1                    // Button 1
+&raw("CheckBox_0")               CheckBox           !@check_box_0                 // Check Box 0
+&raw("EditableTextBox_201")      EditableTextBox    !@editable_text_box_201       // Editable Text Box 201
+&raw("IP_Border")                Border             !@ip_border                   // IP Border
+&raw("Loading_Throbber")         CircularThrobber   !@loading_throbber            // Loading Throbber
+&raw("Name")                     TextBlock          !@name                        // Name
+&raw("NoGamesFound_VerticalBox") VerticalBox        !@no_games_found_vertical_box // No Games Found Vertical Box
+&raw("Refresh_Button")           Button             !@refresh_button              // Refresh Button
+&raw("ScrollBox_1")              ScrollBox          !@scroll_box_1                // Scroll Box 1
+&raw("ServerSelectionRow_135")   ServerSelectionRow !@server_selection_row_135    // Server Selection Row 135
+&raw("ServerSelectionRow_171")   ServerSelectionRow !@server_selection_row_171    // Server Selection Row 171
+&raw("ServerSelectionRow_203")   ServerSelectionRow !@server_selection_row_203    // Server Selection Row 203
+&raw("TextBlock_9")              TextBlock          !@text_block_9                // Text Block 9
+&raw("NumberOfSets")             Integer            !@number_of_sets              // Number Of Sets
+&raw("CardSetList")              CardSet_Enum       !@card_set_list               // Card Set List
+&raw("ServerRowsToDisplay")      Integer            !@server_rows_to_display      // Server Rows to Display
+&raw("UseLAN")                   Boolean            !@use_lan?                    // Use LAN
+/* &raw("IpAddress")                None               !@ip_address                  // Currently unsupported */
+&raw("ParentWidget_Ref")         Widget             !@parent_widget_ref           // Parent Widget Ref
+
+$$ @reset_window_state
+// Reset Window State
+//
+// UE4 name of this method: ResetWindowState
+
+&aka("ResetWindowState")
+
+() 
+
+$$ @return_option
+// Return Option
+//
+// UE4 name of this method: ReturnOption
+
+&aka("ReturnOption")
+
+(CardRowOptions option         : CardRowOptions.@@none
+ String         card_set       : ""
+ Widget         calling_widget : Widget!null) 
+
+$$ @return_card_set
+// Return Card Set
+//
+// UE4 name of this method: ReturnCardSet
+
+&aka("ReturnCardSet")
+
+(CardSet_Enum card_set : CardSet_Enum.@@empty) 
+
+$$ @return_preview
+// Return Preview
+//
+// UE4 name of this method: ReturnPreview
+
+&aka("ReturnPreview")
+
+(Boolean preview_enabled? : false) 
+
+$$ @return_deck_selection
+// Return Deck Selection
+//
+// UE4 name of this method: ReturnDeckSelection
+
+&aka("ReturnDeckSelection")
+
+(String deck_selection : "") 
+
+$$ @refresh_server_list
+// Refresh Server List
+//
+// UE4 name of this method: RefreshServerList
+
+&aka("RefreshServerList")
+
+() 
+
+$$ .

@@ -1,0 +1,40 @@
+// BTTask Run Play List
+//
+// UE4 name of this class: BTTask_RunPlayList_C
+
+// UE4 Asset Name: BTTask_RunPlayList
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIBlueprints/Tasks/BTTask_RunPlayList"
+
+annotations: &reflected_data &name("BTTask_RunPlayList_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")        PointerToUberGraphFrame      !@uber_graph_frame       // Currently unsupported */
+&raw("AIController_Ref")      CardGameAIController         !@aicontroller_ref       // AIController Ref
+&raw("AIPawn_Ref")            CardGameAI_Pawn              !@aipawn_ref             // AIPawn Ref
+&raw("InteractionPlayList")   List{CardInteraction_Struct} !@interaction_play_list  // Interaction Play List
+&raw("InteractionPerformed")  Name                         !@interaction_performed  // Interaction Performed
+&raw("bInteractionPerformed") Boolean                      !@interaction_performed? // Interaction Performed
+&raw("CurrentIndex")          Integer                      !@current_index          // Current Index
+
+$$ @select_and_run_interaction
+// Select and Run Interaction
+//
+// UE4 name of this method: SelectAndRunInteraction
+
+&aka("SelectAndRunInteraction")
+
+(Sk3DCard card          : Sk3DCard!null
+ Integer  controller_id : 0
+ Boolean  success?      : false) 
+
+$$ @run_play_list
+// Run Play List
+//
+// UE4 name of this method: RunPlayList
+
+&aka("RunPlayList")
+
+() 
+
+$$ .

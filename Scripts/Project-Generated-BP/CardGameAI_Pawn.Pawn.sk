@@ -1,0 +1,179 @@
+// Card Game AI Pawn
+//
+// UE4 name of this class: CardGameAI_Pawn_C
+
+// UE4 Asset Name: CardGameAI_Pawn
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIBlueprints/CardGameAI_Pawn"
+
+annotations: &reflected_data &name("CardGameAI_Pawn_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")       PointerToUberGraphFrame !@uber_graph_frame      // Currently unsupported */
+&raw("DefaultSceneRoot")     SceneComponent !@default_scene_root    // Default Scene Root
+&raw("AI_Name")              String         !@ai_name               // AI Name
+&raw("Health")               Integer        !@health                // Health
+&raw("PlayerID")             Integer        !@player_id             // Player ID
+&raw("Mana")                 Integer        !@mana                  // Mana
+&raw("ManaMax")              Integer        !@mana_max              // Mana Max
+&raw("HealthMax")            Integer        !@health_max            // Health Max
+&raw("CardsInHand")          Integer        !@cards_in_hand         // Cards in Hand
+&raw("CardsInDeck")          Integer        !@cards_in_deck         // Cards in Deck
+&raw("ActiveCards")          Integer        !@active_cards          // Active Cards
+&raw("PlayerTurn")           Integer        !@player_turn           // Player Turn
+&raw("CardGameAiID")         Integer        !@card_game_ai_id       // Card Game Ai ID
+&raw("GameMode_Ref")         CardGameMode   !@game_mode_ref         // Game Mode Ref
+&raw("OwningController_Ref") Controller     !@owning_controller_ref // Owning Controller Ref
+
+$$ @mana_for_turn
+// Get Mana for Turn
+//
+// UE4 name of this method: GetManaForTurn
+
+&aka("GetManaForTurn")
+
+(Integer return_mana : 0) 
+
+$$ @increase_player_health
+// Increase Player Health
+//
+// UE4 name of this method: IncreasePlayerHealth
+
+&aka("IncreasePlayerHealth")
+
+(Integer increase_by   : 0
+ Integer return_health : 0) 
+
+$$ @decrease_player_health
+// Decrease Player Health
+//
+// UE4 name of this method: DecreasePlayerHealth
+
+&aka("DecreasePlayerHealth")
+
+(Integer decrease_by   : 0
+ Integer return_health : 0) 
+
+$$ @increase_player_mana
+// Increase Player Mana
+//
+// UE4 name of this method: IncreasePlayerMana
+
+&aka("IncreasePlayerMana")
+
+(Integer increase_by : 0
+ Integer return_mana : 0) 
+
+$$ @decrease_player_mana
+// Decrease Player Mana
+//
+// UE4 name of this method: DecreasePlayerMana
+
+&aka("DecreasePlayerMana")
+
+(Integer decrease_by : 0
+ Integer return_mana : 0) 
+
+$$ @on_rep_cards_in_deck
+// On Rep Cards in Deck
+//
+// UE4 name of this method: OnRep_CardsInDeck
+
+&aka("OnRep_CardsInDeck")
+
+() 
+
+$$ @on_rep_player_turn
+// On Rep Player Turn
+//
+// UE4 name of this method: OnRep_PlayerTurn
+
+&aka("OnRep_PlayerTurn")
+
+() 
+
+$$ @on_rep_cards_in_hand
+// On Rep Cards in Hand
+//
+// UE4 name of this method: OnRep_CardsInHand
+
+&aka("OnRep_CardsInHand")
+
+() 
+
+$$ @create_playable_card
+// Create Playable Card
+//
+// UE4 name of this method: CreatePlayableCard
+
+&aka("CreatePlayableCard")
+
+(Transform spawn_transform : Transform!
+ Sk3DCard  card_created    : Sk3DCard!null) 
+
+$$ @on_rep_mana
+// On Rep Mana
+//
+// UE4 name of this method: OnRep_Mana
+
+&aka("OnRep_Mana")
+
+() 
+
+$$ @on_rep_health
+// On Rep Health
+//
+// UE4 name of this method: OnRep_Health
+
+&aka("OnRep_Health")
+
+() 
+
+$$ @init_mana
+// Init Mana
+//
+// UE4 name of this method: InitMana
+
+&aka("InitMana")
+
+() 
+
+$$ @init_health
+// Init Health
+//
+// UE4 name of this method: InitHealth
+
+&aka("InitHealth")
+
+() 
+
+$$ @init_attributes
+// Init Attributes
+//
+// UE4 name of this method: InitAttributes
+
+&aka("InitAttributes")
+
+() 
+
+$$ @update_aistate
+// Update AIState
+//
+// UE4 name of this method: UpdateAIState
+
+&aka("UpdateAIState")
+
+(Integer cards_in_hand : 0
+ Integer cards_in_deck : 0) 
+
+$$ @force_ui_update
+// Force UI Update
+//
+// UE4 name of this method: Force UI Update
+
+&aka("Force UI Update")
+
+(Integer cards_in_hand : 0
+ Integer cards_in_deck : 0) 
+
+$$ .

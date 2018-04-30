@@ -1,0 +1,29 @@
+// AIState Struct
+//
+// UE4 name of this struct: AIState_Struct
+
+// UE4 Asset Name: AIState_Struct
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIPointsAllocation/AIState_Struct"
+
+annotations: &reflected_data &name("AIState_Struct")
+
+$$ @
+
+&raw("Card_On_Board_State_6_A43845BD43A685DA608CAFA07E5CC918") Integer !@card_on_board_state_6_a438 // Card on Board State
+&raw("Cards_In_Hand_State_5_340B96E74E5CED9983F2B7B43A013CD8") Integer !@cards_in_hand_state_5_340b // Cards in Hand State
+&raw("Health_State_8_C211CD9042CFD5048496C3B055171361")        Integer !@health_state_8_c211        // Health State
+&raw("Total_10_24715A13407606855729D89CE8B7A907")              Integer !@total_10_2471              // Total
+
+$$ @!
+() AIState_Struct
+
+$$ @!copy
+(AIState_Struct other) AIState_Struct
+
+$$ @assign
+(AIState_Struct other) AIState_Struct
+
+$$ @!!
+() AIState_Struct
+
+$$ .

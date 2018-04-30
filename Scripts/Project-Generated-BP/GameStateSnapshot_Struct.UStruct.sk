@@ -1,0 +1,26 @@
+// Game State Snapshot Struct
+//
+// UE4 name of this struct: GameStateSnapshot_Struct
+
+// UE4 Asset Name: GameStateSnapshot_Struct
+// UE4 Package Name: "/Game/CCGToolkit/CardGame/Structs/GameStructs/GameStateSnapshot_Struct"
+
+annotations: &reflected_data &name("GameStateSnapshot_Struct")
+
+$$ @
+
+&raw("Player_Snapshot_8_6ABE6BBA4DC40D4F30517E8C634DDD2E") List{PlayerStateSnapshot_Struct} !@player_snapshot_8_6abe // Player Snapshot
+
+$$ @!
+() GameStateSnapshot_Struct
+
+$$ @!copy
+(GameStateSnapshot_Struct other) GameStateSnapshot_Struct
+
+$$ @assign
+(GameStateSnapshot_Struct other) GameStateSnapshot_Struct
+
+$$ @!!
+() GameStateSnapshot_Struct
+
+$$ .

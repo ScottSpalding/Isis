@@ -1,0 +1,29 @@
+// Health Struct
+//
+// UE4 name of this struct: Health_Struct
+
+// UE4 Asset Name: Health_Struct
+// UE4 Package Name: "/Game/CCGToolkit/CardGame/Structs/CardStructs/Health_Struct"
+
+annotations: &reflected_data &name("Health_Struct")
+
+$$ @
+
+&raw("Health_14_10E672624991FE63189B9EB584088A09")          Integer        !@health_14_10e6          // Health is the damage this card can sustain before it is moved to the graveyard
+&raw("Life_Expectancy_13_035F60A444A66DA1376C648FD87A7376") Integer        !@life_expectancy_13_035f // Number of player turns this card will remain in play. If set to "0", "Life Expectancy" will not be used.
+&raw("Dealth_Particle_10_FE5CDA0B413FE0B6A57728817AD1FC95") ParticleSystem !@dealth_particle_10_fe5c // Dealth Particle
+&raw("Sound_Cue_Death_7_DB5865FA403EA53F97BA5F8F919469E8")  SoundCue       !@sound_cue_death_7_db58  // Sound Cue Death
+
+$$ @!
+() Health_Struct
+
+$$ @!copy
+(Health_Struct other) Health_Struct
+
+$$ @assign
+(Health_Struct other) Health_Struct
+
+$$ @!!
+() Health_Struct
+
+$$ .

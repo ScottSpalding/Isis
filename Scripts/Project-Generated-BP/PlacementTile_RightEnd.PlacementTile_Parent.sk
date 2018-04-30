@@ -1,0 +1,12 @@
+// Placement Tile Right End
+//
+// UE4 name of this class: PlacementTile_RightEnd_C
+
+// UE4 Asset Name: PlacementTile_RightEnd
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Gameplay/PlacementTiles/PlacementTile_RightEnd"
+
+annotations: &reflected_data &name("PlacementTile_RightEnd_C")
+
+$$ @
+
+$$ .

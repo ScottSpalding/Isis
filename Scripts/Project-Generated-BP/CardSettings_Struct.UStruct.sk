@@ -1,0 +1,30 @@
+// Card Settings Struct
+//
+// UE4 name of this struct: CardSettings_Struct
+
+// UE4 Asset Name: CardSettings_Struct
+// UE4 Package Name: "/Game/CCGToolkit/CardGame/Structs/CardStructs/CardSettings_Struct"
+
+annotations: &reflected_data &name("CardSettings_Struct")
+
+$$ @
+
+&raw("Unlocked_12_CAF1F739489D09A23B685DB83108D411")       Boolean !@unlocked_12_caf1?          // Whether the card has been unlocked by the player.
+&raw("AddToPlayerDeck_2_3489881847DABA740F3B56B86AA08742") Boolean !@add_to_player_deck_2_3489? // Whether or not the card can be added to the player deck, or whether it is always spawned from another card or event
+&raw("MaxNumInDeck_19_6404188A4455243D78838D88544CA76B")   Integer !@max_num_in_deck_19_6404    // How many of this card will be used in the deck
+&raw("Weight_9_70D964BB444146CCA1DCE09833348285")          Integer !@weight_9_70d9              // Weight can be used to determin whether the card will be pushed further into the deck when shuffled. If set to '1' this will not be used and it will be randomly placed within the deck by chance. 
+&raw("ScreenSize_18_364C580C4EA0A8C869A6E4877484E841")     Vector2 !@screen_size_18_364c        // The Global size of the card. Note: This is used by the System to determin the calculated and scaled screen size 
+
+$$ @!
+() CardSettings_Struct
+
+$$ @!copy
+(CardSettings_Struct other) CardSettings_Struct
+
+$$ @assign
+(CardSettings_Struct other) CardSettings_Struct
+
+$$ @!!
+() CardSettings_Struct
+
+$$ .

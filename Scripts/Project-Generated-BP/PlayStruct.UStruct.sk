@@ -1,0 +1,26 @@
+// Play Struct
+//
+// UE4 name of this struct: PlayStruct
+
+// UE4 Asset Name: PlayStruct
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIPlaysData/PlayStruct"
+
+annotations: &reflected_data &name("PlayStruct")
+
+$$ @
+
+&raw("Card_Interactions_6_0A3708A34D750C42396A48934FEA3F8F") List{PlaySubStruct} !@card_interactions_6_0a37 // Card Interactions
+
+$$ @!
+() PlayStruct
+
+$$ @!copy
+(PlayStruct other) PlayStruct
+
+$$ @assign
+(PlayStruct other) PlayStruct
+
+$$ @!!
+() PlayStruct
+
+$$ .

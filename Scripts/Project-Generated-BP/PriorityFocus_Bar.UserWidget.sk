@@ -1,0 +1,17 @@
+// Priority Focus Bar
+//
+// UE4 name of this class: PriorityFocus_Bar_C
+
+// UE4 Asset Name: PriorityFocus_Bar
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/UI/PriorityFocus_Bar"
+
+annotations: &reflected_data &name("PriorityFocus_Bar_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
+&raw("Border_0")      Border    !@border_0      // Border 0
+&raw("Priority_Text") TextBlock !@priority_text // Priority Text
+&raw("TextBlock_0")   TextBlock !@text_block_0  // Text Block 0
+
+$$ .

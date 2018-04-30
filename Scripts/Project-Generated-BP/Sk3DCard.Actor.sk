@@ -1,0 +1,460 @@
+// 3DCard
+//
+// UE4 name of this class: 3DCard_C
+
+// UE4 Asset Name: 3DCard
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Gameplay/3DCard"
+
+annotations: &reflected_data &name("3DCard_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")                    PointerToUberGraphFrame      !@uber_graph_frame                      // Currently unsupported */
+&raw("Name_Text")                         TextRenderComponent          !@name_text                             // Name Text
+&raw("CardType_Text")                     TextRenderComponent          !@card_type_text                        // Card Type Text
+&raw("Description_Text")                  TextRenderComponent          !@description_text                      // Description Text
+&raw("Attack_Text")                       TextRenderComponent          !@attack_text                           // Attack Text
+&raw("Attack_Plane")                      StaticMeshComponent          !@attack_plane                          // Attack Plane
+&raw("Health_Text")                       TextRenderComponent          !@health_text                           // Health Text
+&raw("Heart_Plane")                       StaticMeshComponent          !@heart_plane                           // Heart Plane
+&raw("ManaCost_Text")                     TextRenderComponent          !@mana_cost_text                        // Mana Cost Text
+&raw("ManaGem_Plane")                     StaticMeshComponent          !@mana_gem_plane                        // Mana Gem Plane
+&raw("CardBase")                          StaticMeshComponent          !@card_base                             // Card Base
+&raw("Box")                               BoxComponent                 !@box                                   // Box
+&raw("DefaultSceneRoot")                  SceneComponent               !@default_scene_root                    // Default Scene Root
+&raw("DeltaTime")                         Real                         !@delta_time                            // Delta Time
+&raw("HomeDestination")                   Vector3                      !@home_destination                      // Home Destination a variable which holds the placement destination of the card. This is where the card will always end up if it is still in play. 
+&raw("GoalDestination")                   Vector3                      !@goal_destination                      // The goal destination is used to move the card when performing actions away from the home destination. This can be used for fly-to animations, like when the card is attacking. 
+&raw("GoalRotation")                      RotationAngles               !@goal_rotation                         // The goal rotation is simply a rotation goal which the card can be set to, much like the goal destination. 
+&raw("InterpSpeed")                       Real                         !@interp_speed                          // Interpolation Speed
+&raw("ErrorTolerance")                    Real                         !@error_tolerance                       // Error Tolerance
+&raw("CardPreviewScale")                  Real                         !@card_preview_scale                    // Card Preview Scale
+&raw("MaxDescriptionCharacterLineLength") Integer                      !@max_description_character_line_length // The maximum amount of characters that the 3D text renderer can hold per line. Note: This does not currently filter full words. Which may result in words being split between lines. 
+&raw("CardDataStruct")                    Card_Struct                  !@card_data_struct                      // Card Data Struct
+&raw("CardDataTableName")                 Name                         !@card_data_table_name                  // Card Data Table Name
+/* &raw("Name")                              None                         !@name                                  // Currently unsupported */
+&raw("Attack")                            Integer                      !@attack                                // Attack
+&raw("Health")                            Integer                      !@health                                // Health
+&raw("PreviewEnabled")                    Boolean                      !@preview_enabled?                      // Preview Enabled
+&raw("OuterMaterial")                     Material                     !@outer_material                        // This is an extra layer around the card which can be set to display anything like an outline or a shadow without needing any complex material setup. Mostly used for optimisation purposes.  
+&raw("Shadow_Mat_Ref")                    Material                     !@shadow_mat_ref                        // Reference to Shadow material
+&raw("CardFrameMaterial")                 MaterialInstance             !@card_frame_material                   // The cards frame material. 
+&raw("CardFrameMaterial_Instance")        MaterialInstanceDynamic      !@card_frame_material_instance          // Card Frame Material
+&raw("CardImageMaterial")                 MaterialInstance             !@card_image_material                   // The cards image material. 
+&raw("CardImageMaterial_Instance")        MaterialInstanceDynamic      !@card_image_material_instance          // Card Image Material
+&raw("ViewCardPreview")                   CardPreview                  !@view_card_preview                     // A mouse over card widget reference
+&raw("AbilityTrigger(s)")                 List{AbilityTrigger_Enum}    !@ability_trigger_s_                    // Ability Trigger(S)
+&raw("Mana_Cost_Placement")               Integer                      !@mana_cost_placement                   // Mana Cost Placement
+&raw("Platform")                          Platform_Enum                !@platform                              // Current platform the game is being played on
+&raw("CardMovementState")                 ThreeDCardMovementState_Enum !@card_movement_state                   // The movement state which the card is currently moving within. This determins the result when the movement is completed, and whether to trigger additional evens or functions. 
+&raw("CardGameState")                     TurnState_Enum               !@card_game_state                       // Card Game State
+&raw("PlacementOwner")                    CardPlacement                !@placement_owner                       // Placement Owner
+&raw("DamageDealingCard_Ref")             Sk3DCard                     !@damage_dealing_card_ref               // Damage Dealing Card Ref
+&raw("OwningPlayer")                      CardGamePlayerController     !@owning_player                         // Owning Player
+&raw("bIsPlaced")                         Boolean                      !@is_placed?                            // Has the card been placed on the board?
+&raw("bIsSelected")                       Boolean                      !@is_selected?                          // Is the card selected by the player
+&raw("bIsAttacking")                      Boolean                      !@is_attacking?                         // Whether the card is currrently attacking
+&raw("bInGraveyard")                      Boolean                      !@in_graveyard?                         // Has the card been moved to the player graveyard
+&raw("TurnPoints")                        Integer                      !@turn_points                           // Turn Points
+&raw("LifeExpectancy")                    Integer                      !@life_expectancy                       // Life Expectancy
+&raw("TurnsAlive")                        Integer                      !@turns_alive                           // Turns Alive
+&raw("Type")                              CardTypeEnum                 !@type                                  // Type
+&raw("CardSet")                           CardSet_Enum                 !@card_set                              // Card Set
+&raw("Description")                       String                       !@description                           // Description
+&raw("AbilityType(s)")                    List{AbilityType_Enum}       !@ability_type_s_                       // The Type(s) of abilities this card posesses
+&raw("Ability_Struct_Refs")               List{Ability_Struct}         !@ability_struct_refs                   // Ability Struct Refs
+&raw("IsAbilityActive")                   Boolean                      !@is_ability_active?                    // T
+&raw("CanAttackPlayer")                   Boolean                      !@can_attack_player?                    // Can Attack Player
+&raw("CanAttackCards")                    Boolean                      !@can_attack_cards?                     // Can Attack Cards
+&raw("bIsPlatformMobile")                 Boolean                      !@is_platform_mobile?                   // Is Platform Mobile
+&raw("bEnableLifeExpectancy")             Boolean                      !@enable_life_expectancy?               // Enable Life Expectancy
+&raw("HomeRotation")                      RotationAngles               !@home_rotation                         // Home Rotation
+&raw("CardBackMaterial")                  MaterialInstanceDynamic      !@card_back_material                    // Card Back Material
+&raw("bCardActive")                       Boolean                      !@card_active?                          // Card Active
+&raw("GameState_Ref")                     CardGameState                !@game_state_ref                        // Game State Ref
+&raw("OwningPlayerID")                    Integer                      !@owning_player_id                      // Owning Player ID
+&raw("CardID")                            Integer                      !@card_id                               // Card ID
+
+$$ @on_rep_owning_player_id
+// On Rep Owning Player ID
+//
+// UE4 name of this method: OnRep_OwningPlayerID
+
+&aka("OnRep_OwningPlayerID")
+
+() 
+
+$$ @on_rep_b_card_active
+// On Rep B Card Active
+//
+// UE4 name of this method: OnRep_bCardActive
+
+&aka("OnRep_bCardActive")
+
+() 
+
+$$ @on_rep_turns_alive
+// On Rep Turns Alive
+//
+// UE4 name of this method: OnRep_TurnsAlive
+
+&aka("OnRep_TurnsAlive")
+
+() 
+
+$$ @run_card_ability
+// Run the Cards ability
+//
+// UE4 name of this method: RunCardAbility
+// Blueprint category: Abilities
+
+&aka("RunCardAbility")
+
+(Integer ability_index : 0
+ Boolean succesful?    : false) 
+
+$$ @log_display_message
+// Log Display Message
+//
+// UE4 name of this method: LogDisplayMessage
+// Blueprint category: System
+
+&aka("LogDisplayMessage")
+
+(String message         : ""
+ Color  specified_color : Color!) 
+
+$$ @on_rep_card_type
+// On Rep Card Type
+//
+// UE4 name of this method: OnRep_Card Type
+
+&aka("OnRep_Card Type")
+
+() 
+
+$$ @play_movement_animation
+// Play Movement Animation
+//
+// UE4 name of this method: PlayMovementAnimation
+// Blueprint category: Gameplay
+
+&aka("PlayMovementAnimation")
+
+(ThreeDCardMovementState_Enum card_movement_state     : ThreeDCardMovementState_Enum.@@placing
+ Vector3                      manual_goal_destination : Vector3!
+ RotationAngles               manual_goal_rotation    : RotationAngles!
+ Actor                        or_goal_actor           : Actor!null
+ Real                         z_offset                : 50
+ Real                         error_tolerance         : 0.001
+ Real                         inter_speed             : 12) 
+
+$$ @card_visuals_set
+// Set Card Visuals
+//
+// UE4 name of this method: SetCardVisuals
+// Blueprint category: Card Data
+
+&aka("SetCardVisuals")
+
+() 
+
+$$ @on_rep_mana_cost_placement
+// On Rep Mana Cost Placement
+//
+// UE4 name of this method: OnRep_Mana_Cost_Placement
+
+&aka("OnRep_Mana_Cost_Placement")
+
+() 
+
+$$ @interp_self_to_location
+// Interp Self to Location
+//
+// UE4 name of this method: InterpSelfToLocation
+// Blueprint category: Card Location and Rotation
+
+&aka("InterpSelfToLocation")
+
+(
+ Boolean arrived? : false) Vector3
+
+$$ @interp_self_to_rotation
+// Interp Self to Rotation
+//
+// UE4 name of this method: InterpSelfToRotation
+// Blueprint category: Card Location and Rotation
+
+&aka("InterpSelfToRotation")
+
+(
+ Boolean arrived? : false) RotationAngles
+
+$$ @turn_state_visual_set
+// Set Turn State Visual
+//
+// UE4 name of this method: SetTurnStateVisual
+// Blueprint category: Card Data
+
+&aka("SetTurnStateVisual")
+
+(Boolean is_active? : false) 
+
+$$ @on_rep_health
+// On Rep Health
+//
+// UE4 name of this method: OnRep_Health
+
+&aka("OnRep_Health")
+
+() 
+
+$$ @on_rep_attack
+// On Rep Attack
+//
+// UE4 name of this method: OnRep_Attack
+
+&aka("OnRep_Attack")
+
+() 
+
+$$ @generate_description
+// Generate Description
+//
+// UE4 name of this method: GenerateDescription
+// Blueprint category: Description Generator
+
+&aka("GenerateDescription")
+
+(String description_text : "") 
+
+$$ @move_card_to_gravyard
+// Move Card to Gravyard
+//
+// UE4 name of this method: MoveCardToGravyard
+// Blueprint category: Gameplay
+
+&aka("MoveCardToGravyard")
+
+() 
+
+$$ @enable_mobile_card_preview
+// Enable Mobile Card Preview
+//
+// UE4 name of this method: Enable Mobile Card Preview
+
+&aka("Enable Mobile Card Preview")
+
+() 
+
+$$ @disable_mobile_card_preview
+// Disable Mobile Card Preview
+//
+// UE4 name of this method: Disable Mobile Card Preview
+
+&aka("Disable Mobile Card Preview")
+
+() 
+
+$$ @event_selected
+// Event Selected
+//
+// UE4 name of this method: Event_Selected
+
+&aka("Event_Selected")
+
+(Integer selecting_player_id : 0) 
+
+$$ @event_deselected
+// Event Deselected
+//
+// UE4 name of this method: Event_Deselected
+
+&aka("Event_Deselected")
+
+() 
+
+$$ @multicast_place_card_on_board
+// Multicast Place Card on Board
+//
+// UE4 name of this method: Multicast_PlaceCardOnBoard
+
+&aka("Multicast_PlaceCardOnBoard")
+
+(Vector3        destination : Vector3!
+ RotationAngles rotation    : RotationAngles!) 
+
+$$ @close_gate
+// Close Gate
+//
+// UE4 name of this method: Close Gate
+
+&aka("Close Gate")
+
+() 
+
+$$ @open_gate
+// Open Gate
+//
+// UE4 name of this method: Open Gate
+
+&aka("Open Gate")
+
+() 
+
+$$ @multicast_update_visual_stats
+// Multicast Update Visual Stats
+//
+// UE4 name of this method: Multicast_UpdateVisualStats
+
+&aka("Multicast_UpdateVisualStats")
+
+() 
+
+$$ @multicast_move_to_graveyard
+// Multicast Move to Graveyard
+//
+// UE4 name of this method: Multicast_MoveToGraveyard
+
+&aka("Multicast_MoveToGraveyard")
+
+() 
+
+$$ @multicast_attacking
+// Multicast Attacking
+//
+// UE4 name of this method: Multicast_Attacking
+
+&aka("Multicast_Attacking")
+
+(Actor attacking_ : Actor!null) 
+
+$$ @arrived_at_destination
+// Arrived at Destination
+//
+// UE4 name of this method: Arrived At Destination
+
+&aka("Arrived At Destination")
+
+() 
+
+$$ @server_activate_ability
+// Server Activate Ability
+//
+// UE4 name of this method: Server_ActivateAbility
+
+&aka("Server_ActivateAbility")
+
+(Integer ability_index : 0) 
+
+$$ @mutlicast_set_card_visuals
+// Mutlicast Set Card Visuals
+//
+// UE4 name of this method: Mutlicast_SetCardVisuals
+
+&aka("Mutlicast_SetCardVisuals")
+
+() 
+
+$$ @multicast_damage_visual
+// Multicast Damage Visual
+//
+// UE4 name of this method: Multicast_DamageVisual
+
+&aka("Multicast_DamageVisual")
+
+() 
+
+$$ @multicast_spawn_effect
+// Multicast Spawn Effect
+//
+// UE4 name of this method: Multicast_SpawnEffect
+
+&aka("Multicast_SpawnEffect")
+
+(CardEffects_Enum card_effect : CardEffects_Enum.@@on_card_placed) 
+
+$$ @multicast_update_card_visual
+// Multicast Update Card Visual
+//
+// UE4 name of this method: Multicast_UpdateCardVisual
+
+&aka("Multicast_UpdateCardVisual")
+
+(Boolean is_active? : false) 
+
+$$ @remove_card_actor
+// Remove Card Actor
+//
+// UE4 name of this method: RemoveCardActor
+
+&aka("RemoveCardActor")
+
+() 
+
+$$ @multicast_ability_visual
+// Multicast Ability Visual
+//
+// UE4 name of this method: Multicast_AbilityVisual
+
+&aka("Multicast_AbilityVisual")
+
+() 
+
+$$ @card_hidden_state_set
+// Set Card Hidden State
+//
+// UE4 name of this method: SetCardHiddenState
+
+&aka("SetCardHiddenState")
+
+(Boolean new_hidden? : false) 
+
+$$ @spawn_effect
+// Spawn Effect
+//
+// UE4 name of this method: SpawnEffect
+
+&aka("SpawnEffect")
+
+(CardEffects_Enum card_effect : CardEffects_Enum.@@on_card_placed) 
+
+$$ @force_move_card_directly_to_graveyard
+// Force Move Card Directly to Graveyard
+//
+// UE4 name of this method: ForceMoveCardDirectlyToGraveyard
+
+&aka("ForceMoveCardDirectlyToGraveyard")
+
+(Graveyard graveyard : Graveyard!null) 
+
+$$ @takes_damage
+// Takes Damage
+//
+// UE4 name of this method: TakesDamage
+
+&aka("TakesDamage")
+
+(Sk3DCard dealing_card  : Sk3DCard!null
+ Integer  damage_attack : 0
+ Integer  damage_health : 0) 
+
+$$ @on_active_player_turn
+// On Active Player Turn
+//
+// UE4 name of this method: OnActivePlayerTurn
+
+&aka("OnActivePlayerTurn")
+
+() 
+
+$$ @on_end_active_player_turn
+// On End Active Player Turn
+//
+// UE4 name of this method: OnEndActivePlayerTurn
+
+&aka("OnEndActivePlayerTurn")
+
+() 
+
+$$ .

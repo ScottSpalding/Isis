@@ -1,0 +1,12 @@
+// Cards in Hand Function Library
+//
+// UE4 name of this class: CardsInHand_FunctionLibrary_C
+
+// UE4 Asset Name: CardsInHand_FunctionLibrary
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/FunctionLibraries/CardsInHand_FunctionLibrary"
+
+annotations: &reflected_data &name("CardsInHand_FunctionLibrary_C")
+
+$$ @
+
+$$ .

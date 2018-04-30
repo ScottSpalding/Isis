@@ -1,0 +1,42 @@
+// Card Row Options
+//
+// UE4 name of this enum: CardRowOptions
+
+// UE4 Asset Name: CardRowOptions
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/System_Enums/CardRowOptions"
+
+annotations: &reflected_data &name("CardRowOptions")
+
+$$ @@
+
+CardRowOptions !@@none
+CardRowOptions !@@create_
+CardRowOptions !@@save
+CardRowOptions !@@edit
+CardRowOptions !@@load
+CardRowOptions !@@clear
+CardRowOptions !@@cancel
+CardRowOptions !@@delete
+CardRowOptions !@@select
+CardRowOptions !@@card_row_options_max
+
+$$ @@!
+// CardRowOptions
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/System_Enums/CardRowOptions.CardRowOptions
+
+()
+
+  [
+  @@none:                 CardRowOptions!int(0)
+  @@create_:              CardRowOptions!int(1)
+  @@save:                 CardRowOptions!int(2)
+  @@edit:                 CardRowOptions!int(3)
+  @@load:                 CardRowOptions!int(4)
+  @@clear:                CardRowOptions!int(5)
+  @@cancel:               CardRowOptions!int(6)
+  @@delete:               CardRowOptions!int(7)
+  @@select:               CardRowOptions!int(8)
+  @@card_row_options_max: CardRowOptions!int(9)
+  ]
+
+$$ .

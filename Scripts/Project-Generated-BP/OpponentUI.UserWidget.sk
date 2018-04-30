@@ -1,0 +1,127 @@
+// Opponent UI
+//
+// UE4 name of this class: OpponentUI_C
+
+// UE4 Asset Name: OpponentUI
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Gameplay/OpponentUI"
+
+annotations: &reflected_data &name("OpponentUI_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")              PointerToUberGraphFrame   !@uber_graph_frame               // Currently unsupported */
+&raw("CardPanel")                   CanvasPanel               !@card_panel                     // Card Panel
+&raw("OpponentProfile")             OpponentProfileUI         !@opponent_profile               // Opponent Profile
+&raw("PositioningProfile")          Positioning_Profiles_Enum !@positioning_profile            // Positioning Profile
+&raw("OpponentsHand")               List{CardWidget}          !@opponents_hand                 // Opponents Hand
+&raw("OpponentCardsInHand")         Integer                   !@opponent_cards_in_hand         // Opponent Cards in Hand
+&raw("InterpSpeed")                 Real                      !@interp_speed                   // Interp Speed
+&raw("Radius Offset")               Real                      !@radius_offset                  // Radius Offset
+&raw("CardSpacing")                 Real                      !@card_spacing                   // Card Spacing
+&raw("CardSpacingMax")              Real                      !@card_spacing_max               // Card Spacing Max
+&raw("ScreenOffset_Y")              Real                      !@screen_offset_y                // Screen Offset Y
+&raw("ScreenOffset_X")              Real                      !@screen_offset_x                // Screen Offset X
+&raw("CardScale")                   Real                      !@card_scale                     // Card Scale
+&raw("RotationDistanceScaleFactor") Real                      !@rotation_distance_scale_factor // Rotation Distance Scale Factor
+&raw("CardOffset")                  Real                      !@card_offset                    // Card Offset
+&raw("DynamicSpacing")              Boolean                   !@dynamic_spacing?               // Dynamic Spacing
+&raw("bFlyInDirection")             Boolean                   !@fly_in_direction?              // Fly in Direction
+&raw("SystemTransformPivot")        Vector2                   !@system_transform_pivot         // System Transform Pivot
+&raw("bRotateCardsToOffset")        Boolean                   !@rotate_cards_to_offset?        // Rotate Cards to Offset
+&raw("Goal Transform")              WidgetTransform           !@goal_transform                 // Goal Transform
+&raw("bIsMoving")                   Boolean                   !@is_moving?                     // Is Moving
+&raw("ScreenRes")                   Vector2                   !@screen_res                     // Screen Res
+&raw("bIsFaceUp")                   Boolean                   !@is_face_up?                    // Is Face Up
+&raw("TransformPivot")              Vector2                   !@transform_pivot                // Transform Pivot
+&raw("CardViewState")               ViewState_Enum            !@card_view_state                // Card View State
+&raw("OpponentPlayerState_Ref")     CardGamePlayerState       !@opponent_player_state_ref      // Opponent Player State Ref
+&raw("TempCardWIdget_Ref")          CardWidget                !@temp_card_widget_ref           // Temp Card WIdget Ref
+&raw("MaxCardsInHand")              Integer                   !@max_cards_in_hand              // Max Cards in Hand
+&raw("Health")                      Integer                   !@health                         // Health
+&raw("CardsInHand")                 Integer                   !@cards_in_hand                  // Cards in Hand
+&raw("CardsInDeck")                 Integer                   !@cards_in_deck                  // Cards in Deck
+&raw("Mana")                        Integer                   !@mana                           // Mana
+&raw("ManaMax")                     Integer                   !@mana_max                       // Mana Max
+&raw("PlayerTurn")                  Integer                   !@player_turn                    // Player Turn
+
+$$ @card_view_state_set
+// Set Card View State
+//
+// UE4 name of this method: SetCardViewState
+
+&aka("SetCardViewState")
+
+(ViewState_Enum new_card_view_state : ViewState_Enum.@@default
+ Boolean        force?              : false
+ ViewState_Enum card_view_state     : ViewState_Enum.@@default) 
+
+$$ @add_card_widget
+// Add Card Widget
+//
+// UE4 name of this method: AddCardWidget
+
+&aka("AddCardWidget")
+
+() 
+
+$$ @fanned_profile
+// Fanned Profile
+//
+// UE4 name of this method: Fanned Profile
+
+&aka("Fanned Profile")
+
+(Widget          card_widget_reference : Widget!null
+ Integer         card_loop_index       : 0
+ WidgetTransform goal_transform        : WidgetTransform!) 
+
+$$ @update_uiturn_state
+// Update UITurn State
+//
+// UE4 name of this method: UpdateUITurnState
+
+&aka("UpdateUITurnState")
+
+(Boolean       turn_active? : false
+ GameTurn_Enum turn_state   : GameTurn_Enum.@@turn_active) 
+
+$$ @update_uigame_turn_time
+// Update UIGame Turn Time
+//
+// UE4 name of this method: UpdateUIGameTurnTime
+
+&aka("UpdateUIGameTurnTime")
+
+() 
+
+$$ @update_player_state_ui
+// Update Player State UI
+//
+// UE4 name of this method: UpdatePlayerStateUI
+
+&aka("UpdatePlayerStateUI")
+
+(Integer new_param   : 0
+ Integer new_param_1 : 0
+ Integer new_param_2 : 0
+ Integer new_param_3 : 0) 
+
+$$ @update_cards
+// Update Cards
+//
+// UE4 name of this method: UpdateCards
+
+&aka("UpdateCards")
+
+() 
+
+$$ @update_uiplayer_stats
+// Update UIPlayer Stats
+//
+// UE4 name of this method: UpdateUIPlayerStats
+
+&aka("UpdateUIPlayerStats")
+
+(Boolean force_clean_visual_update? : false) 
+
+$$ .

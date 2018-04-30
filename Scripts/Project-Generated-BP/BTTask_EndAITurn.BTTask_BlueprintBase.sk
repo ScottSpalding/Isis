@@ -1,0 +1,15 @@
+// BTTask End AITurn
+//
+// UE4 name of this class: BTTask_EndAITurn_C
+
+// UE4 Asset Name: BTTask_EndAITurn
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIBlueprints/Tasks/BTTask_EndAITurn"
+
+annotations: &reflected_data &name("BTTask_EndAITurn_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
+&raw("bIsTurnActive") BlackboardKeySelector !@is_turn_active // B Is Turn Active
+
+$$ .

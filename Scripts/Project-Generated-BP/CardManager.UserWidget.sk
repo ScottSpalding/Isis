@@ -1,0 +1,328 @@
+// Card Manager
+//
+// UE4 name of this class: CardManager_C
+
+// UE4 Asset Name: CardManager
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Gameplay/CardManager"
+
+annotations: &reflected_data &name("CardManager_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")                 PointerToUberGraphFrame   !@uber_graph_frame                  // Currently unsupported */
+&raw("CardEditorTransition")           WidgetAnimation           !@card_editor_transition            // Card Editor Transition
+&raw("AddCard_Button")                 Button                    !@add_card_button                   // Add Card Button
+&raw("Background")                     Image                     !@background                        // Background
+&raw("Background_Image")               Image                     !@background_image                  // Background Image
+&raw("Background_Image_2")             Image                     !@background_image_2                // Background Image 2
+&raw("BackgroundDarken_Image")         Image                     !@background_darken_image           // Background Darken Image
+&raw("Button_162")                     Button                    !@button_162                        // Button 162
+&raw("CanvasPanel_0")                  CanvasPanel               !@canvas_panel_0                    // Canvas Panel 0
+&raw("Card_Editor_Panel")              CanvasPanel               !@card_editor_panel                 // Card Editor Panel
+&raw("CardList_ComboBox")              ComboBoxString            !@card_list_combo_box               // Card List Combo Box
+&raw("CardOffset_Slider")              Slider                    !@card_offset_slider                // Card Offset Slider
+&raw("CardPanel")                      CanvasPanel               !@card_panel                        // Card Panel
+&raw("CardsAndDeck_Button")            Button                    !@cards_and_deck_button             // Cards and Deck Button
+&raw("CardScale_Slider")               Slider                    !@card_scale_slider                 // Card Scale Slider
+&raw("CardSet_ComboBox")               ComboBoxString            !@card_set_combo_box                // Card Set Combo Box
+&raw("CardTools_Image")                Image                     !@card_tools_image                  // Card Tools Image
+&raw("ClearHand_Button")               Button                    !@clear_hand_button                 // Clear Hand Button
+&raw("ComboBoxString_70")              ComboBoxString            !@combo_box_string_70               // Combo Box String 70
+&raw("EditableTextBox_42")             EditableTextBox           !@editable_text_box_42              // Editable Text Box 42
+&raw("EditableTextBox_105")            EditableTextBox           !@editable_text_box_105             // Editable Text Box 105
+&raw("EditableTextBox_115")            EditableTextBox           !@editable_text_box_115             // Editable Text Box 115
+&raw("EditableTextBox_122")            EditableTextBox           !@editable_text_box_122             // Editable Text Box 122
+&raw("EditableTextBox_366")            EditableTextBox           !@editable_text_box_366             // Editable Text Box 366
+&raw("EditableTextBox_945")            EditableTextBox           !@editable_text_box_945             // Editable Text Box 945
+&raw("EditableTextBox_2088")           EditableTextBox           !@editable_text_box_2088            // Editable Text Box 2088
+&raw("EditableValues_Headder_Image")   Image                     !@editable_values_headder_image     // Editable Values Headder Image
+&raw("Editor_Button")                  Button                    !@editor_button                     // Editor Button
+&raw("EditorBackground_Image")         Image                     !@editor_background_image           // Editor Background Image
+&raw("EditorBackground_Image_2")       Image                     !@editor_background_image_2         // Editor Background Image 2
+&raw("EditorBackground_Image_3")       Image                     !@editor_background_image_3         // Editor Background Image 3
+&raw("EditorFade_Image_4")             Image                     !@editor_fade_image_4               // Editor Fade Image 4
+&raw("Fade")                           Image                     !@fade                              // Fade
+&raw("Image_219")                      Image                     !@image_219                         // Image 219
+&raw("Image_245")                      Image                     !@image_245                         // Image 245
+&raw("Image_511")                      Image                     !@image_511                         // Image 511
+&raw("Left_To_Right?_TickBox")         CheckBox                  !@left_to_right_tick_box            // Left to Right? Tick Box
+&raw("LocationOffset_Headder_Image")   Image                     !@location_offset_headder_image     // Location Offset Headder Image
+&raw("OffsetX_Slider")                 Slider                    !@offset_x_slider                   // Offset X Slider
+&raw("OffsetY_Slider")                 Slider                    !@offset_y_slider                   // Offset Y Slider
+&raw("PickupCard_Button")              Button                    !@pickup_card_button                // Pickup Card Button
+&raw("Pos_Offset_Slider")              Slider                    !@pos_offset_slider                 // Pos Offset Slider
+&raw("PositioningFeatures_Button")     Button                    !@positioning_features_button       // Positioning Features Button
+&raw("Radius_Slider")                  Slider                    !@radius_slider                     // Radius Slider
+&raw("ResetDeck_Button")               Button                    !@reset_deck_button                 // Reset Deck Button
+&raw("Rotate_Cards?_TickBox")          CheckBox                  !@rotate_cards_tick_box             // Rotate Cards? Tick Box
+&raw("RotationDistanceOffset_RotDist") Image                     !@rotation_distance_offset_rot_dist // Rotation Distance Offset Rot Dist
+&raw("RotationDistanceOffset_Scale")   Image                     !@rotation_distance_offset_scale    // Rotation Distance Offset Scale
+&raw("RotationDistanceOffset_Slider")  Slider                    !@rotation_distance_offset_slider   // Rotation Distance Offset Slider
+&raw("SkipCardManaCost_TickBox")       CheckBox                  !@skip_card_mana_cost_tick_box      // Skip Card Mana Cost Tick Box
+&raw("SliderBackgroundImage")          Image                     !@slider_background_image           // Slider Background Image
+&raw("SliderBackgroundImage2")         Image                     !@slider_background_image_2         // Slider Background Image 2
+&raw("SliderBackgroundImage_CardGap")  Image                     !@slider_background_image_card_gap  // Slider Background Image Card Gap
+&raw("SliderBackgroundImage_Radius")   Image                     !@slider_background_image_radius    // Slider Background Image Radius
+&raw("TextProfile_ComboBox")           ComboBoxString            !@text_profile_combo_box            // Text Profile Combo Box
+&raw("ToggleGameUIButton")             Button                    !@toggle_game_uibutton              // Toggle Game UIButton
+&raw("WidgetSwitcher_42")              WidgetSwitcher            !@widget_switcher_42                // Widget Switcher 42
+&raw("XOffset_Image")                  Image                     !@xoffset_image                     // XOffset Image
+&raw("YOffset_Image")                  Image                     !@yoffset_image                     // YOffset Image
+&raw("CardsInHand")                    Integer                   !@cards_in_hand                     // Cards in Hand
+&raw("MaxCards")                       Integer                   !@max_cards                         // Max Cards
+&raw("ViewportScale")                  Real                      !@viewport_scale                    // Viewport Scale
+&raw("LockOnEditorChangeState")        Boolean                   !@lock_on_editor_change_state?      // Lock on Editor Change State
+&raw("Screen Res")                     Vector2                   !@screen_res                        // Screen Res
+&raw("Card_Scale")                     Real                      !@card_scale                        // Card Scale
+&raw("RadiusOffset")                   Real                      !@radius_offset                     // Radius Offset
+&raw("CardSpacing")                    Real                      !@card_spacing                      // Card Spacing
+&raw("ScreenOffsetX")                  Real                      !@screen_offset_x                   // Screen Offset X
+&raw("ScreenOffsetY")                  Real                      !@screen_offset_y                   // Screen Offset Y
+&raw("Rotate Cards to Offset")         Boolean                   !@rotate_cards_to_offset?           // Rotate Cards To Offset
+&raw("CardOffset")                     Real                      !@card_offset                       // Card Offset
+&raw("RotationDistanceScaleFactor")    Real                      !@rotation_distance_scale_factor    // Rotation Distance Scale Factor
+&raw("DynamicSpacingMaxOffset")        Real                      !@dynamic_spacing_max_offset        // Dynamic Spacing Max Offset
+&raw("CardSize")                       Vector2                   !@card_size                         // Card Size
+&raw("PositioningProfile")             Positioning_Profiles_Enum !@positioning_profile               // Positioning Profile
+&raw("TransformPivot")                 Vector2                   !@transform_pivot                   // Transform Pivot
+&raw("GoalTransform")                  WidgetTransform           !@goal_transform                    // Goal Transform
+&raw("FlyInDirection")                 Boolean                   !@fly_in_direction?                 // Fly in Direction
+&raw("IsFaceUp")                       Boolean                   !@is_face_up?                       // Is Face Up
+&raw("CardViewState")                  ViewState_Enum            !@card_view_state                   // Card View State
+&raw("Editor_CardSet")                 CardSet_Enum              !@editor_card_set                   // Editor Card Set
+&raw("Editor_CardName")                Name                      !@editor_card_name                  // Editor Card Name
+&raw("GoalLocation_Array")             List{WidgetTransform}     !@goal_location_array               // Goal Location Array
+&raw("Owner_PlayerState")              CardGamePlayerState       !@owner_player_state                // Owner Player State
+&raw("PlayerController_Owner")         CardGamePlayerController  !@player_controller_owner           // Player Controller Owner
+&raw("Temp_CardWIdget")                CardWidget                !@temp_card_widget                  // Temp Card WIdget
+&raw("ActiveCardsInHand")              List{CardWidget}          !@active_cards_in_hand              // Active Cards in Hand
+&raw("Editor_CardSetList")             List{String}              !@editor_card_set_list              // Editor Card Set List
+&raw("DynamicSpacing")                 Boolean                   !@dynamic_spacing?                  // Dynamic Spacing
+&raw("bDarkenBackground")              Boolean                   !@darken_background?                // Darken Background
+&raw("bEditorDisplayed")               Boolean                   !@editor_displayed?                 // Editor Displayed
+&raw("DraggableCardViewState")         ViewState_Enum            !@draggable_card_view_state         // Draggable Card View State
+
+$$ @highlight_playable_cards_in_hand
+// Highlight Playable Cards in Hand
+//
+// UE4 name of this method: HighlightPlayableCardsInHand
+// Blueprint category: Cards
+
+&aka("HighlightPlayableCardsInHand")
+
+() 
+
+$$ @on_background_light_image_mouse_button_down_0
+// On Background Light Image Mouse Button Down 0
+//
+// UE4 name of this method: On_BackgroundLight_Image_MouseButtonDown_0
+
+&aka("On_BackgroundLight_Image_MouseButtonDown_0")
+
+(Geometry     my_geometry : Geometry!
+ PointerEvent mouse_event : PointerEvent!
+) EventReply
+
+$$ @on_generate_widget_0
+// On Generate Widget 0
+//
+// UE4 name of this method: OnGenerateWidget_0
+// Blueprint category: Card Editor
+
+&aka("OnGenerateWidget_0")
+
+(String item : "") Widget
+
+$$ @card_position_at_index
+// Get Card Position at Index
+//
+// UE4 name of this method: GetCardPositionAtIndex
+// Blueprint category: Cards
+
+&aka("GetCardPositionAtIndex")
+
+(Integer         index          : 0
+ Widget          card_reference : Widget!null
+ WidgetTransform goal           : WidgetTransform!) 
+
+$$ @number_of_cards_in_hand
+// Get Number Of Cards in Hand
+//
+// UE4 name of this method: GetNumberOfCardsInHand
+// Blueprint category: Cards
+
+&aka("GetNumberOfCardsInHand")
+
+(Boolean has_cards_in_hand? : false
+ Integer number_of_cards    : 0) 
+
+$$ @card_view_state_set
+// Set Card View State
+//
+// UE4 name of this method: SetCardViewState
+// Blueprint category: Position Profile
+
+&aka("SetCardViewState")
+
+(ViewState_Enum new_card_view_state : ViewState_Enum.@@default
+ Boolean        force?              : false
+ ViewState_Enum card_view_state     : ViewState_Enum.@@default) 
+
+$$ @remove_card_widget_from_hand
+// Remove Card Widget from Hand
+//
+// UE4 name of this method: RemoveCardWidgetFromHand
+// Blueprint category: Cards
+
+&aka("RemoveCardWidgetFromHand")
+
+(CardWidget card_to_remove     : CardWidget!null
+ Integer    or_index           : 0
+ Boolean    all_cards_in_hand? : false
+ Integer    index              : 0) 
+
+$$ @on_generate_widget_3
+// On Generate Widget 3
+//
+// UE4 name of this method: OnGenerateWidget_3
+// Blueprint category: Card Editor
+
+&aka("OnGenerateWidget_3")
+
+(String item : "") Widget
+
+$$ @on_generate_widget_2
+// On Generate Widget 2
+//
+// UE4 name of this method: OnGenerateWidget_2
+// Blueprint category: Card Editor
+
+&aka("OnGenerateWidget_2")
+
+(String item : "") Widget
+
+$$ @on_generate_widget_1
+// On Generate Widget 1
+//
+// UE4 name of this method: OnGenerateWidget_1
+// Blueprint category: Card Editor
+
+&aka("OnGenerateWidget_1")
+
+(String item : "") Widget
+
+$$ @combo_box_option_widget
+// Combo Box Option Widget
+//
+// UE4 name of this method: ComboBoxOptionWidget
+// Blueprint category: Card Editor
+
+&aka("ComboBoxOptionWidget")
+
+(String item : "") Widget
+
+$$ @screen_xoffset_value
+// Get Screen XOffset Value
+//
+// UE4 name of this method: GetScreenXOffsetValue
+// Blueprint category: Card Editor
+
+&aka("GetScreenXOffsetValue")
+
+() Real
+
+$$ @calculate_fanned_profile
+// Calculate Fanned Profile
+//
+// UE4 name of this method: CalculateFannedProfile
+// Blueprint category: PositionProfile
+
+&aka("CalculateFannedProfile")
+
+(Integer         card_index     : 0
+ Widget          card_reference : Widget!null
+ Integer         cards_in_hand  : 0
+ WidgetTransform goal           : WidgetTransform!) 
+
+$$ @calculate_horizontal_profile
+// Calculate Horizontal Profile
+//
+// UE4 name of this method: CalculateHorizontalProfile
+// Blueprint category: PositionProfile
+
+&aka("CalculateHorizontalProfile")
+
+(Integer         card_index     : 0
+ Widget          card_reference : Widget!null
+ Integer         cards_in_hand  : 0
+ WidgetTransform goal           : WidgetTransform!) 
+
+$$ @screen_yoffset_value
+// Get Screen YOffset Value
+//
+// UE4 name of this method: GetScreenYOffsetValue
+// Blueprint category: Card Editor
+
+&aka("GetScreenYOffsetValue")
+
+() Real
+
+$$ @text_box_card_scale
+// Text Box Card Scale
+//
+// UE4 name of this method: TextBox_CardScale
+// Blueprint category: Card Editor
+
+&aka("TextBox_CardScale")
+
+() Real
+
+$$ @slider_radius_offset
+// Slider Radius Offset
+//
+// UE4 name of this method: Slider_RadiusOffset
+// Blueprint category: Card Editor
+
+&aka("Slider_RadiusOffset")
+
+() Real
+
+$$ @slider_card_gap
+// Slider Card Gap
+//
+// UE4 name of this method: Slider_CardGap
+// Blueprint category: Card Editor
+
+&aka("Slider_CardGap")
+
+() Real
+
+$$ @slider_rotation_distance_scale_factor
+// Slider Rotation Distance Scale Factor
+//
+// UE4 name of this method: Slider_RotationDistanceScaleFactor
+// Blueprint category: Card Editor
+
+&aka("Slider_RotationDistanceScaleFactor")
+
+() Real
+
+$$ @toggle_display_card_editor
+// Toggle Display Card Editor
+//
+// UE4 name of this method: ToggleDisplayCardEditor
+
+&aka("ToggleDisplayCardEditor")
+
+() 
+
+$$ @update_card_positions
+// Update Card Positions
+//
+// UE4 name of this method: UpdateCardPositions
+
+&aka("UpdateCardPositions")
+
+() 
+
+$$ .

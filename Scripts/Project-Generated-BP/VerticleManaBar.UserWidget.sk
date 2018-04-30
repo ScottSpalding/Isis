@@ -1,0 +1,48 @@
+// Verticle Mana Bar
+//
+// UE4 name of this class: VerticleManaBar_C
+
+// UE4 Asset Name: VerticleManaBar
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Additional/VerticleManaBar"
+
+annotations: &reflected_data &name("VerticleManaBar_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
+&raw("Image_0")       Image       !@image_0        // Image 0
+&raw("Mana_Text")     TextBlock   !@mana_text      // Mana Text
+&raw("ProgressBar_0") ProgressBar !@progress_bar_0 // Progress Bar 0
+&raw("Value_Text")    TextBlock   !@value_text     // Value Text
+&raw("Value")         Real        !@value          // Value
+&raw("Mana")          Integer     !@mana           // Mana
+
+$$ @mana_value_set
+// Set Mana Value
+//
+// UE4 name of this method: SetManaValue
+
+&aka("SetManaValue")
+
+(Integer value     : 0
+ Integer max_cards : 0) 
+
+$$ @close_gate
+// Close Gate
+//
+// UE4 name of this method: CloseGate
+
+&aka("CloseGate")
+
+() 
+
+$$ @initiate_bar
+// Initiate Bar
+//
+// UE4 name of this method: InitiateBar
+
+&aka("InitiateBar")
+
+(Integer mana : 0) 
+
+$$ .

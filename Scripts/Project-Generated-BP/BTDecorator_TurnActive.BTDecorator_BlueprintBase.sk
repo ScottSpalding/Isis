@@ -1,0 +1,14 @@
+// BTDecorator Turn Active
+//
+// UE4 name of this class: BTDecorator_TurnActive_C
+
+// UE4 Asset Name: BTDecorator_TurnActive
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIBlueprints/Decorators/BTDecorator_TurnActive"
+
+annotations: &reflected_data &name("BTDecorator_TurnActive_C")
+
+$$ @
+
+&raw("bIsTurnActive") BlackboardKeySelector !@is_turn_active // B Is Turn Active
+
+$$ .

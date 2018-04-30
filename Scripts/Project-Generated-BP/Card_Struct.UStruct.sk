@@ -1,0 +1,38 @@
+// Card Struct
+//
+// UE4 name of this struct: Card_Struct
+
+// UE4 Asset Name: Card_Struct
+// UE4 Package Name: "/Game/CCGToolkit/CardGame/Structs/CardStructs/Card_Struct"
+
+annotations: &reflected_data &name("Card_Struct")
+
+$$ @
+
+/* &raw("Name_19_BD38054E46D5FE0A0D265FB78AAA8696")               None                  !@name_19_bd38               // Currently unsupported */
+&raw("Class_33_67BB483F49A3BFA619E1ED9465C6681E")              CardClass_Enum        !@class_33_67bb              // The Class of the Card
+&raw("Type_40_4560CFEE4398FDD88AC01D985C617789")               CardTypeEnum          !@type_40_4560               // The Type of Card
+&raw("Rarity_47_DB4A6A1B4E54BD4D935139840C9D9D54")             CardRarity_Enum       !@rarity_47_db4a             // Rarity
+&raw("Special_36_44D5AE404615D4DF8BE4C99E601471A2")            Boolean               !@special_36_44d5?           // Whether the card is classified as "Special". Note: This is not currently used. 
+&raw("Visual_2_85D67A34474EB2B8B493D991EF51036B")              Visuals_Struct        !@visual_2_85d6              // Visual
+&raw("Attack_42_C92CE63C4661BD819996CEA4A1AA573F")             Attack_Struct         !@attack_42_c92c             // Attack
+&raw("Health_8_60BC65874EEE79279848C9B8B357597D")              Health_Struct         !@health_8_60bc              // Health
+&raw("Abilities_44_FABDBCB642A4994627C94EA87867BA0A")          List{Ability_Struct}  !@abilities_44_fabd          // Abilities
+&raw("Description_29_B484B4BF484B62D508B1ED917323F2B5")        Description_Struct    !@description_29_b484        // Description
+&raw("Placement_Settings_11_B6E9954A441B990D8A119AAFC2FA0D16") Placement_Struct      !@placement_settings_11_b6e9 // Placement Settings
+&raw("DeckSettings_49_9E926305457E71121A7A42B03FE7D498")       CardSettings_Struct   !@deck_settings_49_9e92      // Deck Settings
+&raw("Card_System_Data_67_CD7BE5344ECD9A4915193697F6EA94B7")   CardSystemData_Struct !@card_system_data_67_cd7b   // Card System Data
+
+$$ @!
+() Card_Struct
+
+$$ @!copy
+(Card_Struct other) Card_Struct
+
+$$ @assign
+(Card_Struct other) Card_Struct
+
+$$ @!!
+() Card_Struct
+
+$$ .

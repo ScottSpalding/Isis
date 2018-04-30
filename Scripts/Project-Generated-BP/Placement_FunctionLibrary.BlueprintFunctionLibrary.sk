@@ -1,0 +1,12 @@
+// Placement Function Library
+//
+// UE4 name of this class: Placement_FunctionLibrary_C
+
+// UE4 Asset Name: Placement_FunctionLibrary
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/FunctionLibraries/Placement_FunctionLibrary"
+
+annotations: &reflected_data &name("Placement_FunctionLibrary_C")
+
+$$ @
+
+$$ .

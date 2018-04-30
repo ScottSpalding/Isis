@@ -1,0 +1,63 @@
+// Card Library Fitler Window
+//
+// UE4 name of this class: CardLibraryFitlerWindow_C
+
+// UE4 Asset Name: CardLibraryFitlerWindow
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Menu/DeckBuilder/CardLibraryFitlerWindow"
+
+annotations: &reflected_data &name("CardLibraryFitlerWindow_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")             PointerToUberGraphFrame !@uber_graph_frame            // Currently unsupported */
+&raw("Arrow_Image")                Image           !@arrow_image                 // Arrow Image
+&raw("Aura_Filter_Button")         Button          !@aura_filter_button          // Aura Filter Button
+&raw("Aura_Filter_Checkbox")       CheckBox        !@aura_filter_checkbox        // Aura Filter Checkbox
+&raw("Aura_Text")                  TextBlock       !@aura_text                   // Aura Text
+&raw("Booster_Filter_Button")      Button          !@booster_filter_button       // Booster Filter Button
+&raw("Booster_Filter_Checkbox")    CheckBox        !@booster_filter_checkbox     // Booster Filter Checkbox
+&raw("Booster_Text")               TextBlock       !@booster_text                // Booster Text
+&raw("Common_Filter_Button")       Button          !@common_filter_button        // Common Filter Button
+&raw("Common_Filter_Checkbox")     CheckBox        !@common_filter_checkbox      // Common Filter Checkbox
+&raw("Creature_Filter_Button")     Button          !@creature_filter_button      // Creature Filter Button
+&raw("Creature_Filter_Checkbox")   CheckBox        !@creature_filter_checkbox    // Creature Filter Checkbox
+&raw("Creature_Text")              TextBlock       !@creature_text               // Creature Text
+&raw("Hero_Filter_Button")         Button          !@hero_filter_button          // Hero Filter Button
+&raw("Hero_Filter_Checkbox")       CheckBox        !@hero_filter_checkbox        // Hero Filter Checkbox
+&raw("Hero_Text")                  TextBlock       !@hero_text                   // Hero Text
+&raw("Legendary_Filter_Button")    Button          !@legendary_filter_button     // Legendary Filter Button
+&raw("Legendary_Filter_Checkbox")  CheckBox        !@legendary_filter_checkbox   // Legendary Filter Checkbox
+&raw("Rare_Filter_Button")         Button          !@rare_filter_button          // Rare Filter Button
+&raw("Rare_Filter_Checkbox")       CheckBox        !@rare_filter_checkbox        // Rare Filter Checkbox
+&raw("Special_Filter_Button")      Button          !@special_filter_button       // Special Filter Button
+&raw("Special_Filter_Checkbox")    CheckBox        !@special_filter_checkbox     // Special Filter Checkbox
+&raw("Special_Text")               TextBlock       !@special_text                // Special Text
+&raw("Spell_Filter_Button")        Button          !@spell_filter_button         // Spell Filter Button
+&raw("Spell_Filter_Checkbox")      CheckBox        !@spell_filter_checkbox       // Spell Filter Checkbox
+&raw("Spell_Text")                 TextBlock       !@spell_text                  // Spell Text
+&raw("TextBlock_1")                TextBlock       !@text_block_1                // Text Block 1
+&raw("TextBlock_2")                TextBlock       !@text_block_2                // Text Block 2
+&raw("TextBlock_3")                TextBlock       !@text_block_3                // Text Block 3
+&raw("TextBlock_4")                TextBlock       !@text_block_4                // Text Block 4
+&raw("TextBlock_7")                TextBlock       !@text_block_7                // Text Block 7
+&raw("Trap_Filter_Button")         Button          !@trap_filter_button          // Trap Filter Button
+&raw("Trap_Filter_Checkbox")       CheckBox        !@trap_filter_checkbox        // Trap Filter Checkbox
+&raw("Trap_Text")                  TextBlock       !@trap_text                   // Trap Text
+&raw("UltraRare_Filter_Button")    Button          !@ultra_rare_filter_button    // Ultra Rare Filter Button
+&raw("UltraRare_Filter_Checkbox")  CheckBox        !@ultra_rare_filter_checkbox  // Ultra Rare Filter Checkbox
+&raw("UnCommon_Filter_Button")     Button          !@un_common_filter_button     // Un Common Filter Button
+&raw("Uncommon_Filter_Checkbox")   CheckBox        !@uncommon_filter_checkbox    // Uncommon Filter Checkbox
+&raw("UnDeckable_Filter_Button")   Button          !@un_deckable_filter_button   // Un Deckable Filter Button
+&raw("UnDeckable_Filter_Checkbox") CheckBox        !@un_deckable_filter_checkbox // Un Deckable Filter Checkbox
+&raw("UnDeckable_Text")            TextBlock       !@un_deckable_text            // Un Deckable Text
+&raw("Unlocked_Filter_Button")     Button          !@unlocked_filter_button      // Unlocked Filter Button
+&raw("Unlocked_Filter_Checkbox")   CheckBox        !@unlocked_filter_checkbox    // Unlocked Filter Checkbox
+&raw("Unlocked_Text")              TextBlock       !@unlocked_text               // Unlocked Text
+&raw("WindowShadow_Image")         Image           !@window_shadow_image         // Window Shadow Image
+&raw("CardTypeFilters")            CardTypeEnum    !@card_type_filters           // Card Type Filters
+&raw("CardRarityFilters")          CardRarity_Enum !@card_rarity_filters         // Card Rarity Filters
+&raw("MaxOptionsHeight")           Integer         !@max_options_height          // Max Options Height
+&raw("MaxOptionsWidth")            Integer         !@max_options_width           // Max Options Width
+&raw("ParentWidget_Ref")           Widget          !@parent_widget_ref           // Parent Widget Ref
+
+$$ .

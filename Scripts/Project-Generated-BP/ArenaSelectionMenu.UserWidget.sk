@@ -1,0 +1,24 @@
+// Arena Selection Menu
+//
+// UE4 name of this class: ArenaSelectionMenu_C
+
+// UE4 Asset Name: ArenaSelectionMenu
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Menu/ArenaSelectionMenu"
+
+annotations: &reflected_data &name("ArenaSelectionMenu_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")        PointerToUberGraphFrame !@uber_graph_frame        // Currently unsupported */
+&raw("ArenaSelectionRow_44")  ArenaSelectionRow !@arena_selection_row_44  // Arena Selection Row 44
+&raw("ArenaSelectionRow_89")  ArenaSelectionRow !@arena_selection_row_89  // Arena Selection Row 89
+&raw("ArenaSelectionRow_160") ArenaSelectionRow !@arena_selection_row_160 // Arena Selection Row 160
+&raw("ArenaSelectionRow_216") ArenaSelectionRow !@arena_selection_row_216 // Arena Selection Row 216
+&raw("ArenaSelectionRow_276") ArenaSelectionRow !@arena_selection_row_276 // Arena Selection Row 276
+&raw("EnableLAN_CheckBox")    CheckBox          !@enable_lan_check_box    // Enable LAN Check Box
+&raw("ScrollBox_1")           ScrollBox         !@scroll_box_1            // Scroll Box 1
+&raw("NumberOfSets")          Integer           !@number_of_sets          // Number Of Sets
+&raw("ArenasToDisplay")       Integer           !@arenas_to_display       // Arenas to Display
+&raw("CardSetList")           CardSet_Enum      !@card_set_list           // Card Set List
+
+$$ .

@@ -1,0 +1,14 @@
+// BTDecorator Has Playable Cards in Hand
+//
+// UE4 name of this class: BTDecorator_HasPlayableCardsInHand_C
+
+// UE4 Asset Name: BTDecorator_HasPlayableCardsInHand
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIBlueprints/Decorators/BTDecorator_HasPlayableCardsInHand"
+
+annotations: &reflected_data &name("BTDecorator_HasPlayableCardsInHand_C")
+
+$$ @
+
+&raw("bFinalLoop") BlackboardKeySelector !@final_loop // B Final Loop
+
+$$ .

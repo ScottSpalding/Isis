@@ -1,0 +1,247 @@
+// Card Widget
+//
+// UE4 name of this class: CardWidget_C
+
+// UE4 Asset Name: CardWidget
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Gameplay/CardWidget"
+
+annotations: &reflected_data &name("CardWidget_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")         PointerToUberGraphFrame      !@uber_graph_frame         // Currently unsupported */
+&raw("CanvasPanel_5")          CanvasPanel                  !@canvas_panel_5           // Canvas Panel 5
+&raw("MouseOverHitBox")        Image                        !@mouse_over_hit_box       // Mouse Over Hit Box
+&raw("ViewCard_Default")       ViewCard_Default             !@view_card_default        // View Card Default
+&raw("OwningPlayer_Ref")       CardGamePlayerController     !@owning_player_ref        // Owning Player Ref
+&raw("UIParent")               CardManager                  !@uiparent                 // UIParent
+&raw("CardManager_Ref")        CardManager                  !@card_manager_ref         // Card Manager Ref
+&raw("MoveComponent")          Widget                       !@move_component           // Move Component
+&raw("bPlatformMobile")        Boolean                      !@platform_mobile?         // Platform Mobile
+&raw("bIsDragDetected")        Boolean                      !@is_drag_detected?        // Is Drag Detected
+&raw("bIsValidDrop")           Boolean                      !@is_valid_drop?           // Is Valid Drop
+&raw("bCanDrag")               Boolean                      !@can_drag?                // Can Drag
+&raw("bIsMouseDown")           Boolean                      !@is_mouse_down?           // Is Mouse Down
+&raw("DragDropAction")         DragDropOperation            !@drag_drop_action         // Drag Drop Action
+&raw("bIsMousedOver")          Boolean                      !@is_moused_over?          // Is Moused Over
+&raw("bInMobilePreview")       Boolean                      !@in_mobile_preview?       // In Mobile Preview
+&raw("Goal Transform")         WidgetTransform              !@goal_transform           // Goal Transform
+&raw("HomeTransform")          WidgetTransform              !@home_transform           // Home Transform
+&raw("bIsMoving")              Boolean                      !@is_moving?               // Is Moving
+&raw("bIsFaceUp")              Boolean                      !@is_face_up?              // Is Face Up
+&raw("DeltaTime")              Real                         !@delta_time               // Delta Time
+&raw("InterpSpeed")            Real                         !@interp_speed             // Interp Speed
+&raw("Card Name")              Name                         !@card_name                // Card Name
+&raw("PreviewLocation_Center") WidgetTransform              !@preview_location_center  // Preview Location Center
+&raw("CardViewState")          ViewState_Enum               !@card_view_state          // Card View State
+&raw("ViewportSize")           Vector2                      !@viewport_size            // Viewport Size
+&raw("CardSet")                CardSet_Enum                 !@card_set                 // Card Set
+&raw("ViewCardInitTransform")  WidgetTransform              !@view_card_init_transform // View Card Init Transform
+&raw("CardMovementState_Enum") CardWidgetMovementState_Enum !@card_movement_state_enum // Card Movement State Enum
+
+$$ @disable_in_hand_preview
+// Disable in Hand Preview
+//
+// UE4 name of this method: DisableInHandPreview
+// Blueprint category: Card Functions
+
+&aka("DisableInHandPreview")
+
+(Boolean force_home_location? : false) 
+
+$$ @enable_in_hand_preview
+// Enable in Hand Preview
+//
+// UE4 name of this method: EnableInHandPreview
+// Blueprint category: Card Functions
+
+&aka("EnableInHandPreview")
+
+() 
+
+$$ @enable_mobile_card_preview
+// Enable Mobile Card Preview
+//
+// UE4 name of this method: EnableMobileCardPreview
+// Blueprint category: Card Functions
+
+&aka("EnableMobileCardPreview")
+
+(Boolean enable_preview? : false) 
+
+$$ @on_mouse_button_up
+// The system calls this method to notify the widget that a mouse button was release within it. This event is bubbled.
+// 
+// @param my_geometry The Geometry of the widget receiving the event
+// @param mouse_event Information about the input event
+// @return Whether the event was handled along with possible requests for the system to take action.
+//
+// UE4 name of this method: OnMouseButtonUp
+// Blueprint category: Mouse
+
+&aka("OnMouseButtonUp")
+
+(Geometry     my_geometry : Geometry!
+ PointerEvent mouse_event : PointerEvent!
+) EventReply
+
+$$ @card_data_set
+// Set Card Data
+//
+// UE4 name of this method: SetCardData
+// Blueprint category: Card Functions
+
+&aka("SetCardData")
+
+() 
+
+$$ @face_down_set
+// Set Face Down
+//
+// UE4 name of this method: SetFaceDown
+// Blueprint category: Card Functions
+
+&aka("SetFaceDown")
+
+(Boolean enable_facedown? : false) 
+
+$$ @on_drop
+// Called when the user is dropping something onto a widget.  Ends the drag and drop operation, even if no widget handles this.
+// 
+// @param my_geometry     The geometry of the widget receiving the event.
+// @param pointer_event   The mouse event from when the drag occurred over the widget.
+// @param operation      The drag operation over the widget.
+// 
+// @return 'true' to indicate you handled the drop operation.
+//
+// UE4 name of this method: OnDrop
+// Blueprint category: Drag and Drop
+
+&aka("OnDrop")
+
+(Geometry          my_geometry   : Geometry!
+ PointerEvent      pointer_event : PointerEvent!
+ DragDropOperation operation     : DragDropOperation!null
+) Boolean
+
+$$ @on_mouse_move
+// The system calls this method to notify the widget that a mouse moved within it. This event is bubbled.
+// 
+// @param my_geometry The Geometry of the widget receiving the event
+// @param mouse_event Information about the input event
+// @return Whether the event was handled along with possible requests for the system to take action.
+//
+// UE4 name of this method: OnMouseMove
+// Blueprint category: Mouse
+
+&aka("OnMouseMove")
+
+(Geometry     my_geometry : Geometry!
+ PointerEvent mouse_event : PointerEvent!
+) EventReply
+
+$$ @on_touch_ended
+// Called when a touchpad touch is ended (finger lifted)
+// 
+// @param my_geometry    The geometry of the widget receiving the event.
+// @param in_touch_event  The touch event generated
+//
+// UE4 name of this method: OnTouchEnded
+// Blueprint category: Touch Input
+
+&aka("OnTouchEnded")
+
+(Geometry     my_geometry    : Geometry!
+ PointerEvent in_touch_event : PointerEvent!
+) EventReply
+
+$$ @on_drag_detected
+// Called when Slate detects that a widget started to be dragged.
+// 
+// @param  in_my_geometry  Widget geometry
+// @param  pointer_event  MouseMove that triggered the drag
+// @param  operation     The drag operation that was detected.
+//
+// UE4 name of this method: OnDragDetected
+// Blueprint category: Drag and Drop
+
+&aka("OnDragDetected")
+
+(Geometry          my_geometry   : Geometry!
+ PointerEvent      pointer_event : PointerEvent!
+ DragDropOperation operation     : DragDropOperation!null) 
+
+$$ @on_mouse_button_down
+// The system calls this method to notify the widget that a mouse button was pressed within it. This event is bubbled.
+// 
+// @param my_geometry The Geometry of the widget receiving the event
+// @param mouse_event Information about the input event
+// @return Whether the event was handled along with possible requests for the system to take action.
+//
+// UE4 name of this method: OnMouseButtonDown
+// Blueprint category: Mouse
+
+&aka("OnMouseButtonDown")
+
+(Geometry     my_geometry : Geometry!
+ PointerEvent mouse_event : PointerEvent!
+) EventReply
+
+$$ @open_gate
+// Open Gate
+//
+// UE4 name of this method: Open Gate
+
+&aka("Open Gate")
+
+(WidgetTransform              goal_transform  : WidgetTransform!
+ Widget                       move_component  : Widget!null
+ Real                         interp_speed    : 0.0
+ CardWidgetMovementState_Enum requested_state : CardWidgetMovementState_Enum.@@pending) 
+
+$$ @close_gate
+// Close Gate
+//
+// UE4 name of this method: Close Gate
+
+&aka("Close Gate")
+
+() 
+
+$$ @defaults_set
+// Set Defaults
+//
+// UE4 name of this method: Set Defaults
+
+&aka("Set Defaults")
+
+() 
+
+$$ @event_view_card_lost_focus
+// Event View Card Lost Focus
+//
+// UE4 name of this method: Event_ViewCardLostFocus
+
+&aka("Event_ViewCardLostFocus")
+
+() 
+
+$$ @event_force_mouse_leave
+// Event Force Mouse Leave
+//
+// UE4 name of this method: Event_ForceMouseLeave
+
+&aka("Event_ForceMouseLeave")
+
+() 
+
+$$ @highlight_card
+// Highlight Card
+//
+// UE4 name of this method: HighlightCard
+
+&aka("HighlightCard")
+
+(Boolean enable? : false) 
+
+$$ .

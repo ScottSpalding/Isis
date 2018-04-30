@@ -1,0 +1,26 @@
+// Description Struct
+//
+// UE4 name of this struct: Description_Struct
+
+// UE4 Asset Name: Description_Struct
+// UE4 Package Name: "/Game/CCGToolkit/CardGame/Structs/CardStructs/Description_Struct"
+
+annotations: &reflected_data &name("Description_Struct")
+
+$$ @
+
+&raw("Description_2_88FD1A854E9CC492FBDE4F92B4CA9008") String !@description_2_88fd // A Short Description on the card. This can be anything, but should include the ability (if selected).
+
+$$ @!
+() Description_Struct
+
+$$ @!copy
+(Description_Struct other) Description_Struct
+
+$$ @assign
+(Description_Struct other) Description_Struct
+
+$$ @!!
+() Description_Struct
+
+$$ .

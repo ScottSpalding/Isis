@@ -1,0 +1,70 @@
+// Deck Builder Card Row
+//
+// UE4 name of this class: DeckBuilderCardRow_C
+
+// UE4 Asset Name: DeckBuilderCardRow
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Menu/DeckBuilder/DeckBuilderCardRow"
+
+annotations: &reflected_data &name("DeckBuilderCardRow_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")            PointerToUberGraphFrame !@uber_graph_frame            // Currently unsupported */
+&raw("MouseNotover")              WidgetAnimation !@mouse_notover               // Mouse Notover
+&raw("OpenOptions")               WidgetAnimation !@open_options                // Open Options
+&raw("MouseOver")                 WidgetAnimation !@mouse_over                  // Mouse Over
+&raw("AddSubtract_HorizontalBox") HorizontalBox   !@add_subtract_horizontal_box // Add Subtract Horizontal Box
+&raw("AddSubtractCards_SizeBox")  SizeBox         !@add_subtract_cards_size_box // Add Subtract Cards Size Box
+&raw("Border_2")                  Border          !@border_2                    // Border 2
+&raw("CardCount_Text")            TextBlock       !@card_count_text             // Card Count Text
+&raw("CardImage")                 Image           !@card_image                  // Card Image
+&raw("CardImage_Border")          Border          !@card_image_border           // Card Image Border
+&raw("CardName_Text")             TextBlock       !@card_name_text              // Card Name Text
+&raw("Image_0")                   Image           !@image_0                     // Image 0
+&raw("Image_4")                   Image           !@image_4                     // Image 4
+&raw("Mana_Text")                 TextBlock       !@mana_text                   // Mana Text
+&raw("Minus_Button")              Button          !@minus_button                // Minus Button
+&raw("Plus_Button")               Button          !@plus_button                 // Plus Button
+&raw("Remove_Button")             Button          !@remove_button               // Remove Button
+&raw("NumberOfCardInDeck")        Integer         !@number_of_card_in_deck      // Number Of Card in Deck
+&raw("CardSet")                   CardSet_Enum    !@card_set                    // Card Set
+&raw("ParentWidget_Ref")          Widget          !@parent_widget_ref           // Parent Widget Ref
+&raw("CardName")                  Name            !@card_name                   // Card Name
+&raw("bMouseOverPreviewEnabled")  Boolean         !@mouse_over_preview_enabled? // Mouse Over Preview Enabled
+&raw("bMouseOver")                Boolean         !@mouse_over?                 // Mouse Over
+
+$$ @card_row_data_set
+// Set Card Row Data
+//
+// UE4 name of this method: SetCardRowData
+
+&aka("SetCardRowData")
+
+() 
+
+$$ @on_mouse_button_down
+// The system calls this method to notify the widget that a mouse button was pressed within it. This event is bubbled.
+// 
+// @param my_geometry The Geometry of the widget receiving the event
+// @param mouse_event Information about the input event
+// @return Whether the event was handled along with possible requests for the system to take action.
+//
+// UE4 name of this method: OnMouseButtonDown
+// Blueprint category: Mouse
+
+&aka("OnMouseButtonDown")
+
+(Geometry     my_geometry : Geometry!
+ PointerEvent mouse_event : PointerEvent!
+) EventReply
+
+$$ @update_visual_stats
+// Update Visual Stats
+//
+// UE4 name of this method: UpdateVisualStats
+
+&aka("UpdateVisualStats")
+
+(Integer card_count : 0) 
+
+$$ .

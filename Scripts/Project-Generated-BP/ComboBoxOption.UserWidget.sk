@@ -1,0 +1,14 @@
+// Combo Box Option
+//
+// UE4 name of this class: ComboBoxOption_C
+
+// UE4 Asset Name: ComboBoxOption
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Menu/ComboBoxOption"
+
+annotations: &reflected_data &name("ComboBoxOption_C")
+
+$$ @
+
+&raw("TextBlock") TextBlock !@text_block // Text Block
+
+$$ .

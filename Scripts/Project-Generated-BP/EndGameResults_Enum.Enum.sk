@@ -1,0 +1,30 @@
+// End Game Results Enum
+//
+// UE4 name of this enum: EndGameResults_Enum
+
+// UE4 Asset Name: EndGameResults_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/System_Enums/EndGameResults_Enum"
+
+annotations: &reflected_data &name("EndGameResults_Enum")
+
+$$ @@
+
+EndGameResults_Enum !@@victory
+EndGameResults_Enum !@@defeat
+EndGameResults_Enum !@@draw
+EndGameResults_Enum !@@end_game_results_max
+
+$$ @@!
+// EndGameResults_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/System_Enums/EndGameResults_Enum.EndGameResults_Enum
+
+()
+
+  [
+  @@victory:              EndGameResults_Enum!int(0)
+  @@defeat:               EndGameResults_Enum!int(1)
+  @@draw:                 EndGameResults_Enum!int(2)
+  @@end_game_results_max: EndGameResults_Enum!int(3)
+  ]
+
+$$ .

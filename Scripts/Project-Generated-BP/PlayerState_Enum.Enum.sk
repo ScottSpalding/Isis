@@ -1,0 +1,30 @@
+// Player State Enum
+//
+// UE4 name of this enum: PlayerState_Enum
+
+// UE4 Asset Name: PlayerState_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/PlayerState_Enum"
+
+annotations: &reflected_data &name("PlayerState_Enum")
+
+$$ @@
+
+PlayerState_Enum !@@pending_action
+PlayerState_Enum !@@card_interaction
+PlayerState_Enum !@@placing_card
+PlayerState_Enum !@@player_state_max
+
+$$ @@!
+// PlayerState_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/PlayerState_Enum.PlayerState_Enum
+
+()
+
+  [
+  @@pending_action:   PlayerState_Enum!int(0)
+  @@card_interaction: PlayerState_Enum!int(1)
+  @@placing_card:     PlayerState_Enum!int(2)
+  @@player_state_max: PlayerState_Enum!int(3)
+  ]
+
+$$ .

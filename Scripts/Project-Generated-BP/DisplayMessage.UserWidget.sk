@@ -1,0 +1,27 @@
+// Display Message
+//
+// UE4 name of this class: DisplayMessage_C
+
+// UE4 Asset Name: DisplayMessage
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Additional/DisplayMessage"
+
+annotations: &reflected_data &name("DisplayMessage_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
+&raw("OnBeginScale") WidgetAnimation !@on_begin_scale // On Begin Scale
+&raw("Message_Text") TextBlock       !@message_text   // Message Text
+
+$$ @display_message
+// Display Message
+//
+// UE4 name of this method: Display Message
+
+&aka("Display Message")
+
+(String message         : ""
+ Color  specified_color : Color!
+ Real   duration        : 0.0) 
+
+$$ .

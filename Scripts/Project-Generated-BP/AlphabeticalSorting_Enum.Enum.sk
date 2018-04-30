@@ -1,0 +1,28 @@
+// Alphabetical Sorting Enum
+//
+// UE4 name of this enum: AlphabeticalSorting_Enum
+
+// UE4 Asset Name: AlphabeticalSorting_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/System_Enums/AlphabeticalSorting_Enum"
+
+annotations: &reflected_data &name("AlphabeticalSorting_Enum")
+
+$$ @@
+
+AlphabeticalSorting_Enum !@@a_to_z
+AlphabeticalSorting_Enum !@@z_to_a
+AlphabeticalSorting_Enum !@@alphabetical_sorting_max
+
+$$ @@!
+// AlphabeticalSorting_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/System_Enums/AlphabeticalSorting_Enum.AlphabeticalSorting_Enum
+
+()
+
+  [
+  @@a_to_z:                   AlphabeticalSorting_Enum!int(0)
+  @@z_to_a:                   AlphabeticalSorting_Enum!int(1)
+  @@alphabetical_sorting_max: AlphabeticalSorting_Enum!int(2)
+  ]
+
+$$ .

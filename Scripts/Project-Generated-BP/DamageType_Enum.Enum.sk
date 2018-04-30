@@ -1,0 +1,30 @@
+// Damage Type Enum
+//
+// UE4 name of this enum: DamageType_Enum
+
+// UE4 Asset Name: DamageType_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/DamageType_Enum"
+
+annotations: &reflected_data &name("DamageType_Enum")
+
+$$ @@
+
+DamageType_Enum !@@basic
+DamageType_Enum !@@poison
+DamageType_Enum !@@stun
+DamageType_Enum !@@damage_type_max
+
+$$ @@!
+// DamageType_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/DamageType_Enum.DamageType_Enum
+
+()
+
+  [
+  @@basic:           DamageType_Enum!int(0)
+  @@poison:          DamageType_Enum!int(1)
+  @@stun:            DamageType_Enum!int(2)
+  @@damage_type_max: DamageType_Enum!int(3)
+  ]
+
+$$ .

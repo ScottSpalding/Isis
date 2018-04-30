@@ -1,0 +1,50 @@
+// Widget Interface
+//
+// UE4 name of this class: Widget_Interface_C
+
+// UE4 Asset Name: Widget_Interface
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Interface/Widget_Interface"
+
+annotations: &reflected_data &name("Widget_Interface_C")
+
+$$ @
+
+$$ @return_deck_selection
+// Return Deck Selection
+//
+// UE4 name of this method: ReturnDeckSelection
+
+&aka("ReturnDeckSelection")
+
+(String deck_selection : "") 
+
+$$ @return_preview
+// Return Preview
+//
+// UE4 name of this method: ReturnPreview
+
+&aka("ReturnPreview")
+
+(Boolean preview_enabled? : false) 
+
+$$ @return_card_set
+// Return Card Set
+//
+// UE4 name of this method: ReturnCardSet
+
+&aka("ReturnCardSet")
+
+(CardSet_Enum card_set : CardSet_Enum.@@empty) 
+
+$$ @return_option
+// Return Option
+//
+// UE4 name of this method: ReturnOption
+
+&aka("ReturnOption")
+
+(CardRowOptions option         : CardRowOptions.@@none
+ String         card_set       : ""
+ Widget         calling_widget : Widget!null) 
+
+$$ .

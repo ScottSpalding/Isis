@@ -114,21 +114,21 @@ bool AIsisPawn::Attack(AIsisPawn* TargetPawn)
 {
 	if (CurrentGameSpace->GetSpacesWithinRange(BaseAttackRange).Contains(TargetPawn->GetCurrentGameSpace()))
 	{
-		TargetPawn->TakeDamage(BaseAttackDamage);
+		//TargetPawn->TakeDamage(BaseAttackDamage);
 		return true;
 	}
 	return false;
 }
 
-void AIsisPawn::TakeDamage(int32 Damage)
-{
-	int32 FinalDamage = ApplyArmorMitigation(ApplyReceivingDamageEffects(Damage));
-	//CurrentStats.CurrentHealth -= FinalDamage;
-	//if (CurrentStats.CurrentHealth < 0)
-	//{
-	//	CurrentStats.CurrentHealth = 0;
-	//}
-}
+//void AIsisPawn::TakeDamage(int32 Damage)
+//{
+//	int32 FinalDamage = ApplyArmorMitigation(ApplyReceivingDamageEffects(Damage));
+//	//CurrentStats.CurrentHealth -= FinalDamage;
+//	//if (CurrentStats.CurrentHealth < 0)
+//	//{
+//	//	CurrentStats.CurrentHealth = 0;
+//	//}
+//}
 
 void AIsisPawn::HealDamage(int32 Damage)
 {

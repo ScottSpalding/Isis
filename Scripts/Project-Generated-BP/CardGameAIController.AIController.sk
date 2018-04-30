@@ -1,0 +1,264 @@
+// Card Game AIController
+//
+// UE4 name of this class: CardGameAIController_C
+
+// UE4 Asset Name: CardGameAIController
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIBlueprints/CardGameAIController"
+
+annotations: &reflected_data &name("CardGameAIController_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")                PointerToUberGraphFrame       !@uber_graph_frame                 // Currently unsupported */
+&raw("Default_Personality")           Name                          !@default_personality              // Default Personality
+&raw("AI_PersonalityName")            Name                          !@ai_personality_name              // AI Personality Name
+&raw("AI_Difficulty")                 AIDifficulty_Enum             !@ai_difficulty                    // AI Difficulty
+&raw("AI_Risk")                       AIRisk_Enum                   !@ai_risk                          // AI Risk
+&raw("AI_PlaySpeed")                  Real                          !@ai_play_speed                    // AI Play Speed
+&raw("AI_Awareness")                  Integer                       !@ai_awareness                     // AI Awareness
+&raw("AI_Personality_Struct")         AIPersonality                 !@ai_personality_struct            // AI Personality Struct
+&raw("AI_PersonalityFocus")           List{AIPersonalityFocus_Enum} !@ai_personality_focus             // AI Personality Focus
+&raw("bAIReady")                      Boolean                       !@aiready?                         // AIReady
+&raw("AIDeck")                        List{Name}                    !@aideck                           // AIDeck
+&raw("bShuffleDeck")                  Boolean                       !@shuffle_deck?                    // Shuffle Deck
+&raw("bPrintAIDebugLogs")             Boolean                       !@print_aidebug_logs?              // Print AIDebug Logs
+&raw("bTurnActive")                   Boolean                       !@turn_active?                     // Turn Active
+&raw("ShowDebugUI")                   Boolean                       !@show_debug_ui?                   // ONLY ON NONE DEDICATED SERVERS
+&raw("bEnableWeightedCards")          Boolean                       !@enable_weighted_cards?           // Enable Weighted Cards
+&raw("SelectedDeck")                  Name                          !@selected_deck                    // Selected Deck
+&raw("ControlledPawn_Ref")            CardGameAI_Pawn               !@controlled_pawn_ref              // Controlled Pawn Ref
+&raw("BoardPlayer_Ref")               BoardPlayer                   !@board_player_ref                 // Board Player Ref
+&raw("AIBlackboard_Ref")              BlackboardComponent           !@aiblackboard_ref                 // AIBlackboard Ref
+&raw("PlaySpeed")                     Name                          !@play_speed                       // Play Speed
+&raw("Awareness")                     Name                          !@awareness                        // Awareness
+&raw("Difficulty")                    Name                          !@difficulty                       // Difficulty
+&raw("Risk")                          Name                          !@risk                             // Risk
+&raw("TurnState")                     Name                          !@turn_state                       // Turn State
+&raw("GameMode_Ref")                  CardGameMode                  !@game_mode_ref                    // Game Mode Ref
+&raw("GameState Ref")                 CardGameState                 !@game_state_ref                   // Game State Ref
+&raw("TurnActive")                    Name                          !@turn_active                      // Turn Active
+&raw("NumberOfCardsToAdd")            Integer                       !@number_of_cards_to_add           // Number Of Cards to Add
+&raw("MaxCardsInHand")                Integer                       !@max_cards_in_hand                // Max Cards in Hand
+&raw("CardsInFirstHand")              Integer                       !@cards_in_first_hand              // Cards in First Hand
+&raw("CardPickupDelay")               Real                          !@card_pickup_delay                // Card Pickup Delay
+&raw("CardToAdd")                     Name                          !@card_to_add                      // Card to Add
+&raw("AICardsInHand")                 List{Name}                    !@aicards_in_hand                  // AICards in Hand
+&raw("AIPlayableDecks")               List{Name}                    !@aiplayable_decks                 // AIPlayable Decks
+&raw("AIBar")                         AI_InfoBar                    !@aibar                            // AIBar
+&raw("PlayList")                      List{PlaySubStruct}           !@play_list                        // Play List
+&raw("ActivePriorityFocusList_Array") List{AIPersonalityFocus_Enum} !@active_priority_focus_list_array // Active Priority Focus List Array
+&raw("PriorityFocusList_Array")       List{AIPersonalityFocus_Enum} !@priority_focus_list_array        // Priority Focus List Array
+&raw("PlayableCardsInHandList")       List{Name}                    !@playable_cards_in_hand_list      // Playable Cards in Hand List
+&raw("ValidPlaysForTurn_Array")       List{CardInteraction_Struct}  !@valid_plays_for_turn_array       // Valid Plays for Turn Array
+&raw("CardsOnBoardWithTurnPoints")    List{Sk3DCard}                !@cards_on_board_with_turn_points  // Cards on Board with Turn Points
+&raw("TEMP_AIFocusPriority")          List{AIPersonalityFocus_Enum} !@temp_aifocus_priority            // TEMP AIFocus Priority
+&raw("ValidInteractionTypes")         List{CardTypeEnum}            !@valid_interaction_types          // Valid Interaction Types
+&raw("EvaluationStateTotal_Struct")   EvaluationState_Struct        !@evaluation_state_total_struct    // Evaluation State Total Struct
+&raw("EvaluationState_Self")          AIState_Struct                !@evaluation_state_self            // Evaluation State Self
+&raw("EvaluationState_Opponent")      AIState_Struct                !@evaluation_state_opponent        // Evaluation State Opponent
+&raw("PriorityList_Array")            List{Priority_Enum}           !@priority_list_array              // Priority List Array
+&raw("Temp_PriorityList_Array")       List{Priority_Enum}           !@temp_priority_list_array         // Temp Priority List Array
+&raw("Temp_Priority_Array")           List{Priority_Enum}           !@temp_priority_array              // Temp Priority Array
+&raw("PriorityValue_Array")           List{Real}                    !@priority_value_array             // Priority Value Array
+&raw("Health_Low")                    Real                          !@health_low                       // Health Low
+&raw("CardsInHand_Low")               Real                          !@cards_in_hand_low                // Cards in Hand Low
+&raw("BoardState_Low")                Real                          !@board_state_low                  // Board State Low
+&raw("AIPointAllocation_Struct")      PointAllocation_Struct        !@aipoint_allocation_struct        // AIPoint Allocation Struct
+&raw("TempDeck")                      List{Name}                    !@temp_deck                        // Temp Deck
+
+$$ @remove_card_from_deck
+// Remove Card from Deck
+//
+// UE4 name of this method: RemoveCardFromDeck
+
+&aka("RemoveCardFromDeck")
+
+(Boolean remove_all?     : false
+ Integer index_to_remove : 0
+ Boolean success?        : false) 
+
+$$ @create_playable_card
+// Create Playable Card
+//
+// UE4 name of this method: CreatePlayableCard
+
+&aka("CreatePlayableCard")
+
+(Transform spawn_transform : Transform!
+ Sk3DCard  card_created    : Sk3DCard!null) 
+
+$$ @create_aidebug_ui
+// Create AIDebug UI
+//
+// UE4 name of this method: CreateAIDebugUI
+// Blueprint category: Setup
+
+&aka("CreateAIDebugUI")
+
+() 
+
+$$ @on_rep_aicards_in_hand
+// On Rep AICards in Hand
+//
+// UE4 name of this method: OnRep_AICardsInHand
+
+&aka("OnRep_AICardsInHand")
+
+() 
+
+$$ @calculate_priority_focus
+// Calculate Priority Focus
+//
+// UE4 name of this method: CalculatePriorityFocus
+// Blueprint category: AI State
+
+&aka("CalculatePriorityFocus")
+
+() 
+
+$$ @focus_priority
+// Get Focus Priority
+//
+// UE4 name of this method: GetFocusPriority
+// Blueprint category: AI State
+
+&aka("GetFocusPriority")
+
+(AIPersonalityFocus_Enum focus                 : AIPersonalityFocus_Enum.@@none
+ Priority_Enum           return_priority       : Priority_Enum.@@none
+ Real                    return_priority_value : 0.0) 
+
+$$ @run_card_interaction
+// Run Card Interaction
+//
+// UE4 name of this method: RunCardInteraction
+// Blueprint category: Gameplay
+
+&aka("RunCardInteraction")
+
+(CardInteraction_Struct aicard_interaction_struct : CardInteraction_Struct!
+ Boolean                success?                  : false) 
+
+$$ @update_aistate
+// Update AIState
+//
+// UE4 name of this method: UpdateAIState
+// Blueprint category: AI State
+
+&aka("UpdateAIState")
+
+() 
+
+$$ @evaluate_board_state
+// Evaluate Board State
+//
+// UE4 name of this method: EvaluateBoardState
+// Blueprint category: AI State
+
+&aka("EvaluateBoardState")
+
+(Boolean success? : false) 
+
+$$ @update_aiplayer_state
+// Update AIPlayer State
+//
+// UE4 name of this method: UpdateAIPlayerState
+// Blueprint category: AI State
+
+&aka("UpdateAIPlayerState")
+
+() 
+
+$$ @setup_aideck
+// Setup AIDeck
+//
+// UE4 name of this method: SetupAIDeck
+// Blueprint category: Setup
+
+&aka("SetupAIDeck")
+
+() 
+
+$$ @setup_ai
+// Setup AI
+//
+// UE4 name of this method: SetupAI
+// Blueprint category: Setup
+
+&aka("SetupAI")
+
+() 
+
+$$ @begin_player_turn
+// Begin Player Turn
+//
+// UE4 name of this method: BeginPlayerTurn
+
+&aka("BeginPlayerTurn")
+
+() 
+
+$$ @end_player_turn
+// End Player Turn
+//
+// UE4 name of this method: EndPlayerTurn
+
+&aka("EndPlayerTurn")
+
+() 
+
+$$ @update_ui
+// Update UI
+//
+// UE4 name of this method: UpdateUI
+
+&aka("UpdateUI")
+
+() 
+
+$$ @event_add_card_to_hand
+// Event Add Card to Hand
+//
+// UE4 name of this method: Event_AddCardToHand
+
+&aka("Event_AddCardToHand")
+
+() 
+
+$$ @change_active_player_turn
+// Change Active Player Turn
+//
+// UE4 name of this method: ChangeActivePlayerTurn
+
+&aka("ChangeActivePlayerTurn")
+
+(Boolean turn_active? : false) 
+
+$$ @match_begin
+// Match Begin
+//
+// UE4 name of this method: MatchBegin
+
+&aka("MatchBegin")
+
+() 
+
+$$ @match_end
+// Match End
+//
+// UE4 name of this method: MatchEnd
+
+&aka("MatchEnd")
+
+(EndGameResults_Enum result : EndGameResults_Enum.@@victory) 
+
+$$ @request_change_player_turn
+// Request Change Player Turn
+//
+// UE4 name of this method: RequestChangePlayerTurn
+
+&aka("RequestChangePlayerTurn")
+
+() 
+
+$$ .

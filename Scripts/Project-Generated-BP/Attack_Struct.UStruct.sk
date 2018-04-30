@@ -1,0 +1,32 @@
+// Attack Struct
+//
+// UE4 name of this struct: Attack_Struct
+
+// UE4 Asset Name: Attack_Struct
+// UE4 Package Name: "/Game/CCGToolkit/CardGame/Structs/CardStructs/Attack_Struct"
+
+annotations: &reflected_data &name("Attack_Struct")
+
+$$ @
+
+&raw("Damage_22_3F3DDE8145445195AC5B78B9E88F54F5")          Integer         !@damage_22_3f3d            // The Damage inflicted when attacking an enemy (or friendly) card
+&raw("Mana_Cost_21_AA105D3C48A4CFC61073E9A1A832FB9F")       Integer         !@mana_cost_21_aa10         // Mana cost of attacking with this card
+&raw("CanAttackPlayer_5_7DFF2313434E771DB380A5AE05B24EAF")  Boolean         !@can_attack_player_5_7dff? // Whether this card can attack players
+&raw("CanAttackCards_7_A4ED3D324F996F8266DA66A200150594")   Boolean         !@can_attack_cards_7_a4ed?  // Whether this card can attack other cards
+&raw("Damage_Type_10_8DCE992F4601A8FE8F2BC8A9499ECE31")     DamageType_Enum !@damage_type_10_8dce       // The Type of Damage influcted when attacking another card. Note: Only Basic damage type is currently supported.
+&raw("Attack_Particle_13_45A8BECE41D47AE0F1083AA376D3FA24") ParticleSystem  !@attack_particle_13_45a8   // Particle used when attacking
+&raw("Attack_SoundCue_16_79742D48440C825E819ED2AE19314898") SoundCue        !@attack_sound_cue_16_7974  // Sound cue used when attacking
+
+$$ @!
+() Attack_Struct
+
+$$ @!copy
+(Attack_Struct other) Attack_Struct
+
+$$ @assign
+(Attack_Struct other) Attack_Struct
+
+$$ @!!
+() Attack_Struct
+
+$$ .

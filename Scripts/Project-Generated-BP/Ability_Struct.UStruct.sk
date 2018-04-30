@@ -1,0 +1,32 @@
+// Ability Struct
+//
+// UE4 name of this struct: Ability_Struct
+
+// UE4 Asset Name: Ability_Struct
+// UE4 Package Name: "/Game/CCGToolkit/CardGame/Structs/CardStructs/Ability_Struct"
+
+annotations: &reflected_data &name("Ability_Struct")
+
+$$ @
+
+&raw("Type_8_425D265B41BA2FE82EC1E7B80EAB0E7F")              AbilityType_Enum    !@type_8_425d              // The Ability which this card has been assigned. 
+&raw("Ability_Int_13_D37872304E887B77EB3ECE86B08962C7")      Integer             !@ability_int_13_d378      // A Int variable which can be used to determin a unique number of times an ability can be used. For example, if the ability gives X number of cards when it is played, the number of cards it gives can be determined by the Ability Int. 
+&raw("Trigger_15_5A49E4E64D7F92A67A12B9829C19A476")          AbilityTrigger_Enum !@trigger_15_5a49          // This determins how the ability is triggered within the game. It can be used whenever the player performs (or even the opponent) an action or a game state changes which can then determin if the chosen ability can be used. 
+&raw("After_Use_State_31_088868D5438A6ABB5F822F8DD4E9B8C4")  CardUseState_Enum   !@after_use_state_31_0888  // Enabling "Single Use" will send this card to the graveyard after its ability has been used
+&raw("Affecting_Player_37_63A5A41E4AF2B37DCDEDAB976ABD412E") Players_Enum        !@affecting_player_37_63a5 // Affecting Player
+&raw("Particle_18_33163DD04CEB2D9DFFEC729B8DE429C2")         ParticleSystem      !@particle_18_3316         // Particle used when the card uses an ability
+&raw("SoundCue_20_269F2A09431FA02D6B7740823268DBA6")         SoundCue            !@sound_cue_20_269f        // Sound used when the cards ability is used. 
+
+$$ @!
+() Ability_Struct
+
+$$ @!copy
+(Ability_Struct other) Ability_Struct
+
+$$ @assign
+(Ability_Struct other) Ability_Struct
+
+$$ @!!
+() Ability_Struct
+
+$$ .

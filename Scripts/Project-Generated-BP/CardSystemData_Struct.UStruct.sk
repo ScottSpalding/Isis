@@ -1,0 +1,29 @@
+// Card System Data Struct
+//
+// UE4 name of this struct: CardSystemData_Struct
+
+// UE4 Asset Name: CardSystemData_Struct
+// UE4 Package Name: "/Game/CCGToolkit/CardGame/Structs/CardStructs/CardSystemData_Struct"
+
+annotations: &reflected_data &name("CardSystemData_Struct")
+
+$$ @
+
+&raw("Card_Purpose_12_CF6ABE51445AF4899C4B23889EDC13EA")          List{AIPersonalityFocus_Enum}    !@card_purpose_12_cf6a           // Card Purpose
+&raw("Card_Value_6_BA415E38401C39B84982E2A5442EF998")             Integer                          !@card_value_6_ba41              // Card Value
+&raw("PlayConditions_17_A0593DD3491D02ACD7F394B9417235F4")        List{CardPlayConditions_Enum}    !@play_conditions_17_a059        // Play Conditions
+&raw("InteractionConditions_25_3638065048E26F7EEBC0419DB6B67BC8") List{InteractionConditions_Enum} !@interaction_conditions_25_3638 // Interaction Conditions
+
+$$ @!
+() CardSystemData_Struct
+
+$$ @!copy
+(CardSystemData_Struct other) CardSystemData_Struct
+
+$$ @assign
+(CardSystemData_Struct other) CardSystemData_Struct
+
+$$ @!!
+() CardSystemData_Struct
+
+$$ .

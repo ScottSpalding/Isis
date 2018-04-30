@@ -1,0 +1,38 @@
+// Interaction Conditions Enum
+//
+// UE4 name of this enum: InteractionConditions_Enum
+
+// UE4 Asset Name: InteractionConditions_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/InteractionConditions_Enum"
+
+annotations: &reflected_data &name("InteractionConditions_Enum")
+
+$$ @@
+
+InteractionConditions_Enum !@@none
+InteractionConditions_Enum !@@card_can_only_recieve_interaction_on_owned_placement
+InteractionConditions_Enum !@@card_can_only_recieve_interaction_on_an_oppenents_placement
+InteractionConditions_Enum !@@can_only_attack_creatures
+InteractionConditions_Enum !@@cannot_attack_if_player_owns_card
+InteractionConditions_Enum !@@can_recieve_self_interaction_ai_only_
+InteractionConditions_Enum !@@can_recieve_self_interaction_if_does_not_remove_card_from_play_ai_only_
+InteractionConditions_Enum !@@interaction_conditions_max
+
+$$ @@!
+// InteractionConditions_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/InteractionConditions_Enum.InteractionConditions_Enum
+
+()
+
+  [
+  @@none:                                                                    InteractionConditions_Enum!int(0)
+  @@card_can_only_recieve_interaction_on_owned_placement:                    InteractionConditions_Enum!int(1)
+  @@card_can_only_recieve_interaction_on_an_oppenents_placement:             InteractionConditions_Enum!int(2)
+  @@can_only_attack_creatures:                                               InteractionConditions_Enum!int(3)
+  @@cannot_attack_if_player_owns_card:                                       InteractionConditions_Enum!int(4)
+  @@can_recieve_self_interaction_ai_only_:                                   InteractionConditions_Enum!int(5)
+  @@can_recieve_self_interaction_if_does_not_remove_card_from_play_ai_only_: InteractionConditions_Enum!int(6)
+  @@interaction_conditions_max:                                              InteractionConditions_Enum!int(7)
+  ]
+
+$$ .

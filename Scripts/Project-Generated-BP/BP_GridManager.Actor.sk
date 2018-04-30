@@ -280,8 +280,8 @@ $$ @add_unit_to_grid
 
 &aka("AddUnitToGrid")
 
-(BP_Unit unit       : BP_Unit!null
- Integer grid_index : 0) 
+(Integer grid_index : 0
+ BP_Unit unit       : BP_Unit!null) 
 
 $$ @make_simple_costs_map
 // If bUseSimpleCosts is true, adds the simple costs of all tiles to the GridSimpleCosts map. By default this map is checked by any units with a pathfinding type with "simple" in its name
@@ -564,8 +564,8 @@ $$ @convert_from_world_to_grid
 
 &aka("ConvertFromWorldToGrid")
 
-(Vector3  : Vector3!
- Vector3  : Vector3!) 
+(Vector3 world_vector : Vector3!
+ Vector3 grid_vector  : Vector3!) 
 
 $$ @convert_from_grid_to_world
 // Gets a grid location and converts it into an actual world location, taking the Grid Managers transform into account
@@ -575,8 +575,8 @@ $$ @convert_from_grid_to_world
 
 &aka("ConvertFromGridToWorld")
 
-(Vector3  : Vector3!
- Vector3  : Vector3!) 
+(Vector3 grid_vector  : Vector3!
+ Vector3 world_vector : Vector3!) 
 
 $$ @find_overlapping_tile_locations
 // Traces from the sky to the ground. If PathTrace hits, traces upwards from hit location. If the new trace does not hit anything before it has traveled HeightBetweenLevels this location is added to the output array. A new trace is then fired at HeightBetweenLevels under the first hit location and the process continues until the trace reaches MinGridHeight or the number of levels exeeds MaxLevels
@@ -811,8 +811,8 @@ $$ @hex_south_east_even
 
 &aka("GetHexSouthEastEven")
 
-(Integer  : 0
- Integer  : 0) 
+(Integer current_index : 0
+ Integer desired_index : 0) 
 
 $$ @hex_north_east_even
 // For hex grids: Returns the specified adjacent grid index to the grid index inputted
@@ -822,8 +822,8 @@ $$ @hex_north_east_even
 
 &aka("GetHexNorthEastEven")
 
-(Integer  : 0
- Integer  : 0) 
+(Integer current_index : 0
+ Integer desired_index : 0) 
 
 $$ @hex_south_east_odd
 // For hex grids: Returns the specified adjacent grid index to the grid index inputted
@@ -833,8 +833,8 @@ $$ @hex_south_east_odd
 
 &aka("GetHexSouthEastOdd")
 
-(Integer  : 0
- Integer  : 0) 
+(Integer current_index : 0
+ Integer desired_index : 0) 
 
 $$ @hex_north_east_odd
 // For hex grids: Returns the specified adjacent grid index to the grid index inputted
@@ -844,8 +844,8 @@ $$ @hex_north_east_odd
 
 &aka("GetHexNorthEastOdd")
 
-(Integer  : 0
- Integer  : 0) 
+(Integer current_index : 0
+ Integer desired_index : 0) 
 
 $$ @hex_north_west_even
 // For hex grids: Returns the specified adjacent grid index to the grid index inputted
@@ -855,8 +855,8 @@ $$ @hex_north_west_even
 
 &aka("GetHexNorthWestEven")
 
-(Integer  : 0
- Integer  : 0) 
+(Integer current_index : 0
+ Integer desired_index : 0) 
 
 $$ @hex_south_west_even
 // For hex grids: Returns the specified adjacent grid index to the grid index inputted
@@ -866,8 +866,8 @@ $$ @hex_south_west_even
 
 &aka("GetHexSouthWestEven")
 
-(Integer  : 0
- Integer  : 0) 
+(Integer current_index : 0
+ Integer desired_index : 0) 
 
 $$ @hex_south_west_odd
 // For hex grids: Returns the specified adjacent grid index to the grid index inputted
@@ -877,8 +877,8 @@ $$ @hex_south_west_odd
 
 &aka("GetHexSouthWestOdd")
 
-(Integer  : 0
- Integer  : 0) 
+(Integer current_index : 0
+ Integer desired_index : 0) 
 
 $$ @hexn_nrth_west_odd
 // For hex grids: Returns the specified adjacent grid index to the grid index inputted
@@ -888,8 +888,8 @@ $$ @hexn_nrth_west_odd
 
 &aka("GetHexnNrthWestOdd")
 
-(Integer  : 0
- Integer  : 0) 
+(Integer current_index : 0
+ Integer desired_index : 0) 
 
 $$ @is_index_on_odd_row
 // For hex grids: Returns true if grid index is on an odd row of the grid
@@ -899,8 +899,8 @@ $$ @is_index_on_odd_row
 
 &aka("IsIndexOnOddRow")
 
-(Integer   : 0
- Boolean ? : false) 
+(Integer current_index        : 0
+ Boolean is_index_on_odd_row? : false) 
 
 $$ @north_west
 // For Square grids: Returns the specified adjacent grid index to the grid index inputted
@@ -910,8 +910,8 @@ $$ @north_west
 
 &aka("GetNorthWest")
 
-(Integer  : 0
- Integer  : 0) 
+(Integer current_index : 0
+ Integer desired_index : 0) 
 
 $$ @south_west
 // For Square grids: Returns the specified adjacent grid index to the grid index inputted
@@ -921,8 +921,8 @@ $$ @south_west
 
 &aka("GetSouthWest")
 
-(Integer  : 0
- Integer  : 0) 
+(Integer current_index : 0
+ Integer desired_index : 0) 
 
 $$ @south_east
 // For Square grids: Returns the specified adjacent grid index to the grid index inputted
@@ -932,8 +932,8 @@ $$ @south_east
 
 &aka("GetSouthEast")
 
-(Integer  : 0
- Integer  : 0) 
+(Integer current_index : 0
+ Integer desired_index : 0) 
 
 $$ @north_east
 // For Square grids: Returns the specified adjacent grid index to the grid index inputted
@@ -943,8 +943,8 @@ $$ @north_east
 
 &aka("GetNorthEast")
 
-(Integer  : 0
- Integer  : 0) 
+(Integer current_index : 0
+ Integer desired_index : 0) 
 
 $$ @west
 // Returns the specified adjacent grid index to the grid index inputted
@@ -954,8 +954,8 @@ $$ @west
 
 &aka("GetWest")
 
-(Integer  : 0
- Integer  : 0) 
+(Integer current_index : 0
+ Integer desired_index : 0) 
 
 $$ @south_square
 // For Square grids: Returns the specified adjacent grid index to the grid index inputted
@@ -965,8 +965,8 @@ $$ @south_square
 
 &aka("GetSouthSquare")
 
-(Integer  : 0
- Integer  : 0) 
+(Integer current_index : 0
+ Integer desired_index : 0) 
 
 $$ @east
 // Returns the specified adjacent grid index to the grid index inputted
@@ -976,8 +976,8 @@ $$ @east
 
 &aka("GetEast")
 
-(Integer  : 0
- Integer  : 0) 
+(Integer current_index : 0
+ Integer desired_index : 0) 
 
 $$ @north_square
 // For Square grids: Returns the specified adjacent grid index to the grid index inputted
@@ -987,8 +987,8 @@ $$ @north_square
 
 &aka("GetNorthSquare")
 
-(Integer  : 0
- Integer  : 0) 
+(Integer current_index : 0
+ Integer desired_index : 0) 
 
 $$ @adjacent_indexes
 // Gets all indexes adjacent to a tile. Warning: will find tiles outside the grid for tiles on grid edges. Make sure to remove these in later steps if using this function in cases where this might occur.

@@ -1,0 +1,27 @@
+// Prebuild Decks Sub Struct
+//
+// UE4 name of this struct: PrebuildDecksSub_Struct
+
+// UE4 Asset Name: PrebuildDecksSub_Struct
+// UE4 Package Name: "/Game/CCGToolkit/CardGame/Structs/GameStructs/PrebuildDecksSub_Struct"
+
+annotations: &reflected_data &name("PrebuildDecksSub_Struct")
+
+$$ @
+
+&raw("Card_Table_Name_7_2A7186ED4A8069BCDE12DB9CBB839F83") Name    !@card_table_name_7_2a71 // Card Table Name
+&raw("Quantity_4_E15549574EA7391AD3F9DFA34E2B696A")        Integer !@quantity_4_e155        // Quantity
+
+$$ @!
+() PrebuildDecksSub_Struct
+
+$$ @!copy
+(PrebuildDecksSub_Struct other) PrebuildDecksSub_Struct
+
+$$ @assign
+(PrebuildDecksSub_Struct other) PrebuildDecksSub_Struct
+
+$$ @!!
+() PrebuildDecksSub_Struct
+
+$$ .

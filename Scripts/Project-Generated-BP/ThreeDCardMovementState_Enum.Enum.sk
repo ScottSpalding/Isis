@@ -1,0 +1,38 @@
+// Three DCard Movement State Enum
+//
+// UE4 name of this enum: ThreeDCardMovementState_Enum
+
+// UE4 Asset Name: ThreeDCardMovementState_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/ThreeDCardMovementState_Enum"
+
+annotations: &reflected_data &name("ThreeDCardMovementState_Enum")
+
+$$ @@
+
+ThreeDCardMovementState_Enum !@@placing
+ThreeDCardMovementState_Enum !@@move_to_home_destination
+ThreeDCardMovementState_Enum !@@moving_to_destination
+ThreeDCardMovementState_Enum !@@placed_on_board
+ThreeDCardMovementState_Enum !@@attacking
+ThreeDCardMovementState_Enum !@@selected
+ThreeDCardMovementState_Enum !@@graveyard
+ThreeDCardMovementState_Enum !@@three_dcard_movement_state_max
+
+$$ @@!
+// ThreeDCardMovementState_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/ThreeDCardMovementState_Enum.ThreeDCardMovementState_Enum
+
+()
+
+  [
+  @@placing:                        ThreeDCardMovementState_Enum!int(0)
+  @@move_to_home_destination:       ThreeDCardMovementState_Enum!int(1)
+  @@moving_to_destination:          ThreeDCardMovementState_Enum!int(2)
+  @@placed_on_board:                ThreeDCardMovementState_Enum!int(3)
+  @@attacking:                      ThreeDCardMovementState_Enum!int(4)
+  @@selected:                       ThreeDCardMovementState_Enum!int(5)
+  @@graveyard:                      ThreeDCardMovementState_Enum!int(6)
+  @@three_dcard_movement_state_max: ThreeDCardMovementState_Enum!int(7)
+  ]
+
+$$ .

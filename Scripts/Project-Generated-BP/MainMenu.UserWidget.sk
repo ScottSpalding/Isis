@@ -1,0 +1,145 @@
+// Main Menu
+//
+// UE4 name of this class: MainMenu_C
+
+// UE4 Asset Name: MainMenu
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Menu/MainMenu"
+
+annotations: &reflected_data &name("MainMenu_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")              PointerToUberGraphFrame !@uber_graph_frame               // Currently unsupported */
+&raw("ArenaSelectionMenu_87")       ArenaSelectionMenu  !@arena_selection_menu_87        // Arena Selection Menu 87
+&raw("Background_Image")            Image               !@background_image               // Background Image
+&raw("CardSetSelectionMenu_9")      DeckSelectionMenu   !@card_set_selection_menu_9      // Card Set Selection Menu 9
+&raw("CCGToolkit_Image")            Image               !@ccgtoolkit_image               // CCGToolkit Image
+&raw("CreateGame_Button")           Button              !@create_game_button             // Create Game Button
+&raw("DarkenBackgroundImage")       Image               !@darken_background_image        // Darken Background Image
+&raw("DeckBuilder_29")              DeckBuilder         !@deck_builder_29                // Deck Builder 29
+&raw("DeckBuilder_Button")          Button              !@deck_builder_button            // Deck Builder Button
+&raw("Exit_Button")                 Button              !@exit_button                    // Exit Button
+&raw("GameOptions_Button")          Button              !@game_options_button            // Game Options Button
+&raw("Glow_Image")                  Image               !@glow_image                     // Glow Image
+&raw("Image_2")                     Image               !@image_2                        // Image 2
+&raw("JoinGame_Button")             Button              !@join_game_button               // Join Game Button
+&raw("MainMenu_Button")             Button              !@main_menu_button               // Main Menu Button
+&raw("MenuLogMessageManager_259")   NotificationManager !@menu_log_message_manager_259   // Menu Log Message Manager 259
+&raw("Options_VerticleBox")         VerticalBox         !@options_verticle_box           // Options Verticle Box
+&raw("PlayGameOptions_Container")   Border              !@play_game_options_container    // Play Game Options Container
+&raw("PlayGameOptions_VerticalBox") VerticalBox         !@play_game_options_vertical_box // Play Game Options Vertical Box
+&raw("PlayOptions_Button")          Button              !@play_options_button            // Play Options Button
+&raw("ServerSelectionMenu_0")       ServerSelectionMenu !@server_selection_menu_0        // Server Selection Menu 0
+&raw("CardSetsToDisplay")           Integer             !@card_sets_to_display           // Card Sets to Display
+&raw("bHostGame")                   Boolean             !@host_game?                     // Host Game
+&raw("MainMenuState")               MainMenuState       !@main_menu_state                // Main Menu State
+&raw("UnselectedState")             Color               !@unselected_state               // Unselected State
+&raw("SelectedState")               Color               !@selected_state                 // Selected State
+
+$$ @on_mouse_button_down_0
+// On Mouse Button Down 0
+//
+// UE4 name of this method: OnMouseButtonDown_0
+
+&aka("OnMouseButtonDown_0")
+
+(Geometry     my_geometry : Geometry!
+ PointerEvent mouse_event : PointerEvent!
+) EventReply
+
+$$ @on_background_image_mouse_button_down_0
+// On Background Image Mouse Button Down 0
+//
+// UE4 name of this method: On_Background_Image_MouseButtonDown_0
+
+&aka("On_Background_Image_MouseButtonDown_0")
+
+(Geometry     my_geometry : Geometry!
+ PointerEvent mouse_event : PointerEvent!
+) EventReply
+
+$$ @return_option
+// Return Option
+//
+// UE4 name of this method: ReturnOption
+
+&aka("ReturnOption")
+
+(CardRowOptions option         : CardRowOptions.@@none
+ String         card_set       : ""
+ Widget         calling_widget : Widget!null) 
+
+$$ @return_card_set
+// Return Card Set
+//
+// UE4 name of this method: ReturnCardSet
+
+&aka("ReturnCardSet")
+
+(CardSet_Enum card_set : CardSet_Enum.@@empty) 
+
+$$ @return_preview
+// Return Preview
+//
+// UE4 name of this method: ReturnPreview
+
+&aka("ReturnPreview")
+
+(Boolean preview_enabled? : false) 
+
+$$ @return_deck_selection
+// Return Deck Selection
+//
+// UE4 name of this method: ReturnDeckSelection
+
+&aka("ReturnDeckSelection")
+
+(String deck_selection : "") 
+
+$$ @return_from_deck_selection
+// Return from Deck Selection
+//
+// UE4 name of this method: ReturnFromDeckSelection
+
+&aka("ReturnFromDeckSelection")
+
+() 
+
+$$ @open_deck_builder
+// Open Deck Builder
+//
+// UE4 name of this method: OpenDeckBuilder
+
+&aka("OpenDeckBuilder")
+
+() 
+
+$$ @create_game
+// Create Game
+//
+// UE4 name of this method: CreateGame
+
+&aka("CreateGame")
+
+() 
+
+$$ @show_main_menu
+// Show Main Menu
+//
+// UE4 name of this method: ShowMainMenu
+
+&aka("ShowMainMenu")
+
+() 
+
+$$ @log_menu_message
+// Log Menu Message
+//
+// UE4 name of this method: LogMenuMessage
+
+&aka("LogMenuMessage")
+
+(String message : ""
+ Color  colour  : Color!) 
+
+$$ .

@@ -1,0 +1,21 @@
+// Loading Screen
+//
+// UE4 name of this class: LoadingScreen_C
+
+// UE4 Asset Name: LoadingScreen
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Menu/LoadingScreen"
+
+annotations: &reflected_data &name("LoadingScreen_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")   PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
+&raw("Logo_FlyIn")       WidgetAnimation !@logo_fly_in      // Logo Fly In
+&raw("CCG_Text")         Image           !@ccg_text         // CCG Text
+&raw("CCGToolkit_Image") Image           !@ccgtoolkit_image // CCGToolkit Image
+&raw("Image_0")          Image           !@image_0          // Image 0
+&raw("Image_1692")       Image           !@image_1692       // Image 1692
+&raw("Throbber_1")       Throbber        !@throbber_1       // Throbber 1
+&raw("Toolkit_Text")     Image           !@toolkit_text     // Toolkit Text
+
+$$ .

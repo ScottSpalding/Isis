@@ -1,0 +1,30 @@
+// Mana Account Enum
+//
+// UE4 name of this enum: ManaAccount_Enum
+
+// UE4 Asset Name: ManaAccount_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/ManaAccount_Enum"
+
+annotations: &reflected_data &name("ManaAccount_Enum")
+
+$$ @@
+
+ManaAccount_Enum !@@none
+ManaAccount_Enum !@@placement
+ManaAccount_Enum !@@attack
+ManaAccount_Enum !@@mana_account_max
+
+$$ @@!
+// ManaAccount_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/ManaAccount_Enum.ManaAccount_Enum
+
+()
+
+  [
+  @@none:             ManaAccount_Enum!int(0)
+  @@placement:        ManaAccount_Enum!int(1)
+  @@attack:           ManaAccount_Enum!int(2)
+  @@mana_account_max: ManaAccount_Enum!int(3)
+  ]
+
+$$ .

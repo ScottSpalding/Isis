@@ -1,0 +1,13 @@
+// AIController is the base class of controllers for AI-controlled Pawns.
+// 
+// Controllers are non-physical actors that can be attached to a pawn to control its actions.
+// AIControllers manage the artificial intelligence for the pawns they control.
+// In networked games, they only exist on the server.
+// 
+// @see https://docs.unrealengine.com/latest/INT/Gameplay/Framework/Controller/
+//
+// UE4 name of this class: AIController
+
+annotations: &reflected_cpp &name("AIController")
+
+$$ .

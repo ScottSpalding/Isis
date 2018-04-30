@@ -1,0 +1,553 @@
+// Card Game Player Controller
+//
+// UE4 name of this class: CardGamePlayerController_C
+
+// UE4 Asset Name: CardGamePlayerController
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/CardGamePlayerController"
+
+annotations: &reflected_data &name("CardGamePlayerController_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")                PointerToUberGraphFrame !@uber_graph_frame                  // Currently unsupported */
+&raw("HitCard")                       Sk3DCard            !@hit_card                          // Hit Card
+&raw("HitPlayer")                     BoardPlayer         !@hit_player                        // Hit Player
+&raw("HitActor")                      Actor               !@hit_actor                         // Hit Actor
+&raw("TalkingCard ")                  Sk3DCard            !@talking_card_                     // The card which is sending the interaction event
+&raw("RecievingCard")                 Sk3DCard            !@recieving_card                    // The card which is recieving the interaction event
+&raw("RecievingPlayer")               BoardPlayer         !@recieving_player                  // Recieving Player
+&raw("TargetDragSelectionActor")      TargetDragSelection !@target_drag_selection_actor       // Target Drag Selection Actor
+&raw("bIsDragging")                   Boolean             !@is_dragging?                      // Is Dragging
+&raw("bIsCardSelected")               Boolean             !@is_card_selected?                 // Is Card Selected
+&raw("PlayerStateEnum")               PlayerState_Enum    !@player_state_enum                 // Player State Enum
+&raw("PlayCard_Server_Ref")           Sk3DCard            !@play_card_server_ref              // Play Card Server Ref
+&raw("bEnabledMobileCardPreview")     Boolean             !@enabled_mobile_card_preview?      // Enabled Mobile Card Preview
+&raw("GameState Ref")                 CardGameState       !@game_state_ref                    // Game State Ref
+&raw("PlayCard_Client_Ref")           Sk3DCard            !@play_card_client_ref              // Play Card Client Ref
+&raw("Card on Board Ref")             Sk3DCard            !@card_on_board_ref                 // Card On Board Ref
+&raw("EnabledMobilePreview")          Sk3DCard            !@enabled_mobile_preview            // Enabled Mobile Preview
+&raw("TempDeck")                      List{Name}          !@temp_deck                         // Temp Deck
+&raw("PlayerDeck")                    List{Name}          !@player_deck                       // Player Deck
+&raw("bShuffleDeck")                  Boolean             !@shuffle_deck?                     // Shuffle Deck
+&raw("bEnableWeightedCards")          Boolean             !@enable_weighted_cards?            // Enable Weighted Cards
+&raw("WeightedFilterIndex")           Integer             !@weighted_filter_index             // Weighted Filter Index
+&raw("Temp_CreateCardName")           Name                !@temp_create_card_name             // Temp Create Card Name
+&raw("Temp_ChosenCardSet")            CardSet_Enum        !@temp_chosen_card_set              // Temp Chosen Card Set
+&raw("Temp_DragDropOperation")        DragDropOperation   !@temp_drag_drop_operation          // Temp Drag Drop Operation
+&raw("bTemp_CardIsClone")             Boolean             !@temp_card_is_clone?               // Temp Card Is Clone
+&raw("Temp_Location")                 Vector3             !@temp_location                     // Temp Location
+&raw("TargetCardPlacement")           CardPlacement       !@target_card_placement             // Target Card Placement
+&raw("CardPlacement_Ref")             CardPlacement       !@card_placement_ref                // Card Placement Ref
+&raw("bEnableInHandMovementRotation") Boolean             !@enable_in_hand_movement_rotation? // Enable in Hand Movement Rotation
+&raw("bIsValidClientDrop")            Boolean             !@is_valid_client_drop?             // Is Valid Client Drop
+&raw("bPlayCardSuccess")              Boolean             !@play_card_success?                // Play Card Success
+&raw("bIsPlayed")                     Boolean             !@is_played?                        // Is Played
+&raw("bValidInteraction")             Boolean             !@valid_interaction?                // Valid Interaction
+&raw("PlayerState_Ref")               CardGamePlayerState !@player_state_ref                  // Player State Ref
+&raw("CardSet")                       CardSet_Enum        !@card_set                          // Card Set
+&raw("bTurnActive")                   Boolean             !@turn_active?                      // Turn Active
+&raw("CountdownTimer_Widget")         Countdown           !@countdown_timer_widget            // Countdown Timer Widget
+&raw("CardSelection")                 List{CardWidget}    !@card_selection                    // Card Selection
+&raw("CardsInHand")                   List{Name}          !@cards_in_hand                     // Cards in Hand
+&raw("CardToAdd")                     Name                !@card_to_add                       // Card to Add
+&raw("CardSet_Ref")                   CardSet_Enum        !@card_set_ref                      // Card Set Ref
+&raw("NumberOfCardsToAdd")            Integer             !@number_of_cards_to_add            // Number Of Cards to Add
+&raw("MaxCardsInHand")                Integer             !@max_cards_in_hand                 // The max card the player can hold in their hand at any one time. Note: Not used when "IgnoreMaxCards?' is enabled on the 'Request Card pickup' event.
+&raw("Error_Enum")                    Errors_Enum         !@error_enum                        // Error Enum
+&raw("CardPickupDelay")               Real                !@card_pickup_delay                 // Card Pickup Delay
+&raw("CardsInFirstHand")              Integer             !@cards_in_first_hand               // The number of the cards the player will pickup when the game begins.
+&raw("CardsToDrawPerTurn")            Integer             !@cards_to_draw_per_turn            // The number of cards the player can draw at the beggining of their turn. 
+&raw("BoardPlayer_Ref")               BoardPlayer         !@board_player_ref                  // Board Player Ref
+&raw("PlayerGameUI_Ref")              PlayerGameUI        !@player_game_ui_ref                // Player Game UI Ref
+&raw("CardHoldDistance")              Real                !@card_hold_distance                // Distance the player will hold a card from the camera when placing on the board
+&raw("OpponentUI_Ref")                OpponentUI          !@opponent_ui_ref                   // Opponent UI Ref
+&raw("CardInHandIndex_Ref")           Integer             !@card_in_hand_index_ref            // Card in Hand Index Ref
+&raw("DragDrop Operation Ref")        DragDropOperation   !@drag_drop_operation_ref           // Drag Drop Operation Ref
+&raw("bSkipManaCheck")                Boolean             !@skip_mana_check?                  // Skip Mana Check
+&raw("TempHandIndex")                 Integer             !@temp_hand_index                   // Temp Hand Index
+&raw("TurnState")                     GameTurn_Enum       !@turn_state                        // Turn State
+
+$$ @remove_card_from_deck
+// Remove Card from Deck
+//
+// UE4 name of this method: RemoveCardFromDeck
+
+&aka("RemoveCardFromDeck")
+
+(Boolean remove_all?     : false
+ Integer index_to_remove : 0
+ Boolean success?        : false) 
+
+$$ @create_playable_card
+// Create Playable Card
+//
+// UE4 name of this method: CreatePlayableCard
+
+&aka("CreatePlayableCard")
+
+(Transform spawn_transform : Transform!
+ Sk3DCard  card_created    : Sk3DCard!null) 
+
+$$ @on_rep_turn_state
+// On Rep Turn State
+//
+// UE4 name of this method: OnRep_TurnState
+
+&aka("OnRep_TurnState")
+
+() 
+
+$$ @on_rep_b_turn_active
+// On Rep B Turn Active
+//
+// UE4 name of this method: OnRep_bTurnActive
+
+&aka("OnRep_bTurnActive")
+
+() 
+
+$$ @custom_card_data_set
+// Set Custom Card Data
+//
+// UE4 name of this method: SetCustomCardData
+// Blueprint category: Card Functions
+
+&aka("SetCustomCardData")
+
+(Sk3DCard card            : Sk3DCard!null
+ Boolean  active_ability? : false
+ Sk3DCard return_card     : Sk3DCard!null) 
+
+$$ @server_validate_card_placement
+// Server Validate Card Placement
+//
+// UE4 name of this method: ServerValidateCardPlacement
+// Blueprint category: Card Functions
+
+&aka("ServerValidateCardPlacement")
+
+(CardPlacement card_placement       : CardPlacement!null
+ Card_Struct   card_struct          : Card_Struct!
+ Boolean       valid_placement?     : false
+ CardPlacement valid_card_placement : CardPlacement!null) 
+
+$$ @create_placeable_card_server_
+// Create Placeable Card(Server)
+//
+// UE4 name of this method: CreatePlaceableCard(Server)
+// Blueprint category: Card Functions
+
+&aka("CreatePlaceableCard(Server)")
+
+(Transform spawn_transform : Transform!
+ Sk3DCard  card_created    : Sk3DCard!null) 
+
+$$ @count_cards_in_deck_old
+// Count Cards in Deck OLD
+//
+// UE4 name of this method: CountCardsInDeck_OLD
+// Blueprint category: Deck / Hand  Functions
+
+&aka("CountCardsInDeck_OLD")
+
+() Integer
+
+$$ @count_cards_in_hand_old
+// Count Cards in Hand OLD
+//
+// UE4 name of this method: CountCardsInHand_OLD
+// Blueprint category: Deck / Hand  Functions
+
+&aka("CountCardsInHand_OLD")
+
+() Integer
+
+$$ @create_drag_actor_visual
+// Create Drag Actor Visual
+//
+// UE4 name of this method: CreateDragActorVisual
+// Blueprint category: Card Interaction Functions
+
+&aka("CreateDragActorVisual")
+
+(Boolean use_actor_location? : false
+ Boolean valid?              : false) 
+
+$$ @notify_cards_end_turn
+// Notify Cards End Turn
+//
+// UE4 name of this method: NotifyCardsEndTurn
+// Blueprint category: Game
+
+&aka("NotifyCardsEndTurn")
+
+() 
+
+$$ @notify_card_turn_active
+// Notify Card Turn Active
+//
+// UE4 name of this method: NotifyCardTurnActive
+// Blueprint category: Game
+
+&aka("NotifyCardTurnActive")
+
+() 
+
+$$ @run_card_interaction
+// Run Card Interaction
+//
+// UE4 name of this method: RunCardInteraction
+// Blueprint category: Card Interaction Functions
+
+&aka("RunCardInteraction")
+
+(Sk3DCard    interaction_talking_card     : Sk3DCard!null
+ Sk3DCard    interacition_recieving_card  : Sk3DCard!null
+ BoardPlayer interaction_recieving_player : BoardPlayer!null) 
+
+$$ @timer_set
+// Set Timer
+//
+// UE4 name of this method: SetTimer
+// Blueprint category: Game Setup
+
+&aka("SetTimer")
+
+(Integer time : 0) 
+
+$$ @filter_weighted_cards
+// Filter Weighted Cards
+//
+// UE4 name of this method: FilterWeightedCards
+// Blueprint category: Deck / Hand  Functions
+
+&aka("FilterWeightedCards")
+
+() 
+
+$$ @setup_game_ui
+// Setup Game UI
+//
+// UE4 name of this method: SetupGameUI
+// Blueprint category: Game Setup
+
+&aka("SetupGameUI")
+
+() 
+
+$$ @validate_card_placement
+// Validate Card Placement
+//
+// UE4 name of this method: ValidateCardPlacement
+// Blueprint category: Card Functions
+
+&aka("ValidateCardPlacement")
+
+(Actor   hit_actor        : Actor!null
+ Boolean valid_placement? : false) 
+
+$$ @detect_interaction_on_move
+// Detect Interaction on Move
+//
+// UE4 name of this method: DetectInteractionOnMove
+// Blueprint category: Card Interaction Functions
+
+&aka("DetectInteractionOnMove")
+
+() 
+
+$$ @validate_interaction_state
+// Validate Interaction State
+//
+// UE4 name of this method: ValidateInteractionState
+// Blueprint category: Card Interaction Functions
+
+&aka("ValidateInteractionState")
+
+(Boolean valid_interaction? : false) 
+
+$$ @detect_card_interaction
+// Detect Card Interaction
+//
+// UE4 name of this method: DetectCardInteraction
+// Blueprint category: Card Interaction Functions
+
+&aka("DetectCardInteraction")
+
+() 
+
+$$ @card_location_set
+// Set Card Location
+//
+// UE4 name of this method: SetCardLocation
+// Blueprint category: Card Functions
+
+&aka("SetCardLocation")
+
+(Vector3        hold_location : Vector3!
+ Sk3DCard       card          : Sk3DCard!null
+ RotationAngles rotation      : RotationAngles!) 
+
+$$ @request_change_player_turn
+// Request Change Player Turn
+//
+// UE4 name of this method: RequestChangePlayerTurn
+
+&aka("RequestChangePlayerTurn")
+
+() 
+
+$$ @begin_player_turn
+// Begin Player Turn
+//
+// UE4 name of this method: BeginPlayerTurn
+
+&aka("BeginPlayerTurn")
+
+() 
+
+$$ @end_player_turn
+// End Player Turn
+//
+// UE4 name of this method: EndPlayerTurn
+
+&aka("EndPlayerTurn")
+
+() 
+
+$$ @update_ui
+// Update UI
+//
+// UE4 name of this method: UpdateUI
+
+&aka("UpdateUI")
+
+() 
+
+$$ @server_request_change_turn_state
+// Server Request Change Turn State
+//
+// UE4 name of this method: Server_RequestChangeTurnState
+
+&aka("Server_RequestChangeTurnState")
+
+() 
+
+$$ @server_update_player_health
+// Server Update Player Health
+//
+// UE4 name of this method: Server_UpdatePlayerHealth
+
+&aka("Server_UpdatePlayerHealth")
+
+() 
+
+$$ @server_run_card_interaction
+// Server Run Card Interaction
+//
+// UE4 name of this method: Server_RunCardInteraction
+
+&aka("Server_RunCardInteraction")
+
+(Sk3DCard    talking_card   : Sk3DCard!null
+ Sk3DCard    recieving_card : Sk3DCard!null
+ BoardPlayer board_player_  : BoardPlayer!null) 
+
+$$ @server_update_player_state
+// Server Update Player State
+//
+// UE4 name of this method: Server_UpdatePlayerState
+
+&aka("Server_UpdatePlayerState")
+
+() 
+
+$$ @server_setup_deck
+// Server Setup Deck
+//
+// UE4 name of this method: Server_SetupDeck
+
+&aka("Server_SetupDeck")
+
+() 
+
+$$ @skip_mana_check_set
+// Set Skip Mana Check
+//
+// UE4 name of this method: SetSkipManaCheck
+
+&aka("SetSkipManaCheck")
+
+(Boolean skip_check? : false) 
+
+$$ @reshuffle_deck
+// Reshuffle Deck
+//
+// UE4 name of this method: ReshuffleDeck
+
+&aka("ReshuffleDeck")
+
+() 
+
+$$ @clear_cards_in_hand
+// Clear Cards in Hand
+//
+// UE4 name of this method: ClearCardsInHand
+
+&aka("ClearCardsInHand")
+
+() 
+
+$$ @change_active_player_turn
+// Change Active Player Turn
+//
+// UE4 name of this method: ChangeActivePlayerTurn
+
+&aka("ChangeActivePlayerTurn")
+
+(Boolean turn_active? : false) 
+
+$$ @match_begin
+// Match Begin
+//
+// UE4 name of this method: MatchBegin
+
+&aka("MatchBegin")
+
+() 
+
+$$ @event_add_card_to_hand
+// Event Add Card to Hand
+//
+// UE4 name of this method: Event_AddCardToHand
+
+&aka("Event_AddCardToHand")
+
+() 
+
+$$ @event_remove_card_from_card_manager
+// Event Remove Card from Card Manager
+//
+// UE4 name of this method: Event_RemoveCardFromCardManager
+
+&aka("Event_RemoveCardFromCardManager")
+
+(CardWidget card_widget        : CardWidget!null
+ Integer    or_card_hand_index : 0
+ Boolean    or_remove_all?     : false) 
+
+$$ @client_post_login
+// Client Post Login
+//
+// UE4 name of this method: ClientPostLogin
+
+&aka("ClientPostLogin")
+
+() 
+
+$$ @update_game_ui
+// Update Game UI
+//
+// UE4 name of this method: UpdateGameUI
+
+&aka("UpdateGameUI")
+
+(Boolean force_clean_update? : false) 
+
+$$ @event_drop_card
+// Event Drop Card
+//
+// UE4 name of this method: Event_DropCard
+
+&aka("Event_DropCard")
+
+(Boolean     card_played? : false
+ Errors_Enum errors       : Errors_Enum.@@valid_drop) 
+
+$$ @countdown_timer_set
+// Set Countdown Timer
+//
+// UE4 name of this method: SetCountdownTimer
+
+&aka("SetCountdownTimer")
+
+(Integer time : 0) 
+
+$$ @event_create_display_message
+// Event Create Display Message
+//
+// UE4 name of this method: Event_CreateDisplayMessage
+
+&aka("Event_CreateDisplayMessage")
+
+(String  message            : ""
+ Color   specified_color    : Color!
+ Boolean to_screen?         : true
+ Real    screen_duration    : 0.0
+ Boolean to_message_logger? : false) 
+
+$$ @destroy_client_card
+// Destroy Client Card
+//
+// UE4 name of this method: DestroyClientCard
+
+&aka("DestroyClientCard")
+
+() 
+
+$$ @event_get_player_deck
+// Event Get Player Deck
+//
+// UE4 name of this method: Event_GetPlayerDeck
+
+&aka("Event_GetPlayerDeck")
+
+() 
+
+$$ @match_end
+// Match End
+//
+// UE4 name of this method: MatchEnd
+
+&aka("MatchEnd")
+
+(EndGameResults_Enum result : EndGameResults_Enum.@@victory) 
+
+$$ @event_end_client_match_state
+// Event End Client Match State
+//
+// UE4 name of this method: Event_EndClientMatchState
+
+&aka("Event_EndClientMatchState")
+
+(EndGameResults_Enum new_param : EndGameResults_Enum.@@victory) 
+
+$$ @log_notification_message
+// Log Notification Message
+//
+// UE4 name of this method: LogNotificationMessage
+
+&aka("LogNotificationMessage")
+
+(String message : ""
+ Color  colour  : Color!) 
+
+$$ @spawn_aiopponent
+// Spawn AIOpponent
+//
+// UE4 name of this method: SpawnAIOpponent
+
+&aka("SpawnAIOpponent")
+
+() 
+
+$$ @p4_14_on_drag_canceled
+// 4.14 on Drag Canceled
+//
+// UE4 name of this method: 4.14_OnDragCanceled
+
+&aka("4.14_OnDragCanceled")
+
+() 
+
+$$ .

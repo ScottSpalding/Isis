@@ -1,0 +1,282 @@
+// Deck Builder
+//
+// UE4 name of this class: DeckBuilder_C
+
+// UE4 Asset Name: DeckBuilder
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Menu/DeckBuilder/DeckBuilder"
+
+annotations: &reflected_data &name("DeckBuilder_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")                            PointerToUberGraphFrame         !@uber_graph_frame                               // Currently unsupported */
+&raw("Button_2")                                  Button                          !@button_2                                       // Button 2
+&raw("Button_6")                                  Button                          !@button_6                                       // Button 6
+&raw("CancelDeckOveride_Button")                  Button                          !@cancel_deck_overide_button                     // Cancel Deck Overide Button
+&raw("CardLibrarySearchAndFilters_HorizontalBox") HorizontalBox                   !@card_library_search_and_filters_horizontal_box // Card Library Search and Filters Horizontal Box
+&raw("CardRow_60")                                DeckBuilderCardRow              !@card_row_60                                    // Card Row 60
+&raw("CardRow_120")                               DeckBuilderCardRow              !@card_row_120                                   // Card Row 120
+&raw("CardRow_179")                               DeckBuilderCardRow              !@card_row_179                                   // Card Row 179
+&raw("Cards_Image")                               Image                           !@cards_image                                    // Cards Image
+&raw("CardSetSelectionButton_43")                 DeckBuilder_CardSetButton       !@card_set_selection_button_43                   // Card Set Selection Button 43
+&raw("CardSetSelectionButton_67")                 DeckBuilder_CardSetButton       !@card_set_selection_button_67                   // Card Set Selection Button 67
+&raw("CardSetSelectionButton_95")                 DeckBuilder_CardSetButton       !@card_set_selection_button_95                   // Card Set Selection Button 95
+&raw("CardSetSelectionButtons_HorizontalBox")     HorizontalBox                   !@card_set_selection_buttons_horizontal_box      // Card Set Selection Buttons Horizontal Box
+&raw("CardsInDeckTotal_Text")                     TextBlock                       !@cards_in_deck_total_text                       // Cards in Deck Total Text
+&raw("CircularFade_Image")                        Image                           !@circular_fade_image                            // Circular Fade Image
+&raw("ClearDeck_Button")                          Button                          !@clear_deck_button                              // Clear Deck Button
+&raw("CloseEditor_Button")                        Button                          !@close_editor_button                            // Close Editor Button
+&raw("CustomLoadDeck_Switcher")                   WidgetSwitcher                  !@custom_load_deck_switcher                      // Custom Load Deck Switcher
+&raw("DeckEmpty_Text")                            TextBlock                       !@deck_empty_text                                // Deck Empty Text
+&raw("DeckName_TextBox")                          EditableTextBox                 !@deck_name_text_box                             // Deck Name Text Box
+&raw("ExampleDeckRow")                            ExpandableDeckSelectionRow      !@example_deck_row                               // Example Deck Row
+&raw("ExampleDeckRow_2")                          ExpandableDeckSelectionRow      !@example_deck_row_2                             // Example Deck Row 2
+&raw("FilterType_Text")                           TextBlock                       !@filter_type_text                               // Filter Type Text
+&raw("FitlerWindow_624")                          CardLibraryFitlerWindow         !@fitler_window_624                              // Fitler Window 624
+&raw("Graph_Mana")                                DeckManaGraph                   !@graph_mana                                     // Graph Mana
+&raw("Image_0")                                   Image                           !@image_0                                        // Image 0
+&raw("Image_59")                                  Image                           !@image_59                                       // Image 59
+&raw("Image_229")                                 Image                           !@image_229                                      // Image 229
+&raw("Image_230")                                 Image                           !@image_230                                      // Image 230
+&raw("LibraryCard_1")                             LibraryCard                     !@library_card_1                                 // Library Card 1
+&raw("LibraryCard_2")                             LibraryCard                     !@library_card_2                                 // Library Card 2
+&raw("LibraryCard_3")                             LibraryCard                     !@library_card_3                                 // Library Card 3
+&raw("LibraryCard_4")                             LibraryCard                     !@library_card_4                                 // Library Card 4
+&raw("LibraryCard_5")                             LibraryCard                     !@library_card_5                                 // Library Card 5
+&raw("LibraryCard_6")                             LibraryCard                     !@library_card_6                                 // Library Card 6
+&raw("LibraryCard_7")                             LibraryCard                     !@library_card_7                                 // Library Card 7
+&raw("LibraryCard_8")                             LibraryCard                     !@library_card_8                                 // Library Card 8
+&raw("LibraryFilterOrderType_Button")             Button                          !@library_filter_order_type_button               // Library Filter Order Type Button
+&raw("ManaGraph_VerticalBox")                     VerticalBox                     !@mana_graph_vertical_box                        // Mana Graph Vertical Box
+&raw("ManGraph_SizeBox")                          SizeBox                         !@man_graph_size_box                             // Man Graph Size Box
+&raw("NoCardsAvailable_Text")                     TextBlock                       !@no_cards_available_text                        // No Cards Available Text
+&raw("NumberOfCardsinLibrary_Text")               TextBlock                       !@number_of_cardsin_library_text                 // Number Of Cardsin Library Text
+&raw("OverideDeck_Button")                        Button                          !@overide_deck_button                            // Overide Deck Button
+&raw("OverideDeckWindow_Border")                  Border                          !@overide_deck_window_border                     // Overide Deck Window Border
+&raw("PageLeft_Button")                           Button                          !@page_left_button                               // Page Left Button
+&raw("PageOfPage_Text")                           TextBlock                       !@page_of_page_text                              // Page Of Page Text
+&raw("PageRight_Button")                          Button                          !@page_right_button                              // Page Right Button
+&raw("Save_Button")                               Button                          !@save_button                                    // Save Button
+&raw("ScrollBox_0")                               ScrollBox                       !@scroll_box_0                                   // Scroll Box 0
+&raw("ScrollBox_1")                               ScrollBox                       !@scroll_box_1                                   // Scroll Box 1
+&raw("SearchBar_141")                             SearchBar                       !@search_bar_141                                 // Search Bar 141
+&raw("TextBlock_4")                               TextBlock                       !@text_block_4                                   // Text Block 4
+&raw("ToggleFilterWindow_Button")                 Button                          !@toggle_filter_window_button                    // Toggle Filter Window Button
+&raw("ToggleManaGraph_Button")                    Button                          !@toggle_mana_graph_button                       // Toggle Mana Graph Button
+&raw("Page")                                      Integer                         !@page                                           // The current page within the card library
+&raw("TotalPages")                                Integer                         !@total_pages                                    // The total number of pages in the card library that can be displayed with the current filters. 
+&raw("CardsPerPage")                              Integer                         !@cards_per_page                                 // The number of cards which are displayed in the library
+&raw("TotalCardsInDeck")                          Integer                         !@total_cards_in_deck                            // The total number of cards in the custom deck
+&raw("SelectedFilterType")                        SortingTypeFilter_Enum          !@selected_filter_type                           // How the cards should be sorted within the card library
+&raw("SelectedCardSet")                           CardSet_Enum                    !@selected_card_set                              // Which card set has been selected by the user to display. Empty will display all card within all sets within the library
+&raw("MinCardsInDeck")                            Integer                         !@min_cards_in_deck                              // Min Cards in Deck
+&raw("MaxCardsInDeck")                            Integer                         !@max_cards_in_deck                              // Max Cards in Deck
+&raw("bFilterUnlockedOnly")                       Boolean                         !@filter_unlocked_only?                          // Filter Unlocked Only
+&raw("bIncludeUnDeckableCards")                   Boolean                         !@include_un_deckable_cards?                     // Include Un Deckable Cards
+&raw("bFilterSpecialOnly")                        Boolean                         !@filter_special_only?                           // Filter Special Only
+&raw("bFilterHasAbilityOnly")                     Boolean                         !@filter_has_ability_only?                       // Filter Has Ability Only
+&raw("bFilterSortByManaCost")                     Boolean                         !@filter_sort_by_mana_cost?                      // Filter Sort by Mana Cost
+&raw("bDeckEditable")                             Boolean                         !@deck_editable?                                 // Is the current selected deck editable
+&raw("bCardListDisplayed")                        Boolean                         !@card_list_displayed?                           // Is a deck being editable and is the cards in the set displayed
+&raw("bNewDeck")                                  Boolean                         !@new_deck?                                      // Is the deck being edited a new deck?
+/* &raw("SaveGameName")                              None                            !@save_game_name                                 // Currently unsupported */
+/* &raw("DeckName")                                  None                            !@deck_name                                      // Currently unsupported */
+/* &raw("SearchBarResult")                           None                            !@search_bar_result                              // Currently unsupported */
+&raw("CardSetList")                               List{String}                    !@card_set_list                                  // Card Set List
+&raw("CustomDeckCardCount")                       List{Integer}                   !@custom_deck_card_count                         // Holds the number of each card that has been added to the deck. Works alongside the Custom Deck Array
+&raw("ValuesArray")                               List{Integer}                   !@values_array                                   // Values Array
+&raw("CardLibraryArray")                          List{Name}                      !@card_library_array                             // Card Library Array
+&raw("CustomDeckArray")                           List{Name}                      !@custom_deck_array                              // Holds which cards (by Names) have been added to the deck. The number of each card is saved in the Custom Deck Card Count array. 
+&raw("CompiledDeck")                              List{Name}                      !@compiled_deck                                  // The compiled deck which is saved
+&raw("Temp_NameArray")                            List{Name}                      !@temp_name_array                                // Temp Name Array
+&raw("CardLibraryArrayPreSearch")                 List{Name}                      !@card_library_array_pre_search                  // Card Library Array Pre Search
+&raw("Temp_PrebuiltDeck")                         List{Name}                      !@temp_prebuilt_deck                             // Temp Prebuilt Deck
+&raw("DeckRowWidgetList")                         List{DeckBuilderCardRow}        !@deck_row_widget_list                           // Deck Row Widget List
+&raw("DeckBuilderCardVisualArray")                List{LibraryCard}               !@deck_builder_card_visual_array                 // Deck Builder Card Visual Array
+&raw("CardSetSelection")                          List{DeckBuilder_CardSetButton} !@card_set_selection                             // Card Set Selection
+&raw("Deck_SaveGame")                             SaveGame                        !@deck_save_game                                 // Deck Save Game
+&raw("bIncludeHero")                              Boolean                         !@include_hero?                                  // Include Hero
+&raw("bIncludeCreature")                          Boolean                         !@include_creature?                              // Include Creature
+&raw("bIncludeSpell")                             Boolean                         !@include_spell?                                 // Include Spell
+&raw("bFilterTrap")                               Boolean                         !@filter_trap?                                   // Filter Trap
+&raw("bFilterAura")                               Boolean                         !@filter_aura?                                   // Filter Aura
+&raw("bIncludeWorrier")                           Boolean                         !@include_worrier?                               // Include Worrier
+&raw("bIncludeMage")                              Boolean                         !@include_mage?                                  // Include Mage
+&raw("bIncludeSpy")                               Boolean                         !@include_spy?                                   // Include Spy
+&raw("bIncludeObelisk")                           Boolean                         !@include_obelisk?                               // Include Obelisk
+&raw("bIncludeTrap")                              Boolean                         !@include_trap?                                  // Include Trap
+&raw("bIncludeAura")                              Boolean                         !@include_aura?                                  // Include Aura
+&raw("bIncludeBooster")                           Boolean                         !@include_booster?                               // Include Booster
+&raw("bIncludeCommon")                            Boolean                         !@include_common?                                // Include Common
+&raw("bIncludeUnCommon")                          Boolean                         !@include_un_common?                             // Include Un Common
+&raw("bIncludeRare")                              Boolean                         !@include_rare?                                  // Include Rare
+&raw("bIncludeUltraRare")                         Boolean                         !@include_ultra_rare?                            // Include Ultra Rare
+&raw("bIncludeLegendary")                         Boolean                         !@include_legendary?                             // Include Legendary
+&raw("ParentWidget_Ref")                          Widget                          !@parent_widget_ref                              // Parent Widget Ref
+
+$$ @generate_pre_built_developer_decks
+// Generate Pre Built Developer Decks
+//
+// UE4 name of this method: GeneratePreBuiltDeveloperDecks
+// Blueprint category: System
+
+&aka("GeneratePreBuiltDeveloperDecks")
+
+() 
+
+$$ @create_card_set_tabs
+// Create Card Set Tabs
+//
+// UE4 name of this method: CreateCardSetTabs
+// Blueprint category: System
+
+&aka("CreateCardSetTabs")
+
+() 
+
+$$ @create_new_custom_deck
+// Create New Custom Deck
+//
+// UE4 name of this method: CreateNewCustomDeck
+// Blueprint category: Create/LoadDeck
+
+&aka("CreateNewCustomDeck")
+
+() 
+
+$$ @custom_deck_lists
+// Get Custom Deck Lists
+//
+// UE4 name of this method: GetCustomDeckLists
+// Blueprint category: Create/LoadDeck
+
+&aka("GetCustomDeckLists")
+
+() 
+
+$$ @load_custom_deck
+// Load Custom Deck
+//
+// UE4 name of this method: LoadCustomDeck
+// Blueprint category: Create/LoadDeck
+
+&aka("LoadCustomDeck")
+
+(String load_set : "") 
+
+$$ @calculate_deck_mana_values
+// Calculate Deck Mana Values
+//
+// UE4 name of this method: CalculateDeckManaValues
+// Blueprint category: System
+
+&aka("CalculateDeckManaValues")
+
+(List{Integer} values_array : List{Integer}!) 
+
+$$ @collect_card_library
+// Collect Card Library
+//
+// UE4 name of this method: CollectCardLibrary
+// Blueprint category: CardLibrary
+
+&aka("CollectCardLibrary")
+
+(CardSet_Enum selection : CardSet_Enum.@@empty) 
+
+$$ @clear_custom_deck
+// Clear Custom Deck
+//
+// UE4 name of this method: ClearCustomDeck
+// Blueprint category: EditDeck
+
+&aka("ClearCustomDeck")
+
+() 
+
+$$ @save_deck
+// Save Deck
+//
+// UE4 name of this method: SaveDeck
+// Blueprint category: EditDeck
+
+&aka("SaveDeck")
+
+(Boolean overide_authority? : false) 
+
+$$ @setup_deck_builder_prerequisites
+// Setup Deck Builder Prerequisites
+//
+// UE4 name of this method: SetupDeckBuilderPrerequisites
+// Blueprint category: System
+
+&aka("SetupDeckBuilderPrerequisites")
+
+() 
+
+$$ @return_preview
+// Return Preview
+//
+// UE4 name of this method: ReturnPreview
+
+&aka("ReturnPreview")
+
+(Boolean preview_enabled? : false) 
+
+$$ @return_deck_selection
+// Return Deck Selection
+//
+// UE4 name of this method: ReturnDeckSelection
+
+&aka("ReturnDeckSelection")
+
+(String deck_selection : "") 
+
+$$ @update_library
+// Update Library
+//
+// UE4 name of this method: UpdateLibrary
+
+&aka("UpdateLibrary")
+
+() 
+
+$$ @current_page_set
+// Set Current Page
+//
+// UE4 name of this method: SetCurrentPage
+
+&aka("SetCurrentPage")
+
+(Integer page : 0) 
+
+$$ @return_card_set
+// Return Card Set
+//
+// UE4 name of this method: ReturnCardSet
+
+&aka("ReturnCardSet")
+
+(CardSet_Enum card_set : CardSet_Enum.@@empty) 
+
+$$ @return_option
+// Return Option
+//
+// UE4 name of this method: ReturnOption
+
+&aka("ReturnOption")
+
+(CardRowOptions option         : CardRowOptions.@@none
+ String         card_set       : ""
+ Widget         calling_widget : Widget!null) 
+
+$$ @event_create_custom_deck
+// Event Create Custom Deck
+//
+// UE4 name of this method: Event_CreateCustomDeck
+
+&aka("Event_CreateCustomDeck")
+
+() 
+
+$$ .

@@ -1,0 +1,116 @@
+// Evaluation Rules Function Library
+//
+// UE4 name of this class: EvaluationRules_FunctionLibrary_C
+
+// UE4 Asset Name: EvaluationRules_FunctionLibrary
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIPointsAllocation/EvaluationRules_FunctionLibrary"
+
+annotations: &reflected_data &name("EvaluationRules_FunctionLibrary_C")
+
+$$ @
+
+$$ @@rule_calculate_owned_card_ability_point_offset
+// Rule Calculate Owned Card Ability Point Offset
+//
+// UE4 name of this method: RuleCalculateOwnedCardAbilityPointOffset
+
+&aka("RuleCalculateOwnedCardAbilityPointOffset")
+
+(Sk3DCard talking_card            : Sk3DCard!null
+ Sk3DCard recieving_card          : Sk3DCard!null
+ Entity   world_context           : Entity!null
+ Integer  points                  : 0
+ Boolean  beneficial_interaction? : false) 
+
+$$ @@rule_calculate_additional_ability_point_offset
+// Rule Calculate Additional Ability Point Offset
+//
+// UE4 name of this method: RuleCalculateAdditionalAbilityPointOffset
+
+&aka("RuleCalculateAdditionalAbilityPointOffset")
+
+(Sk3DCard talking_card   : Sk3DCard!null
+ Sk3DCard recieving_card : Sk3DCard!null
+ Entity   world_context  : Entity!null
+ Integer  points         : 0) 
+
+$$ @@rule_calculate_damage_to_player_points
+// Rule Calculate Damage to Player Points
+//
+// UE4 name of this method: RuleCalculateDamageToPlayerPoints
+
+&aka("RuleCalculateDamageToPlayerPoints")
+
+(Integer add                     : 0
+ Integer pts_for_player_damage   : 0
+ Integer pts_for_removing_player : 0
+ Integer card_attack             : 0
+ Integer player_health           : 0
+ Entity  world_context           : Entity!null
+ Integer total                   : 0
+ Integer rule_total              : 0
+ Boolean removed_from_play?      : false) 
+
+$$ @@rule_calculate_attack_points
+// Rule Calculate Attack Points
+//
+// UE4 name of this method: RuleCalculateAttackPoints
+
+&aka("RuleCalculateAttackPoints")
+
+(Integer add                             : 0
+ Integer pts_for_damage                  : 0
+ Integer pts_for_removing_card_from_play : 0
+ Integer attack                          : 0
+ Integer health                          : 0
+ Integer card_value                      : 0
+ Boolean include_card_value?             : false
+ Entity  world_context                   : Entity!null
+ Integer total                           : 0
+ Integer rule_total                      : 0
+ Boolean removed_from_play?              : false) 
+
+$$ @@rule_calculate_health_points
+// Rule Calculate Health Points
+//
+// UE4 name of this method: RuleCalculateHealthPoints
+
+&aka("RuleCalculateHealthPoints")
+
+(Integer add                  : 0
+ Integer pts_per_health_point : 0
+ Integer player_health        : 0
+ Entity  world_context        : Entity!null
+ Integer total                : 0
+ Integer rule_total           : 0) 
+
+$$ @@rule_calculate_cards_in_hand_points
+// Rule Calculate Cards in Hand Points
+//
+// UE4 name of this method: RuleCalculateCardsInHandPoints
+
+&aka("RuleCalculateCardsInHandPoints")
+
+(Integer add                : 0
+ Integer pts_per_cardn_hand : 0
+ Integer cards_in_hand      : 0
+ Entity  world_context      : Entity!null
+ Integer total              : 0
+ Integer rule_total         : 0) 
+
+$$ @@rule_calculate_active_card_points
+// Rule Calculate Active Card Points
+//
+// UE4 name of this method: RuleCalculateActiveCardPoints
+
+&aka("RuleCalculateActiveCardPoints")
+
+(Integer        add                 : 0
+ Integer        pts_per_active_card : 0
+ List{Sk3DCard} cards_active        : List{Sk3DCard}!
+ Boolean        include_play_value? : false
+ Entity         world_context       : Entity!null
+ Integer        total               : 0
+ Integer        rule_total          : 0) 
+
+$$ .

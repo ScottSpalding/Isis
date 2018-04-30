@@ -1,0 +1,41 @@
+// Card Interaction Interface
+//
+// UE4 name of this class: CardInteraction_Interface_C
+
+// UE4 Asset Name: CardInteraction_Interface
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Interface/CardInteraction_Interface"
+
+annotations: &reflected_data &name("CardInteraction_Interface_C")
+
+$$ @
+
+$$ @on_end_active_player_turn
+// On End Active Player Turn
+//
+// UE4 name of this method: OnEndActivePlayerTurn
+
+&aka("OnEndActivePlayerTurn")
+
+() 
+
+$$ @on_active_player_turn
+// On Active Player Turn
+//
+// UE4 name of this method: OnActivePlayerTurn
+
+&aka("OnActivePlayerTurn")
+
+() 
+
+$$ @takes_damage
+// Takes Damage
+//
+// UE4 name of this method: TakesDamage
+
+&aka("TakesDamage")
+
+(Sk3DCard dealing_card  : Sk3DCard!null
+ Integer  damage_attack : 0
+ Integer  damage_health : 0) 
+
+$$ .

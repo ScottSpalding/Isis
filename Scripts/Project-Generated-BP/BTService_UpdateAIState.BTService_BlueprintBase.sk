@@ -1,0 +1,14 @@
+// BTService Update AIState
+//
+// UE4 name of this class: BTService_UpdateAIState_C
+
+// UE4 Asset Name: BTService_UpdateAIState
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIBlueprints/Services/BTService_UpdateAIState"
+
+annotations: &reflected_data &name("BTService_UpdateAIState_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
+
+$$ .

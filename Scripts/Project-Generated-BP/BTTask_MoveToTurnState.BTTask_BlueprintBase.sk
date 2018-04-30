@@ -1,0 +1,17 @@
+// BTTask Move to Turn State
+//
+// UE4 name of this class: BTTask_MoveToTurnState_C
+
+// UE4 Asset Name: BTTask_MoveToTurnState
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIBlueprints/Tasks/BTTask_MoveToTurnState"
+
+annotations: &reflected_data &name("BTTask_MoveToTurnState_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")           PointerToUberGraphFrame !@uber_graph_frame           // Currently unsupported */
+&raw("CardGameAIController_Ref") CardGameAIController  !@card_game_aicontroller_ref // Card Game AIController Ref
+&raw("AITurnState")              BlackboardKeySelector !@aiturn_state               // AITurn State
+&raw("MoveToAITurnState")        AITurnState_Enum      !@move_to_aiturn_state       // Move to AITurn State
+
+$$ .

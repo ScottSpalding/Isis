@@ -1,0 +1,28 @@
+// Notification Message
+//
+// UE4 name of this class: NotificationMessage_C
+
+// UE4 Asset Name: NotificationMessage
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Additional/NotificationMessage"
+
+annotations: &reflected_data &name("NotificationMessage_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")   PointerToUberGraphFrame !@uber_graph_frame  // Currently unsupported */
+&raw("OnLogBegin")       WidgetAnimation !@on_log_begin      // On Log Begin
+&raw("Message_Text")     TextBlock       !@message_text      // Message Text
+&raw("WidgetParent_Ref") Widget          !@widget_parent_ref // Widget Parent Ref
+
+$$ @log_message
+// Log Message
+//
+// UE4 name of this method: LogMessage
+
+&aka("LogMessage")
+
+(String message           : ""
+ Color  specified_color   : Color!
+ Widget widget_parent_ref : Widget!null) 
+
+$$ .

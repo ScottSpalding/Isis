@@ -1,0 +1,12 @@
+// Card Game Camera
+//
+// UE4 name of this class: CardGameCamera_C
+
+// UE4 Asset Name: CardGameCamera
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/CardGameCamera"
+
+annotations: &reflected_data &name("CardGameCamera_C")
+
+$$ @
+
+$$ .

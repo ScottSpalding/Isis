@@ -1,0 +1,20 @@
+// BTTask Initialize AIPlayer Turn
+//
+// UE4 name of this class: BTTask_InitializeAIPlayerTurn_C
+
+// UE4 Asset Name: BTTask_InitializeAIPlayerTurn
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIBlueprints/Tasks/BTTask_InitializeAIPlayerTurn"
+
+annotations: &reflected_data &name("BTTask_InitializeAIPlayerTurn_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")        PointerToUberGraphFrame !@uber_graph_frame      // Currently unsupported */
+&raw("AIController_Ref")      CardGameAIController !@aicontroller_ref      // AIController Ref
+&raw("AIPawn_Ref")            CardGameAI_Pawn      !@aipawn_ref            // AIPawn Ref
+&raw("bInteractionPerformed") Name                 !@interaction_performed // B Interaction Performed
+&raw("CardsPlayedInTurn")     Name                 !@cards_played_in_turn  // Cards Played in Turn
+&raw("Loop")                  Name                 !@loop                  // Loop
+&raw("bCardPlayed")           Name                 !@card_played           // B Card Played
+
+$$ .

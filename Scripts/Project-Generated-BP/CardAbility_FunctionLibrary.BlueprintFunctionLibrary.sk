@@ -1,0 +1,158 @@
+// Card Ability Function Library
+//
+// UE4 name of this class: CardAbility_FunctionLibrary_C
+
+// UE4 Asset Name: CardAbility_FunctionLibrary
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/FunctionLibraries/CardAbility_FunctionLibrary"
+
+annotations: &reflected_data &name("CardAbility_FunctionLibrary_C")
+
+$$ @
+
+$$ @@ability_change_in_hand_card_owner
+// Ability - Change in- Hand Card Owner
+//
+// UE4 name of this method: Ability - Change In-Hand Card Owner
+
+&aka("Ability - Change In-Hand Card Owner")
+
+(Sk3DCard calling_card  : Sk3DCard!null
+ Integer  ability_index : 0
+ Entity   world_context : Entity!null) 
+
+$$ @@ability_change_played_card_owner
+// Ability - Change Played Card Owner
+//
+// UE4 name of this method: Ability - Change Played Card Owner
+
+&aka("Ability - Change Played Card Owner")
+
+(Sk3DCard calling_card  : Sk3DCard!null
+ Integer  ability_index : 0
+ Entity   world_context : Entity!null) 
+
+$$ @@ability_pickup_cards_from_graveyard
+// Ability - Pickup Cards From Graveyard
+//
+// UE4 name of this method: Ability - Pickup Cards from graveyard
+
+&aka("Ability - Pickup Cards from graveyard")
+
+(Sk3DCard     calling_card           : Sk3DCard!null
+ Integer      ability_index          : 0
+ Boolean      add_directly_to_board? : false
+ CardTypeEnum card_type              : CardTypeEnum.@@none
+ Entity       world_context          : Entity!null) 
+
+$$ @@ability_discard_random_card_s_from_hand
+// Ability - Discard Random Card(S) from Hand
+//
+// UE4 name of this method: Ability - Discard Random Card(s) From Hand
+
+&aka("Ability - Discard Random Card(s) From Hand")
+
+(Sk3DCard calling_card  : Sk3DCard!null
+ Integer  ability_index : 0
+ Entity   world_context : Entity!null) 
+
+$$ @@ability_increase_turn_points
+// Ability - Increase Turn Points
+//
+// UE4 name of this method: Ability - Increase Turn Points
+
+&aka("Ability - Increase Turn Points")
+
+(Sk3DCard calling_card  : Sk3DCard!null
+ Integer  ability_index : 0
+ Entity   world_context : Entity!null) 
+
+$$ @@ability_give_turn_points_to_all_active_cards
+// Ability - Give Turn Points To All Active Cards
+//
+// UE4 name of this method: Ability - Give Turn Points to All Active Cards
+
+&aka("Ability - Give Turn Points to All Active Cards")
+
+(Sk3DCard calling_card  : Sk3DCard!null
+ Integer  ability_index : 0
+ Entity   world_context : Entity!null) 
+
+$$ @@ability_spawn_random_card_s_from_deck
+// Ability - Spawn Random Card(S) From Deck
+//
+// UE4 name of this method: Ability - Spawn Random Card(s) from Deck
+
+&aka("Ability - Spawn Random Card(s) from Deck")
+
+(Sk3DCard calling_card  : Sk3DCard!null
+ Integer  ability_index : 0
+ Entity   world_context : Entity!null) 
+
+$$ @@ability_damage_all_cards_on_board
+// Ability - Damage All Cards On Board
+//
+// UE4 name of this method: Ability - Damage All Cards on Board
+
+&aka("Ability - Damage All Cards on Board")
+
+(Sk3DCard calling_card  : Sk3DCard!null
+ Integer  ability_index : 0
+ Entity   world_context : Entity!null) 
+
+$$ @@ability_deal_retaliation_damage
+// Ability - Deal Retaliation Damage
+//
+// UE4 name of this method: Ability - Deal Retaliation Damage
+
+&aka("Ability - Deal Retaliation Damage")
+
+(Sk3DCard calling_card  : Sk3DCard!null
+ Integer  ability_index : 0
+ Entity   world_context : Entity!null) 
+
+$$ @@ability_increase_player_health
+// Ability - Increase Player Health
+//
+// UE4 name of this method: Ability - Increase Player Health
+
+&aka("Ability - Increase Player Health")
+
+(Sk3DCard calling_card  : Sk3DCard!null
+ Integer  ability_index : 0
+ Entity   world_context : Entity!null) 
+
+$$ @@ability_clone_card
+// Ability - Clone Card
+//
+// UE4 name of this method: Ability - Clone Card
+
+&aka("Ability - Clone Card")
+
+(Sk3DCard calling_card      : Sk3DCard!null
+ Integer  ability_index     : 0
+ Boolean  random_placement? : false
+ Entity   world_context     : Entity!null) 
+
+$$ @@ability_increase_attack
+// Ability - Increase Attack
+//
+// UE4 name of this method: Ability - Increase Attack
+
+&aka("Ability - Increase Attack")
+
+(Sk3DCard calling_card  : Sk3DCard!null
+ Integer  ability_index : 0
+ Entity   world_context : Entity!null) 
+
+$$ @@ability_draw_card_s_
+// Ability - Draw Card(S) 
+//
+// UE4 name of this method: Ability - Draw Card(s) 
+
+&aka("Ability - Draw Card(s) ")
+
+(Sk3DCard calling_card  : Sk3DCard!null
+ Integer  ability_index : 0
+ Entity   world_context : Entity!null) 
+
+$$ .

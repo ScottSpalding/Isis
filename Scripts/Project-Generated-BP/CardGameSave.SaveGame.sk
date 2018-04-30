@@ -1,0 +1,14 @@
+// Card Game Save
+//
+// UE4 name of this class: CardGameSave_C
+
+// UE4 Asset Name: CardGameSave
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/SaveGame/CardGameSave"
+
+annotations: &reflected_data &name("CardGameSave_C")
+
+$$ @
+
+&raw("DeckList") List{String} !@deck_list // Deck List
+
+$$ .

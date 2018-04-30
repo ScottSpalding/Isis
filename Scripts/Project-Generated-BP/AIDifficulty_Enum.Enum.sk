@@ -1,0 +1,30 @@
+// AIDifficulty Enum
+//
+// UE4 name of this enum: AIDifficulty_Enum
+
+// UE4 Asset Name: AIDifficulty_Enum
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIPersonality/AIDifficulty_Enum"
+
+annotations: &reflected_data &name("AIDifficulty_Enum")
+
+$$ @@
+
+AIDifficulty_Enum !@@easy
+AIDifficulty_Enum !@@normal
+AIDifficulty_Enum !@@hard
+AIDifficulty_Enum !@@aidifficulty_max
+
+$$ @@!
+// AIDifficulty_Enum
+// EnumPath: /Game/CCGToolkit/CardGameAI/AIPersonality/AIDifficulty_Enum.AIDifficulty_Enum
+
+()
+
+  [
+  @@easy:             AIDifficulty_Enum!int(0)
+  @@normal:           AIDifficulty_Enum!int(1)
+  @@hard:             AIDifficulty_Enum!int(2)
+  @@aidifficulty_max: AIDifficulty_Enum!int(3)
+  ]
+
+$$ .

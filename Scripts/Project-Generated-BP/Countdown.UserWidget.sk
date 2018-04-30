@@ -1,0 +1,15 @@
+// Countdown
+//
+// UE4 name of this class: Countdown_C
+
+// UE4 Asset Name: Countdown
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Additional/Countdown"
+
+annotations: &reflected_data &name("Countdown_C")
+
+$$ @
+
+&raw("Timer_Text") TextBlock !@timer_text // Timer Text
+&raw("Timer")      Integer   !@timer      // Timer
+
+$$ .

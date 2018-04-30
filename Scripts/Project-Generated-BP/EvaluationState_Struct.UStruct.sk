@@ -1,0 +1,29 @@
+// Evaluation State Struct
+//
+// UE4 name of this struct: EvaluationState_Struct
+
+// UE4 Asset Name: EvaluationState_Struct
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIPointsAllocation/EvaluationState_Struct"
+
+annotations: &reflected_data &name("EvaluationState_Struct")
+
+$$ @
+
+&raw("Board_State_Comp_Value_6_5CC9EAB84E1F92680BD455930C9FC759")   Real !@board_state_comp_value_6_5cc9   // Board State Comp Value
+&raw("In_Hand_State_Comp_Value_8_969FD8144B96DA16D5A21AA327AA8B5F") Real !@in_hand_state_comp_value_8_969f // In Hand State Comp Value
+&raw("Health_Comp_Value_11_9BCE26C84AF0F55C1395EDA7E18B658E")       Real !@health_comp_value_11_9bce       // Health Comp Value
+&raw("Total_12_22288B7F48635999C4E002B91F0C3698")                   Real !@total_12_2228                   // Total
+
+$$ @!
+() EvaluationState_Struct
+
+$$ @!copy
+(EvaluationState_Struct other) EvaluationState_Struct
+
+$$ @assign
+(EvaluationState_Struct other) EvaluationState_Struct
+
+$$ @!!
+() EvaluationState_Struct
+
+$$ .

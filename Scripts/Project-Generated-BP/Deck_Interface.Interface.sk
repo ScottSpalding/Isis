@@ -1,0 +1,23 @@
+// Deck Interface
+//
+// UE4 name of this class: Deck_Interface_C
+
+// UE4 Asset Name: Deck_Interface
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Interface/Deck_Interface"
+
+annotations: &reflected_data &name("Deck_Interface_C")
+
+$$ @
+
+$$ @remove_card_from_deck
+// Remove Card from Deck
+//
+// UE4 name of this method: RemoveCardFromDeck
+
+&aka("RemoveCardFromDeck")
+
+(Boolean remove_all?     : false
+ Integer index_to_remove : 0
+ Boolean success?        : false) 
+
+$$ .

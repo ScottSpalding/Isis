@@ -1,0 +1,11 @@
+// Base class for blueprint based service nodes. Do NOT use it for creating native c++ classes!
+// 
+// When service receives Deactivation event, all latent actions associated this instance are being removed.
+// This prevents from resuming activity started by Activation, but does not handle external events.
+// Please use them safely (unregister at abort) and call IsServiceActive() when in doubt.
+//
+// UE4 name of this class: BTService_BlueprintBase
+
+annotations: &reflected_cpp &name("BTService_BlueprintBase")
+
+$$ .

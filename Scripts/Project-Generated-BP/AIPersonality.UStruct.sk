@@ -1,0 +1,31 @@
+// AIPersonality
+//
+// UE4 name of this struct: AIPersonality
+
+// UE4 Asset Name: AIPersonality
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIPersonality/AIPersonality"
+
+annotations: &reflected_data &name("AIPersonality")
+
+$$ @
+
+&raw("AI_Name_39_0DFA5F0F4D69F4FD052AB48DBA9D7CD0")              Name                          !@ai_name_39_0dfa              // AI Name
+&raw("AI_Points_Allocation_29_AB6140DF40E9D17BAC15F7BAA30E0D43") Name                          !@ai_points_allocation_29_ab61 // AI Points Allocation
+&raw("Difficulty_7_F8FB26114DC79FCEB73FE8B21D79FF7B")            AIDifficulty_Enum             !@difficulty_7_f8fb            // The difficulty of the AI
+&raw("Play_Speed_9_44AC5905430C3D574E75259D2423E140")            Real                          !@play_speed_9_44ac            // How fast the AI will play during its turn. (0.0 - 2.0)
+&raw("Personality_Focus_36_B2C0FAEC4A6ACC174E807A8146D7A129")    List{AIPersonalityFocus_Enum} !@personality_focus_36_b2c0    // Personality traits which the AI will base its decisions on. 
+&raw("Playable_Decks_26_5682B2AA43C9B3C1A9D0EAA8A7F67515")       List{Name}                    !@playable_decks_26_5682       // Determines which decks the AI can choose from. 
+
+$$ @!
+() AIPersonality
+
+$$ @!copy
+(AIPersonality other) AIPersonality
+
+$$ @assign
+(AIPersonality other) AIPersonality
+
+$$ @!!
+() AIPersonality
+
+$$ .

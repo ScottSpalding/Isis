@@ -1,0 +1,38 @@
+// Ability Trigger Enum
+//
+// UE4 name of this enum: AbilityTrigger_Enum
+
+// UE4 Asset Name: AbilityTrigger_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/AbilityTrigger_Enum"
+
+annotations: &reflected_data &name("AbilityTrigger_Enum")
+
+$$ @@
+
+AbilityTrigger_Enum !@@none
+AbilityTrigger_Enum !@@on_drop
+AbilityTrigger_Enum !@@start_of_turn
+AbilityTrigger_Enum !@@end_of_turn
+AbilityTrigger_Enum !@@takes_damage
+AbilityTrigger_Enum !@@sent_to_graveyard
+AbilityTrigger_Enum !@@death_by_life_expectancy
+AbilityTrigger_Enum !@@ability_trigger_max
+
+$$ @@!
+// AbilityTrigger_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/AbilityTrigger_Enum.AbilityTrigger_Enum
+
+()
+
+  [
+  @@none:                     AbilityTrigger_Enum!int(0)
+  @@on_drop:                  AbilityTrigger_Enum!int(1)
+  @@start_of_turn:            AbilityTrigger_Enum!int(2)
+  @@end_of_turn:              AbilityTrigger_Enum!int(3)
+  @@takes_damage:             AbilityTrigger_Enum!int(4)
+  @@sent_to_graveyard:        AbilityTrigger_Enum!int(5)
+  @@death_by_life_expectancy: AbilityTrigger_Enum!int(6)
+  @@ability_trigger_max:      AbilityTrigger_Enum!int(7)
+  ]
+
+$$ .

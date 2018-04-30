@@ -1,0 +1,28 @@
+// Play Type Enum
+//
+// UE4 name of this enum: PlayType_Enum
+
+// UE4 Asset Name: PlayType_Enum
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIPlaysData/PlayType_Enum"
+
+annotations: &reflected_data &name("PlayType_Enum")
+
+$$ @@
+
+PlayType_Enum !@@attack_card
+PlayType_Enum !@@attack_player
+PlayType_Enum !@@play_type_max
+
+$$ @@!
+// PlayType_Enum
+// EnumPath: /Game/CCGToolkit/CardGameAI/AIPlaysData/PlayType_Enum.PlayType_Enum
+
+()
+
+  [
+  @@attack_card:   PlayType_Enum!int(0)
+  @@attack_player: PlayType_Enum!int(1)
+  @@play_type_max: PlayType_Enum!int(2)
+  ]
+
+$$ .

@@ -1,0 +1,17 @@
+// BTTask Wait CCG
+//
+// UE4 name of this class: BTTask_WaitCCG_C
+
+// UE4 Asset Name: BTTask_WaitCCG
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIBlueprints/Tasks/BTTask_WaitCCG"
+
+annotations: &reflected_data &name("BTTask_WaitCCG_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")  PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
+&raw("bEnableWait")     BlackboardKeySelector !@enable_wait      // B Enable Wait
+&raw("WaitTime")        BlackboardKeySelector !@wait_time        // Wait Time
+&raw("RandomDeviation") Real                  !@random_deviation // Random Deviation
+
+$$ .

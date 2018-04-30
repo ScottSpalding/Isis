@@ -1,0 +1,89 @@
+// Card Function Library
+//
+// UE4 name of this class: Card_FunctionLibrary_C
+
+// UE4 Asset Name: Card_FunctionLibrary
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/FunctionLibraries/Card_FunctionLibrary"
+
+annotations: &reflected_data &name("Card_FunctionLibrary_C")
+
+$$ @
+
+$$ @@has_ability
+// Has Ability
+//
+// UE4 name of this method: HasAbility
+
+&aka("HasAbility")
+
+(Sk3DCard            card          : Sk3DCard!null
+ AbilityType_Enum    ability       : AbilityType_Enum.@@none
+ AbilityTrigger_Enum trigger       : AbilityTrigger_Enum.@@none
+ Entity              world_context : Entity!null
+ Boolean             has_ability?  : false) 
+
+$$ @@charge_card_mana_cost
+// Charge Card Mana Cost
+//
+// UE4 name of this method: ChargeCardManaCost
+
+&aka("ChargeCardManaCost")
+
+(Integer          player_id         : 0
+ Boolean          skip_mana_check?  : false
+ Card_Struct      card_struct       : Card_Struct!
+ ManaAccount_Enum account_to_charge : ManaAccount_Enum.@@none
+ Entity           world_context     : Entity!null
+ Boolean          mana_cost_valid?  : false
+ Integer          cost              : 0) 
+
+$$ @@filter_cards_with_turn_points
+// Filter Cards with Turn Points
+//
+// UE4 name of this method: FilterCardsWithTurnPoints
+
+&aka("FilterCardsWithTurnPoints")
+
+(List{Sk3DCard}     card_array        : List{Sk3DCard}!
+ List{CardTypeEnum} valid_card_types  : NewEnumerator8
+ Entity             world_context     : Entity!null
+ List{Sk3DCard}     return_card_array : List{Sk3DCard}!) 
+
+$$ @@card_reference_from_id
+// Get Card Reference from ID
+//
+// UE4 name of this method: GetCardReferenceFromID
+
+&aka("GetCardReferenceFromID")
+
+(Integer  card_id       : 0
+ Entity   world_context : Entity!null
+ Sk3DCard return_card   : Sk3DCard!null
+ Boolean  valid?        : false) 
+
+$$ @@custom_card_data_set
+// Set Custom Card Data
+//
+// UE4 name of this method: SetCustomCardData
+
+&aka("SetCustomCardData")
+
+(Sk3DCard p3dcard         : Sk3DCard!null
+ Boolean  ability_active? : false
+ Integer  turn_points     : 0
+ Entity   world_context   : Entity!null) 
+
+$$ @@add_card_to_board_placement
+// Add Card to Board Placement
+//
+// UE4 name of this method: AddCardToBoardPlacement
+
+&aka("AddCardToBoardPlacement")
+
+(Sk3DCard      add_card         : Sk3DCard!null
+ CardPlacement goal_placement   : CardPlacement!null
+ Integer       owning_player_id : 0
+ Entity        world_context    : Entity!null
+ Boolean       card_success?    : false) 
+
+$$ .

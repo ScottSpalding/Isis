@@ -1,0 +1,111 @@
+// Controller Function Library
+//
+// UE4 name of this class: Controller_FunctionLibrary_C
+
+// UE4 Asset Name: Controller_FunctionLibrary
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/FunctionLibraries/Controller_FunctionLibrary"
+
+annotations: &reflected_data &name("Controller_FunctionLibrary_C")
+
+$$ @
+
+$$ @@opponent_id_server_only_
+// Get Opponent ID(Server Only)
+//
+// UE4 name of this method: GetOpponentID(ServerOnly)
+
+&aka("GetOpponentID(ServerOnly)")
+
+(Integer player_id     : 0
+ Entity  world_context : Entity!null
+ Integer oppenent      : 0) 
+
+$$ @@replicated_player_state
+// Get Replicated Player State
+//
+// UE4 name of this method: GetReplicatedPlayerState
+
+&aka("GetReplicatedPlayerState")
+
+(Integer player_id     : 0
+ Entity  world_context : Entity!null
+ String  player_name   : ""
+ Integer health        : 0
+ Integer mana          : 0
+ Integer mana_max      : 0
+ Integer cards_in_hand : 0
+ Integer cards_in_deck : 0
+ Integer player_turn   : 0) 
+
+$$ @@controller_player_state_server_only_
+// Get Controller Player State(Server Only)
+//
+// UE4 name of this method: GetControllerPlayerState(ServerOnly)
+
+&aka("GetControllerPlayerState(ServerOnly)")
+
+(Integer controller_id           : 0
+ Entity  world_context           : Entity!null
+ Actor   replicated_player_state : Actor!null) 
+
+$$ @@controller_idfor_both_players_server_only_
+// Get Controller IDFor Both Players(Server Only)
+//
+// UE4 name of this method: GetControllerIDForBothPlayers(ServerOnly)
+
+&aka("GetControllerIDForBothPlayers(ServerOnly)")
+
+(Controller controller    : Controller!null
+ Entity     world_context : Entity!null
+ Integer    self_player   : 0
+ Integer    oppenent      : 0) 
+
+$$ @@controller_reference_from_id_server_only_
+// Get Controller Reference from ID(Server Only)
+//
+// UE4 name of this method: GetControllerReferenceFromID(ServerOnly)
+
+&aka("GetControllerReferenceFromID(ServerOnly)")
+
+(Integer    controller_id : 0
+ Entity     world_context : Entity!null
+ Controller controller    : Controller!null) 
+
+$$ @@ai_controller_reference_server_only_
+// Get Ai Controller Reference(Server Only)
+//
+// UE4 name of this method: GetAiControllerReference(ServerOnly)
+
+&aka("GetAiControllerReference(ServerOnly)")
+
+(Controller           controller              : Controller!null
+ Entity               world_context           : Entity!null
+ CardGameAIController card_game_ai_controller : CardGameAIController!null
+ CardGameAI_Pawn      card_game_ai_pawn       : CardGameAI_Pawn!null
+ Boolean              valid?                  : false) 
+
+$$ @@player_controller_reference_server_only_
+// Get Player Controller Reference(Server Only)
+//
+// UE4 name of this method: GetPlayerControllerReference(ServerOnly)
+
+&aka("GetPlayerControllerReference(ServerOnly)")
+
+(Controller               controller                  : Controller!null
+ Entity                   world_context               : Entity!null
+ CardGamePlayerController card_game_player_controller : CardGamePlayerController!null
+ CardGamePlayerState      card_game_player_state      : CardGamePlayerState!null
+ Boolean                  valid?                      : false) 
+
+$$ @@controller_id_server_only_
+// Get Controller ID(Server Only)
+//
+// UE4 name of this method: GetControllerID(ServerOnly)
+
+&aka("GetControllerID(ServerOnly)")
+
+(Controller controller    : Controller!null
+ Entity     world_context : Entity!null
+ Integer    id            : 0) 
+
+$$ .

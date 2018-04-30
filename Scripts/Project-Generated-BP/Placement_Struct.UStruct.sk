@@ -1,0 +1,29 @@
+// Placement Struct
+//
+// UE4 name of this struct: Placement_Struct
+
+// UE4 Asset Name: Placement_Struct
+// UE4 Package Name: "/Game/CCGToolkit/CardGame/Structs/CardStructs/Placement_Struct"
+
+annotations: &reflected_data &name("Placement_Struct")
+
+$$ @
+
+&raw("Owner_21_841D0A8443689212057316987D13FFEF")          Players_Enum   !@owner_21_841d           // The card placements owner which it can be placed upon
+&raw("Mana_Cost_16_6632B86B44B85FB66783DDB2B2249BEE")      Integer        !@mana_cost_16_6632       // Mana cost for placing this card on the board
+&raw("Entry_Particle_17_C9D4C60A45F292FA979B2583ECB23232") ParticleSystem !@entry_particle_17_c9d4  // Entry Particle
+&raw("Entry_SoundCue_18_74CC807248F6FD6DDC850695E954B4CF") SoundCue       !@entry_sound_cue_18_74cc // Entry Sound Cue
+
+$$ @!
+() Placement_Struct
+
+$$ @!copy
+(Placement_Struct other) Placement_Struct
+
+$$ @assign
+(Placement_Struct other) Placement_Struct
+
+$$ @!!
+() Placement_Struct
+
+$$ .

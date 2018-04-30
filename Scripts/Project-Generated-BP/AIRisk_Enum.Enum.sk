@@ -1,0 +1,30 @@
+// AIRisk Enum
+//
+// UE4 name of this enum: AIRisk_Enum
+
+// UE4 Asset Name: AIRisk_Enum
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIPersonality/AIRisk_Enum"
+
+annotations: &reflected_data &name("AIRisk_Enum")
+
+$$ @@
+
+AIRisk_Enum !@@low_risk
+AIRisk_Enum !@@average_risk
+AIRisk_Enum !@@high_risk
+AIRisk_Enum !@@airisk_max
+
+$$ @@!
+// AIRisk_Enum
+// EnumPath: /Game/CCGToolkit/CardGameAI/AIPersonality/AIRisk_Enum.AIRisk_Enum
+
+()
+
+  [
+  @@low_risk:     AIRisk_Enum!int(0)
+  @@average_risk: AIRisk_Enum!int(1)
+  @@high_risk:    AIRisk_Enum!int(2)
+  @@airisk_max:   AIRisk_Enum!int(3)
+  ]
+
+$$ .

@@ -1,0 +1,49 @@
+// Controller Interface
+//
+// UE4 name of this class: Controller_Interface_C
+
+// UE4 Asset Name: Controller_Interface
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Interface/Controller_Interface"
+
+annotations: &reflected_data &name("Controller_Interface_C")
+
+$$ @
+
+$$ @update_ui
+// Update UI
+//
+// UE4 name of this method: UpdateUI
+
+&aka("UpdateUI")
+
+() 
+
+$$ @end_player_turn
+// End Player Turn
+//
+// UE4 name of this method: EndPlayerTurn
+
+&aka("EndPlayerTurn")
+
+() 
+
+$$ @begin_player_turn
+// Begin Player Turn
+//
+// UE4 name of this method: BeginPlayerTurn
+
+&aka("BeginPlayerTurn")
+
+() 
+
+$$ @create_playable_card
+// Create Playable Card
+//
+// UE4 name of this method: CreatePlayableCard
+
+&aka("CreatePlayableCard")
+
+(Transform spawn_transform : Transform!
+ Sk3DCard  card_created    : Sk3DCard!null) 
+
+$$ .

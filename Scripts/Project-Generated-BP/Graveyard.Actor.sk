@@ -1,0 +1,72 @@
+// Graveyard
+//
+// UE4 name of this class: Graveyard_C
+
+// UE4 Asset Name: Graveyard
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Gameplay/Graveyard"
+
+annotations: &reflected_data &name("Graveyard_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")                PointerToUberGraphFrame !@uber_graph_frame                // Currently unsupported */
+&raw("Outline")                       StaticMeshComponent     !@outline                         // Outline
+&raw("PlayerRotationActor")           AutoRotateToPlayer      !@player_rotation_actor           // Player Rotation Actor
+&raw("CardPlacementPoint")            ArrowComponent          !@card_placement_point            // Card Placement Point
+&raw("SM_GraveyardMesh")              StaticMeshComponent     !@sm_graveyard_mesh               // SM Graveyard Mesh
+&raw("Graveyard_Text")                TextRenderComponent     !@graveyard_text                  // Graveyard Text
+&raw("CollisionBox")                  BoxComponent            !@collision_box                   // Collision Box
+&raw("DefaultSceneRoot")              SceneComponent          !@default_scene_root              // Default Scene Root
+&raw("OutlineDecal_MaterialInstance") MaterialInstanceDynamic !@outline_decal_material_instance // Scene decal Mat Instance. 
+&raw("Player_Index")                  Integer                 !@player_index                    // Which player index this graveyard belongs to. 
+&raw("ActorsInGraveyard")             List{Sk3DCard}          !@actors_in_graveyard             // An Array which holds all 3D Cards which have been sent to the graveyard.
+&raw("GraveyardList")                 List{Name}              !@graveyard_list                  // Graveyard List
+&raw("GraveyardStructList")           List{Card_Struct}       !@graveyard_struct_list           // Graveyard Struct List
+&raw("RemoveIndex")                   Integer                 !@remove_index                    // Remove Index
+
+$$ @recreate_top_graveyard_card_actor
+// Recreate Top Graveyard Card Actor
+//
+// UE4 name of this method: RecreateTopGraveyardCardActor
+
+&aka("RecreateTopGraveyardCardActor")
+
+() 
+
+$$ @card_in_graveyard_location
+// Get Card in Graveyard Location
+//
+// UE4 name of this method: GetCardInGraveyardLocation
+
+&aka("GetCardInGraveyardLocation")
+
+(Integer add : 0) Vector3
+
+$$ @hide_unseen_cards_in_graveyard
+// Hide Unseen Cards in Graveyard
+//
+// UE4 name of this method: HideUnseenCardsInGraveyard
+
+&aka("HideUnseenCardsInGraveyard")
+
+() 
+
+$$ @scale_card_graveyard_static_mesh
+// Scale Card Graveyard Static Mesh
+//
+// UE4 name of this method: ScaleCardGraveyardStaticMesh
+
+&aka("ScaleCardGraveyardStaticMesh")
+
+() 
+
+$$ @add_to_graveyard_visual
+// Add to Graveyard Visual
+//
+// UE4 name of this method: AddToGraveyardVisual
+
+&aka("AddToGraveyardVisual")
+
+() 
+
+$$ .

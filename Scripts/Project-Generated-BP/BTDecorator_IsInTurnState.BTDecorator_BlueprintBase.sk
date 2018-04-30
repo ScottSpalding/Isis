@@ -1,0 +1,15 @@
+// BTDecorator Is in Turn State
+//
+// UE4 name of this class: BTDecorator_IsInTurnState_C
+
+// UE4 Asset Name: BTDecorator_IsInTurnState
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIBlueprints/Decorators/BTDecorator_IsInTurnState"
+
+annotations: &reflected_data &name("BTDecorator_IsInTurnState_C")
+
+$$ @
+
+&raw("CurrentAITurnState")  BlackboardKeySelector !@current_aiturn_state   // Current AITurn State
+&raw("CheckForAITurnState") AITurnState_Enum      !@check_for_aiturn_state // Check for AITurn State
+
+$$ .

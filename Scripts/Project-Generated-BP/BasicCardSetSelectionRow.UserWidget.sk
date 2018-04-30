@@ -1,0 +1,22 @@
+// Basic Card Set Selection Row
+//
+// UE4 name of this class: BasicCardSetSelectionRow_C
+
+// UE4 Asset Name: BasicCardSetSelectionRow
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Menu/BasicCardSetSelectionRow"
+
+annotations: &reflected_data &name("BasicCardSetSelectionRow_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
+&raw("Border_3")     Border       !@border_3      // Border 3
+&raw("Button_105")   Button       !@button_105    // Button 105
+&raw("TextBlock_78") TextBlock    !@text_block_78 // Text Block 78
+&raw("Deck_Number")  Integer      !@deck_number   // Deck Number
+&raw("CardSet")      CardSet_Enum !@card_set      // Card Set
+&raw("ParentWidget") Widget       !@parent_widget // Parent Widget
+&raw("CardSetName")  String       !@card_set_name // Card Set Name
+&raw("WidgetParent") Widget       !@widget_parent // Widget Parent
+
+$$ .

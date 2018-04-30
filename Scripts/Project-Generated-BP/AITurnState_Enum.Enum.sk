@@ -1,0 +1,30 @@
+// AITurn State Enum
+//
+// UE4 name of this enum: AITurnState_Enum
+
+// UE4 Asset Name: AITurnState_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/System_Enums/AITurnState_Enum"
+
+annotations: &reflected_data &name("AITurnState_Enum")
+
+$$ @@
+
+AITurnState_Enum !@@initialization
+AITurnState_Enum !@@execution
+AITurnState_Enum !@@termination
+AITurnState_Enum !@@aiturn_state_max
+
+$$ @@!
+// AITurnState_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/System_Enums/AITurnState_Enum.AITurnState_Enum
+
+()
+
+  [
+  @@initialization:   AITurnState_Enum!int(0)
+  @@execution:        AITurnState_Enum!int(1)
+  @@termination:      AITurnState_Enum!int(2)
+  @@aiturn_state_max: AITurnState_Enum!int(3)
+  ]
+
+$$ .

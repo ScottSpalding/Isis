@@ -1,0 +1,116 @@
+// Player Game UI
+//
+// UE4 name of this class: PlayerGameUI_C
+
+// UE4 Asset Name: PlayerGameUI
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Gameplay/PlayerGameUI"
+
+annotations: &reflected_data &name("PlayerGameUI_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")              PointerToUberGraphFrame !@uber_graph_frame               // Currently unsupported */
+&raw("SpawnAIOpponent_Anim")        WidgetAnimation     !@spawn_aiopponent_anim          // Spawn AIOpponent Anim
+&raw("ChangeTurn")                  WidgetAnimation     !@change_turn                    // Change Turn
+&raw("2_170")                       PlayerProfileUI     !@2_170                          // 2 170
+&raw("CardManager")                 CardManager         !@card_manager                   // Card Manager
+&raw("GameTime")                    TextBlock           !@game_time                      // Game Time
+&raw("Image_369")                   Image               !@image_369                      // Image 369
+&raw("Message_Manager")             Message_Manager     !@message_manager                // Message Manager
+&raw("NotificationManager")         NotificationManager !@notification_manager           // Notification Manager
+&raw("PauseMenu_116")               PauseMenu           !@pause_menu_116                 // Pause Menu 116
+&raw("PlayerUI_Canvas")             CanvasPanel         !@player_ui_canvas               // Player UI Canvas
+&raw("ServerPing")                  TextBlock           !@server_ping                    // Server Ping
+&raw("SpawnAIOpponent_Button")      Button              !@spawn_aiopponent_button        // Spawn AIOpponent Button
+&raw("Throbber_440")                Throbber            !@throbber_440                   // Throbber 440
+&raw("ToggleMessageManager")        Button              !@toggle_message_manager         // Toggle Message Manager
+&raw("TurnButton")                  Button              !@turn_button                    // Turn Button
+&raw("TurnButton_Text")             TextBlock           !@turn_button_text               // Turn Button Text
+&raw("WaitingOnPlayer_VerticleBox") VerticalBox         !@waiting_on_player_verticle_box // Waiting on Player Verticle Box
+&raw("PlayerState_Ref")             CardGamePlayerState !@player_state_ref               // Player State Ref
+&raw("bPlayerTurnActive")           Boolean             !@player_turn_active?            // Player Turn Active
+&raw("GameSeconds")                 Integer             !@game_seconds                   // Game Seconds
+&raw("GameMinutes")                 Integer             !@game_minutes                   // Game Minutes
+&raw("TurnSeconds")                 Integer             !@turn_seconds                   // Turn Seconds
+&raw("TurnMinutes")                 Integer             !@turn_minutes                   // Turn Minutes
+&raw("GameState_Ref")               CardGameState       !@game_state_ref                 // Game State Ref
+
+$$ @combine_timer
+// Combine Timer
+//
+// UE4 name of this method: CombineTimer
+
+&aka("CombineTimer")
+
+(Integer seconds : 0
+ Integer minutes : 0
+) String
+
+$$ @update_uigame_turn_time
+// Update UIGame Turn Time
+//
+// UE4 name of this method: UpdateUIGameTurnTime
+
+&aka("UpdateUIGameTurnTime")
+
+() 
+
+$$ @update_player_state_ui
+// Update Player State UI
+//
+// UE4 name of this method: UpdatePlayerStateUI
+
+&aka("UpdatePlayerStateUI")
+
+(Integer new_param   : 0
+ Integer new_param_1 : 0
+ Integer new_param_2 : 0
+ Integer new_param_3 : 0) 
+
+$$ @toggle_game_ui
+// Toggle Game UI
+//
+// UE4 name of this method: ToggleGameUI
+
+&aka("ToggleGameUI")
+
+() 
+
+$$ @update_uiplayer_stats
+// Update UIPlayer Stats
+//
+// UE4 name of this method: UpdateUIPlayerStats
+
+&aka("UpdateUIPlayerStats")
+
+(Boolean force_clean_visual_update? : false) 
+
+$$ @update_uiturn_state
+// Update UITurn State
+//
+// UE4 name of this method: UpdateUITurnState
+
+&aka("UpdateUITurnState")
+
+(Boolean       turn_active? : false
+ GameTurn_Enum turn_state   : GameTurn_Enum.@@turn_active) 
+
+$$ @update_game_and_turn_timers
+// Update Game and Turn Timers
+//
+// UE4 name of this method: UpdateGameAndTurnTimers
+
+&aka("UpdateGameAndTurnTimers")
+
+() 
+
+$$ @check_turn_begin_state
+// Check Turn Begin State
+//
+// UE4 name of this method: CheckTurnBeginState
+
+&aka("CheckTurnBeginState")
+
+() 
+
+$$ .

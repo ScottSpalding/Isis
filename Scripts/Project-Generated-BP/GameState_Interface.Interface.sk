@@ -1,0 +1,48 @@
+// Game State Interface
+//
+// UE4 name of this class: GameState_Interface_C
+
+// UE4 Asset Name: GameState_Interface
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Interface/GameState_Interface"
+
+annotations: &reflected_data &name("GameState_Interface_C")
+
+$$ @
+
+$$ @request_change_player_turn
+// Request Change Player Turn
+//
+// UE4 name of this method: RequestChangePlayerTurn
+
+&aka("RequestChangePlayerTurn")
+
+() 
+
+$$ @change_active_player_turn
+// Change Active Player Turn
+//
+// UE4 name of this method: ChangeActivePlayerTurn
+
+&aka("ChangeActivePlayerTurn")
+
+(Boolean turn_active? : false) 
+
+$$ @match_begin
+// Match Begin
+//
+// UE4 name of this method: MatchBegin
+
+&aka("MatchBegin")
+
+() 
+
+$$ @match_end
+// Match End
+//
+// UE4 name of this method: MatchEnd
+
+&aka("MatchEnd")
+
+(EndGameResults_Enum result : EndGameResults_Enum.@@victory) 
+
+$$ .

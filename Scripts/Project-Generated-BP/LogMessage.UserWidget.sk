@@ -1,0 +1,26 @@
+// Log Message
+//
+// UE4 name of this class: LogMessage_C
+
+// UE4 Asset Name: LogMessage
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Additional/LogMessage"
+
+annotations: &reflected_data &name("LogMessage_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
+&raw("OnLogBegin")   WidgetAnimation !@on_log_begin // On Log Begin
+&raw("Message_Text") TextBlock       !@message_text // Message Text
+
+$$ @log_message
+// Log Message
+//
+// UE4 name of this method: LogMessage
+
+&aka("LogMessage")
+
+(String message         : ""
+ Color  specified_color : Color!) 
+
+$$ .

@@ -1,0 +1,40 @@
+// Arena List Enum
+//
+// UE4 name of this enum: ArenaList_Enum
+
+// UE4 Asset Name: ArenaList_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Menu_Enums/ArenaList_Enum"
+
+annotations: &reflected_data &name("ArenaList_Enum")
+
+$$ @@
+
+ArenaList_Enum !@@empty
+ArenaList_Enum !@@arena_classic
+ArenaList_Enum !@@arena_doubles
+ArenaList_Enum !@@arena_eagles_nest
+ArenaList_Enum !@@arena_flat_grounds
+ArenaList_Enum !@@arena_great_wall
+ArenaList_Enum !@@arena_rainy_day
+ArenaList_Enum !@@arena_stone_garden
+ArenaList_Enum !@@arena_list_max
+
+$$ @@!
+// ArenaList_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Menu_Enums/ArenaList_Enum.ArenaList_Enum
+
+()
+
+  [
+  @@empty:              ArenaList_Enum!int(0)
+  @@arena_classic:      ArenaList_Enum!int(1)
+  @@arena_doubles:      ArenaList_Enum!int(2)
+  @@arena_eagles_nest:  ArenaList_Enum!int(3)
+  @@arena_flat_grounds: ArenaList_Enum!int(4)
+  @@arena_great_wall:   ArenaList_Enum!int(5)
+  @@arena_rainy_day:    ArenaList_Enum!int(6)
+  @@arena_stone_garden: ArenaList_Enum!int(7)
+  @@arena_list_max:     ArenaList_Enum!int(8)
+  ]
+
+$$ .

@@ -1,0 +1,54 @@
+// Effects Function Library
+//
+// UE4 name of this class: Effects_FunctionLibrary_C
+
+// UE4 Asset Name: Effects_FunctionLibrary
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/FunctionLibraries/Effects_FunctionLibrary"
+
+annotations: &reflected_data &name("Effects_FunctionLibrary_C")
+
+$$ @
+
+$$ @@spawn_particle_and_sound_effects
+// Spawn Particle And Sound Effects
+//
+// UE4 name of this method: Spawn Particle and Sound Effects
+
+&aka("Spawn Particle and Sound Effects")
+
+(ParticleSystem particle_to_spawn     : ParticleSystem!null
+ Vector3        location              : Vector3!
+ Actor          or_actor_for_location : Actor!null
+ Vector3        scale                 : Vector3!xyz(1,1,1)
+ Boolean        auto_destroy?         : true
+ SoundCue       sound_cue_to_spwn     : SoundCue!null
+ Real           volume                : 1
+ Entity         world_context         : Entity!null) 
+
+$$ @@player_effects_for_state
+// Get Player Effects For State
+//
+// UE4 name of this method: Get Player Effects for State
+
+&aka("Get Player Effects for State")
+
+(BoardPlayerEffects_Enum effect        : BoardPlayerEffects_Enum.@@decreased_health
+ Entity                  world_context : Entity!null
+ ParticleSystem          particle      : ParticleSystem!null
+ SoundCue                sound_cue     : SoundCue!null) 
+
+$$ @@card_effects_for_state
+// Get Card Effects For State
+//
+// UE4 name of this method: Get Card Effects for State
+
+&aka("Get Card Effects for State")
+
+(CardEffects_Enum effect         : CardEffects_Enum.@@on_card_placed
+ Card_Struct      card_struct    : Card_Struct!
+ Integer          wildcard_index : 0
+ Entity           world_context  : Entity!null
+ ParticleSystem   particle       : ParticleSystem!null
+ SoundCue         sound_cue      : SoundCue!null) 
+
+$$ .

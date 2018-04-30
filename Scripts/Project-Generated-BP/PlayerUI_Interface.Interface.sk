@@ -1,0 +1,52 @@
+// Player UI Interface
+//
+// UE4 name of this class: PlayerUI_Interface_C
+
+// UE4 Asset Name: PlayerUI_Interface
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Interface/PlayerUI_Interface"
+
+annotations: &reflected_data &name("PlayerUI_Interface_C")
+
+$$ @
+
+$$ @update_player_state_ui
+// Update Player State UI
+//
+// UE4 name of this method: UpdatePlayerStateUI
+
+&aka("UpdatePlayerStateUI")
+
+(Integer new_param   : 0
+ Integer new_param_1 : 0
+ Integer new_param_2 : 0
+ Integer new_param_3 : 0) 
+
+$$ @update_uigame_turn_time
+// Update UIGame Turn Time
+//
+// UE4 name of this method: UpdateUIGameTurnTime
+
+&aka("UpdateUIGameTurnTime")
+
+() 
+
+$$ @update_uiturn_state
+// Update UITurn State
+//
+// UE4 name of this method: UpdateUITurnState
+
+&aka("UpdateUITurnState")
+
+(Boolean       turn_active? : false
+ GameTurn_Enum turn_state   : GameTurn_Enum.@@turn_active) 
+
+$$ @update_uiplayer_stats
+// Update UIPlayer Stats
+//
+// UE4 name of this method: UpdateUIPlayerStats
+
+&aka("UpdateUIPlayerStats")
+
+(Boolean force_clean_visual_update? : false) 
+
+$$ .

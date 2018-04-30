@@ -1,0 +1,17 @@
+// Cards Bar
+//
+// UE4 name of this class: Cards_Bar_C
+
+// UE4 Asset Name: Cards_Bar
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/UI/Cards_Bar"
+
+annotations: &reflected_data &name("Cards_Bar_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
+&raw("Border_0")      Border    !@border_0      // Border 0
+&raw("Priority_Text") TextBlock !@priority_text // Priority Text
+&raw("TextBlock_0")   TextBlock !@text_block_0  // Text Block 0
+
+$$ .

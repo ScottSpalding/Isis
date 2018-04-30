@@ -1,0 +1,28 @@
+// Sorting Type Filter Enum
+//
+// UE4 name of this enum: SortingTypeFilter_Enum
+
+// UE4 Asset Name: SortingTypeFilter_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/System_Enums/SortingTypeFilter_Enum"
+
+annotations: &reflected_data &name("SortingTypeFilter_Enum")
+
+$$ @@
+
+SortingTypeFilter_Enum !@@name
+SortingTypeFilter_Enum !@@mana_cost
+SortingTypeFilter_Enum !@@sorting_type_filter_max
+
+$$ @@!
+// SortingTypeFilter_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/System_Enums/SortingTypeFilter_Enum.SortingTypeFilter_Enum
+
+()
+
+  [
+  @@name:                    SortingTypeFilter_Enum!int(0)
+  @@mana_cost:               SortingTypeFilter_Enum!int(1)
+  @@sorting_type_filter_max: SortingTypeFilter_Enum!int(2)
+  ]
+
+$$ .

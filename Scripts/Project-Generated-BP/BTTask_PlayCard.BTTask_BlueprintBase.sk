@@ -1,0 +1,33 @@
+// BTTask Play Card
+//
+// UE4 name of this class: BTTask_PlayCard_C
+
+// UE4 Asset Name: BTTask_PlayCard
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIBlueprints/Tasks/BTTask_PlayCard"
+
+annotations: &reflected_data &name("BTTask_PlayCard_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")       PointerToUberGraphFrame       !@uber_graph_frame        // Currently unsupported */
+&raw("AIPawn_Ref")           CardGameAI_Pawn               !@aipawn_ref              // AIPawn Ref
+&raw("AIController_Ref")     CardGameAIController          !@aicontroller_ref        // AIController Ref
+&raw("TEMP_CardName")        Name                          !@temp_card_name          // TEMP Card Name
+&raw("TEMP_CardIndex")       Integer                       !@temp_card_index         // TEMP Card Index
+&raw("PlayableCardsAtFocus") List{Name}                    !@playable_cards_at_focus // Playable Cards at Focus
+&raw("AIPriorityFocusList")  List{AIPersonalityFocus_Enum} !@aipriority_focus_list   // AIPriority Focus List
+&raw("bCardPlayed")          Boolean                       !@card_played?            // Card Played
+&raw("CardPlayed")           Name                          !@card_played             // Card Played
+&raw("CardsPlayedInTurn")    Name                          !@cards_played_in_turn    // Cards Played in Turn
+&raw("Loop")                 Name                          !@loop                    // Loop
+
+$$ @choose_and_play_card
+// Choose and Play Card
+//
+// UE4 name of this method: ChooseAndPlayCard
+
+&aka("ChooseAndPlayCard")
+
+() 
+
+$$ .

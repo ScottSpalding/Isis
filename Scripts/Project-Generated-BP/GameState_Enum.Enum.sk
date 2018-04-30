@@ -1,0 +1,36 @@
+// Game State Enum
+//
+// UE4 name of this enum: GameState_Enum
+
+// UE4 Asset Name: GameState_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/GameState_Enum"
+
+annotations: &reflected_data &name("GameState_Enum")
+
+$$ @@
+
+GameState_Enum !@@startup
+GameState_Enum !@@main_menu
+GameState_Enum !@@loading_screen
+GameState_Enum !@@playing
+GameState_Enum !@@store_coming_soon_
+GameState_Enum !@@deck_building_menu_coming_soon_
+GameState_Enum !@@game_state_max
+
+$$ @@!
+// GameState_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/GameState_Enum.GameState_Enum
+
+()
+
+  [
+  @@startup:                         GameState_Enum!int(0)
+  @@main_menu:                       GameState_Enum!int(1)
+  @@loading_screen:                  GameState_Enum!int(2)
+  @@playing:                         GameState_Enum!int(3)
+  @@store_coming_soon_:              GameState_Enum!int(4)
+  @@deck_building_menu_coming_soon_: GameState_Enum!int(5)
+  @@game_state_max:                  GameState_Enum!int(6)
+  ]
+
+$$ .

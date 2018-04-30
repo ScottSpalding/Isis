@@ -1,0 +1,11 @@
+// Base class for blueprint based task nodes. Do NOT use it for creating native c++ classes!
+// 
+// When task receives Abort event, all latent actions associated this instance are being removed.
+// This prevents from resuming activity started by Execute, but does not handle external events.
+// Please use them safely (unregister at abort) and call IsTaskExecuting() when in doubt.
+//
+// UE4 name of this class: BTTask_BlueprintBase
+
+annotations: &reflected_cpp &name("BTTask_BlueprintBase")
+
+$$ .

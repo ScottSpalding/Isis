@@ -1,0 +1,51 @@
+// Mana Bar
+//
+// UE4 name of this class: ManaBar_C
+
+// UE4 Asset Name: ManaBar
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Gameplay/ManaBar"
+
+annotations: &reflected_data &name("ManaBar_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")        PointerToUberGraphFrame !@uber_graph_frame      // Currently unsupported */
+&raw("Pulse")                 WidgetAnimation     !@pulse                 // Pulse
+&raw("HorizontalBox")         HorizontalBox       !@horizontal_box        // Horizontal Box
+&raw("Mana1")                 ManaBar_Icon        !@mana_1                // Mana 1
+&raw("Mana10")                ManaBar_Icon        !@mana_10               // Mana 10
+&raw("Mana2")                 ManaBar_Icon        !@mana_2                // Mana 2
+&raw("Mana3")                 ManaBar_Icon        !@mana_3                // Mana 3
+&raw("Mana4")                 ManaBar_Icon        !@mana_4                // Mana 4
+&raw("Mana5")                 ManaBar_Icon        !@mana_5                // Mana 5
+&raw("Mana6")                 ManaBar_Icon        !@mana_6                // Mana 6
+&raw("Mana7")                 ManaBar_Icon        !@mana_7                // Mana 7
+&raw("Mana8")                 ManaBar_Icon        !@mana_8                // Mana 8
+&raw("Mana9")                 ManaBar_Icon        !@mana_9                // Mana 9
+&raw("TextBlock_173")         TextBlock           !@text_block_173        // Text Block 173
+&raw("NewVar_0")              Boolean             !@new_var_0?            // New Var 0
+&raw("Player Controller Ref") Entity              !@player_controller_ref // Player Controller Ref
+&raw("NewVar_1")              Entity              !@new_var_1             // New Var 1
+&raw("Mana")                  Integer             !@mana                  // Mana
+&raw("ManaMax")               Integer             !@mana_max              // Mana Max
+&raw("PlayerState_Ref")       CardGamePlayerState !@player_state_ref      // Player State Ref
+
+$$ @pulsate_mana_cost
+// Pulsate Mana Cost
+//
+// UE4 name of this method: Pulsate Mana Cost
+
+&aka("Pulsate Mana Cost")
+
+(Integer number_to_pulsate : 0) 
+
+$$ @update_mana_visual
+// Update Mana Visual
+//
+// UE4 name of this method: Update Mana Visual
+
+&aka("Update Mana Visual")
+
+(CardGamePlayerState player_state : CardGamePlayerState!null) 
+
+$$ .

@@ -1,0 +1,36 @@
+// Library Card Selectable State Enum
+//
+// UE4 name of this enum: LibraryCardSelectableState_Enum
+
+// UE4 Asset Name: LibraryCardSelectableState_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Menu_Enums/LibraryCardSelectableState_Enum"
+
+annotations: &reflected_data &name("LibraryCardSelectableState_Enum")
+
+$$ @@
+
+LibraryCardSelectableState_Enum !@@none
+LibraryCardSelectableState_Enum !@@selectable
+LibraryCardSelectableState_Enum !@@preview_selectable
+LibraryCardSelectableState_Enum !@@locked
+LibraryCardSelectableState_Enum !@@not_selectable
+LibraryCardSelectableState_Enum !@@cannot_add_to_deck
+LibraryCardSelectableState_Enum !@@library_card_selectable_state_max
+
+$$ @@!
+// LibraryCardSelectableState_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Menu_Enums/LibraryCardSelectableState_Enum.LibraryCardSelectableState_Enum
+
+()
+
+  [
+  @@none:                              LibraryCardSelectableState_Enum!int(0)
+  @@selectable:                        LibraryCardSelectableState_Enum!int(1)
+  @@preview_selectable:                LibraryCardSelectableState_Enum!int(2)
+  @@locked:                            LibraryCardSelectableState_Enum!int(3)
+  @@not_selectable:                    LibraryCardSelectableState_Enum!int(4)
+  @@cannot_add_to_deck:                LibraryCardSelectableState_Enum!int(5)
+  @@library_card_selectable_state_max: LibraryCardSelectableState_Enum!int(6)
+  ]
+
+$$ .

@@ -1,0 +1,34 @@
+// View State Enum
+//
+// UE4 name of this enum: ViewState_Enum
+
+// UE4 Asset Name: ViewState_Enum
+// UE4 Package Name: "/Game/CCGToolkit/CardLayouts/ViewState_Enum"
+
+annotations: &reflected_data &name("ViewState_Enum")
+
+$$ @@
+
+ViewState_Enum !@@default
+ViewState_Enum !@@card_in_preview
+ViewState_Enum !@@view_hand
+ViewState_Enum !@@hide_hand
+ViewState_Enum !@@test_profile
+ViewState_Enum !@@view_state_max
+
+$$ @@!
+// ViewState_Enum
+// EnumPath: /Game/CCGToolkit/CardLayouts/ViewState_Enum.ViewState_Enum
+
+()
+
+  [
+  @@default:         ViewState_Enum!int(0)
+  @@card_in_preview: ViewState_Enum!int(1)
+  @@view_hand:       ViewState_Enum!int(2)
+  @@hide_hand:       ViewState_Enum!int(3)
+  @@test_profile:    ViewState_Enum!int(4)
+  @@view_state_max:  ViewState_Enum!int(5)
+  ]
+
+$$ .

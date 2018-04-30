@@ -1,0 +1,61 @@
+// Player State Interface
+//
+// UE4 name of this class: PlayerState_Interface_C
+
+// UE4 Asset Name: PlayerState_Interface
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Interface/PlayerState_Interface"
+
+annotations: &reflected_data &name("PlayerState_Interface_C")
+
+$$ @
+
+$$ @mana_for_turn
+// Get Mana for Turn
+//
+// UE4 name of this method: GetManaForTurn
+
+&aka("GetManaForTurn")
+
+(Integer return_mana : 0) 
+
+$$ @decrease_player_mana
+// Decrease Player Mana
+//
+// UE4 name of this method: DecreasePlayerMana
+
+&aka("DecreasePlayerMana")
+
+(Integer decrease_by : 0
+ Integer return_mana : 0) 
+
+$$ @increase_player_mana
+// Increase Player Mana
+//
+// UE4 name of this method: IncreasePlayerMana
+
+&aka("IncreasePlayerMana")
+
+(Integer increase_by : 0
+ Integer return_mana : 0) 
+
+$$ @decrease_player_health
+// Decrease Player Health
+//
+// UE4 name of this method: DecreasePlayerHealth
+
+&aka("DecreasePlayerHealth")
+
+(Integer decrease_by   : 0
+ Integer return_health : 0) 
+
+$$ @increase_player_health
+// Increase Player Health
+//
+// UE4 name of this method: IncreasePlayerHealth
+
+&aka("IncreasePlayerHealth")
+
+(Integer increase_by   : 0
+ Integer return_health : 0) 
+
+$$ .

@@ -1,0 +1,225 @@
+// Card Game Player State
+//
+// UE4 name of this class: CardGamePlayerState_C
+
+// UE4 Asset Name: CardGamePlayerState
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/CardGamePlayerState"
+
+annotations: &reflected_data &name("CardGamePlayerState_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")             PointerToUberGraphFrame  !@uber_graph_frame               // Currently unsupported */
+&raw("DefaultSceneRoot")           SceneComponent           !@default_scene_root             // Default Scene Root
+&raw("Mana")                       Integer                  !@mana                           // Mana
+&raw("Mana_Max")                   Integer                  !@mana_max                       // Mana Max
+&raw("Health")                     Integer                  !@health                         // Health
+&raw("CardGamePlayerId")           Integer                  !@card_game_player_id            // Card Game Player Id
+&raw("Health_Max")                 Integer                  !@health_max                     // Health Max
+&raw("CardsInHand")                Integer                  !@cards_in_hand                  // Cards in Hand
+&raw("PlayerTurn")                 Integer                  !@player_turn                    // Player Turn
+&raw("CardsInHand_Array")          List{CardWidget}         !@cards_in_hand_array            // Cards in Hand Array
+&raw("CardsInDeck")                Integer                  !@cards_in_deck                  // Cards in Deck
+&raw("ActiveCards")                Integer                  !@active_cards                   // Active Cards
+&raw("OwningPlayerController")     CardGamePlayerController !@owning_player_controller       // Owning Player Controller
+&raw("GameMode_Ref")               CardGameMode             !@game_mode_ref                  // Game Mode Ref
+&raw("MaxCardsInDeck")             Integer                  !@max_cards_in_deck              // Max Cards in Deck
+&raw("ForceUIUpdateOnReplication") Boolean                  !@force_uiupdate_on_replication? // Force UIUpdate on Replication
+
+$$ @increase_player_health
+// Increase Player Health
+//
+// UE4 name of this method: IncreasePlayerHealth
+
+&aka("IncreasePlayerHealth")
+
+(Integer increase_by   : 0
+ Integer return_health : 0) 
+
+$$ @decrease_player_health
+// Decrease Player Health
+//
+// UE4 name of this method: DecreasePlayerHealth
+
+&aka("DecreasePlayerHealth")
+
+(Integer decrease_by   : 0
+ Integer return_health : 0) 
+
+$$ @increase_player_mana
+// Increase Player Mana
+//
+// UE4 name of this method: IncreasePlayerMana
+
+&aka("IncreasePlayerMana")
+
+(Integer increase_by : 0
+ Integer return_mana : 0) 
+
+$$ @decrease_player_mana
+// Decrease Player Mana
+//
+// UE4 name of this method: DecreasePlayerMana
+
+&aka("DecreasePlayerMana")
+
+(Integer decrease_by : 0
+ Integer return_mana : 0) 
+
+$$ @mana_for_turn
+// Get Mana for Turn
+//
+// UE4 name of this method: GetManaForTurn
+
+&aka("GetManaForTurn")
+
+(Integer return_mana : 0) 
+
+$$ @on_rep_mana_max
+// On Rep Mana Max
+//
+// UE4 name of this method: OnRep_Mana_Max
+
+&aka("OnRep_Mana_Max")
+
+() 
+
+$$ @create_playable_card
+// Create Playable Card
+//
+// UE4 name of this method: CreatePlayableCard
+
+&aka("CreatePlayableCard")
+
+(Transform spawn_transform : Transform!
+ Sk3DCard  card_created    : Sk3DCard!null) 
+
+$$ @on_rep_player_turn
+// On Rep Player Turn
+//
+// UE4 name of this method: OnRep_PlayerTurn
+
+&aka("OnRep_PlayerTurn")
+
+() 
+
+$$ @mana_set
+// Set Mana
+//
+// UE4 name of this method: Set_Mana
+
+&aka("Set_Mana")
+
+(Integer mana : 0) 
+
+$$ @on_rep_mana
+// On Rep Mana
+//
+// UE4 name of this method: OnRep_Mana
+
+&aka("OnRep_Mana")
+
+() 
+
+$$ @on_rep_cards_in_hand
+// On Rep Cards in Hand
+//
+// UE4 name of this method: OnRep_CardsInHand
+
+&aka("OnRep_CardsInHand")
+
+() 
+
+$$ @on_rep_active_cards
+// On Rep Active Cards
+//
+// UE4 name of this method: OnRep_ActiveCards
+
+&aka("OnRep_ActiveCards")
+
+() 
+
+$$ @on_rep_cards_in_deck
+// On Rep Cards in Deck
+//
+// UE4 name of this method: OnRep_CardsInDeck
+
+&aka("OnRep_CardsInDeck")
+
+() 
+
+$$ @update_players_card_states
+// Update Players Card States
+//
+// UE4 name of this method: UpdatePlayersCardStates
+
+&aka("UpdatePlayersCardStates")
+
+(Integer cards_in_hand : 0
+ Integer cards_in_deck : 0
+ Integer active_cards  : 0) 
+
+$$ @on_rep_cards_in_hand_array
+// On Rep Cards in Hand Array
+//
+// UE4 name of this method: OnRep_CardsInHand_Array
+
+&aka("OnRep_CardsInHand_Array")
+
+() 
+
+$$ @init_health
+// Init Health
+//
+// UE4 name of this method: InitHealth
+
+&aka("InitHealth")
+
+() 
+
+$$ @on_rep_player_health
+// On Rep Player Health
+//
+// UE4 name of this method: OnRep_Player Health
+
+&aka("OnRep_Player Health")
+
+() 
+
+$$ @init_mana
+// Init Mana
+//
+// UE4 name of this method: InitMana
+
+&aka("InitMana")
+
+() 
+
+$$ @init_attributes
+// Init Attributes
+//
+// UE4 name of this method: InitAttributes
+
+&aka("InitAttributes")
+
+() 
+
+$$ @server_notify_player_state_change
+// Server Notify Player State Change
+//
+// UE4 name of this method: Server_NotifyPlayerStateChange
+
+&aka("Server_NotifyPlayerStateChange")
+
+() 
+
+$$ @force_update_ui
+// Force Update UI
+//
+// UE4 name of this method: ForceUpdateUI
+
+&aka("ForceUpdateUI")
+
+() 
+
+$$ .

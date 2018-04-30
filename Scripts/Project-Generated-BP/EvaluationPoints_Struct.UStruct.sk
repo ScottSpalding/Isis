@@ -1,0 +1,29 @@
+// Evaluation Points Struct
+//
+// UE4 name of this struct: EvaluationPoints_Struct
+
+// UE4 Asset Name: EvaluationPoints_Struct
+// UE4 Package Name: "/Game/CCGToolkit/CardGameAI/AIPointsAllocation/EvaluationPoints_Struct"
+
+annotations: &reflected_data &name("EvaluationPoints_Struct")
+
+$$ @
+
+&raw("Pts_Per_Active_Card_8_447417954E46142D87B6B4A2618442CF")         Integer !@pts_per_active_card_8_4474         // Pts Per Active Card
+&raw("Pts_Per_Card_In_Hand_7_98670FF74BDC07C9FC45498F0389A7FA")        Integer !@pts_per_card_in_hand_7_9867        // Pts Per Card in Hand
+&raw("Pts_Per_Health_Point_12_A40BF3954A6593DEC56D0F89442A40AE")       Integer !@pts_per_health_point_12_a40b       // Pts Per Health Point
+&raw("bInclude_Active_Card_Value_20_B9747D804E1DCBF55CFEC5B30542E329") Boolean !@include_active_card_value_20_b974? // Include Active Card Value
+
+$$ @!
+() EvaluationPoints_Struct
+
+$$ @!copy
+(EvaluationPoints_Struct other) EvaluationPoints_Struct
+
+$$ @assign
+(EvaluationPoints_Struct other) EvaluationPoints_Struct
+
+$$ @!!
+() EvaluationPoints_Struct
+
+$$ .

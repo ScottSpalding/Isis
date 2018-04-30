@@ -1,0 +1,30 @@
+// Game Turn Enum
+//
+// UE4 name of this enum: GameTurn_Enum
+
+// UE4 Asset Name: GameTurn_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/GameTurn_Enum"
+
+annotations: &reflected_data &name("GameTurn_Enum")
+
+$$ @@
+
+GameTurn_Enum !@@turn_active
+GameTurn_Enum !@@turn_inactive
+GameTurn_Enum !@@waiting_
+GameTurn_Enum !@@game_turn_max
+
+$$ @@!
+// GameTurn_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/GameTurn_Enum.GameTurn_Enum
+
+()
+
+  [
+  @@turn_active:   GameTurn_Enum!int(0)
+  @@turn_inactive: GameTurn_Enum!int(1)
+  @@waiting_:      GameTurn_Enum!int(2)
+  @@game_turn_max: GameTurn_Enum!int(3)
+  ]
+
+$$ .

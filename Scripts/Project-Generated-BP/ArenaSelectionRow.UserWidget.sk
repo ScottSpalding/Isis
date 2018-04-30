@@ -1,0 +1,18 @@
+// Arena Selection Row
+//
+// UE4 name of this class: ArenaSelectionRow_C
+
+// UE4 Asset Name: ArenaSelectionRow
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Menu/ArenaSelectionRow"
+
+annotations: &reflected_data &name("ArenaSelectionRow_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
+&raw("ArenaName")   TextBlock      !@arena_name  // Arena Name
+&raw("Button_105")  Button         !@button_105  // Button 105
+&raw("Deck_Number") Integer        !@deck_number // Deck Number
+&raw("Arena")       ArenaList_Enum !@arena       // Arena
+
+$$ .

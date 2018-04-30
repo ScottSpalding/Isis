@@ -1,0 +1,55 @@
+// Server Selection Row
+//
+// UE4 name of this class: ServerSelectionRow_C
+
+// UE4 Asset Name: ServerSelectionRow
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Widgets/Menu/ServerSelectionRow"
+
+annotations: &reflected_data &name("ServerSelectionRow_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")  PointerToUberGraphFrame !@uber_graph_frame  // Currently unsupported */
+&raw("Button_105")      Button    !@button_105        // Button 105
+&raw("Name")            TextBlock !@name              // Name
+&raw("NumberOfPlayers") TextBlock !@number_of_players // Number Of Players
+
+$$ @return_option
+// Return Option
+//
+// UE4 name of this method: ReturnOption
+
+&aka("ReturnOption")
+
+(CardRowOptions option         : CardRowOptions.@@none
+ String         card_set       : ""
+ Widget         calling_widget : Widget!null) 
+
+$$ @return_card_set
+// Return Card Set
+//
+// UE4 name of this method: ReturnCardSet
+
+&aka("ReturnCardSet")
+
+(CardSet_Enum card_set : CardSet_Enum.@@empty) 
+
+$$ @return_preview
+// Return Preview
+//
+// UE4 name of this method: ReturnPreview
+
+&aka("ReturnPreview")
+
+(Boolean preview_enabled? : false) 
+
+$$ @return_deck_selection
+// Return Deck Selection
+//
+// UE4 name of this method: ReturnDeckSelection
+
+&aka("ReturnDeckSelection")
+
+(String deck_selection : "") 
+
+$$ .

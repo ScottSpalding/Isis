@@ -1,0 +1,28 @@
+// Target Drag Selection
+//
+// UE4 name of this class: TargetDragSelection_C
+
+// UE4 Asset Name: TargetDragSelection
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Gameplay/TargetDragSelection"
+
+annotations: &reflected_data &name("TargetDragSelection_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")   PointerToUberGraphFrame !@uber_graph_frame   // Currently unsupported */
+&raw("ToLocation")       StaticMeshComponent !@to_location        // To Location
+&raw("NarrowCapsule")    StaticMeshComponent !@narrow_capsule     // Narrow Capsule
+&raw("Target")           StaticMeshComponent !@target             // Target
+&raw("DefaultSceneRoot") SceneComponent      !@default_scene_root // Default Scene Root
+
+$$ @selection_properties_set
+// Set Selection Properties
+//
+// UE4 name of this method: Set Selection Properties
+
+&aka("Set Selection Properties")
+
+(Vector3 location      : Vector3!
+ Boolean valid_target? : false) 
+
+$$ .

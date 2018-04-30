@@ -56,6 +56,7 @@ $$ IsisAIController < AIController
 
 annotations: &reflected_cpp &name("IsisAIController")
 
+$$ Character < Pawn
 $$ GameState < GameStateBase
 $$ TableRowBase < UStruct
 // Base class for all table row structs to inherit from.
@@ -681,7 +682,7 @@ $$ @current_game_board
 
 () GameBoard
 
-$$ IsisPawn < Pawn
+$$ IsisPawn < Character
 // USTRUCT(BlueprintType)
 // struct FIsisPawnStats
 // {
@@ -817,22 +818,13 @@ $$ @combat_effect_manager
 () CombatEffectManager
 
 $$ @heal_damage
-// Heal Damage
+// UFUNCTION(BlueprintCallable, Category = "Stats")
+// void TakeDamage(int32 Damage);
 //
 // UE4 name of this method: HealDamage
 // Blueprint category: Stats
 
 &aka("HealDamage")
-
-(Integer damage : 0) 
-
-$$ @take_damage
-// Take Damage
-//
-// UE4 name of this method: TakeDamage
-// Blueprint category: Stats
-
-&aka("TakeDamage")
 
 (Integer damage : 0) 
 

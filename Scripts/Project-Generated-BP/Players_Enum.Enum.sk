@@ -1,0 +1,30 @@
+// Players Enum
+//
+// UE4 name of this enum: Players_Enum
+
+// UE4 Asset Name: Players_Enum
+// UE4 Package Name: "/Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/Players_Enum"
+
+annotations: &reflected_data &name("Players_Enum")
+
+$$ @@
+
+Players_Enum !@@self
+Players_Enum !@@opponent
+Players_Enum !@@self_and_opponent
+Players_Enum !@@players_max
+
+$$ @@!
+// Players_Enum
+// EnumPath: /Game/CCGToolkit/Blueprints/Enums/Gameplay_Enums/Players_Enum.Players_Enum
+
+()
+
+  [
+  @@self:              Players_Enum!int(0)
+  @@opponent:          Players_Enum!int(1)
+  @@self_and_opponent: Players_Enum!int(2)
+  @@players_max:       Players_Enum!int(3)
+  ]
+
+$$ .
