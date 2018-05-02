@@ -1,0 +1,14 @@
+// Isis Game Mode BP
+//
+// UE4 name of this class: IsisGameMode_BP_C
+
+// UE4 Asset Name: IsisGameMode_BP
+// UE4 Package Name: "/Game/GameInformation/IsisGameMode_BP"
+
+annotations: &reflected_data &name("IsisGameMode_BP_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")PointerToUberGraphFrame !@uber_graph_frame // Currently unsupported */
+
+$$ .

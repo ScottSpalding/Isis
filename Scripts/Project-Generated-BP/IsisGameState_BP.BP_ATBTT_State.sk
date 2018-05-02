@@ -9,8 +9,6 @@ annotations: &reflected_data &name("IsisGameState_BP_C")
 
 $$ @
 
-&raw("BP Grid Manager Ref") BP_GridManager !@bp_grid_manager_ref // BP Grid Manager Ref
-
 $$ @initialize
 // Initialize
 //

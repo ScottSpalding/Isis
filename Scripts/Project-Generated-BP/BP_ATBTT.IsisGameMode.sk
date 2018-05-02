@@ -1,0 +1,18 @@
+// Sets up the game and handles login events.
+//
+// UE4 name of this class: BP_ATBTT_C
+
+// UE4 Asset Name: BP_ATBTT
+// UE4 Package Name: "/Game/AdvancedTurnBasedTileToolkit/Core/BP_ATBTT"
+
+annotations: &reflected_data &name("BP_ATBTT_C")
+
+$$ @
+
+/* &raw("UberGraphFrame")       PointerToUberGraphFrame !@uber_graph_frame       // Currently unsupported */
+&raw("DefaultSceneRoot")     SceneComponent !@default_scene_root     // Default Scene Root
+&raw("InitiativeOrderUnits") List{Actor}    !@initiative_order_units // Initiative Order Units
+/* &raw("WaitingControllers")   None           !@waiting_controllers    // Currently unsupported */
+&raw("GameStateRef")         BP_ATBTT_State !@game_state_ref         // Game State Ref
+
+$$ .
